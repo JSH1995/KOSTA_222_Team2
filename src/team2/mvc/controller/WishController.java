@@ -8,6 +8,7 @@ import team2.mvc.model.dto.Movie;
 import team2.mvc.model.service.SearchService;
 import team2.mvc.model.service.WishService;
 import team2.mvc.view.FailView;
+import team2.mvc.view.SuccessView;
 
 
 public class WishController {
@@ -17,8 +18,8 @@ public class WishController {
 		
 		try {
 			wishService.putWishList(userNo, movieNo);
-					
 			List<Movie> movieList = new ArrayList<Movie>();
+			
 		
 		}catch (Exception e) {
 			FailView.errorMessage(e.getMessage());
@@ -29,6 +30,7 @@ public class WishController {
 	public static void viewWishList(int userNo) {
 		try {
 			List<Movie> movieList = wishService.viewWishList( userNo);
+			SuccessView.printWishList(movieList);
 		}catch (SQLException e) {
 			FailView.errorMessage(e.getMessage());
 		}
