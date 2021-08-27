@@ -4,12 +4,12 @@ public class Movie {
 	private int movieNo;
 	private String movieName;
 	private String director;
-	private String rating;
+	private int rating;
 	private String movieRegDate;
 	private int genreNo;
 	
 	public Movie() {}
-	public Movie(int movieNo, String movieName, String director, String rating, String movieRegDate, int genreNo) {
+	public Movie(int movieNo, String movieName, String director, int rating, String movieRegDate, int genreNo) {
 		super();
 		this.movieNo = movieNo;
 		this.movieName = movieName;
@@ -38,10 +38,10 @@ public class Movie {
 	public void setDirector(String director) {
 		this.director = director;
 	}
-	public String getRating() {
+	public int getRating() {
 		return rating;
 	}
-	public void setRating(String rating) {
+	public void setRating(int rating) {
 		this.rating = rating;
 	}
 	public String getMovieRegDate() {
