@@ -1,5 +1,5 @@
 package team2.mvc.model.service;
 
-public class wishService {
+public class WishService {
 
 }
