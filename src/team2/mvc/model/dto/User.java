@@ -1,7 +1,5 @@
 package team2.mvc.model.dto;
 
-import java.util.Set;
-
 public class User {
 
 	private int userNo;
@@ -9,17 +7,19 @@ public class User {
 	private String password;
 	private int age;
 	private String userRegDate;
-	private Set<String> favGenre;
-	private Set<String> favTag;
+	private String[] favGenre;
+	private String[] favTag;
 	
-	public User() {}
-
-	public User(int userNo, String id, String password, int age, String userRegDate, Set<String> favGenre,
-			Set<String> favTag) {
-		super();
-		this.userNo = userNo;
+	public User(String id,String password) {
 		this.id = id;
 		this.password = password;
+		
+	}
+
+	public User(int userNo,String id,String password, int age, String userRegDate, String[] favGenre,
+			String[] favTag) {
+		this(id,password);
+		this.userNo = userNo;
 		this.age = age;
 		this.userRegDate = userRegDate;
 		this.favGenre = favGenre;
@@ -66,19 +66,19 @@ public class User {
 		this.userRegDate = userRegDate;
 	}
 
-	public Set<String> getFavGenre() {
+	public String[] getFavGenre() {
 		return favGenre;
 	}
 
-	public void setFavGenre(Set<String> favGenre) {
+	public void setFavGenre(String[] favGenre) {
 		this.favGenre = favGenre;
 	}
 
-	public Set<String> getFavTag() {
+	public String[] getFavTag() {
 		return favTag;
 	}
 
-	public void setFavTag(Set<String> favTag) {
+	public void setFavTag(String[] favTag) {
 		this.favTag = favTag;
 	}
 

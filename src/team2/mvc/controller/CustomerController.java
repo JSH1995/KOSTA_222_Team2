@@ -9,9 +9,9 @@ import team2.mvc.model.service.CustomerService;
 public class CustomerController {
 	static CustomerService customerService =  new CustomerService();
 	
-	public static void registerUser(int userNo, String id, String password, int age, String userRegDate) {
+	public static void registerUser(int userNo, String id, String password, int age, String userRegDate, String[] favGenre, String[] favTag) {
 		try {
-			List<User> list = customerService.registerUser(userNo,id,password,age,userRegDate);
+			List<User> list = customerService.registerUser(userNo,id,password,age,userRegDate,favGenre,favTag);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
