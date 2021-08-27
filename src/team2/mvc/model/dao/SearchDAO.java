@@ -1,6 +1,6 @@
 
 /**
- * @author ������
+ * @author 김찬원
  * 
  */
 
@@ -15,8 +15,6 @@ public interface SearchDAO {
 	
 	List<Movie> searchAll() throws SQLException;
 	
-	List<Movie> recentSearch() throws SQLException;
-	
 	List<Movie> searchByName() throws SQLException;
 	
 	List<Movie> searchByDirector() throws SQLException;
@@ -27,5 +25,7 @@ public interface SearchDAO {
 	
 	List<Movie> searchByNation() throws SQLException;
 	
-	Movie 
+	Movie searchByPK() throws SQLException;
+	
+	List<String> recentSearch() throws SQLException;
 }
