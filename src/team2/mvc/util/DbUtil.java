@@ -10,7 +10,9 @@ import java.sql.Statement;
 import java.util.Properties;
 
 public class DbUtil {
+
 	private static Properties proFile = new Properties();
+
 	public static Properties getProFile() {
 		return proFile;
 	}
@@ -40,7 +42,12 @@ public class DbUtil {
 			e.printStackTrace();
 		}
 	}
-	//닫기
+
+	/**
+	 * �ݱ�(DML, DDL�� ���)
+	 * 
+	 * @throws SQLException
+	 */
 	public static void dbClose(Connection con, Statement st) {
 		try {
 			if (st != null)
@@ -52,12 +59,12 @@ public class DbUtil {
 		}
 	}
 
-	/*public static void main(String[] args) {
+	public static void main(String[] args) {
 		try {
 			Connection con = DbUtil.getConnection();
-			System.out.println("con);
+			System.out.println("���� �Ϸ� = " + con);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-	}*/
+	}
 }

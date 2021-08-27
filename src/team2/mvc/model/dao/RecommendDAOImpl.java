@@ -28,7 +28,7 @@ public class RecommendDAOImpl implements RecommendDAO {
 			ps.setInt(1, age);
 			
 			if(rs.next()) {
-				list.add(new Movie(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5), rs.getInt(6)));
+				list.add(new Movie(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt(6)));
 			}
 		} finally {
 			DbUtil.dbClose(con, ps, rs);
@@ -48,7 +48,7 @@ public class RecommendDAOImpl implements RecommendDAO {
 			ps = con.prepareStatement("sql");
 			
 			if(rs.next()) {
-				list.add(new Movie(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5), rs.getInt(6)));
+				list.add(new Movie(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt(6)));
 			}
 		} finally {
 			DbUtil.dbClose(con, ps, rs);
@@ -69,7 +69,7 @@ public class RecommendDAOImpl implements RecommendDAO {
 			ps.setInt(1, genreNo);
 			
 			if(rs.next()) {
-				list.add(new Movie(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5), rs.getInt(6)));
+				list.add(new Movie(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt(6)));
 			}
 		} finally {
 			DbUtil.dbClose(con, ps, rs);
@@ -90,7 +90,7 @@ public class RecommendDAOImpl implements RecommendDAO {
 			ps.setInt(1, tagNo);
 			
 			if(rs.next()) {
-				list.add(new Movie(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5), rs.getInt(6)));
+				list.add(new Movie(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt(6)));
 			}
 		} finally {
 			DbUtil.dbClose(con, ps, rs);

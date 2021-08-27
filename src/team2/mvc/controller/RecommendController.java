@@ -16,7 +16,7 @@ public class RecommendController {
 	public static void recByAge(int age) {
 		try {
 			List<Movie> list = recommendService.recByAge(age);
-		} catch (Exception e) {
+		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -25,7 +25,7 @@ public class RecommendController {
 	public static void recByRank() {
 		try {
 			List<Movie> list = recommendService.recByRank();
-		} catch (Exception e) {
+		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -34,16 +34,16 @@ public class RecommendController {
 	public static void recByGenre(int genreNo) {
 		try {
 			List<Movie> list = recommendService.recByGenre(genreNo);
-		} catch (Exception e) {
+		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}
+	}ß
 
 	public static void recByTag(int tagNo) {
 		try {
 			List<Movie> list = recommendService.recByTag(tagNo);
-		} catch (Exception e) {
+		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
