@@ -38,7 +38,7 @@ public class RecommendController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}
+	}ß
 
 	public static void recByTag(int tagNo) {
 		try {
