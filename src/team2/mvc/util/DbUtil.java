@@ -10,81 +10,61 @@ import java.sql.Statement;
 import java.util.Properties;
 
 public class DbUtil {
-	
-	private static Properties proFile = new Properties();
-	
-	/**
-	 * ∑ŒµÂ
-	 */
 
-	
+	private static Properties proFile = new Properties();
+
+	public static Properties getProFile() {
+		return proFile;
+	}
+	//Î°úÎìú
 	static {
 		try {
-			//ø‹∫Œ ~.properties ∆ƒ¿œ 2∞≥ ∑ŒµÂ
-			proFile.load(new FileInputStream("resources/dbInfo.properties"));
-			proFile.load(new FileInputStream("resources/board.properties"));
-			
-			//µÂ∂Û¿Ãπˆ ∑ŒµÂ
+			// Ïô∏Î∂Ä ~.properties ÌååÏùº Î°úÎî©
+			proFile.load(new FileInputStream("src/team2/mvc/util/DBProperties.properties"));
 			Class.forName(proFile.getProperty("driverName"));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 	}
-	
-	
-	public static Properties getProFile() {
-		return proFile;
-		
-	}
-	
+	//Ïó∞Í≤∞ 
 	public static Connection getConnection() throws SQLException {
-		return DriverManager.getConnection(proFile.getProperty("url"), proFile.getProperty("userName"), proFile.getProperty("userPass"));
-		
+		return DriverManager.getConnection(proFile.getProperty("url"), proFile.getProperty("userName"),
+				proFile.getProperty("userPass"));
+
 	}
-	
+
 	public static void dbClose(Connection con, Statement st, ResultSet rs) {
-		
 		try {
-			if(rs != null)
+			if (rs != null)
 				rs.close();
 			dbClose(con, st);
-		} catch(SQLException e) {
-			e.printStackTrace();
-		}
-			
-	}
-	
-	/**
-	 * ¥›±‚(DML, DDL¿Œ ∞ÊøÏ)
-	 * @throws SQLException 
-	 */
-	
-	public static void dbClose(Connection con, Statement st) {
-		
-			try {
-				if(st != null)
-					st.close();
-				if(con != null)
-					con.close();
-			} catch(SQLException e) {
-				e.printStackTrace();
-			}
-	}
-		
-	public static void main(String[] args) {
-		
-		try {
-			Connection con = DbUtil.getConnection();
-			System.out.println("ø¨∞· øœ∑· = " + con);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
 	}
-	
-	
-	
+
+	/**
+	 * ÔøΩ›±ÔøΩ(DML, DDLÔøΩÔøΩ ÔøΩÔøΩÔøΩ)
+	 * 
+	 * @throws SQLException
+	 */
+	public static void dbClose(Connection con, Statement st) {
+		try {
+			if (st != null)
+				st.close();
+			if (con != null)
+				con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void main(String[] args) {
+		try {
+			Connection con = DbUtil.getConnection();
+			System.out.println("ÔøΩÔøΩÔøΩÔøΩ ÔøΩœ∑ÔøΩ = " + con);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 }
-
-
