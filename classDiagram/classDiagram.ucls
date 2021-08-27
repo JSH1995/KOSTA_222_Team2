@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class-diagram version="1.2.4" icons="true" automaticImage="PNG" always-add-relationships="false" generalizations="true" 
   realizations="true" associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
-  <class id="1" language="java" name="main.Moviement_main" project="KOSTA_222_Team2" 
-    file="/KOSTA_222_Team2/src/main/Moviement_main.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="1" language="java" name="team2.mvc.main.Moviement_main" project="KOSTA_222_Team2" 
+    file="/KOSTA_222_Team2/src/team2/mvc/main/Moviement_main.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="99" width="121" x="192" y="128"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
