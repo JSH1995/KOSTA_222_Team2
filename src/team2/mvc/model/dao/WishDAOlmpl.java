@@ -13,18 +13,18 @@ import team2.mvc.view.FailView;
 
 public class WishDAOlmpl implements WishDAO {
 	@Override
-	public List<Movie> viewWishList(int userNo, int movieNo) throws SQLException {
+	public List<Movie> viewWishList(int userNo) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		List<Movie> movieList = new ArrayList<Movie>();
-		String sql="select * from 위시리스트 where 사용자고유번호 = ? and 영화고유번호 = ?";
+		String sql="select * from 위시리스트 where 사용자고유번호";
 		
 		try {
 				con = DbUtil.getConnection();
 				ps = con.prepareStatement(sql);
 				ps.setInt(1, userNo);
-				ps.setInt(2, movieNo);
+				
 				rs= ps.executeQuery();
 				
 				while(rs.next()) {

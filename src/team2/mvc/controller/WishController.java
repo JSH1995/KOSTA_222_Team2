@@ -30,9 +30,9 @@ public class WishController {
 	}
 
 	
-	public static void viewWishList(int userNo, List<Integer> movieNo) {
+	public static void viewWishList(int userNo) {
 		try {
-			List<Movie> movieList = wishServie.viewWishList( userNo,  movieNo);
+			List<Movie> movieList = wishService.viewWishList( userNo);
 		}catch (SQLException e) {
 			FailView.errorMessage(e.getMessage());
 		}

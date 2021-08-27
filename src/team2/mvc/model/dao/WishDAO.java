@@ -7,8 +7,14 @@ import team2.mvc.model.dto.Movie;
 
 public interface WishDAO {
 
-	List<Movie> viewWishList(int userNo, int movieNo) throws SQLException;
+	/**
+	 * 위시리스트 목록 보기
+	 * */
+	List<Movie> viewWishList(int userNo) throws SQLException;
 
+	/**
+	 * 위시리스트에 영화 추가하기
+	 * */
 	int putWishList(int userNo, int movieNo) throws SQLException;
 
 }
