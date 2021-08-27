@@ -9,4 +9,6 @@ public interface WishDAO {
 
 	List<Movie> viewWishList(int userNo, int movieNo) throws SQLException;
 
+	int putWishList(int userNo, int movieNo) throws SQLException;
+
 }

@@ -12,9 +12,8 @@ import team2.mvc.util.DbUtil;
 import team2.mvc.view.FailView;
 
 public class WishDAOlmpl implements WishDAO {
-
 	@Override
-	public List<Movie> viewWishList(int userNo, List<Integer> movieNo) throws SQLException {
+	public List<Movie> viewWishList(int userNo, int movieNo) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -42,10 +41,9 @@ public class WishDAOlmpl implements WishDAO {
 	}
 
 	@Override
-	public List<Movie> putWishList() throws SQLException {
-		
-		
-		return null;
+	public int putWishList(int userNo, int movieNo) throws SQLException {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	

@@ -9,7 +9,7 @@ public interface RecommendDAO {
 
 	List<Movie> recByRank() throws SQLException;
 
-	List<Movie> recByGenre(int genreNo) throws SQLException;
+	List<Movie> recByGenre(int userNo, int genreNo) throws SQLException;
 
-	List<Movie> recByTag(int genreNo) throws SQLException;
+	List<Movie> recByTag(int userNo, int genreNo) throws SQLException;
 }

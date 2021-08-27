@@ -12,8 +12,9 @@ public class WishService {
 	
 	
 	public void putWishList(int userNo, int movieNo) throws SQLException {
-		List<Movie> movieList = wishDAO.putWishList();
-		
+		int result = wishDAO.putWishList(userNo, movieNo);
+		if(result == 0)throw new SQLException("주문하기가 실패하였습니다.");
+
 	}
 
 

@@ -12,12 +12,12 @@ import team2.mvc.view.FailView;
 
 public class WishController {
 	private static SearchService searchService = new SearchService();
-	private static WishService wishServie = new WishService();
+	private static WishService wishService = new WishService();
 	
 	public static void putWishList(int userNo, int movieNo) {
 		
 		try {
-			Movie movie = searchService.searchByPK(movieNo);
+			wishService.putWishList(userNo, movieNo);
 					
 			List<Movie> movieList = new ArrayList<Movie>();
 			if(!movieList.contains(movie)) {
