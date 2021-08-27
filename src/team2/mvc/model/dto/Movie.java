@@ -1,4 +1,4 @@
-package team.mvc.model.dto;
+package team2.mvc.model.dto;
 
 public class Movie {
 	private int movieNo;
