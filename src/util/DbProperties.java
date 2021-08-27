@@ -1,4 +1,4 @@
-package DB;
+package util;
 
 /**
  * DB설정 정보를상수필드로 관리
