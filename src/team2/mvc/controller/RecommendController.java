@@ -31,18 +31,18 @@ public class RecommendController {
 		}
 	}
 
-	public static void recByGenre(int genreNo) {
+	public static void recByGenre(int userNo, int genreNo) {
 		try {
-			List<Movie> list = recommendService.recByGenre(genreNo);
+			List<Movie> list = recommendService.recByGenre(userNo, genreNo);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
-	public static void recByTag(int tagNo) {
+	public static void recByTag(int userNo, int tagNo) {
 		try {
-			List<Movie> list = recommendService.recByTag(tagNo);
+			List<Movie> list = recommendService.recByTag(userNo, tagNo);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
