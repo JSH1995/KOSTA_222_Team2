@@ -2,7 +2,7 @@ package team.mvc.model.dto;
 
 import java.util.Set;
 
-public class UserDTO {
+public class User {
 
 	private int userNo;
 	private String id;
@@ -12,9 +12,9 @@ public class UserDTO {
 	private Set<String> favGenre;
 	private Set<String> favTag;
 	
-	public UserDTO() {}
+	public User() {}
 
-	public UserDTO(int userNo, String id, String password, int age, String userRegDate, Set<String> favGenre,
+	public User(int userNo, String id, String password, int age, String userRegDate, Set<String> favGenre,
 			Set<String> favTag) {
 		super();
 		this.userNo = userNo;

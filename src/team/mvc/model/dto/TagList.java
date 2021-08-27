@@ -1,14 +1,14 @@
 package team.mvc.model.dto;
 
-public class TagListDTO {
+public class TagList {
 	private int tagNo;
 	private String tagName;
 
-	public TagListDTO() {
+	public TagList() {
 
 	}
 
-	public TagListDTO(int tagNo, String tagName) {
+	public TagList(int tagNo, String tagName) {
 		super();
 		this.tagNo = tagNo;
 		this.tagName = tagName;

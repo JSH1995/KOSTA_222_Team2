@@ -2,7 +2,7 @@ package team.mvc.model.dto;
 
 import java.util.List;
 
-public class MovidDetailDTO {
+public class MovidDetail {
 
 	private int movieNo;
 	private String content;
@@ -11,9 +11,9 @@ public class MovidDetailDTO {
 	private String nation;
 	private List<String> userTag;
 	
-	public MovidDetailDTO() {}
+	public MovidDetail() {}
 
-	public MovidDetailDTO(int movieNo, String content, int runtime, String releaseDate, String nation,
+	public MovidDetail(int movieNo, String content, int runtime, String releaseDate, String nation,
 			List<String> userTag) {
 		super();
 		this.movieNo = movieNo;

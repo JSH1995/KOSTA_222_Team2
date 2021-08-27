@@ -1,13 +1,13 @@
 package team.mvc.model.dto;
 
-public class GenreListDTO {
+public class GenreList {
 	private int genreNo;
 	private String genreName;
 
-	public GenreListDTO() {
+	public GenreList() {
 	}
 
-	public GenreListDTO(int genreNo, String genreName) {
+	public GenreList(int genreNo, String genreName) {
 		super();
 		this.genreNo = genreNo;
 		this.genreName = genreName;

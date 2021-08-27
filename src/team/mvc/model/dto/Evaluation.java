@@ -1,16 +1,16 @@
 package team.mvc.model.dto;
 
-public class EvaluationDTO {
+public class Evaluation {
 	private int userNo;
 	private int movieNo;
 	private int rate;
 	private String comment;
 	private String rateDate;
 
-	public EvaluationDTO() {
+	public Evaluation() {
 	}
 
-	public EvaluationDTO(int userNo, int movieNo, int rate, String comment, String rateDate) {
+	public Evaluation(int userNo, int movieNo, int rate, String comment, String rateDate) {
 		super();
 		this.userNo = userNo;
 		this.movieNo = movieNo;

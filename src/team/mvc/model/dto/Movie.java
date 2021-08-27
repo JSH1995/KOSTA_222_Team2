@@ -1,6 +1,6 @@
 package team.mvc.model.dto;
 
-public class MovieDTO {
+public class Movie {
 	private int movieNo;
 	private String movieName;
 	private String director;
@@ -8,8 +8,8 @@ public class MovieDTO {
 	private String movieRegDate;
 	private int genreNo;
 	
-	public MovieDTO() {}
-	public MovieDTO(int movieNo, String movieName, String director, String rating, String movieRegDate, int genreNo) {
+	public Movie() {}
+	public Movie(int movieNo, String movieName, String director, String rating, String movieRegDate, int genreNo) {
 		super();
 		this.movieNo = movieNo;
 		this.movieName = movieName;
