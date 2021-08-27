@@ -11,7 +11,6 @@ import team2.mvc.view.FailView;
 
 
 public class WishController {
-	private static SearchService searchService = new SearchService();
 	private static WishService wishService = new WishService();
 	
 	public static void putWishList(int userNo, int movieNo) {
@@ -20,10 +19,7 @@ public class WishController {
 			wishService.putWishList(userNo, movieNo);
 					
 			List<Movie> movieList = new ArrayList<Movie>();
-			if(!movieList.contains(movie)) {
-				movieList.add(movie);
-			}else
-				System.out.println("이미 추가된 영화입니다.");
+		
 		}catch (Exception e) {
 			FailView.errorMessage(e.getMessage());
 		}
