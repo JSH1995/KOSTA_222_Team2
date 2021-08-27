@@ -1,9 +1,3 @@
-
-/**
- * @author ±èÂù¿ø
- * 
- */
-
 package team2.mvc.model.dao;
 
 import java.sql.SQLException;
@@ -26,6 +20,5 @@ public interface SearchDAO {
 	List<Movie> searchByGenre() throws SQLException;
 	
 	List<Movie> searchByNation() throws SQLException;
-	
-	Movie 
+
 }
