@@ -16,4 +16,13 @@ public class SuccessView {
 		System.out.println(movieList);
 	 }
 	}
+
+	public static void printMovieList(List<Movie> movieList) {
+		
+		for(Movie movie : movieList) {
+			System.out.println(movie);
+		}
+	}
+
+
 }

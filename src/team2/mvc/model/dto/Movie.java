@@ -61,9 +61,7 @@ public class Movie {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("MovieDTO [movieNo=");
-		builder.append(movieNo);
-		builder.append(", movieName=");
+		builder.append(" movieName=");
 		builder.append(movieName);
 		builder.append(", director=");
 		builder.append(director);

@@ -40,9 +40,9 @@ public class SearchService {
 		
 	}
 	
-	public List<Movie> searchByName() throws NotFoundException, SQLException{
+	public List<Movie> searchByName(String movieName) throws NotFoundException, SQLException{
 		
-		List<Movie> movieList = searchDAO.searchByName();
+		List<Movie> movieList = searchDAO.searchByName(movieName);
 		
 		if(movieList.size() == 0 || movieList.isEmpty()) {
 			throw new NotFoundException("검색하신 작품명의 영화는 등록 되어 있지 않습니다.");
@@ -52,8 +52,8 @@ public class SearchService {
 		
 	}
 	
-	public List<Movie> searchByDirector() throws NotFoundException, SQLException{
-		List<Movie> movieList = searchDAO.searchByDirector();
+	public List<Movie> searchByDirector(String director) throws NotFoundException, SQLException{
+		List<Movie> movieList = searchDAO.searchByDirector(director);
 		
 		if(movieList.size() == 0 || movieList.isEmpty()) {
 			throw new NotFoundException("검색하신 감독명의 영화는 등록 되어 있지 않습니다.");
@@ -63,9 +63,9 @@ public class SearchService {
 		
 	}
 	
-	public List<Movie> searchByActor() throws NotFoundException, SQLException{
+	public List<Movie> searchByActor(String actor) throws NotFoundException, SQLException{
 		
-		List<Movie> movieList = searchDAO.searchByActor();
+		List<Movie> movieList = searchDAO.searchByActor(actor);
 		
 		if(movieList.size() == 0 || movieList.isEmpty()) {
 			throw new NotFoundException("검색하신 배우가 포함되어 있는 영화는 등록 되어 있지 않습니다.");
@@ -75,21 +75,9 @@ public class SearchService {
 		
 	}
 	
-	public List<Movie> searchByGenre() throws NotFoundException, SQLException{
+	public List<Movie> searchByGenre(String genre) throws NotFoundException, SQLException{
 		
-		List<Movie> movieList = searchDAO.searchByGenre();
-		
-		if(movieList.size() == 0 || movieList.isEmpty()) {
-			throw new NotFoundException("검색하신 감독명의 영화는 등록 되어 있지 않습니다.");
-		}
-		
-		return movieList;
-		
-	}
-	
-	public List<Movie> searchByNation() throws NotFoundException, SQLException{
-		
-		List<Movie> movieList = searchDAO.searchByNation();
+		List<Movie> movieList = searchDAO.searchByGenre(genre);
 		
 		if(movieList.size() == 0 || movieList.isEmpty()) {
 			throw new NotFoundException("검색하신 감독명의 영화는 등록 되어 있지 않습니다.");
@@ -99,9 +87,21 @@ public class SearchService {
 		
 	}
 	
-	public Movie searchByPK() throws NotFoundException, SQLException{
+	public List<Movie> searchByNation(String nation) throws NotFoundException, SQLException{
 		
-		Movie movie =  searchDAO.searchByPK();
+		List<Movie> movieList = searchDAO.searchByNation(nation);
+		
+		if(movieList.size() == 0 || movieList.isEmpty()) {
+			throw new NotFoundException("검색하신 감독명의 영화는 등록 되어 있지 않습니다.");
+		}
+		
+		return movieList;
+		
+	}
+	
+	public Movie searchByPK(int movieNo) throws NotFoundException, SQLException{
+		
+		Movie movie =  searchDAO.searchByPK(movieNo);
 		
 		if(movie == null) {
 			throw new NotFoundException("번호에 해당되는 영화를 찾을 수 없습니다.");

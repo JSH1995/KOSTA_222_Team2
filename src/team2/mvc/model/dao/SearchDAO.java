@@ -15,17 +15,21 @@ public interface SearchDAO {
 	
 	List<Movie> searchAll() throws SQLException;
 	
-	List<Movie> searchByName() throws SQLException;
+	List<Movie> searchByName(String movieName) throws SQLException;
 	
-	List<Movie> searchByDirector() throws SQLException;
+	List<Movie> searchByDirector(String director) throws SQLException;
 	
-	List<Movie> searchByActor() throws SQLException;
+	List<Movie> searchByActor(String actor) throws SQLException;
 	
-	List<Movie> searchByGenre() throws SQLException;
+	List<Movie> searchByGenre(String genre) throws SQLException;
 	
-	List<Movie> searchByNation() throws SQLException;
+	List<Movie> searchByNation(String nation) throws SQLException;
 	
-	Movie searchByPK() throws SQLException;
+	
+	//////////////////////////////////////////////////
+	
+	Movie searchByPK(int movieNo) throws SQLException;
 	
 	List<String> recentSearch() throws SQLException;
+	
 }
