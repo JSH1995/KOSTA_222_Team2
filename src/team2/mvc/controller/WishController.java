@@ -30,7 +30,7 @@ public class WishController {
 	}
 
 	
-	public static void viewWishList(int userNo, int movieNo) {
+	public static void viewWishList(int userNo, List<Integer> movieNo) {
 		try {
 			List<Movie> movieList = wishServie.viewWishList( userNo,  movieNo);
 		}catch (SQLException e) {
