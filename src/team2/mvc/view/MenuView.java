@@ -43,6 +43,9 @@ public class MenuView {
 	
 	//등록 
 		public static void registerMovie() {
+			
+			 System.out.print("등록할 작품명 : ");
+	    	 int movieNo = sc.nextInt();
 	    	 
 	    	 System.out.print("등록할 작품명 : ");
 	    	 String movieName = sc.nextLine();
@@ -51,11 +54,11 @@ public class MenuView {
 	    	 String director = sc.nextLine();
 	    	 
 	    	 System.out.print("작품 장르 번호 : ");
-	    	 int genreNo = Integer.parseInt(sc.nextLine());
+	    	 int genreNo = sc.nextInt();
 	    	 
 	    	 
 	    	//int movieNo, String movieName, String director, String movieRegDate, int genreNo
-	    	 Movie movie =  new Movie(0, movieName, director, null, genreNo);
+	    	 Movie movie =  new Movie(movieNo, movieName, director, null, genreNo);
 	    	 MovieController.registerMovie(movie);
 		}
 		
