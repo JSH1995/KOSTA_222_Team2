@@ -9,16 +9,18 @@ public interface MovieDAO {
 	/**
 	 *  영화 등록
 	 * */
-	int movieInsert(Movie movie) throws SQLException;
+	int registerMovie(Movie movie) throws SQLException;
 	
 	/**
 	 *  영화 수정
 	 * */
-	int movieUpdate(Movie movie) throws SQLException;
+	int updateMovie(Movie movie)throws SQLException;
 	
 	/**
 	 * 영화 삭제
 	 * */
-	int movieDelete(Movie movie) throws SQLException;
+	int deleteMovie(int movieNo) throws SQLException;
+
+	
 
 }

@@ -16,7 +16,7 @@ public class MovieController {
 	 * */
 	public static void registerMovie(Movie movie) {
 		try {
-			movieService.movieInsert(movie);
+			movieService.registerMovie(movie);
 			SuccessView.messagePrint("등록되었습니다.");
 		}catch(SQLException e) {
 			//e.printStackTrace();
@@ -30,7 +30,7 @@ public class MovieController {
 	 * */
 	public static void updateMovie(Movie movie) {
 		try {
-			movieService.movieUpdate(movie);
+			movieService.updateMovie(movie);
 			SuccessView.messagePrint("수정되었습니다.");
 		}catch(SQLException e) {
 			//e.printStackTrace();
@@ -41,9 +41,9 @@ public class MovieController {
 	/**
 	 * 영화 삭제
 	 * */
-	public static void deleteMovie(Movie movie) {
+	public static void deleteMovie(int movieNo) {
 		try {
-			movieService.movieDelete(movie);
+			movieService.deleteMovie(movieNo);
 			SuccessView.messagePrint("삭제되었습니다.");
 		}catch(SQLException e) {
 			//e.printStackTrace();

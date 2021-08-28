@@ -4,17 +4,15 @@ public class Movie {
 	private int movieNo;
 	private String movieName;
 	private String director;
-	private int rating;
 	private String movieRegDate;
 	private int genreNo;
 	
 	public Movie() {}
-	public Movie(int movieNo, String movieName, String director, int rating, String movieRegDate, int genreNo) {
+	public Movie(int movieNo, String movieName, String director, String movieRegDate, int genreNo) {
 		super();
 		this.movieNo = movieNo;
 		this.movieName = movieName;
 		this.director = director;
-		this.rating = rating;
 		this.movieRegDate = movieRegDate;
 		this.genreNo = genreNo;
 	}
@@ -38,12 +36,6 @@ public class Movie {
 	public void setDirector(String director) {
 		this.director = director;
 	}
-	public int getRating() {
-		return rating;
-	}
-	public void setRating(int rating) {
-		this.rating = rating;
-	}
 	public String getMovieRegDate() {
 		return movieRegDate;
 	}
@@ -61,12 +53,12 @@ public class Movie {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
+		builder.append(" movieNo=");
+		builder.append(movieNo);
 		builder.append(" movieName=");
 		builder.append(movieName);
 		builder.append(", director=");
 		builder.append(director);
-		builder.append(", rating=");
-		builder.append(rating);
 		builder.append(", movieRegDate=");
 		builder.append(movieRegDate);
 		builder.append(", genreNo=");

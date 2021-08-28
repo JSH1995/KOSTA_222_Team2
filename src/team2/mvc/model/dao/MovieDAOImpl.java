@@ -19,18 +19,19 @@ public class MovieDAOImpl implements MovieDAO {
 	/**
 	 * 영화 등록
 	 * */
-	public int movieInsert(Movie movie) throws SQLException {
+	public int registerMovie(Movie movie) throws SQLException {
 		Connection con=null;
 		PreparedStatement ps=null;
 		int result=0;
-		String sql=proFile.getProperty("insert into 영화 (영화_고유번호, 장르번호, 작품명, 감독, 심의등급, 영화등록일자) values (영화_고유번호_seq.nextval, ?, ?, ?, ?,sysdate)");
+		//영화_고유번호_seq.nextval
+		String sql=proFile.getProperty("insert into 영화(영화_고유번호, 장르번호, 작품명, 감독, 영화등록일자) values(?, ?, ?, ?, sysdate)");
 		try {
 			con=DbUtil.getConnection();
 			ps=con.prepareStatement(sql);
-			ps.setInt(1, movie.getGenreNo());
-			ps.setString(2, movie.getMovieName());
-			ps.setString(3, movie.getDirector());
-			ps.setInt(4, movie.getRating()); //심의등급타입 int
+			ps.setInt(1, movie.getMovieNo());
+			ps.setInt(2, movie.getGenreNo());
+			ps.setString(3, movie.getMovieName());
+			ps.setString(4, movie.getDirector());
 			
 			result = ps.executeUpdate();
 			
@@ -43,19 +44,18 @@ public class MovieDAOImpl implements MovieDAO {
 	/**
 	 * 영화_고유번호에 해당하는 영화정보 수정
 	 * */
-	public int movieUpdate(Movie movie) throws SQLException {
+	public int updateMovie(Movie movie) throws SQLException {
 		Connection con=null;
 		PreparedStatement ps=null;
 		int result=0;
-		String sql=proFile.getProperty("update 영화 set 작품명=?, 감독=?, 심의등급=?, 영화등록일자=? where 영화_고유번호 = ?");
+		String sql=proFile.getProperty("update 영화 set 작품명=?, 감독=?, 장르번호=?, 영화등록일자=sysdate where 영화_고유번호=?");
 		try {
 			con=DbUtil.getConnection();
 			ps=con.prepareStatement(sql);
 			ps.setString(1, movie.getMovieName());
 			ps.setString(2, movie.getDirector());
-			ps.setInt(3, movie.getRating());
-			ps.setString(4, movie.getMovieRegDate());
-			ps.setInt(5, movie.getMovieNo());
+			ps.setInt(3, movie.getGenreNo());
+			ps.setInt(4, movie.getMovieNo());
 			
 			result = ps.executeUpdate();
 			
@@ -68,7 +68,7 @@ public class MovieDAOImpl implements MovieDAO {
 	/**
 	 * 영화_고유번호에 해당하는 영화 삭제
 	 * */
-	public int movieDelete(Movie movie) throws SQLException {
+	public int deleteMovie(int movieNo) throws SQLException {
 		Connection con=null;
 		PreparedStatement ps=null;
 		int result=0;
@@ -76,7 +76,7 @@ public class MovieDAOImpl implements MovieDAO {
 		try {
 			con=DbUtil.getConnection();
 			ps=con.prepareStatement(sql);
-			ps.setInt(1, movie.getMovieNo());
+			ps.setInt(1, movieNo);
 			
 			result = ps.executeUpdate();
 			
