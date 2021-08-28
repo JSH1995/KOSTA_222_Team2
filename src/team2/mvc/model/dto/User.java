@@ -9,8 +9,8 @@ public class User {
 	private String password;
 	private int age;
 	private String userRegDate;
-	private Array favGenre;
-	private Array favTag;
+	private int favGenre;
+	private int favTag;
 	
 	public User(String id,String password) {
 		this.id = id;
@@ -18,8 +18,8 @@ public class User {
 		
 	}
 
-	public User(int userNo,String id,String password, int age, String userRegDate, Array favGenre,
-			Array favTag) {
+	public User(int userNo,String id,String password, int age, String userRegDate, int favGenre,
+			int favTag) {
 		this(id,password);
 		this.userNo = userNo;
 		this.age = age;
@@ -68,19 +68,19 @@ public class User {
 		this.userRegDate = userRegDate;
 	}
 
-	public Array getFavGenre() {
+	public int getFavGenre() {
 		return favGenre;
 	}
 
-	public void setFavGenre(Array favGenre) {
+	public void setFavGenre(int favGenre) {
 		this.favGenre = favGenre;
 	}
 
-	public Array getFavTag() {
+	public int getFavTag() {
 		return favTag;
 	}
 
-	public void setFavTag(Array favTag) {
+	public void setFavTag(int favTag) {
 		this.favTag = favTag;
 	}
 

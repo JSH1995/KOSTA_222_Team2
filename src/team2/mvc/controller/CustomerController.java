@@ -10,7 +10,7 @@ import team2.mvc.model.service.CustomerService;
 public class CustomerController {
 	static CustomerService customerService =  new CustomerService();
 	
-	public static void registerUser(int userNo, String id, String password, int age, String userRegDate, Array favGenre, Array favTag) {
+	public static void registerUser(int userNo, String id, String password, int age, String userRegDate, int favGenre, int favTag) {
 		try {
 			List<User> list = customerService.registerUser(userNo,id,password,age,userRegDate,favGenre,favTag);
 		} catch (Exception e) {
