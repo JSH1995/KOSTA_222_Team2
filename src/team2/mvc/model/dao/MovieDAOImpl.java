@@ -23,14 +23,14 @@ public class MovieDAOImpl implements MovieDAO {
 		Connection con=null;
 		PreparedStatement ps=null;
 		int result=0;
-		String sql=proFile.getProperty("insert into 영화 (영화_고유번호, 장르번호, 작품명, 감독, 심의등급, 영화등록일자) values (영화_고유번호_seq.nextval, ?, ?, ?, ?,sysdate)");
+		//영화_고유번호_seq.nextval
+		String sql=proFile.getProperty("insert into 영화(영화_고유번호, 장르번호, 작품명, 감독, 영화등록일자) values(8, ?, ?, ?, sysdate)");
 		try {
 			con=DbUtil.getConnection();
 			ps=con.prepareStatement(sql);
 			ps.setInt(1, movie.getGenreNo());
 			ps.setString(2, movie.getMovieName());
 			ps.setString(3, movie.getDirector());
-			ps.setInt(4, movie.getRating()); //심의등급타입 int
 			
 			result = ps.executeUpdate();
 			
@@ -47,15 +47,14 @@ public class MovieDAOImpl implements MovieDAO {
 		Connection con=null;
 		PreparedStatement ps=null;
 		int result=0;
-		String sql=proFile.getProperty("update 영화 set 작품명=?, 감독=?, 심의등급=?, 영화등록일자=? where 영화_고유번호 = ?");
+		String sql=proFile.getProperty("update 영화 set 작품명=?, 감독=?, 장르번호=?, 영화등록일자=sysdate where 영화_고유번호=?");
 		try {
 			con=DbUtil.getConnection();
 			ps=con.prepareStatement(sql);
 			ps.setString(1, movie.getMovieName());
 			ps.setString(2, movie.getDirector());
-			ps.setInt(3, movie.getRating());
-			ps.setString(4, movie.getMovieRegDate());
-			ps.setInt(5, movie.getMovieNo());
+			ps.setInt(3, movie.getGenreNo());
+			ps.setInt(4, movie.getMovieNo());
 			
 			result = ps.executeUpdate();
 			

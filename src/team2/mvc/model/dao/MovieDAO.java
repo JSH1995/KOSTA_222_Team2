@@ -14,11 +14,13 @@ public interface MovieDAO {
 	/**
 	 *  영화 수정
 	 * */
-	int updateMovie(Movie movie) throws SQLException;
+	int updateMovie(Movie movie)throws SQLException;
 	
 	/**
 	 * 영화 삭제
 	 * */
 	int deleteMovie(int movieNo) throws SQLException;
+
+	
 
 }
