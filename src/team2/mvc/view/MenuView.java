@@ -42,57 +42,52 @@ public class MenuView {
 	*/
 	
 	//등록 
-	public static void registerMovie() {
-    	 
-    	 System.out.print("등록할 작품명 : ");
-    	 String movieName = sc.nextLine();
-    	 
-    	 System.out.print("감독 :");
-    	 String director = sc.nextLine();
-    	 
-    	 System.out.print("작품 장르 번호 : ");
-    	 int genreNo = Integer.parseInt(sc.nextLine());
-    	 
-    	 System.out.print("심의등급 :");
-    	 int rating = Integer.parseInt(sc.nextLine());
-    	 
-    	//int movieNo, String movieName, String director, int rating, String movieRegDate, int genreNo
-    	 Movie movie =  new Movie(0, movieName, director, rating, null, genreNo);
-    	 MovieController.registerMovie(movie);
+		public static void registerMovie() {
+	    	 
+	    	 System.out.print("등록할 작품명 : ");
+	    	 String movieName = sc.nextLine();
+	    	 
+	    	 System.out.print("감독 :");
+	    	 String director = sc.nextLine();
+	    	 
+	    	 System.out.print("작품 장르 번호 : ");
+	    	 int genreNo = Integer.parseInt(sc.nextLine());
+	    	 
+	    	 
+	    	//int movieNo, String movieName, String director, String movieRegDate, int genreNo
+	    	 Movie movie =  new Movie(0, movieName, director, null, genreNo);
+	    	 MovieController.registerMovie(movie);
+		}
+		
+		
+		
+		//수정 
+		public static void updateMovie() {
+	   	 
+	   	 System.out.print("수정할 영화고유번호 입력 : ");
+	   	 int movieNo = sc.nextInt();
+	   	 
+	     System.out.print("작품명 : ");
+	  	 String movieName = sc.next();
+	   	 
+	   	 System.out.print("작품감독 : ");
+	   	 String director = sc.next();
+	   	 
+	   	 System.out.print("장르번호 : ");
+	   	 int genreNo = sc.nextInt();
+	   	 
+	   	 //movie 생성자 인수 : int movieNo, String movieName, String director, String movieRegDate, int genreNo
+	   	 Movie movie =  new Movie(movieNo, movieName, director, null, genreNo);
+	   	 MovieController.updateMovie(movie);
+		}
+		
+		
+		
+		//삭제
+		public static void deleteMovie() {
+			 System.out.print("삭제할 영화의 고유번호 입력 : ");
+			 int movieNo = sc.nextInt();
+			 MovieController.deleteMovie(movieNo);
+		}
+		
 	}
-	
-	
-	
-	//수정 
-	public static void updateMovie() {
-   	 
-   	 System.out.print("수정할 영화고유번호 입력 : ");
-   	 int movieNo = sc.nextInt();
-   	 
-     System.out.print("작품명 : ");
-  	 String movieName = sc.next();
-   	 
-   	 System.out.print("작품감독 : ");
-   	 String director = sc.next();
-   	 
-   	 System.out.print("심의등급 : ");
-   	 int rating = sc.nextInt();
-   	 
-   	 System.out.print("장르번호 : ");
-   	 int genreNo = sc.nextInt();
-   	 
-   	 //movie 생성자 인수 : int movieNo, String movieName, String director, int rating, String movieRegDate, int genreNo
-   	 Movie movie =  new Movie(movieNo, movieName, director, rating, null, genreNo);
-   	 MovieController.registerMovie(movie);
-	}
-	
-	
-	
-	//삭제
-	public static void deleteMovie() {
-		 System.out.println("삭제할 영화의 고유번호 입력 : ");
-		 int movieNo = Integer.parseInt(sc.nextLine());
-		 MovieController.deleteMovie(movieNo);
-	}
-	
-}

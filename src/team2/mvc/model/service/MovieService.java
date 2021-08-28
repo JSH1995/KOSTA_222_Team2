@@ -23,7 +23,7 @@ public class MovieService {
 	}
 
 	public void updateMovie(Movie movie) throws SQLException {
-		int result = movieDAO.movieUpdate(movie);
+		int result = movieDAO.updateMovie(movie);
 		if(result == 0) {
 			throw new SQLException("수정되지 않았습니다.");
 		}
