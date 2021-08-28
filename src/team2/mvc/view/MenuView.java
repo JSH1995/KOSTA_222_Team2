@@ -30,6 +30,13 @@ public class MenuView {
 		}
 	}
 	
+	public static void printUserMenu(String userNo) {
+		
+	}
+	public static void printAdminMenu(String userNo) {
+		
+	}
+	
 	/**영화 등록, 수정, 삭제 되는지 확인용입니닷 
 	 * 영화_고유번호, 장르번호, 작품명, 감독, 심의등급, 영화등록일자
 	*/

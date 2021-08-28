@@ -48,4 +48,8 @@ public class RecommendController {
 			e.printStackTrace();
 		}
 	}
+	
+	public static void main(String[] args) {
+		recByAge(10);
+	}
 }
