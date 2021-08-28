@@ -1,5 +1,6 @@
 package team2.mvc.controller;
 
+import java.sql.Array;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -9,7 +10,7 @@ import team2.mvc.model.service.CustomerService;
 public class CustomerController {
 	static CustomerService customerService =  new CustomerService();
 	
-	public static void registerUser(int userNo, String id, String password, int age, String userRegDate, String[] favGenre, String[] favTag) {
+	public static void registerUser(int userNo, String id, String password, int age, String userRegDate, Array favGenre, Array favTag) {
 		try {
 			List<User> list = customerService.registerUser(userNo,id,password,age,userRegDate,favGenre,favTag);
 		} catch (Exception e) {

@@ -1,5 +1,6 @@
 package team2.mvc.model.service;
 
+import java.sql.Array;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -12,8 +13,8 @@ import team2.mvc.model.dto.User;
 public class CustomerService {
 	CustomerDAO customerDao = new CustomerDAOImpl();
 	
-	public List<User> registerUser(int userNo, String id, String password, int age, String userRegDate,String[] favGenre,
-			String[] favTag) throws SQLException, NotFoundException {
+	public List<User> registerUser(int userNo, String id, String password, int age, String userRegDate,Array favGenre,
+			Array favTag) throws SQLException, NotFoundException {
 		List<User> list = customerDao.registerUser(userNo,id,password,age,userRegDate,favGenre,favTag);
 		if (list.size() == 0) {
 			throw new NotFoundException("다시 시도해주세요.");
