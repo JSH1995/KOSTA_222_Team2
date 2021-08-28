@@ -9,8 +9,9 @@ public class User {
 	private String password;
 	private int age;
 	private String userRegDate;
-	private int favGenre;
 	private int favTag;
+	private int favGenre;
+	
 	
 	public User(String id,String password) {
 		this.id = id;
@@ -18,14 +19,15 @@ public class User {
 		
 	}
 
-	public User(int userNo,String id,String password, int age, String userRegDate, int favGenre,
-			int favTag) {
+	public User(int userNo,String id,String password, int age, String userRegDate,int favTag, int favGenre
+			) {
 		this(id,password);
 		this.userNo = userNo;
 		this.age = age;
 		this.userRegDate = userRegDate;
-		this.favGenre = favGenre;
 		this.favTag = favTag;
+		this.favGenre = favGenre;
+		
 	}
 
 	public int getUserNo() {
@@ -67,7 +69,13 @@ public class User {
 	public void setUserRegDate(String userRegDate) {
 		this.userRegDate = userRegDate;
 	}
+	public int getFavTag() {
+		return favTag;
+	}
 
+	public void setFavTag(int favTag) {
+		this.favTag = favTag;
+	}
 	public int getFavGenre() {
 		return favGenre;
 	}
@@ -76,13 +84,7 @@ public class User {
 		this.favGenre = favGenre;
 	}
 
-	public int getFavTag() {
-		return favTag;
-	}
-
-	public void setFavTag(int favTag) {
-		this.favTag = favTag;
-	}
+	
 
 	@Override
 	public String toString() {
@@ -97,10 +99,10 @@ public class User {
 		builder.append(age);
 		builder.append(", userRegDate=");
 		builder.append(userRegDate);
-		builder.append(", favGenre=");
-		builder.append(favGenre);
 		builder.append(", favTag=");
 		builder.append(favTag);
+		builder.append(", favGenre=");
+		builder.append(favGenre);
 		builder.append("]");
 		return builder.toString();
 	}

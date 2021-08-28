@@ -17,7 +17,7 @@ import team2.mvc.util.DbUtil;
 public class CustomerDAOImpl implements CustomerDAO {
 	
 
-	public List<User> registerUser(int userNo, String id, String password, int age, String userRegDate,int favGenre,int favTag) throws SQLException {
+	public List<User> registerUser(int userNo, String id, String password, int age, String userRegDate,int favTag, int favGenre) throws SQLException {
 		
 		Connection con = null;
 		PreparedStatement ps = null;
@@ -31,8 +31,9 @@ public class CustomerDAOImpl implements CustomerDAO {
 			ps.setString(3, password);
 			ps.setInt(4, age);
 			ps.setString(5, userRegDate);
-			ps.setInt(6, favGenre);
-			ps.setInt(7, favTag);
+			ps.setInt(6, favTag);
+			ps.setInt(7, favGenre);
+			
 //			String favGenre2 = Arrays.toString(favGenre);
 //			ps.setString(6, favGenre2);
 //			String favTag2 = Arrays.toString(favTag);

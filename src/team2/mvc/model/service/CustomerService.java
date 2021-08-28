@@ -13,9 +13,9 @@ import team2.mvc.model.dto.User;
 public class CustomerService {
 	CustomerDAO customerDao = new CustomerDAOImpl();
 	
-	public List<User> registerUser(int userNo, String id, String password, int age, String userRegDate,int favGenre,
-			int favTag) throws SQLException, NotFoundException {
-		List<User> list = customerDao.registerUser(userNo,id,password,age,userRegDate,favGenre,favTag);
+	public List<User> registerUser(int userNo, String id, String password, int age, String userRegDate,int favTag,int favGenre
+			) throws SQLException, NotFoundException {
+		List<User> list = customerDao.registerUser(userNo,id,password,age,userRegDate,favTag,favGenre);
 		if (list.size() == 0) {
 			throw new NotFoundException("다시 시도해주세요.");
 		}
