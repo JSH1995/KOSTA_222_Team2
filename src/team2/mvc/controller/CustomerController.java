@@ -22,6 +22,7 @@ public class CustomerController {
 	public static void login(String id, String password) {
 		try {
 			List<User> list = customerService.login(id,password);
+			System.out.println("로그인 성공");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

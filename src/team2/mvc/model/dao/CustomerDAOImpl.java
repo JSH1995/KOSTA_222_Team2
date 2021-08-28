@@ -57,9 +57,11 @@ public class CustomerDAOImpl implements CustomerDAO {
 		List<User> list = new ArrayList();
 		try {
 			con = DbUtil.getConnection();
-			ps = con.prepareStatement("sql");
+			ps = con.prepareStatement("select * from 사용자 where 아이디 = ? and 비밀번호 = ?");
 			ps.setString(1, id);
 			ps.setString(2, password);
+			
+			rs = ps.executeQuery();
 		
 			
 			if(rs.next()) {
