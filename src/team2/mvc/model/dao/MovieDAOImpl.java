@@ -24,13 +24,14 @@ public class MovieDAOImpl implements MovieDAO {
 		PreparedStatement ps=null;
 		int result=0;
 		//영화_고유번호_seq.nextval
-		String sql=proFile.getProperty("insert into 영화(영화_고유번호, 장르번호, 작품명, 감독, 영화등록일자) values(8, ?, ?, ?, sysdate)");
+		String sql=proFile.getProperty("insert into 영화(영화_고유번호, 장르번호, 작품명, 감독, 영화등록일자) values(?, ?, ?, ?, sysdate)");
 		try {
 			con=DbUtil.getConnection();
 			ps=con.prepareStatement(sql);
-			ps.setInt(1, movie.getGenreNo());
-			ps.setString(2, movie.getMovieName());
-			ps.setString(3, movie.getDirector());
+			ps.setInt(1, movie.getMovieNo());
+			ps.setInt(2, movie.getGenreNo());
+			ps.setString(3, movie.getMovieName());
+			ps.setString(4, movie.getDirector());
 			
 			result = ps.executeUpdate();
 			

@@ -17,7 +17,7 @@ import team2.mvc.util.DbUtil;
 public class CustomerDAOImpl implements CustomerDAO {
 	
 
-	public List<User> registerUser(int userNo, String id, String password, int age, String userRegDate,Array favGenre,Array favTag) throws SQLException {
+	public List<User> registerUser(int userNo, String id, String password, int age, String userRegDate,int favGenre,int favTag) throws SQLException {
 		
 		Connection con = null;
 		PreparedStatement ps = null;
@@ -25,24 +25,22 @@ public class CustomerDAOImpl implements CustomerDAO {
 		List<User> list = new ArrayList();
 		try {
 			con = DbUtil.getConnection();
-			ps = con.prepareStatement("sql");
+			ps = con.prepareStatement("insert into 사용자 values(?,?,?,?,?,?,?)");
 			ps.setInt(1, userNo);
 			ps.setString(2, id);
 			ps.setString(3, password);
 			ps.setInt(4, age);
 			ps.setString(5, userRegDate);
-			ps.setArray(6, favGenre);
-			ps.setArray(7, favTag);
+			ps.setInt(6, favGenre);
+			ps.setInt(7, favTag);
 //			String favGenre2 = Arrays.toString(favGenre);
 //			ps.setString(6, favGenre2);
 //			String favTag2 = Arrays.toString(favTag);
 //			ps.setString(7, favTag2);
-//			
+			rs = ps.executeQuery();
 
-		
-		
 			if(rs.next()) {
-				list.add(new User(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5),rs.getArray(6),rs.getArray(7)));
+				list.add(new User(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5),rs.getInt(6),rs.getInt(7)));
 			}
 		} finally {
 			DbUtil.dbClose(con, ps, rs);
