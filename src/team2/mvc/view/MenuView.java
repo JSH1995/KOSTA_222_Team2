@@ -19,6 +19,7 @@ import team2.mvc.model.dto.User;
 
 import team2.mvc.controller.CustomerController;
 
+
 public class MenuView {
 	private static final Array Array = null;
 	private static Scanner sc = new Scanner(System.in);
