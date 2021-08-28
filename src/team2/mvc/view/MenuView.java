@@ -2,6 +2,8 @@ package team2.mvc.view;
 
 import java.util.Scanner;
 
+import team2.mvc.controller.CustomerController;
+
 public class MenuView {
 	private static Scanner sc = new Scanner(System.in);
 
@@ -17,7 +19,7 @@ public class MenuView {
 				// MenuView.register(); // 가입
 				break;
 			case 2:
-				MenuView.login();// 로그인
+				CustomerController.login("admin", "admin");// 로그인
 				break;
 
 			case 0:
