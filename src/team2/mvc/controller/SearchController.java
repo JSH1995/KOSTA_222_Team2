@@ -30,4 +30,18 @@ public class SearchController {
 		
 	}
 	
+	public static Movie searchByPK(int movieNo) {
+		
+		Movie movie = null;
+		
+		try {
+			movie = searchService.searchByPK(movieNo);
+		}catch(Exception e) {
+			FailView.errorMessage(e.getMessage());
+		}
+		
+		return movie;
+	}
+	
+	
 }
