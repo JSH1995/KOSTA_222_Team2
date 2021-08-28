@@ -17,7 +17,7 @@ import team2.mvc.util.DbUtil;
 public class CustomerDAOImpl implements CustomerDAO {
 	
 
-	public List<User> registerUser(int userNo, String id, String password, int age, String userRegDate,String[] favGenre,String[] favTag) throws SQLException {
+	public List<User> registerUser(int userNo, String id, String password, int age, String userRegDate,Array favGenre,Array favTag) throws SQLException {
 		
 		Connection con = null;
 		PreparedStatement ps = null;
@@ -31,17 +31,18 @@ public class CustomerDAOImpl implements CustomerDAO {
 			ps.setString(3, password);
 			ps.setInt(4, age);
 			ps.setString(5, userRegDate);
-			
-			String favGenre2 = Arrays.toString(favGenre);
-			ps.setString(6, favGenre2);
-			String favTag2 = Arrays.toString(favTag);
-			ps.setString(7, favTag2);
-			
+			ps.setArray(6, favGenre);
+			ps.setArray(7, favTag);
+//			String favGenre2 = Arrays.toString(favGenre);
+//			ps.setString(6, favGenre2);
+//			String favTag2 = Arrays.toString(favTag);
+//			ps.setString(7, favTag2);
+//			
 
 		
 		
 			if(rs.next()) {
-				list.add(new User(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5),rs.getString(6),rs.getString(7)));
+				list.add(new User(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5),rs.getArray(6),rs.getArray(7)));
 			}
 		} finally {
 			DbUtil.dbClose(con, ps, rs);
@@ -82,6 +83,12 @@ public class CustomerDAOImpl implements CustomerDAO {
 	}
 	@Override
 	public List<User> passwordUpdate() throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public List<User> registerUser(int userNo, String id, String password, int age, String userRegDate,
+			String[] favGenre, String[] favTag) throws SQLException {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -1,5 +1,7 @@
 package team2.mvc.model.dto;
 
+import java.sql.Array;
+
 public class User {
 
 	private int userNo;
@@ -7,8 +9,8 @@ public class User {
 	private String password;
 	private int age;
 	private String userRegDate;
-	private String[] favGenre;
-	private String[] favTag;
+	private Array favGenre;
+	private Array favTag;
 	
 	public User(String id,String password) {
 		this.id = id;
@@ -16,8 +18,8 @@ public class User {
 		
 	}
 
-	public User(int userNo,String id,String password, int age, String userRegDate, String[] favGenre,
-			String[] favTag) {
+	public User(int userNo,String id,String password, int age, String userRegDate, Array favGenre,
+			Array favTag) {
 		this(id,password);
 		this.userNo = userNo;
 		this.age = age;
@@ -66,19 +68,19 @@ public class User {
 		this.userRegDate = userRegDate;
 	}
 
-	public String[] getFavGenre() {
+	public Array getFavGenre() {
 		return favGenre;
 	}
 
-	public void setFavGenre(String[] favGenre) {
+	public void setFavGenre(Array favGenre) {
 		this.favGenre = favGenre;
 	}
 
-	public String[] getFavTag() {
+	public Array getFavTag() {
 		return favTag;
 	}
 
-	public void setFavTag(String[] favTag) {
+	public void setFavTag(Array favTag) {
 		this.favTag = favTag;
 	}
 
