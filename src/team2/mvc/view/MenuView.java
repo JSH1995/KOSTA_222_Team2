@@ -37,10 +37,6 @@ public class MenuView {
 			int choice = Integer.parseInt(sc.nextLine());
 			switch (choice) {
 			case 1:
-
-			
-		
-			
 				
 			//입력한 숫자들을 하나씩 가져옴 12345를 1 2 3 4 5 이런식으로
 			/*	while(num > 0) {
@@ -50,8 +46,7 @@ public class MenuView {
 					num /= 10;
 
 
-				}*/
-				
+				}*/ 			
 				Calendar cal =Calendar.getInstance();
 				
 			 	String month = Integer.toString(cal.get(Calendar.MONTH) + 1);
