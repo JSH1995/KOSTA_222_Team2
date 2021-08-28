@@ -1,4 +1,5 @@
 package team2.mvc.model.dao;
+import java.sql.Array;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -6,7 +7,7 @@ import team2.mvc.model.dto.User;
 
 public interface CustomerDAO {
 	
-	List<User> registerUser(int userNo, String id, String password, int age, String userRegDate, String[] favGenre, String[] favTag) throws SQLException;
+	List<User> registerUser(int userNo, String id, String password, int age, String userRegDate, Array favGenre, Array favTag) throws SQLException;
 	
 	List<User> login(String id, String password) throws SQLException;
 	

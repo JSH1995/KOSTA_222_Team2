@@ -86,12 +86,8 @@ public class CustomerDAOImpl implements CustomerDAO {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	@Override
-	public List<User> registerUser(int userNo, String id, String password, int age, String userRegDate,
-			String[] favGenre, String[] favTag) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
+	
 
 
 
