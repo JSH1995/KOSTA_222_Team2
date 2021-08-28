@@ -14,15 +14,15 @@ public class MovieService {
 		
 	}
 
-	public void movieInsert(Movie movie) throws SQLException {
-		int result = movieDAO.movieInsert(movie);
+	public void registerMovie(Movie movie) throws SQLException {
+		int result = movieDAO.registerMovie(movie);
 		if(result == 0) {
 			throw new SQLException("등록되지 않았습니다.");
 		}
 		
 	}
 
-	public void movieUpdate(Movie movie) throws SQLException {
+	public void updateMovie(Movie movie) throws SQLException {
 		int result = movieDAO.movieUpdate(movie);
 		if(result == 0) {
 			throw new SQLException("수정되지 않았습니다.");
@@ -31,8 +31,8 @@ public class MovieService {
 		
 	}
 
-	public void movieDelete(Movie movie) throws SQLException {
-		int result = movieDAO.movieDelete(movie);
+	public void deleteMovie(int movieNo) throws SQLException {
+		int result = movieDAO.deleteMovie(movieNo);
 		if(result == 0) {
 			throw new SQLException("삭제되지 않았습니다.");
 		}

@@ -19,7 +19,7 @@ public class MovieDAOImpl implements MovieDAO {
 	/**
 	 * 영화 등록
 	 * */
-	public int movieInsert(Movie movie) throws SQLException {
+	public int registerMovie(Movie movie) throws SQLException {
 		Connection con=null;
 		PreparedStatement ps=null;
 		int result=0;
@@ -43,7 +43,7 @@ public class MovieDAOImpl implements MovieDAO {
 	/**
 	 * 영화_고유번호에 해당하는 영화정보 수정
 	 * */
-	public int movieUpdate(Movie movie) throws SQLException {
+	public int updateMovie(Movie movie) throws SQLException {
 		Connection con=null;
 		PreparedStatement ps=null;
 		int result=0;
@@ -68,7 +68,7 @@ public class MovieDAOImpl implements MovieDAO {
 	/**
 	 * 영화_고유번호에 해당하는 영화 삭제
 	 * */
-	public int movieDelete(Movie movie) throws SQLException {
+	public int deleteMovie(int movieNo) throws SQLException {
 		Connection con=null;
 		PreparedStatement ps=null;
 		int result=0;
@@ -76,7 +76,7 @@ public class MovieDAOImpl implements MovieDAO {
 		try {
 			con=DbUtil.getConnection();
 			ps=con.prepareStatement(sql);
-			ps.setInt(1, movie.getMovieNo());
+			ps.setInt(1, movieNo);
 			
 			result = ps.executeUpdate();
 			
