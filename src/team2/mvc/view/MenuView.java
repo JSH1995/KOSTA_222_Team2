@@ -7,6 +7,18 @@ import team2.mvc.controller.RecommendController;
 import team2.mvc.model.dto.Movie;
 import team2.mvc.model.dto.User;
 
+import java.sql.Array;
+import java.text.SimpleDateFormat;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Calendar;
+
+
+import team2.mvc.controller.CustomerController;
 public class MenuView {
 	private static Scanner sc = new Scanner(System.in);
 
