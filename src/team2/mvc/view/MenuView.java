@@ -125,8 +125,10 @@ public class MenuView {
 				CustomerController.registerUser(usernumber, id, pw, age,datestr,tegnum,jnum); // 가입
 				break;
 			case 2:
+				System.out.println("아이디를 입력해주세요");
 				String login_id= sc.nextLine();
 				user_id=login_id;
+				System.out.println("비밀번호를 입력해주세요");
 				String login_pw =sc.nextLine();
 				user_pw=login_pw;
 				
@@ -151,12 +153,18 @@ public class MenuView {
 				break;
 				
 			case 3://사용자 평가 영화 고유번호만 넣어주면 됨
+				Calendar cal2 =Calendar.getInstance();
+				SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy/MM/dd/HH:mm:ss");
+				String datestr2 = sdf2.format(cal2.getTime());
 				
 				int userNo = user_number;
+				System.out.println("영화 고유번호를 적어주세요 --추후에 이건 필요없음");
 				int movieNo = Integer.parseInt(sc.nextLine());
+				System.out.println("평점을 적어주세요 (1~5)");
 				int rate = Integer.parseInt(sc.nextLine());
+				System.out.println("남기실 코멘트를 입력해주세요");
 				String comment= sc.nextLine();
-				String rateDate =sc.nextLine();
+				String rateDate =datestr2;
 				CustomerController.Evaluation(userNo,movieNo,rate, comment,rateDate);//사용자 평가
 				
 				break;
