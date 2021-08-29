@@ -21,7 +21,7 @@ public class WishDAOlmpl implements WishDAO {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		List<Movie> movieList = new ArrayList<Movie>();
-		String sql = "select * from 위시리스트 where 사용자고유번호";
+		String sql = "select 영화_고유번호, 장르번호, 작품명, 감독, 영화등록일자 from 위시리스트 join 영화 using(영화_고유번호) where 사용자_고유번호 = ?";
 
 		try {
 			con = DbUtil.getConnection();
@@ -30,48 +30,33 @@ public class WishDAOlmpl implements WishDAO {
 			rs = ps.executeQuery();
 
 			while (rs.next()) {
-				Movie movie = new Movie(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5));
+				Movie movie = new Movie(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5));
 				movieList.add(movie);
 			}
-
 		} finally {
 			DbUtil.dbClose(con, ps, rs);
 		}
-
 		return movieList;
 	}
 
 	@Override
-	public int putWishList(int userNo, int movieNo) throws SQLException, DuplicateException {
+	public int putWishList(int userNo, int movieNo) throws SQLException {
 		Connection con = null;
-		PreparedStatement ps1 = null;
-		PreparedStatement ps2 = null;
-		ResultSet rs = null;
-		List<Integer> list = new ArrayList<Integer>(); 
-		String sql1 = "select distinct 영화_고유번호 from 위시리스트";
-		String sql2 = "insert into 위시리스트 values(?,?)";
+		PreparedStatement ps = null;
+		String sql = "insert into 위시리스트 values(?,?)";
 		int result = 0;
 		try {
 			con = DbUtil.getConnection();
-			ps1 = con.prepareStatement(sql1);
-			rs = ps1.executeQuery();
-			while(rs.next()) {
-				list.add(rs.getInt(1));
-			}
-			ps2 = con.prepareStatement(sql2);
-			ps2.setInt(1, userNo);
-			ps2.setInt(2, movieNo);
-			result = ps2.executeUpdate();
-			if(list.contains(movieNo)) {
-				throw new DuplicateException("이미 존재하는 영화입니다.");
-			}
-			if(result == 0) {
-				throw new SQLException("등록에 실패했습니다.");
-			}
-		}finally {
-			DbUtil.dbClose(con, ps2, rs);
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, userNo);
+			ps.setInt(2, movieNo);
+			result = ps.executeUpdate();
+			System.out.println("try");
+
+		} finally {
+			DbUtil.dbClose(con, ps);
+			System.out.println("finally");
 		}
-		
 		return result;
 	}
 

@@ -14,28 +14,21 @@ import team2.mvc.view.SuccessView;
 public class WishController {
 	private static WishService wishService = new WishService();
 	
-	public static void putWishList(int userNo, int movieNo) {
-		
-		try {
-			wishService.putWishList(userNo, movieNo);
-			List<Movie> movieList = new ArrayList<Movie>();
-			
-		
-		}catch (Exception e) {
-			FailView.errorMessage(e.getMessage());
-		}
-	}
-
-	
 	public static void viewWishList(int userNo) {
 		try {
-			List<Movie> movieList = wishService.viewWishList( userNo);
+			List<Movie> movieList = wishService.viewWishList(userNo);
 			SuccessView.printWishList(movieList);
 		}catch (SQLException e) {
 			FailView.errorMessage(e.getMessage());
+		}		
+	}
+	
+	public static void putWishList(int userNo, int movieNo) {
+		try {
+			wishService.putWishList(userNo, movieNo);
+			SuccessView.messagePrint("정상적으로 등록되었습니다.");
+		}catch (SQLException e) {
+			FailView.errorMessage("error: " + e.getMessage());
 		}
-		
-		
-		
 	}
 }

@@ -4,6 +4,7 @@ import java.util.Scanner;
 import team2.mvc.controller.CustomerController;
 import team2.mvc.controller.MovieController;
 import team2.mvc.controller.RecommendController;
+import team2.mvc.controller.WishController;
 import team2.mvc.model.dto.Movie;
 import team2.mvc.model.dto.User;
 import team2.mvc.util.DbUtil;
@@ -299,8 +300,9 @@ public class MenuView {
 	/**
 	 * 사용자메뉴 - 2. 위시리스트 보기
 	 */
-	private static void printWishListMenu(???) {
+	private static void printWishListMenu() {
 		System.out.println("------------------- 위시리스트 -------------------");
+		WishController.viewWishList(83002040);
 		
 	}
 	

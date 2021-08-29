@@ -1,5 +1,6 @@
 package team2.mvc.main;
 
+import team2.mvc.controller.WishController;
 import team2.mvc.view.MenuView;
 
 public class Moviement_main {
@@ -9,7 +10,7 @@ public class Moviement_main {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		MenuView.menu();
+		//MenuView.menu();
 
 		//System.out.println("test");
 		//System.out.println("test2");
@@ -17,11 +18,12 @@ public class Moviement_main {
 		
 		//영화 등록,수정,삭제 확인용
 		//등록
-		MenuView.registerMovie();
+		//MenuView.registerMovie();
 		//MenuView.updateMovie();
 		//MenuView.deleteMovie();
 
-
+		//WishController.viewWishList(83002040);
+		WishController.putWishList(83002040, 2);
 	}
 
 }

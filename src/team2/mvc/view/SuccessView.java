@@ -13,7 +13,6 @@ public class SuccessView {
 	public static void printWishList(List<Movie> movieList) {
 		for(Movie m : movieList) {
 			System.out.println(movieList);
-		System.out.println(movieList);
 	 }
 	}
 
