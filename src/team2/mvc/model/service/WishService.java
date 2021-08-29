@@ -3,6 +3,7 @@ package team2.mvc.model.service;
 import java.sql.SQLException;
 import java.util.List;
 
+import team2.mvc.exception.DuplicateException;
 import team2.mvc.model.dao.WishDAO;
 import team2.mvc.model.dao.WishDAOlmpl;
 import team2.mvc.model.dto.Movie;
@@ -11,7 +12,7 @@ public class WishService {
 	WishDAO wishDAO = new WishDAOlmpl();
 	
 	
-	public void putWishList(int userNo, int movieNo) throws SQLException {
+	public void putWishList(int userNo, int movieNo) throws SQLException, DuplicateException {
 		int result = wishDAO.putWishList(userNo, movieNo);
 		if(result == 0)throw new SQLException("위시리스트 추가에 실패하였습니다.");
 
