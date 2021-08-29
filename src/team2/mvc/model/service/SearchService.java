@@ -19,20 +19,21 @@ import team2.mvc.model.dao.SearchDAO;
 import team2.mvc.model.dao.SearchDAOImpl;
 import team2.mvc.model.dto.MovidDetail;
 import team2.mvc.model.dto.Movie;
+import team2.mvc.model.dto.Search;
 
 public class SearchService {
 	
 	SearchDAO searchDAO = new SearchDAOImpl();
 	
-	public List<Movie> searchAll(String sortType) throws NotFoundException, SQLException{
+	public List<Search> searchAll(String sortType) throws NotFoundException, SQLException{
 		
-		List<Movie> movieList = searchDAO.searchAll(sortType);
+		List<Search> searchList = searchDAO.searchAll(sortType);
 		
-		if(movieList.size() == 0 || movieList.isEmpty()) {
+		if(searchList.size() == 0 || searchList.isEmpty()) {
 			throw new NotFoundException("DB에 영화가 등록 되어 있지 않습니다.");
 		}
 		
-		return movieList;		
+		return searchList;		
 		
 	}
 	
@@ -41,62 +42,62 @@ public class SearchService {
 		
 	}
 	
-	public List<Movie> searchByName(String movieName, String sortType) throws NotFoundException, SQLException{
+	public List<Search> searchByName(String movieName, String sortType) throws NotFoundException, SQLException{
 		
-		List<Movie> movieList = searchDAO.searchByName(movieName, sortType);
+		List<Search> searchList = searchDAO.searchByName(movieName, sortType);
 		
-		if(movieList.size() == 0 || movieList.isEmpty()) {
+		if(searchList.size() == 0 || searchList.isEmpty()) {
 			throw new NotFoundException("검색하신 작품명의 영화는 등록 되어 있지 않습니다.");
 		}
 		
-		return movieList;	
+		return searchList;	
 		
 	}
 	
-	public List<Movie> searchByDirector(String director, String sortType) throws NotFoundException, SQLException{
-		List<Movie> movieList = searchDAO.searchByDirector(director, sortType);
+	public List<Search> searchByDirector(String director, String sortType) throws NotFoundException, SQLException{
+		List<Search> searchList = searchDAO.searchByDirector(director, sortType);
 		
-		if(movieList.size() == 0 || movieList.isEmpty()) {
+		if(searchList.size() == 0 || searchList.isEmpty()) {
 			throw new NotFoundException("검색하신 감독명의 영화는 등록 되어 있지 않습니다.");
 		}
 		
-		return movieList;	
+		return searchList;	
 		
 	}
 	
-	public List<Movie> searchByActor(String actor, String sortType) throws NotFoundException, SQLException{
+	public List<Search> searchByActor(String actor, String sortType) throws NotFoundException, SQLException{
 		
-		List<Movie> movieList = searchDAO.searchByActor(actor, sortType);
+		List<Search> searchList = searchDAO.searchByActor(actor, sortType);
 		
-		if(movieList.size() == 0 || movieList.isEmpty()) {
+		if(searchList.size() == 0 || searchList.isEmpty()) {
 			throw new NotFoundException("검색하신 배우가 포함되어 있는 영화는 등록 되어 있지 않습니다.");
 		}
 		
-		return movieList;	
+		return searchList;	
 		
 	}
 	
-	public List<Movie> searchByGenre(String genre, String sortType) throws NotFoundException, SQLException{
+	public List<Search> searchByGenre(String genre, String sortType) throws NotFoundException, SQLException{
 		
-		List<Movie> movieList = searchDAO.searchByGenre(genre, sortType);
+		List<Search> searchList = searchDAO.searchByGenre(genre, sortType);
 		
-		if(movieList.size() == 0 || movieList.isEmpty()) {
-			throw new NotFoundException("검색하신 감독명의 영화는 등록 되어 있지 않습니다.");
+		if(searchList.size() == 0 || searchList.isEmpty()) {
+			throw new NotFoundException("검색하신 장르의 영화는 등록 되어 있지 않습니다.");
 		}
 		
-		return movieList;
+		return searchList;
 		
 	}
 	
-	public List<Movie> searchByNation(String nation, String sortType) throws NotFoundException, SQLException{
+	public List<Search> searchByNation(String nation, String sortType) throws NotFoundException, SQLException{
 		
-		List<Movie> movieList = searchDAO.searchByNation(nation, sortType);
+		List<Search> searchList = searchDAO.searchByNation(nation, sortType);
 		
-		if(movieList.size() == 0 || movieList.isEmpty()) {
-			throw new NotFoundException("검색하신 감독명의 영화는 등록 되어 있지 않습니다.");
+		if(searchList.size() == 0 || searchList.isEmpty()) {
+			throw new NotFoundException("검색하신 국가의 영화는 등록 되어 있지 않습니다.");
 		}
 		
-		return movieList;
+		return searchList;
 		
 	}
 	
@@ -112,15 +113,15 @@ public class SearchService {
 		
 	}
 
-	public MovidDetail showMovieDetail(String movieName) throws NotFoundException, SQLException {
+	public Search showMovieDetail(String movieName) throws NotFoundException, SQLException {
 		
-		MovidDetail md =  searchDAO.showMovieDetail(movieName);
+		Search sd =  searchDAO.showMovieDetail(movieName);
 		
 		if(movieName == null) {
 			throw new NotFoundException("해당 영화에 대한 상세 정보가 없습니다.");
 		}
 		
-		return md;
+		return sd;
 
 	}
 

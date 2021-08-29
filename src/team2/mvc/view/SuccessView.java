@@ -2,6 +2,7 @@ package team2.mvc.view;
 
 import java.util.List;
 
+import team2.mvc.model.dto.Search;
 import team2.mvc.model.dto.Movie;
 
 public class SuccessView {
@@ -16,11 +17,15 @@ public class SuccessView {
 	 }
 	}
 
-	public static void printMovieList(List<Movie> movieList) {
+	public static void printMovieList(List<Search> searchList) {
 		
-		for(Movie movie : movieList) {
-			System.out.println(movie);
+		for(Search search  : searchList) {
+			System.out.println(search);
 		}
+	}
+
+	public static void printMovieDetail(Search sd) {
+		System.out.println(sd);
 	}
 
 

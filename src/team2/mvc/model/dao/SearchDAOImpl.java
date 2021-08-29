@@ -19,8 +19,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import team2.mvc.model.dto.MovidDetail;
 import team2.mvc.model.dto.Movie;
+import team2.mvc.model.dto.Search;
+import team2.mvc.model.dto.SearchDetail;
 import team2.mvc.util.DbUtil;
 
 public class SearchDAOImpl implements SearchDAO {
@@ -29,17 +30,35 @@ public class SearchDAOImpl implements SearchDAO {
 	
 	/**
 	 * DB에 들어가 있는 영화 전체 검색 기능	 
+	 * 
+	 * 	private int movieNo;
+		private String movieName;
+		private String director;
+		private String movieRegDate;
+		private int genreNo;
+		
+		고유번호
+		장르번호
+		작품명
+		감독
+		영화등록일자
+		
 	 */
 	
 	@Override
-	public List<Movie> searchAll(String sortType) throws SQLException {
+	public List<Search> searchAll(String sortType) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		List<Movie> movieList = new ArrayList<Movie>();
+		List<Search> searchList = new ArrayList<Search>();
 		String sort = sortType;
 		
-		String sql = "SELECT 작품명 FROM 영화 JOIN 영화_상세 ORDER BY " + sort;
+		String sql = "SELECT 작품명, 감독, 주연1, 주연2, 장르이름, 국가, 개봉일자, 상영시간 FROM 영화"
+				+ " JOIN 영화_상세 USING(영화_고유번호)"
+				+ " JOIN 배우 USING(영화_고유번호)"
+				+ " JOIN 장르_목록 USING(장르번호)"
+				+ " ORDER BY " + sort;
+		
 		
 		try {			
 			con = DbUtil.getConnection();
@@ -47,15 +66,23 @@ public class SearchDAOImpl implements SearchDAO {
 			rs = ps.executeQuery();
 			
 			while(rs.next()) {
-				Movie movie = new Movie(rs.getInt(1),rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5), rs.getInt(6));
-				movieList.add(movie);
+				Search search = new Search(rs.getString(1), 
+										   rs.getString(2), 
+										   rs.getString(3), 
+										   rs.getString(4),  
+										   rs.getString(5), 
+										   rs.getString(6), 
+										   rs.getString(7), 
+										   rs.getInt(8)); 
+										   //rs.getInt(9));
+				searchList.add(search);
 			}
 			
 		} finally {
 			DbUtil.dbClose(con, ps, rs);
 		}
 			
-		return movieList;
+		return searchList;
 	}
 
 		
@@ -64,32 +91,45 @@ public class SearchDAOImpl implements SearchDAO {
 	 */
 	
 	@Override
-	public List<Movie> searchByName(String movieName, String sortType) throws SQLException {
+	public List<Search> searchByName(String movieName, String sortType) throws SQLException {
 		
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		List<Movie> movieList = new ArrayList<Movie>();
+		List<Search> searchList = new ArrayList<Search>();
 		String sort = sortType;
 		
-		String sql = "SELECT * FROM 영화 WHERE 작품명 = ? ORDER BY " + sort;
+		String sql = "SELECT 작품명, 감독, 주연1, 주연2, 장르이름, 국가, 개봉일자, 상영시간 FROM 영화"
+				+ " JOIN 영화_상세 USING(영화_고유번호)"
+				+ " JOIN 배우 USING(영화_고유번호)"
+				+ " JOIN 장르_목록 USING(장르번호)"
+				+ " WHERE 작품명 LIKE ?"
+				+ " ORDER BY " + sort;
 		
 		try {			
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
-			ps.setString(1, movieName);
+			ps.setString(1, "%"+movieName+"%");
 			rs = ps.executeQuery();
 			
 			while(rs.next()) {
-				Movie movie = new Movie(rs.getInt(1),rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5), rs.getInt(6));
-				movieList.add(movie);
+				Search search = new Search(rs.getString(1), 
+						   rs.getString(2), 
+						   rs.getString(3), 
+						   rs.getString(4),  
+						   rs.getString(5), 
+						   rs.getString(6), 
+						   rs.getString(7), 
+						   rs.getInt(8));
+						   //rs.getInt(9));
+				searchList.add(search);
 			}
 			
 		} finally {
 			DbUtil.dbClose(con, ps, rs);
 		}
 			
-		return movieList;
+		return searchList;
 	}
 	
 	/**
@@ -98,32 +138,45 @@ public class SearchDAOImpl implements SearchDAO {
 
 
 	@Override
-	public List<Movie> searchByDirector(String director, String sortType) throws SQLException {
+	public List<Search> searchByDirector(String director, String sortType) throws SQLException {
 		
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		List<Movie> movieList = new ArrayList<Movie>();
+		List<Search> searchList = new ArrayList<Search>();
 		String sort = sortType;
 		
-		String sql = "SELECT * FROM 영화 WHERE 감독 = ? ORDER BY ";
+		String sql = "SELECT 작품명, 감독, 주연1, 주연2, 장르이름, 국가, 개봉일자, 상영시간 FROM 영화"
+				+ " JOIN 영화_상세 USING(영화_고유번호)"
+				+ " JOIN 배우 USING(영화_고유번호)"
+				+ " JOIN 장르_목록 USING(장르번호)"
+				+ " WHERE 감독 LIKE ?"
+				+ " ORDER BY " + sort;
 		
 		try {			
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
-			ps.setString(1, director);
+			ps.setString(1, "%"+director+"%");
 			rs = ps.executeQuery();
 			
 			while(rs.next()) {
-				Movie movie = new Movie(rs.getInt(1),rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5), rs.getInt(6));
-				movieList.add(movie);
+				Search search = new Search(rs.getString(1), 
+						   rs.getString(2), 
+						   rs.getString(3), 
+						   rs.getString(4),  
+						   rs.getString(5), 
+						   rs.getString(6), 
+						   rs.getString(7), 
+						   rs.getInt(8));
+						   //rs.getInt(9));
+				searchList.add(search);
 			}
 			
 		} finally {
 			DbUtil.dbClose(con, ps, rs);
 		}
 			
-		return movieList;
+		return searchList;
 	}
 	
 
@@ -133,37 +186,53 @@ public class SearchDAOImpl implements SearchDAO {
 	 */
 	
 	@Override
-	public List<Movie> searchByActor(String actor, String sortType) throws SQLException {
+	public List<Search> searchByActor(String actor, String sortType) throws SQLException {
 		
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		List<Movie> movieList = new ArrayList<Movie>();
+		List<Search> searchList = new ArrayList<Search>();
 		String sort = sortType;
 		
-		String sql = "SELECT * FROM 영화 JOIN 배우 USING(영화_고유번호) WHERE 주연1 = ? OR 주연2 = ? OR 조연1 = ? OR 조연2 = ? OR 조연3 = ?";
+		String sql = "SELECT 작품명, 감독, 주연1, 주연2, 조연1, 조연2, 조연3, 장르이름, 국가, 개봉일자, 상영시간 FROM 영화"
+				+ " JOIN 영화_상세 USING(영화_고유번호)"
+				+ " JOIN 배우 USING(영화_고유번호)"
+				+ " JOIN 장르_목록 USING(장르번호)"
+				+ " WHERE 주연1 LIKE ? OR 주연2 LIKE ? OR 조연1 LIKE ? OR 조연2 LIKE ? OR 조연3 LIKE ?"
+				+ " ORDER BY " + sort;
 		
 		try {			
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
-			ps.setString(1, actor);
-			ps.setString(2, actor);
-			ps.setString(3, actor);
-			ps.setString(4, actor);
-			ps.setString(5, actor);
+			ps.setString(1, "%"+actor+"%");
+			ps.setString(2, "%"+actor+"%");
+			ps.setString(3, "%"+actor+"%");
+			ps.setString(4, "%"+actor+"%");
+			ps.setString(5, "%"+actor+"%");
 			
 			rs = ps.executeQuery();
 			
 			while(rs.next()) {
-				Movie movie = new Movie(rs.getInt(1),rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5), rs.getInt(6));
-				movieList.add(movie);
+				Search search = new Search(rs.getString(1), 
+						   rs.getString(2), 
+						   rs.getString(3), 
+						   rs.getString(4),  
+						   rs.getString(5), 
+						   rs.getString(6), 
+						   rs.getString(7),
+						   rs.getString(8),
+						   rs.getString(9),
+						   rs.getString(10),
+						   rs.getInt(11));
+						   //rs.getInt(9));
+				searchList.add(search);
 			}
 			
 		} finally {
 			DbUtil.dbClose(con, ps, rs);
 		}
 			
-		return movieList;
+		return searchList;
 	}
 
 
@@ -172,31 +241,45 @@ public class SearchDAOImpl implements SearchDAO {
 	 */
 	
 	@Override
-	public List<Movie> searchByGenre(String genre, String sortType) throws SQLException {
+	public List<Search> searchByGenre(String genre, String sortType) throws SQLException {
 		
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		List<Movie> movieList = new ArrayList<Movie>();
+		List<Search> searchList = new ArrayList<Search>();
 		String sort = sortType;
 		
-		String sql = "SELECT * FROM ";
+		String sql = "SELECT 작품명, 감독, 주연1, 주연2, 장르이름, 국가, 개봉일자, 상영시간 FROM 영화"
+				+ " JOIN 영화_상세 USING(영화_고유번호)"
+				+ " JOIN 배우 USING(영화_고유번호)"
+				+ " JOIN 장르_목록 USING(장르번호)"
+				+ " WHERE 장르이름 LIKE ?"
+				+ " ORDER BY " + sort;
 		
 		try {			
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
+			ps.setString(1, "%"+genre+"%");
 			rs = ps.executeQuery();
 			
 			while(rs.next()) {
-				Movie movie = new Movie(rs.getInt(1),rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5), rs.getInt(6));
-				movieList.add(movie);
+				Search search = new Search(rs.getString(1), 
+						   rs.getString(2), 
+						   rs.getString(3), 
+						   rs.getString(4),  
+						   rs.getString(5), 
+						   rs.getString(6), 
+						   rs.getString(7), 
+						   rs.getInt(8));
+						   //rs.getInt(9));
+				searchList.add(search);
 			}
 			
 		} finally {
 			DbUtil.dbClose(con, ps, rs);
 		}
 			
-		return movieList;
+		return searchList;
 	}
 
 	
@@ -205,31 +288,45 @@ public class SearchDAOImpl implements SearchDAO {
 	 */
 
 	@Override
-	public List<Movie> searchByNation(String nation, String sortType) throws SQLException {
+	public List<Search> searchByNation(String nation, String sortType) throws SQLException {
 
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		List<Movie> movieList = new ArrayList<Movie>();
+		List<Search> searchList = new ArrayList<Search>();
 		String sort = sortType;
 		
-		String sql = "";
+		String sql = "SELECT 작품명, 감독, 주연1, 주연2, 장르이름, 국가, 개봉일자, 상영시간 FROM 영화"
+				+ " JOIN 영화_상세 USING(영화_고유번호)"
+				+ " JOIN 배우 USING(영화_고유번호)"
+				+ " JOIN 장르_목록 USING(장르번호)"
+				+ " WHERE 국가 LIKE ?"
+				+ " ORDER BY " + sort;
 		
 		try {			
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
+			ps.setString(1, "%"+nation+"%");
 			rs = ps.executeQuery();
 			
 			while(rs.next()) {
-				Movie movie = new Movie(rs.getInt(1),rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5), rs.getInt(6));
-				movieList.add(movie);
+				Search search = new Search(rs.getString(1), 
+						   rs.getString(2), 
+						   rs.getString(3), 
+						   rs.getString(4),  
+						   rs.getString(5), 
+						   rs.getString(6), 
+						   rs.getString(7), 
+						   rs.getInt(8));
+						   //rs.getInt(9));
+				searchList.add(search);
 			}
 			
 		} finally {
 			DbUtil.dbClose(con, ps, rs);
 		}
 			
-		return movieList;
+		return searchList;
 	}
 
 	
@@ -253,7 +350,7 @@ public class SearchDAOImpl implements SearchDAO {
 			rs = ps.executeQuery();
 			
 			if(rs.next()) {
-				movie = new Movie(rs.getInt(1),rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5), rs.getInt(6));
+				movie = new Movie(rs.getInt(1),rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5));
 			}
 			
 		} finally {
@@ -263,30 +360,27 @@ public class SearchDAOImpl implements SearchDAO {
 		return movie;
 	}
 
-	
-	/**
-	 * 최근 검색 키워드 리스트
-	 */
-
-	@Override
-	public List<String> recentSearch() throws SQLException {
-		return null;
-	}
 
 	/**
 	 * 상세 정보 보여주기
+	 * 
+	 * 평점, 사용자 태그 추가 필요
 	 */
 	
 	
 	@Override
-	public MovidDetail showMovieDetail(String movieName) throws SQLException {
+	public Search showMovieDetail(String movieName) throws SQLException {
 		
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;	
-		MovidDetail md = null;
+		Search sd = null;
 		
-		String sql = "";
+		String sql = "SELECT 작품명, 감독, 주연1, 주연2, 조연1, 조연2, 조연3, 장르이름, 국가, 개봉일자, 상영시간, 작품_줄거리 FROM 영화"
+				+ " JOIN 영화_상세 USING(영화_고유번호)"
+				+ " JOIN 배우 USING(영화_고유번호)"
+				+ " JOIN 장르_목록 USING(장르번호)"
+				+ " WHERE 작품명 = ?";
 		
 		try {
 			
@@ -297,16 +391,63 @@ public class SearchDAOImpl implements SearchDAO {
 			rs = ps.executeQuery();
 			
 			while(rs.next()) {
-				 List<String> a = (List<String>)rs.getObject(6, ArrayList.class);
-				 md = new MovidDetail(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5), a);
+				// List<String> a = (List<String>)rs.getObject(13, ArrayList.class);						 
+				sd = new SearchDetail(rs.getString(1), 
+						   rs.getString(2), 
+						   rs.getString(3), 
+						   rs.getString(4),  
+						   rs.getString(5), 
+						   rs.getString(6), 
+						   rs.getString(7),
+						   rs.getString(8),
+						   rs.getString(9),
+						   rs.getString(10),
+						   rs.getInt(11),
+						   rs.getString(12));
+						   //, a);
 			}
 			
 		}finally {
 			
 			DbUtil.dbClose(con, ps, rs);
 		}
-		return md;
+		return sd;
 	}
 	
+	
+	
+	
+	
+	
+
+	@Override
+	public List<Search> searchMovie(String keyword) throws SQLException {
+		
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		List<Search> movieList = new ArrayList<Search>();
+		
+//		if(keyword)
+//		
+//		
+		String sql = "";
+		
+		try {			
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+			//	Search movie = new Search(rs.getInt(1),rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5));
+			//	movieList.add(movie);
+			}
+			
+		} finally {
+			DbUtil.dbClose(con, ps, rs);
+		}
+			
+		return movieList;
+	}
 	
 }
