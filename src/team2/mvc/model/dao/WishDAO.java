@@ -3,6 +3,7 @@ package team2.mvc.model.dao;
 import java.sql.SQLException;
 import java.util.List;
 
+import team2.mvc.exception.DuplicateException;
 import team2.mvc.model.dto.Movie;
 
 public interface WishDAO {
@@ -14,7 +15,8 @@ public interface WishDAO {
 
 	/**
 	 * 위시리스트에 영화 추가하기
+	 * @throws DuplicateException 
 	 * */
-	int putWishList(int userNo, int movieNo) throws SQLException;
+	int putWishList(int userNo, int movieNo) throws SQLException, DuplicateException;
 
 }
