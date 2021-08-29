@@ -40,7 +40,7 @@ public class MovieDAOImpl implements MovieDAO {
 		}finally {
 			DbUtil.dbClose(con, ps);
 		}
-		return result;
+		return result; 
 	}
 	
 	/**
