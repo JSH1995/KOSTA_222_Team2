@@ -220,121 +220,121 @@ public class MenuView {
 	   	 Movie movie =  new Movie(movieNo, movieName, director, null, genreNo);
 	   	 MovieController.updateMovie(movie);
 	}
-//
-//	public static void printUserMenu(User user) {
-//		System.out.println("-------------------------------- MAIN MENU --------------------------------");
-//		System.out.println(" 1. 개인정보 수정 |  2. 위시리스트 보기  |  3. 추천 영화 보기  | 4. 검색하기  |  0. 종료");
-//		System.out.println("---------------------------------------------------------------------------");
-//		int choice = Integer.parseInt(sc.nextLine());
-//		switch (choice) {
-//		case 1:
-//			printPersonalDetailMenu();
-//			break;
-//		case 2:
-//			printWishListMenu();
-//			break;
-//		case 3:
-//			printRecommendMenu(user);
-//			break;
-//		case 4:
-//			printSearchMenu();
-//			break;
-//		case 5:
-//
-//			break;
-//
-//		case 0:
-//			System.exit(0);
-//		}
-//	}
-//
-//	public static void printAdminMenu(User user) {
-//		System.out.println("------------------ MAIN MENU -----------------");
-//		System.out.println(" 1. 개인정보 수정  |  2. 영화 DB 관리하기  |  0. 종료");
-//		System.out.println("----------------------------------------------");
-//		int choice = Integer.parseInt(sc.nextLine());
-//		switch (choice) {
-//		case 1:
-//			printPersonalDetailMenu();
-//			break;
-//		case 2:
-//			printWishListMenu();
-//			break;
-//		case 0:
-//			System.exit(0);
-//		}
-//	}
-//
-//	// 삭제
-//	public static void deleteMovie() {
-//		System.out.println("삭제할 영화의 고유번호 입력 : ");
-//		int movieNo = Integer.parseInt(sc.nextLine());
-//		MovieController.deleteMovie(movieNo);
-//	}
-//	
-//	//로그인
-//	public static void login() {
-//		System.out.print("아이디 : ");
-//		String userId = sc.nextLine();
-//
-//		System.out.print("비밀번호 : ");
-//		String userPwd = sc.nextLine();
-//
-//		CustomerController.login(userId, userPwd);
-//	}
-//	
-//	/**
-//	 * 사용자메뉴 - 1. 개인정보 수정
-//	 */
-//	private static void printPersonalDetailMenu(???) {
-//		System.out.println("------------------- 개인정보 수정 페이지 -------------------");
-//		System.out.print("새로운 비밀번호 : ");
-//		String userId = sc.nextLine();
-//
-//		System.out.print("새로운 좋아하는 장르 : ");
-//		String userPwd = sc.nextLine();
-//		//이런식으로 작성
-//	}
-//	
-//	/**
-//	 * 사용자메뉴 - 2. 위시리스트 보기
-//	 */
-//	private static void printWishListMenu(???) {
-//		System.out.println("------------------- 위시리스트 -------------------");
-//		
-//	}
-//	
-//	/**
-//	 * 사용자메뉴 - 3. 추천 영화 보기
-//	 */
-//	private static void printRecommendMenu(User user) {
-//		// TODO Auto-generated method stub
-//		System.out.println("---------------------------- 영화 추천 페이지 ----------------------------");
-//		System.out.println(" 1. 인기순 추천 |  2. 나이별 추천  |  3. 태그 추천  | 4. 장르 추천  |  0. 메인으로");
-//		System.out.println("----------------------------------------------------------------------");
-//		int choice = Integer.parseInt(sc.nextLine());
-//		switch (choice) {
-//		case 1:
-//			System.out.println("----- 인기순추천 -----");
-//			RecommendController.recByRank();
-//			break;
-//		case 2:
-//			System.out.println("----- 나이별 추천 -----");
-//			RecommendController.recByAge(user.getAge());
-//			break;
-//		case 3:
-//			System.out.println("----- 태그 추천 -----");
-//			RecommendController.recByTag(choice, choice);
-//			break;
-//		case 4:
-//			System.out.println("----- 장르 추천 -----");
-//			RecommendController.recByGenre(choice, choice);
-//			break;
-//		case 0:
-//
-//			break;
-//		}
-//	}
+
+	public static void printUserMenu(User user) {
+		System.out.println("-------------------------------- MAIN MENU --------------------------------");
+		System.out.println(" 1. 개인정보 수정 |  2. 위시리스트 보기  |  3. 추천 영화 보기  | 4. 검색하기  |  0. 종료");
+		System.out.println("---------------------------------------------------------------------------");
+		int choice = Integer.parseInt(sc.nextLine());
+		switch (choice) {
+		case 1:
+			printPersonalDetailMenu();
+			break;
+		case 2:
+			printWishListMenu();
+			break;
+		case 3:
+			printRecommendMenu(user);
+			break;
+		case 4:
+			printSearchMenu();
+			break;
+		case 5:
+
+			break;
+
+		case 0:
+			System.exit(0);
+		}
+	}
+
+	public static void printAdminMenu(User user) {
+		System.out.println("------------------ MAIN MENU -----------------");
+		System.out.println(" 1. 개인정보 수정  |  2. 영화 DB 관리하기  |  0. 종료");
+		System.out.println("----------------------------------------------");
+		int choice = Integer.parseInt(sc.nextLine());
+		switch (choice) {
+		case 1:
+			printPersonalDetailMenu();
+			break;
+		case 2:
+			printWishListMenu();
+			break;
+		case 0:
+			System.exit(0);
+		}
+	}
+
+	// 삭제
+	public static void deleteMovie() {
+		System.out.println("삭제할 영화의 고유번호 입력 : ");
+		int movieNo = Integer.parseInt(sc.nextLine());
+		MovieController.deleteMovie(movieNo);
+	}
+	
+	//로그인
+	public static void login() {
+		System.out.print("아이디 : ");
+		String userId = sc.nextLine();
+
+		System.out.print("비밀번호 : ");
+		String userPwd = sc.nextLine();
+
+		CustomerController.login(userId, userPwd);
+	}
+	
+	/**
+	 * 사용자메뉴 - 1. 개인정보 수정
+	 */
+	private static void printPersonalDetailMenu(???) {
+		System.out.println("------------------- 개인정보 수정 페이지 -------------------");
+		System.out.print("새로운 비밀번호 : ");
+		String userId = sc.nextLine();
+
+		System.out.print("새로운 좋아하는 장르 : ");
+		String userPwd = sc.nextLine();
+		//이런식으로 작성
+	}
+	
+	/**
+	 * 사용자메뉴 - 2. 위시리스트 보기
+	 */
+	private static void printWishListMenu(???) {
+		System.out.println("------------------- 위시리스트 -------------------");
+		
+	}
+	
+	/**
+	 * 사용자메뉴 - 3. 추천 영화 보기
+	 */
+	private static void printRecommendMenu(User user) {
+		// TODO Auto-generated method stub
+		System.out.println("---------------------------- 영화 추천 페이지 ----------------------------");
+		System.out.println(" 1. 인기순 추천 |  2. 나이별 추천  |  3. 태그 추천  | 4. 장르 추천  |  0. 메인으로");
+		System.out.println("----------------------------------------------------------------------");
+		int choice = Integer.parseInt(sc.nextLine());
+		switch (choice) {
+		case 1:
+			System.out.println("----- 인기순추천 -----");
+			RecommendController.recByRank();
+			break;
+		case 2:
+			System.out.println("----- 나이별 추천 -----");
+			RecommendController.recByAge(user.getAge());
+			break;
+		case 3:
+			System.out.println("----- 태그 추천 -----");
+			RecommendController.recByTag(choice, choice);
+			break;
+		case 4:
+			System.out.println("----- 장르 추천 -----");
+			RecommendController.recByGenre(choice, choice);
+			break;
+		case 0:
+
+			break;
+		}
+	}
 	/**
 	 * 사용자메뉴 - 4. 검색하기
 	 */
