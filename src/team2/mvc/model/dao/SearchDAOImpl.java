@@ -19,6 +19,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import team2.mvc.model.dto.MovidDetail;
 import team2.mvc.model.dto.Movie;
 import team2.mvc.util.DbUtil;
 
@@ -31,12 +32,14 @@ public class SearchDAOImpl implements SearchDAO {
 	 */
 	
 	@Override
-	public List<Movie> searchAll() throws SQLException {
+	public List<Movie> searchAll(String sortType) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		List<Movie> movieList = new ArrayList<Movie>();
-		String sql = "SELECT * FROM 영화 ORDER BY 작품명";
+		String sort = sortType;
+		
+		String sql = "SELECT 작품명 FROM 영화 JOIN 영화_상세 ORDER BY " + sort;
 		
 		try {			
 			con = DbUtil.getConnection();
@@ -61,17 +64,20 @@ public class SearchDAOImpl implements SearchDAO {
 	 */
 	
 	@Override
-	public List<Movie> searchByName(String movieName) throws SQLException {
+	public List<Movie> searchByName(String movieName, String sortType) throws SQLException {
 		
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		List<Movie> movieList = new ArrayList<Movie>();
-		String sql = "";
+		String sort = sortType;
+		
+		String sql = "SELECT * FROM 영화 WHERE 작품명 = ? ORDER BY " + sort;
 		
 		try {			
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
+			ps.setString(1, movieName);
 			rs = ps.executeQuery();
 			
 			while(rs.next()) {
@@ -92,17 +98,20 @@ public class SearchDAOImpl implements SearchDAO {
 
 
 	@Override
-	public List<Movie> searchByDirector(String director) throws SQLException {
+	public List<Movie> searchByDirector(String director, String sortType) throws SQLException {
 		
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		List<Movie> movieList = new ArrayList<Movie>();
-		String sql = "";
+		String sort = sortType;
+		
+		String sql = "SELECT * FROM 영화 WHERE 감독 = ? ORDER BY ";
 		
 		try {			
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
+			ps.setString(1, director);
 			rs = ps.executeQuery();
 			
 			while(rs.next()) {
@@ -124,17 +133,25 @@ public class SearchDAOImpl implements SearchDAO {
 	 */
 	
 	@Override
-	public List<Movie> searchByActor(String actor) throws SQLException {
+	public List<Movie> searchByActor(String actor, String sortType) throws SQLException {
 		
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		List<Movie> movieList = new ArrayList<Movie>();
-		String sql = "";
+		String sort = sortType;
+		
+		String sql = "SELECT * FROM 영화 JOIN 배우 USING(영화_고유번호) WHERE 주연1 = ? OR 주연2 = ? OR 조연1 = ? OR 조연2 = ? OR 조연3 = ?";
 		
 		try {			
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
+			ps.setString(1, actor);
+			ps.setString(2, actor);
+			ps.setString(3, actor);
+			ps.setString(4, actor);
+			ps.setString(5, actor);
+			
 			rs = ps.executeQuery();
 			
 			while(rs.next()) {
@@ -155,13 +172,15 @@ public class SearchDAOImpl implements SearchDAO {
 	 */
 	
 	@Override
-	public List<Movie> searchByGenre(String genre) throws SQLException {
+	public List<Movie> searchByGenre(String genre, String sortType) throws SQLException {
 		
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		List<Movie> movieList = new ArrayList<Movie>();
-		String sql = "";
+		String sort = sortType;
+		
+		String sql = "SELECT * FROM ";
 		
 		try {			
 			con = DbUtil.getConnection();
@@ -186,12 +205,14 @@ public class SearchDAOImpl implements SearchDAO {
 	 */
 
 	@Override
-	public List<Movie> searchByNation(String nation) throws SQLException {
+	public List<Movie> searchByNation(String nation, String sortType) throws SQLException {
 
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		List<Movie> movieList = new ArrayList<Movie>();
+		String sort = sortType;
+		
 		String sql = "";
 		
 		try {			
@@ -223,11 +244,12 @@ public class SearchDAOImpl implements SearchDAO {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		Movie movie = null;
-		String sql = "";
+		String sql = "SELECT * FROM 영화 WHERE 영화_고유번호 = ?";
 		
 		try {			
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
+			ps.setInt(1, movieNo);
 			rs = ps.executeQuery();
 			
 			if(rs.next()) {
@@ -249,6 +271,41 @@ public class SearchDAOImpl implements SearchDAO {
 	@Override
 	public List<String> recentSearch() throws SQLException {
 		return null;
+	}
+
+	/**
+	 * 상세 정보 보여주기
+	 */
+	
+	
+	@Override
+	public MovidDetail showMovieDetail(String movieName) throws SQLException {
+		
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;	
+		MovidDetail md = null;
+		
+		String sql = "";
+		
+		try {
+			
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setString(1, movieName);
+			
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				 List<String> a = (List<String>)rs.getObject(6, ArrayList.class);
+				 md = new MovidDetail(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5), a);
+			}
+			
+		}finally {
+			
+			DbUtil.dbClose(con, ps, rs);
+		}
+		return md;
 	}
 	
 	
