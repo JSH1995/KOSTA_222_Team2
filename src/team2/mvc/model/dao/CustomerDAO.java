@@ -7,7 +7,7 @@ import team2.mvc.model.dto.User;
 
 public interface CustomerDAO {
 	
-	List<User> registerUser(int userNo, String id, String password, int age, String userRegDate, int favTag, int favGenre) throws SQLException;
+	List<User> registerUser(int userNo, String id, String password, int age, String userRegDate, int favTag, int favGenre) throws Exception;
 	
 	List<User> login(String id, String password) throws SQLException;
 	
@@ -16,6 +16,12 @@ public interface CustomerDAO {
 	List<User> privacyUpdate() throws SQLException;
 	
 	List<User> passwordUpdate() throws SQLException;
+	
+	List<team2.mvc.model.dto.Evaluation>Evaluation(int userNo, int movieNo, int rate, String comment, String rateDate) throws Exception;
+
+	List<User> passwordUpdate(String pw1, String pw2) throws SQLException;
+
+	List<User> passwordUpdate(int user_nums, String pw1) throws SQLException;
 
 	
 	

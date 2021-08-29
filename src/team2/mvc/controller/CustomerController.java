@@ -1,12 +1,15 @@
 package team2.mvc.controller;
 
 import java.sql.Array;
-
+import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.List;
 
 import team2.mvc.model.dto.User;
 import team2.mvc.model.service.CustomerService;
+import team2.mvc.util.DbUtil;
 import team2.mvc.view.FailView;
 
 public class CustomerController {
@@ -31,6 +34,35 @@ public class CustomerController {
 			// TODO Auto-generated catch block
 			//e.printStackTrace();
 			FailView.errorMessage(e.getMessage());
+		}
+	}
+	
+	
+	public static void Evaluation(int userNo, int movieNo, int rate, String comment, String rateDate) {
+		try {
+			List<team2.mvc.model.dto.Evaluation> list = customerService.Evaluation(userNo, movieNo, rate, comment,rateDate);
+			System.out.println("완료 되었습니다");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			//e.printStackTrace();
+			FailView.errorMessage(e.getMessage());
+		}
+	}
+
+	public static void update_pw(int user_nums, String pw1) {
+		Connection con= null;
+		Statement st=null;
+		ResultSet rs= null;
+		
+		try {
+		con = DbUtil.getConnection();
+		st = con.createStatement();
+		rs = st.executeQuery("update 사용자 set 비밀번호 ='"+pw1+"' where 사용자_고유번호 = '"+user_nums+"'");
+		
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DbUtil.dbClose(con, st, rs);
 		}
 	}
 	

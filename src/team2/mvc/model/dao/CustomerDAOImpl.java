@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -34,10 +35,6 @@ public class CustomerDAOImpl implements CustomerDAO {
 			ps.setInt(6, favTag);
 			ps.setInt(7, favGenre);
 			
-//			String favGenre2 = Arrays.toString(favGenre);
-//			ps.setString(6, favGenre2);
-//			String favTag2 = Arrays.toString(favTag);
-//			ps.setString(7, favTag2);
 			rs = ps.executeQuery();
 
 			if(rs.next()) {
@@ -82,11 +79,53 @@ public class CustomerDAOImpl implements CustomerDAO {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	
+	public List<team2.mvc.model.dto.Evaluation> Evaluation(int userNo, int movieNo, int rate, String comment,
+			String rateDate) throws Exception {
+		
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		List<team2.mvc.model.dto.Evaluation> list = new ArrayList();
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement("insert into 사용자 values(?,?,?,?,?)");
+			ps.setInt(1, userNo);
+			ps.setInt(2, movieNo);
+			ps.setInt(3, rate);
+			ps.setString(4, comment);
+			ps.setString(5, rateDate);
+		
+			
+			rs = ps.executeQuery();
+
+			if(rs.next()) {
+				list.add(new team2.mvc.model.dto.Evaluation(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getString(4), rs.getString(5)));
+			}
+		} finally {
+			DbUtil.dbClose(con, ps, rs);
+		}
+		
+		return list;
+	}
 	@Override
 	public List<User> passwordUpdate() throws SQLException {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	@Override
+	public List<User> passwordUpdate(String pw1, String pw2) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public List<User> passwordUpdate(int user_nums, String pw1) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
 	
 	
 
