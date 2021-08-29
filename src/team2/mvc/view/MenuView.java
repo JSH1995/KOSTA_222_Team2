@@ -525,5 +525,5 @@ public class MenuView {
 						System.out.println("삭제를 원하는 영화상세정보에 해당하는 영화고유번호 입력 : ");
 						int movieNo = Integer.parseInt(sc.nextLine());
 						MovieController.deleteMovieDetail(movieNo);
-					}
+					} 
 }

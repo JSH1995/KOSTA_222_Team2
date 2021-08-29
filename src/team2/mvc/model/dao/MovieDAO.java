@@ -48,7 +48,7 @@ public interface MovieDAO {
 	 * */
 	int updateTag(Tag tag)throws SQLException;
 	
-	/**
+	/** 
 	 * 태그 삭제
 	 * */
 	int deleteTag(int movieNo) throws SQLException;

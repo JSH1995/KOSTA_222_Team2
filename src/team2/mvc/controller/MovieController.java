@@ -27,7 +27,7 @@ public class MovieController {
 			FailView.errorMessage(e.getMessage());
 		}
 		
-	}
+	} 
 	
 	/**
 	 * 영화 수정

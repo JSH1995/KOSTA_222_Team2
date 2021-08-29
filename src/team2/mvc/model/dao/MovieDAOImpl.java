@@ -230,6 +230,7 @@ public class MovieDAOImpl implements MovieDAO {
 	}
 	
 	
+
 	/**
 	 * 영화상세정보 등록
 	 * */

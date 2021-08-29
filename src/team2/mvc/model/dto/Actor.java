@@ -61,7 +61,7 @@ public class Actor {
 
 	public void setSupActor2(String supActor2) {
 		this.supActor2 = supActor2;
-	}
+	} 
 
 	public String getSupActor3() {
 		return supActor3;

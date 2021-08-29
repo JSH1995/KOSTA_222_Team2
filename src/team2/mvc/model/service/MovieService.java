@@ -125,7 +125,7 @@ public class MovieService {
 		int result = movieDAO.deleteMovieDetail(movieNo);
 		if(result == 0) {
 			throw new SQLException("삭제되지 않았습니다.");
-		}
+		} 
 		
 	}
 

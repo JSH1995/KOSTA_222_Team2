@@ -16,7 +16,7 @@ public class Movie {
 		this.movieRegDate = movieRegDate;
 		this.genreNo = genreNo;
 	}
-	
+	 
 	
 	public int getMovieNo() {
 		return movieNo;
