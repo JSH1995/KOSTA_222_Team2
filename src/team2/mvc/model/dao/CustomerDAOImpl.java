@@ -90,7 +90,7 @@ public class CustomerDAOImpl implements CustomerDAO {
 		List<team2.mvc.model.dto.Evaluation> list = new ArrayList();
 		try {
 			con = DbUtil.getConnection();
-			ps = con.prepareStatement("insert into 사용자 values(?,?,?,?,?)");
+			ps = con.prepareStatement("insert into 사용자_평가 values(?,?,?,?,?)");
 			ps.setInt(1, userNo);
 			ps.setInt(2, movieNo);
 			ps.setInt(3, rate);
