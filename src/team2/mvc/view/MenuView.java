@@ -5,7 +5,10 @@ import team2.mvc.controller.CustomerController;
 import team2.mvc.controller.MovieController;
 import team2.mvc.controller.RecommendController;
 import team2.mvc.controller.WishController;
+import team2.mvc.model.dto.Actor;
+import team2.mvc.model.dto.MovidDetail;
 import team2.mvc.model.dto.Movie;
+import team2.mvc.model.dto.Tag;
 import team2.mvc.model.dto.User;
 import team2.mvc.util.DbUtil;
 
@@ -185,50 +188,7 @@ public class MenuView {
 			}
 		}
 	}
-	/**
-	 * 영화 등록, 수정, 삭제 되는지 확인용입니닷 영화_고유번호, 장르번호, 작품명, 감독, 심의등급, 영화등록일자
-	 */
-
-	// 등록
-	public static void registerMovie() {
-
-		System.out.print("등록할 작품번호 : ");
-		int movieNo = sc.nextInt();
-
-		System.out.print("등록할 작품명 : ");
-		String movieName = sc.nextLine();
-
-		System.out.print("감독 :");
-		String director = sc.nextLine();
-
-		System.out.print("작품 장르 번호 : ");
-		int genreNo = sc.nextInt();
-
-		// int movieNo, String movieName, String director, String movieRegDate, int
-		// genreNo
-		Movie movie = new Movie(movieNo, movieName, director, null, genreNo);
-		MovieController.registerMovie(movie);
-	}
-
-	// 수정
-	public static void updateMovie() {
-	   	 
-	   	 System.out.print("수정할 영화고유번호 입력 : ");
-	   	 int movieNo = sc.nextInt();
-	   	 
-	     System.out.print("작품명 : ");
-	  	 String movieName = sc.next();
-	   	 
-	   	 System.out.print("작품감독 : ");
-	   	 String director = sc.next();
-	   	 
-	   	 System.out.print("장르번호 : ");
-	   	 int genreNo = sc.nextInt();
-	   	 
-	   	 //movie 생성자 인수 : int movieNo, String movieName, String director, String movieRegDate, int genreNo
-	   	 Movie movie =  new Movie(movieNo, movieName, director, null, genreNo);
-	   	 MovieController.updateMovie(movie);
-	}
+	
 
 	public static void printUserMenu(User user) {
 		System.out.println("-------------------------------- MAIN MENU --------------------------------");
@@ -274,12 +234,7 @@ public class MenuView {
 		}
 	}
 
-	// 삭제
-	public static void deleteMovie() {
-		System.out.println("삭제할 영화의 고유번호 입력 : ");
-		int movieNo = Integer.parseInt(sc.nextLine());
-		MovieController.deleteMovie(movieNo);
-	}
+	
 	
 	//로그인
 	public static void login() {
@@ -354,4 +309,221 @@ public class MenuView {
 		System.out.println(" 1. 전체검색 |  2. 작품명 검색  |...");
 		System.out.println("----------------------------------------------------------------------");
 	}
+	
+	/**
+	 * 영화, 영화상세정보, 태그, 배우 등록 수정 삭제
+	 * */
+		
+	static String date1 = "";
+		
+		/**
+		 * 영화 등록 수정 삭제
+		 * */
+		//영화 등록
+			public static void registerMovie() {
+				
+				System.out.print("등록할 영화고유번호 입력 : ");
+			   	 int movieNo = Integer.parseInt(sc.nextLine());
+			   	 
+			   	System.out.print("장르번호 등록 : ");
+			   	 int genreNo = Integer.parseInt(sc.nextLine());
+			   	 
+			   	 System.out.print("작품명 등록 : ");
+			   	 String movieName = sc.nextLine();
+			   	 
+			   	 System.out.print("작품감독 등록 : ");
+			   	 String director = sc.nextLine();
+
+				MovieController.registerMovie(movieNo, genreNo, movieName, director, date1);
+			}
+
+			//영화 수정
+			public static void updateMovie() {
+			   	 
+				
+			   	 System.out.print("수정할 영화고유번호 입력 : ");
+			   	 int movieNo = Integer.parseInt(sc.nextLine());
+			   	 
+			   	 System.out.print("장르번호 수정 : ");
+			   	 int genreNo = Integer.parseInt(sc.nextLine());
+			   	 
+			   	 System.out.print("작품명 수정 : ");
+			   	 String movieName = sc.nextLine();
+			   	 
+			   	 System.out.print("작품감독 수정 : ");
+			   	 String director = sc.nextLine();
+			   	 
+			   	MovieController.updateMovie(movieNo, genreNo, movieName, director, date1);
+			}
+			
+			//영화 삭제
+			public static void deleteMovie() {
+				System.out.println("삭제할 영화의 고유번호 입력 : ");
+				int movieNo = Integer.parseInt(sc.nextLine());
+				MovieController.deleteMovie(movieNo);
+			}
+			
+			
+			/**
+			 * 배우 등록 수정 삭제
+			 * */
+			//배우 등록
+				public static void registerActor() {
+
+					System.out.print("해당 작품번호 : ");
+					int movieNo = Integer.parseInt(sc.nextLine());
+
+					System.out.print("주연1 : ");
+					String mainActor1 = sc.nextLine();
+
+					System.out.print("주연2 : ");
+					String mainActor2 = sc.nextLine();
+					
+					System.out.print("조연1 : ");
+					String supActor1 = sc.nextLine();
+					
+					System.out.print("조연2 : ");
+					String supActor2 = sc.nextLine();
+					
+					System.out.print("조연3 : ");
+					String supActor3 = sc.nextLine();
+
+					Actor actor = new Actor(movieNo, mainActor1, mainActor2, supActor1, supActor2, supActor3);
+					MovieController.registerActor(actor);
+				}
+
+				//배우 수정
+				public static void updateActor() {
+				   	 
+					System.out.print("수정할 해당 작품번호 : ");
+					int movieNo = Integer.parseInt(sc.nextLine());
+
+					System.out.print("주연1 : ");
+					String mainActor1 = sc.nextLine();
+
+					System.out.print("주연2 : ");
+					String mainActor2 = sc.nextLine();
+					
+					System.out.print("조연1 : ");
+					String supActor1 = sc.nextLine();
+					
+					System.out.print("조연2 : ");
+					String supActor2 = sc.nextLine();
+					
+					System.out.print("조연3 : ");
+					String supActor3 = sc.nextLine();
+				   	 
+					Actor actor = new Actor(movieNo, mainActor1, mainActor2, supActor1, supActor2, supActor3);
+				   	MovieController.updateActor(actor);
+				}
+				
+				//배우 삭제
+				public static void deleteActor() {
+					System.out.println("삭제할 영화의 고유번호 입력 : ");
+					int movieNo = Integer.parseInt(sc.nextLine());
+					MovieController.deleteActor(movieNo);
+				}
+				
+				/**
+				 * 태그 등록 수정 삭제
+				 * */
+				//태그 등록
+					public static void registerTag() {
+
+						System.out.print("등록할 작품번호 : ");
+						int movieNo = Integer.parseInt(sc.nextLine());
+
+						System.out.print("등록할 태그 : ");
+						int tagNo = Integer.parseInt(sc.nextLine());
+
+						Tag tag = new Tag(movieNo, tagNo);
+						MovieController.registerTag(tag);
+					}
+
+					//태그 수정
+					public static void updateTag() {
+					   	 
+					System.out.print("태그 변경할 작품번호 : ");
+					int movieNo = Integer.parseInt(sc.nextLine());
+
+					System.out.print("수정할 태그 : ");
+					int tagNo = Integer.parseInt(sc.nextLine());
+					   	 
+					   	
+				   	Tag tag = new Tag(movieNo, tagNo);
+					MovieController.updateTag(tag);
+					}
+					
+					//태그 삭제
+					public static void deleteTag() {
+						System.out.println("삭제할 영화의 고유번호 입력 : ");
+						int movieNo = Integer.parseInt(sc.nextLine());
+						MovieController.deleteTag(movieNo);
+					}
+					
+					
+				/**
+				 * 영화_상세 등록 수정 삭제
+				 * */
+				//영화_상세 등록
+					public static void registerMovieDetail() {
+
+						System.out.print("새롭게 등록할 작품번호 : ");
+						int movieNo = Integer.parseInt(sc.nextLine());
+
+						System.out.print("줄거리 : ");
+						String content = sc.nextLine();
+						
+						System.out.print("런타임 : ");
+						int runtime = Integer.parseInt(sc.nextLine());
+						
+						System.out.print("개봉일자 : ");
+						String releaseDate = sc.nextLine();
+						
+						System.out.print("국가 : ");
+						String nation = sc.nextLine();
+						
+						System.out.print("사용자 지정 태그 : ");
+						String userTag = sc.nextLine();
+						
+						
+	                    
+						//int movieNo, String content, int runtime, String releaseDate, String nation,
+						//List<String> userTag
+						MovidDetail movieDetail = new MovidDetail(movieNo, content, runtime, releaseDate, nation, userTag);
+						MovieController.registerMovieDetail(movieDetail);
+					}
+
+					//영화_상세 내용 수정
+					public static void updateMovieDetail() {
+					   	 
+						System.out.print("수정할 작품번호 : ");
+						int movieNo = Integer.parseInt(sc.nextLine());
+
+						System.out.print("줄거리 수정 : ");
+						String content = sc.nextLine();
+						
+						System.out.print("런타임 수정 : ");
+						int runtime = Integer.parseInt(sc.nextLine());
+						
+						System.out.print("개봉일자 수정 : ");
+						String releaseDate = sc.nextLine();
+						
+						System.out.print("국가 수정 : ");
+						String nation = sc.nextLine();
+						
+						System.out.print("사용자 지정 태그 수정 : ");
+						String userTag = sc.nextLine();
+					   	 
+					   	
+					   	MovidDetail movieDetail = new MovidDetail(movieNo, content, runtime, releaseDate, nation, userTag);
+						MovieController.updateMovieDetail(movieDetail);
+					}
+					
+					//영화_상세 정보 삭제
+					public static void deleteMovieDetail() {
+						System.out.println("삭제를 원하는 영화상세정보에 해당하는 영화고유번호 입력 : ");
+						int movieNo = Integer.parseInt(sc.nextLine());
+						MovieController.deleteMovieDetail(movieNo);
+					}
 }

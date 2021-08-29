@@ -9,12 +9,12 @@ public class MovidDetail {
 	private int runtime;
 	private String releaseDate;
 	private String nation;
-	private List<String> userTag;
+	private String userTag;
 	
 	public MovidDetail() {}
 
 	public MovidDetail(int movieNo, String content, int runtime, String releaseDate, String nation,
-			List<String> userTag) {
+			String userTag) {
 		super();
 		this.movieNo = movieNo;
 		this.content = content;
@@ -64,11 +64,11 @@ public class MovidDetail {
 		this.nation = nation;
 	}
 
-	public List<String> getUserTag() {
+	public String getUserTag() {
 		return userTag;
 	}
 
-	public void setUserTag(List<String> userTag) {
+	public void setUserTag(String userTag) {
 		this.userTag = userTag;
 	}
 

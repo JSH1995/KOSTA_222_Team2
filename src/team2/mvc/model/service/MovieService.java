@@ -4,7 +4,6 @@ import java.sql.SQLException;
 
 import team2.mvc.model.dto.Actor;
 import team2.mvc.model.dto.MovidDetail;
-import team2.mvc.model.dto.Movie;
 import team2.mvc.model.dto.Tag;
 import team2.mvc.model.dao.MovieDAO;
 import team2.mvc.model.dao.MovieDAOImpl;
@@ -12,26 +11,22 @@ import team2.mvc.model.dao.MovieDAOImpl;
 public class MovieService {
 	
     private MovieDAO movieDAO = new MovieDAOImpl();
-    private 
-	
-	public MovieService() {
-		
-	}
+
     
     /**
      * 영화
      * */
 
-	public void registerMovie(Movie movie) throws SQLException {
-		int result = movieDAO.registerMovie(movie);
+	public void registerMovie(int movieNo, int genreNo, String movieName, String director, String date1) throws SQLException {
+		int result = movieDAO.registerMovie(movieNo, genreNo, movieName, director, date1);
 		if(result == 0) {
 			throw new SQLException("등록되지 않았습니다.");
 		}
 		
 	}
 
-	public void updateMovie(Movie movie) throws SQLException {
-		int result = movieDAO.updateMovie(movie);
+	public void updateMovie(int movieNo, int genreNo, String movieName, String director, String date1) throws SQLException {
+		int result = movieDAO.updateMovie(movieNo, genreNo, movieName, director, date1);
 		if(result == 0) {
 			throw new SQLException("수정되지 않았습니다.");
 		}
@@ -118,7 +113,7 @@ public class MovieService {
 	}
 
 	public void updateMovieDetail(MovidDetail movieDetail) throws SQLException {
-		int result = movieDAO.updateTag(movieDetail);
+		int result = movieDAO.updateMovieDetail(movieDetail);
 		if(result == 0) {
 			throw new SQLException("수정되지 않았습니다.");
 		}

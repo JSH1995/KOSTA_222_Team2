@@ -21,7 +21,7 @@ public class MovieDAOImpl implements MovieDAO {
 	/**
 	 * 영화 등록
 	 * */
-	public int registerMovie(Movie movie) throws SQLException {
+	public int registerMovie(int movieNo, int genreNo, String movieName, String director, String date1) throws SQLException {
 		Connection con=null;
 		PreparedStatement ps=null;
 		int result=0;
@@ -30,10 +30,10 @@ public class MovieDAOImpl implements MovieDAO {
 		try {
 			con=DbUtil.getConnection();
 			ps=con.prepareStatement(sql);
-			ps.setInt(1, movie.getMovieNo());
-			ps.setInt(2, movie.getGenreNo());
-			ps.setString(3, movie.getMovieName());
-			ps.setString(4, movie.getDirector());
+			ps.setInt(1, movieNo);
+			ps.setInt(2, genreNo);
+			ps.setString(3, movieName);
+			ps.setString(4, director);
 			
 			result = ps.executeUpdate();
 			
@@ -46,7 +46,7 @@ public class MovieDAOImpl implements MovieDAO {
 	/**
 	 * 영화_고유번호에 해당하는 영화정보 수정
 	 * */
-	public int updateMovie(Movie movie) throws SQLException {
+	public int updateMovie(int movieNo, int genreNo, String movieName, String director, String date1) throws SQLException {
 		Connection con=null;
 		PreparedStatement ps=null;
 		int result=0;
@@ -54,10 +54,10 @@ public class MovieDAOImpl implements MovieDAO {
 		try {
 			con=DbUtil.getConnection();
 			ps=con.prepareStatement(sql);
-			ps.setInt(1, movie.getGenreNo());
-			ps.setString(2, movie.getMovieName());
-			ps.setString(3, movie.getDirector());
-			ps.setInt(4, movie.getMovieNo());
+			ps.setInt(1, genreNo);
+			ps.setString(2, movieName);
+			ps.setString(3, director);
+			ps.setInt(4, movieNo);
 			
 			result = ps.executeUpdate();
 			
@@ -96,16 +96,17 @@ public class MovieDAOImpl implements MovieDAO {
 		Connection con=null;
 		PreparedStatement ps=null;
 		int result=0;
-		String sql="insert into 배우(주연1, 주연2, 조연1, 조연2, 조연3) values(?, ?, ?, ?, ?)";
+		String sql="insert into 배우(영화_고유번호, 주연1, 주연2, 조연1, 조연2, 조연3) values(?, ?, ?, ?, ?, ?) ";
 		try {
 			con=DbUtil.getConnection();
 			ps=con.prepareStatement(sql);
 			
-			ps.setString(1, actor.getMainActor1());
-			ps.setString(2, actor.getMainActor2());
-			ps.setString(3, actor.getSupActor1());
-			ps.setString(4, actor.getSupActor2());
-			ps.setString(5, actor.getSupActor3());
+			ps.setInt(1, actor.getMovieNo());
+			ps.setString(2, actor.getMainActor1());
+			ps.setString(3, actor.getMainActor2());
+			ps.setString(4, actor.getSupActor1());
+			ps.setString(5, actor.getSupActor2());
+			ps.setString(6, actor.getSupActor3());
 			
 			result = ps.executeUpdate();
 			
@@ -122,16 +123,17 @@ public class MovieDAOImpl implements MovieDAO {
 		Connection con=null;
 		PreparedStatement ps=null;
 		int result=0;
-		String sql="update 배우 set 주연1=?, 주연2=?, 주연1=?, 조연2=?, 조연3=? where 영화_고유번호=?";
+		String sql="update 배우 set 주연1=?, 주연2=?, 조연1=?, 조연2=?, 조연3=? where 영화_고유번호=?";
 		try {
 			con=DbUtil.getConnection();
 			ps=con.prepareStatement(sql);
+			
+			ps.setInt(6, actor.getMovieNo());
 			ps.setString(1, actor.getMainActor1());
 			ps.setString(2, actor.getMainActor2());
 			ps.setString(3, actor.getSupActor1());
 			ps.setString(4, actor.getSupActor2());
 			ps.setString(5, actor.getSupActor3());
-			ps.setInt(6, actor.getMovieNo());
 			
 			result = ps.executeUpdate();
 			
@@ -303,5 +305,6 @@ public class MovieDAOImpl implements MovieDAO {
 		}
 		return result;
 	}
+
 
 }

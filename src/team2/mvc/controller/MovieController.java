@@ -18,9 +18,9 @@ public class MovieController {
 	/**
 	 * 영화 등록
 	 * */
-	public static void registerMovie(Movie movie) {
+	public static void registerMovie(int movieNo, int genreNo, String movieName, String director, String date1) {
 		try {
-			movieService.registerMovie(movie);
+			movieService.registerMovie(movieNo, genreNo, movieName, director, date1);
 			SuccessView.messagePrint("등록되었습니다.");
 		}catch(SQLException e) {
 			//e.printStackTrace();
@@ -32,9 +32,9 @@ public class MovieController {
 	/**
 	 * 영화 수정
 	 * */
-	public static void updateMovie(Movie movie) {
+	public static void updateMovie(int movieNo, int genreNo, String movieName, String director, String date1) {
 		try {
-			movieService.updateMovie(movie);
+			movieService.updateMovie(movieNo, genreNo, movieName, director, date1);
 			SuccessView.messagePrint("수정되었습니다.");
 		}catch(SQLException e) {
 			//e.printStackTrace();
