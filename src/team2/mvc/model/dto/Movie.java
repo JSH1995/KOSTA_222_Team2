@@ -8,7 +8,7 @@ public class Movie {
 	private int genreNo;
 	
 	public Movie() {}
-	public Movie(int movieNo, String movieName, String director, String movieRegDate, int genreNo) {
+	public Movie(int movieNo, int genreNo, String movieName, String director, String movieRegDate) {
 		super();
 		this.movieNo = movieNo;
 		this.movieName = movieName;
