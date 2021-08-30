@@ -28,8 +28,10 @@ public class MenuView {
 	static User user;
 	static String user_id;
 	static String user_pw;
+	static boolean logincheck;
 	private static Scanner sc = new Scanner(System.in);
 	private static Set<String> keywordList = new HashSet<String>();
+	private static MenuView mv = new MenuView();
 
 	public static void menu() {
 
@@ -155,8 +157,9 @@ public class MenuView {
 				} finally {
 					DbUtil.dbClose(con, st, rs);
 				}
-				CustomerController.login(login_id, login_pw);// 로그인
+				logincheck = CustomerController.login(login_id, login_pw);// 로그인
 
+				mv.printUserMenu(user);
 				break;
 
 			case 3:// 사용자 평가 영화 고유번호만 넣어주면 됨
@@ -189,6 +192,7 @@ public class MenuView {
 	}
 
 	public static void printUserMenu(User user) {
+		while(logincheck) {
 		System.out.println(
 				"----------------------------------------- MAIN MENU -----------------------------------------");
 		System.out.println(" 1. 개인정보 수정 |  2. 위시리스트 보기  |  3. 추천 영화 보기  | 4. 검색하기  | 5. 최근 검색 리스트 | 0. 종료");
@@ -215,6 +219,8 @@ public class MenuView {
 			System.exit(0);
 
 		}
+	}
+		
 	}
 
 	public static void printAdminMenu(User user) {
@@ -378,6 +384,7 @@ public class MenuView {
 
 			}
 		}
+		
 	}
 
 	/**

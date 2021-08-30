@@ -1,6 +1,8 @@
 package team2.mvc.controller;
 
 import java.sql.Array;
+
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,7 +14,10 @@ import team2.mvc.model.service.CustomerService;
 import team2.mvc.util.DbUtil;
 import team2.mvc.view.FailView;
 
+
 public class CustomerController {
+	public static boolean su = false;
+	
 	static CustomerService customerService =  new CustomerService();
 	
 	public static void registerUser(int userNo, String id, String password, int age, String userRegDate,int favTag, int favGenre ) {
@@ -26,15 +31,20 @@ public class CustomerController {
 		}
 	}
 	
-	public static void login(String id, String password) {
+	public static boolean login(String id, String password) {
 		try {
 			List<User> list = customerService.login(id,password);
 			System.out.println("로그인 성공");
+			//su=true;
+			return true;
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			//e.printStackTrace();
 			FailView.errorMessage(e.getMessage());
+			
 		}
+		return false;
+		
 	}
 	
 	
