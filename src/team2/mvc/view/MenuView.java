@@ -1,6 +1,7 @@
 package team2.mvc.view;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -694,9 +695,9 @@ public class MenuView {
 		System.out.println("========영화 상세 정보 확인========");
 		String keyword = insertKeyword();
 		Search sd = SearchController.showMovieDetail(keyword);
-		String mn =sd.getMovieName();
-		String di = sd.getDirector();
-		int movienum=0;
+		String mn = sd.getMovieName();
+		//String di = sd.getDirector();
+		int movienum = 0;
 		
 		System.out.println("=======================================================================");
 		System.out.println("1: 현재 영화의 평점 및 코멘트를 작성하시겠습니까? | 0: 종료 |");
@@ -705,14 +706,15 @@ public class MenuView {
 		switch(choice){
 		case 1:
 			Connection con = null;
-			Statement st = null;
+			PreparedStatement ps = null;
 			ResultSet rs = null;
+			String sql = "SELECT 영화_고유번호 FROM 영화 WHERE 작품명 = " + "'"+ mn +"'";
 
 			try {
 				con = DbUtil.getConnection();
-				st = con.createStatement();
-				rs = st.executeQuery(
-						"select 영화_고유번호 from 영화 where 작품명  ='" + mn + "' and 감독 = '" + di + "'");
+				ps = con.prepareStatement(sql);
+				rs = ps.executeQuery();
+						//"select 영화_고유번호 from 영화 where 작품명  ='" + mn + "' and 감독 = '" + di + "'");
 				if(rs.next()) {
 					movienum = rs.getInt(1);
 				};
@@ -720,7 +722,7 @@ public class MenuView {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			} finally {
-				DbUtil.dbClose(con, st);
+				DbUtil.dbClose(con, ps, rs);
 			}
 			
 			userComment(movienum);
