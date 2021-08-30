@@ -31,7 +31,6 @@ public class MenuView {
 	static boolean logincheck;
 	private static Scanner sc = new Scanner(System.in);
 	private static Set<String> keywordList = new HashSet<String>();
-	private static MenuView mv = new MenuView();
 
 	public static void menu() {
 
@@ -157,9 +156,9 @@ public class MenuView {
 				} finally {
 					DbUtil.dbClose(con, st, rs);
 				}
+				
 				logincheck = CustomerController.login(login_id, login_pw);// 로그인
-
-				mv.printUserMenu(user);
+				printUserMenu(user);
 				break;
 
 			case 3:// 사용자 평가 영화 고유번호만 넣어주면 됨

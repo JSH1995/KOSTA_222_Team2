@@ -16,7 +16,6 @@ import team2.mvc.view.FailView;
 
 
 public class CustomerController {
-	public static boolean su = false;
 	
 	static CustomerService customerService =  new CustomerService();
 	
