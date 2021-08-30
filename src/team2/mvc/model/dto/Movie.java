@@ -52,7 +52,7 @@ public class Movie {
 	
 	@Override
 	public String toString() {
-		return "[작품명: "+ movieName + ", " + director + "]";
+		return "["+ movieName + "], " + director ;
 	}
 	
 	

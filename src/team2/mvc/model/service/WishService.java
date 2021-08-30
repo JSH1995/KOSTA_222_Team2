@@ -12,7 +12,7 @@ public class WishService {
 	WishDAO wishDAO = new WishDAOlmpl();
 
 	public List<Movie> viewWishList(int userNo) throws SQLException {
-			List<Movie> movieList = wishDAO.viewWishList( userNo);
+			List<Movie> movieList = wishDAO.viewWishList(userNo);
 			if(movieList==null || movieList.isEmpty()) {
 				throw new SQLException("위시리스트가 없습니다.");
 			}

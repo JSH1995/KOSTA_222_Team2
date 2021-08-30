@@ -42,7 +42,7 @@ public class MenuView {
 			int choice = Integer.parseInt(sc.nextLine());
 			switch (choice) {
 			case 1:
-				
+
 				Calendar cal = Calendar.getInstance();
 
 				String month = Integer.toString(cal.get(Calendar.MONTH) + 1);
@@ -63,14 +63,15 @@ public class MenuView {
 
 				System.out.println("나이를 입력해주세요");
 				int age = Integer.parseInt(sc.nextLine());
-				System.out.println(" 1. 시간 |  2. 외계인  |  3. 우주  | 4. 고전  | 5. 복수 | 6. 패션  | 7. 미래적인  | 8. 편견을 깨는 | 9. 독립 ");
+				System.out.println(
+						" 1. 시간 |  2. 외계인  |  3. 우주  | 4. 고전  | 5. 복수 | 6. 패션  | 7. 미래적인  | 8. 편견을 깨는 | 9. 독립 ");
 				System.out.println("좋아하는 태그를 입력해주세요");
-				
+
 				int tegnum = Integer.parseInt(sc.nextLine());
-				System.out.println("  1. 드라마 |  2. 스릴러  |  3. 범죄  | 4. 로맨스  | 5. 액션 | 6. 다큐멘터리  | 7. 애니메이션  | 8. 코미디 | 9. 공포  | 10. SF ");
+				System.out.println(
+						"  1. 드라마 |  2. 스릴러  |  3. 범죄  | 4. 로맨스  | 5. 액션 | 6. 다큐멘터리  | 7. 애니메이션  | 8. 코미디 | 9. 공포  | 10. SF ");
 				System.out.println("좋아하는 장르를 입력해주세요");
 				int jnum = Integer.parseInt(sc.nextLine());
-				
 
 				CustomerController.registerUser(usernumber, id, pw, age, datestr, tegnum, jnum); // 가입
 				break;
@@ -89,8 +90,7 @@ public class MenuView {
 				try {
 					con = DbUtil.getConnection();
 					st = con.createStatement();
-					rs = st.executeQuery(
-							"select * from 사용자 where 아이디 ='" + user_id + "' and 비밀번호 = '" + user_pw + "'");
+					rs = st.executeQuery("select * from 사용자 where 아이디 ='" + user_id + "' and 비밀번호 = '" + user_pw + "'");
 					while (rs.next()) {
 						int user_num = rs.getInt(1);
 						String u_id = rs.getString(2);
@@ -99,7 +99,7 @@ public class MenuView {
 						String u_regdate = rs.getString(5);
 						int u_favgenre = rs.getInt(6);
 						int u_favtag = rs.getInt(7);
-						
+
 						user = new User(user_num, u_id, u_pw, u_age, u_regdate, u_favgenre, u_favtag);
 					}
 				} catch (SQLException e) {
@@ -107,9 +107,9 @@ public class MenuView {
 				} finally {
 					DbUtil.dbClose(con, st, rs);
 				}
-				
+
 				logincheck = CustomerController.login(login_id, login_pw);// 로그인
-				if(login_id.equals("admin")) {
+				if (login_id.equals("admin")) {
 					System.out.println("---- 1: 메인 메뉴  ---- 2: 관리자 메뉴 ---- ");
 					int choice2 = Integer.parseInt(sc.nextLine());
 					switch (choice2) {
@@ -123,13 +123,11 @@ public class MenuView {
 						System.exit(0);
 
 					}
-					
-				}else
-				printUserMenu();
+
+				} else
+					printUserMenu();
 				break;
 
-			
-			
 			case 0:
 				System.exit(0);
 			}
@@ -137,35 +135,35 @@ public class MenuView {
 	}
 
 	public static void printUserMenu() {
-		while(logincheck) {
-		System.out.println(
-				"----------------------------------------- MAIN MENU -----------------------------------------");
-		System.out.println(" 1. 개인정보 수정 |  2. 위시리스트 보기  |  3. 추천 영화 보기  | 4. 검색하기  | 5. 최근 검색 리스트 | 0. 종료");
-		System.out.println(
-				"---------------------------------------------------------------------------------------------");
-		int choice = Integer.parseInt(sc.nextLine());
-		switch (choice) {
-		case 1:
-			printPersonalDetailMenu();
-			break;
-		case 2:
-			printWishListMenu(user.getUserNo());
-			break;
-		case 3:
-			printRecommendMenu(user);
-			break;
-		case 4:
-			printSearchMenu();
-			break;
-		case 5:
-			showRecentSearchList();
-			break;
-		case 0:
-			System.exit(0);
+		while (logincheck) {
+			System.out.println(
+					"----------------------------------------- MAIN MENU -----------------------------------------");
+			System.out.println(" 1. 개인정보 수정 |  2. 위시리스트 보기  |  3. 추천 영화 보기  | 4. 검색하기  | 5. 최근 검색 리스트 | 0. 종료");
+			System.out.println(
+					"---------------------------------------------------------------------------------------------");
+			int choice = Integer.parseInt(sc.nextLine());
+			switch (choice) {
+			case 1:
+				printPersonalDetailMenu();
+				break;
+			case 2:
+				printWishListMenu(user.getUserNo());
+				break;
+			case 3:
+				printRecommendMenu(user);
+				break;
+			case 4:
+				printSearchMenu();
+				break;
+			case 5:
+				showRecentSearchList();
+				break;
+			case 0:
+				System.exit(0);
 
+			}
 		}
-	}
-		
+
 	}
 
 	public static void printAdminMenu(User user) {
@@ -204,18 +202,14 @@ public class MenuView {
 		System.out.println("변경하실 pw를 입력해주세요");
 		String pw1 = sc.nextLine();
 		CustomerController.update_pw(user.getUserNo(), pw1);
-		
-//		System.out.print("새로운 좋아하는 장르 : ");
-//		String userPwd = sc.nextLine();
-		// 이런식으로 작성
 	}
 
 	/**
 	 * 사용자메뉴 - 2. 위시리스트 보기
 	 */
 	private static void printWishListMenu(int userNo) {
-		System.out.println("------------------- 위시리스트 -------------------");
-		WishController.viewWishList(83002040);
+		System.out.println(user.getId() + "님의 위시리스트입니다");
+		WishController.viewWishList(user.getUserNo());
 
 	}
 
@@ -230,19 +224,24 @@ public class MenuView {
 		int choice = Integer.parseInt(sc.nextLine());
 		switch (choice) {
 		case 1:
-			System.out.println("----- 인기순추천 -----");
+			System.out.println("[인기순 추천]");
+			System.out.println("현재 위시리스트에 가장 많이 담긴 영화들이에요!\n");
 			RecommendController.recByRank();
 			break;
 		case 2:
-			System.out.println("----- 나이별 추천 -----");
+			System.out.println("[나이별 추천]");
+			System.out.println((int) user.getAge() / 10 * 10 + "대의 위시리스트에 가장 많이 담긴 영화들이에요!\n");
 			RecommendController.recByAge(user.getAge());
 			break;
 		case 3:
-			System.out.println("----- 태그 추천 -----");
+			System.out.println("[태그 추천]");
+			System.out.println(user.getId() + "님이 좋아하는 영화의 태그를 기반으로 영화를 추천해드릴게요!\n");
+
 			RecommendController.recByTag(user.getUserNo());
 			break;
 		case 4:
-			System.out.println("----- 장르 추천 -----");
+			System.out.println("[장르 추천]");
+			System.out.println(user.getId() + "님이 좋아하는 영화의 장르를 기반으로 영화를 추천해드릴게요!\n");
 			RecommendController.recByGenre(user.getUserNo());
 			break;
 		case 0:
@@ -316,7 +315,6 @@ public class MenuView {
 				break;
 			case 7:
 				movieDetail();
-				
 				break;
 			case 8:
 				return;
@@ -328,7 +326,7 @@ public class MenuView {
 
 			}
 		}
-		
+
 	}
 
 	/**
@@ -414,14 +412,15 @@ public class MenuView {
 	 */
 	// 영화 등록
 	public static void adminMenu() {
-	
 
 		System.out.println("========================== 관리자 메뉴 입니다. ===========================");
 		System.out.println("=============================== 정렬 메뉴 ================================");
 		System.out.println("1. 영화등록 | 2. 영화수정 | 3. 영화삭제 | 4. 배우등록 | 5. 배우수정 | 6. 배우삭제 |");
-		System.out.println("================================================================================================");
+		System.out.println(
+				"================================================================================================");
 		System.out.println("7. 태그등록 | 8. 태그수정 | 9. 태그삭제 | 10. 영화상세등록 | 11. 영화상세수정 | 12. 영화상세삭제 |");
-		System.out.println("===================================================================================================");
+		System.out.println(
+				"===================================================================================================");
 
 		int choice = Integer.parseInt(sc.nextLine());
 
@@ -462,18 +461,15 @@ public class MenuView {
 		case 12:
 			deleteMovieDetail();
 			break;
-	
-			
+
 		default:
-			
+
 			break;// 문자나 다른거 입력 시 Exception 처리 필요
 
 		}
 
-		
-		
 	}
-	
+
 	public static void registerMovie() {
 
 		System.out.print("등록할 영화고유번호 입력 : ");
@@ -673,13 +669,14 @@ public class MenuView {
 		int movieNo = Integer.parseInt(sc.nextLine());
 		MovieController.deleteMovieDetail(movieNo);
 	}
+
 	public static void userComment(int movienum) {
 		Calendar cal2 = Calendar.getInstance();
 		SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy/MM/dd/HH:mm:ss");
 		String datestr2 = sdf2.format(cal2.getTime());
 
 		int userNo = user.getUserNo();
-		//System.out.println("영화 고유번호를 적어주세요 --추후에 이건 필요없음");
+		// System.out.println("영화 고유번호를 적어주세요 --추후에 이건 필요없음");
 		int movieNo = movienum;
 		System.out.println("평점을 적어주세요 (1~5)");
 		int rate = Integer.parseInt(sc.nextLine());
@@ -687,21 +684,22 @@ public class MenuView {
 		String comment = sc.nextLine();
 		String rateDate = datestr2;
 		CustomerController.Evaluation(userNo, movieNo, rate, comment, rateDate);
-		
+
 	}
+
 	public static void movieDetail() {
 		System.out.println("========영화 상세 정보 확인========");
 		String keyword = insertKeyword();
 		Search sd = SearchController.showMovieDetail(keyword);
-		String mn =sd.getMovieName();
+		String mn = sd.getMovieName();
 		String di = sd.getDirector();
-		int movienum=0;
-		
+		int movienum = 0;
+
 		System.out.println("=======================================================================");
 		System.out.println("1: 현재 영화의 평점 및 코멘트를 작성하시겠습니까? | 0: 종료 |");
 		System.out.println("=======================================================================");
 		int choice = Integer.parseInt(sc.nextLine());
-		switch(choice){
+		switch (choice) {
 		case 1:
 			Connection con = null;
 			Statement st = null;
@@ -710,25 +708,24 @@ public class MenuView {
 			try {
 				con = DbUtil.getConnection();
 				st = con.createStatement();
-				rs = st.executeQuery(
-						"select 영화_고유번호 from 영화 where 작품명  ='" + mn + "' and 감독 = '" + di + "'");
-				if(rs.next()) {
+				rs = st.executeQuery("select 영화_고유번호 from 영화 where 작품명  ='" + mn + "' and 감독 = '" + di + "'");
+				if (rs.next()) {
 					movienum = rs.getInt(1);
-				};
-				
+				}
+				;
+
 			} catch (SQLException e) {
 				e.printStackTrace();
 			} finally {
 				DbUtil.dbClose(con, st);
 			}
-			
+
 			userComment(movienum);
 			break;
 		case 2:
 			break;
-		
+
 		}
-		
-		
+
 	}
 }
