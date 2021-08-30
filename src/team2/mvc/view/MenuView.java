@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.Set;
 
-import com.sun.org.apache.xpath.internal.operations.Equals;
 
 import team2.mvc.controller.CustomerController;
 import team2.mvc.controller.MovieController;
@@ -165,7 +164,7 @@ public class MenuView {
 					int choice2 = Integer.parseInt(sc.nextLine());
 					switch (choice2) {
 					case 1:
-						printUserMenu(user);
+						printUserMenu();
 						break;
 					case 2:
 						adminMenu();
@@ -176,7 +175,7 @@ public class MenuView {
 					}
 					
 				}else
-				printUserMenu(user);
+				printUserMenu();
 				break;
 
 			case 3:// 사용자 평가 영화 고유번호만 넣어주면 됨
