@@ -243,7 +243,7 @@ public class MenuView {
 	private static void printRecommendMenu(User user) {
 		// TODO Auto-generated method stub
 		System.out.println("---------------------------- 영화 추천 페이지 ----------------------------");
-		System.out.println(" 1. 인기순 추천 |  2. 나이별 추천  |  3. 태그 추천  | 4. 장르 추천  |  0. 메인으로");
+		System.out.println(" 1. 인기순 추천 |  2. 나이별 추천  |  3. 태그 추천  | 4. 장르 추천  |  0. 메인메뉴");
 		System.out.println("----------------------------------------------------------------------");
 		int choice = Integer.parseInt(sc.nextLine());
 		switch (choice) {
@@ -264,8 +264,7 @@ public class MenuView {
 			RecommendController.recByGenre(user.getUserNo());
 			break;
 		case 0:
-
-			break;
+			return;
 		}
 	}
 
