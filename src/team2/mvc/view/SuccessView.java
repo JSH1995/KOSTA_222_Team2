@@ -11,9 +11,13 @@ public class SuccessView {
 		System.out.println(message);
 	}
 
+	/**
+	 * 위시리스트를 출력하는 메뉴
+	 * @param movieList
+	 */
 	public static void printWishList(List<Movie> movieList) {
 		for(Movie m : movieList) {
-			System.out.println(movieList);
+			System.out.println(m);
 	 }
 	}
 

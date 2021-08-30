@@ -158,7 +158,7 @@ public class MenuView {
 				}
 				
 				logincheck = CustomerController.login(login_id, login_pw);// 로그인
-				printUserMenu(user);
+				printUserMenu();
 				break;
 
 			case 3:// 사용자 평가 영화 고유번호만 넣어주면 됨
@@ -292,11 +292,11 @@ public class MenuView {
 			break;
 		case 3:
 			System.out.println("----- 태그 추천 -----");
-			RecommendController.recByTag(choice, choice);
+			RecommendController.recByTag(user.getUserNo());
 			break;
 		case 4:
 			System.out.println("----- 장르 추천 -----");
-			RecommendController.recByGenre(choice);
+			RecommendController.recByGenre(user.getUserNo());
 			break;
 		case 0:
 

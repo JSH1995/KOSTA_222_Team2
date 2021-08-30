@@ -23,15 +23,16 @@ public class RecommendDAOImpl implements RecommendDAO {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		List<Movie> list = new ArrayList();
+		String sql = "select distinct 영화_고유번호, 영화.장르번호, 영화.작품명, 영화.감독, 영화.영화등록일자 from 영화 join 위시리스트 using (영화_고유번호) join 사용자 using(사용자_고유번호) where 나이 between ? and ? order by 영화_고유번호 desc";
+;
 		try {
 			con = DbUtil.getConnection();
-			ps = con.prepareStatement(
-					"select 영화_고유번호 from (select 영화_고유번호, count(영화_고유번호) from 영화 where 나이 between ? and ? group by 영화_고유번호 order by count(영화_고유번호) desc) where rownum<4");
-			ps.setInt(1, (age / 10));
-			ps.setInt(2, (age / 10) + 9);
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, (int)(age / 10)*10);
+			ps.setInt(2, (int)(age / 10)*10 + 9);
 			rs = ps.executeQuery();
 
-			if (rs.next()) {
+			while (rs.next()) {
 				list.add(new Movie(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5)));
 			}
 		} finally {

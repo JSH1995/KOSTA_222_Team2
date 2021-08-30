@@ -17,6 +17,7 @@ public class RecommendController {
 	public static void recByAge(int age) {
 		try {
 			List<Movie> list = recommendService.recByAge(age);
+			SuccessView.printRecMovieList(list);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
