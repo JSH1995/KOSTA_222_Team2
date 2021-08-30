@@ -42,9 +42,10 @@ public class RecommendController {
 		}
 	}
 
-	public static void recByTag(int userNo, int tagNo) {
+	public static void recByTag(int userNo) {
 		try {
-			List<Movie> list = recommendService.recByTag(userNo, tagNo);
+			List<Movie> list = recommendService.recByTag(userNo);
+			SuccessView.printRecMovieList(list);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

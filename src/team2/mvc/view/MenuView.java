@@ -203,7 +203,7 @@ public class MenuView {
 		}
 	}
 
-	public static void printUserMenu(User user) {
+	public static void printUserMenu() {
 		while(logincheck) {
 		System.out.println(
 				"----------------------------------------- MAIN MENU -----------------------------------------");
