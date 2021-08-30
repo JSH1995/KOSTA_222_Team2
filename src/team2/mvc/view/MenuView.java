@@ -195,7 +195,7 @@ public class MenuView {
 			printPersonalDetailMenu();
 			break;
 		case 2:
-			printWishListMenu();
+			printWishListMenu(user.getUserNo());
 			break;
 		case 3:
 			printRecommendMenu(user);
@@ -222,7 +222,7 @@ public class MenuView {
 			printPersonalDetailMenu();
 			break;
 		case 2:
-			printWishListMenu();
+			//printWishListMenu();
 			break;
 		case 0:
 			System.exit(0);
@@ -243,7 +243,7 @@ public class MenuView {
 	/**
 	 * 사용자메뉴 - 1. 개인정보 수정
 	 */
-	private static void printPersonalDetailMenu(???) {
+	private static void printPersonalDetailMenu() {
 		System.out.println("------------------- 개인정보 수정 페이지 -------------------");
 		System.out.print("새로운 비밀번호 : ");
 		String userId = sc.nextLine();
@@ -256,13 +256,14 @@ public class MenuView {
 	/**
 	 * 사용자메뉴 - 2. 위시리스트 보기
 	 */
-	private static void printWishListMenu() {
+	private static void printWishListMenu(int userNo) {
 		System.out.println("------------------- 위시리스트 -------------------");
 		WishController.viewWishList(83002040);
 
 	}
 
 	/**
+	 * @author 홍전형
 	 * 사용자메뉴 - 3. 추천 영화 보기
 	 */
 	private static void printRecommendMenu(User user) {
@@ -457,6 +458,7 @@ public class MenuView {
 	static String date1 = "";
 
 	/**
+	 * @author 이치인
 	 * 영화 등록 수정 삭제
 	 */
 	// 영화 등록

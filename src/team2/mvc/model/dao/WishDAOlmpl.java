@@ -52,6 +52,7 @@ public class WishDAOlmpl implements WishDAO {
 			ps.setInt(2, movieNo);
 			result = ps.executeUpdate();
 			System.out.println("try");
+			System.out.println("result");
 
 		} finally {
 			DbUtil.dbClose(con, ps);

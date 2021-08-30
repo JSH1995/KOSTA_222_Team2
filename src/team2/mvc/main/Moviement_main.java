@@ -22,8 +22,5 @@ public class Moviement_main {
 		//MenuView.updateMovie();
 		//MenuView.deleteMovie();
 
-		//WishController.viewWishList(83002040);
-		//WishController.putWishList(83002040, 2);
 	}
-
 }

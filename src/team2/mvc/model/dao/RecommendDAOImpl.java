@@ -31,7 +31,7 @@ public class RecommendDAOImpl implements RecommendDAO {
 			ps.setInt(2, (age / 10) + 9);
 
 			if (rs.next()) {
-				list.add(new Movie(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5)));
+				list.add(new Movie(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5)));
 			}
 		} finally {
 			DbUtil.dbClose(con, ps, rs);
@@ -51,7 +51,7 @@ public class RecommendDAOImpl implements RecommendDAO {
 			ps = con.prepareStatement("sql");
 
 			if (rs.next()) {
-				list.add(new Movie(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5)));
+				list.add(new Movie(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5)));
 			}
 		} finally {
 			DbUtil.dbClose(con, ps, rs);
@@ -73,7 +73,7 @@ public class RecommendDAOImpl implements RecommendDAO {
 			ps.setInt(1, genreNo);
 
 			if (rs.next()) {
-				list.add(new Movie(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5)));
+				list.add(new Movie(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5)));
 			}
 		} finally {
 			DbUtil.dbClose(con, ps, rs);
@@ -95,7 +95,7 @@ public class RecommendDAOImpl implements RecommendDAO {
 			ps.setInt(2, tagNo);
 
 			if (rs.next()) {
-				list.add(new Movie(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5)));
+				list.add(new Movie(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5)));
 			}
 		} finally {
 			DbUtil.dbClose(con, ps, rs);

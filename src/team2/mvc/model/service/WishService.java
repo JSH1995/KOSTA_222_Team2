@@ -24,7 +24,6 @@ public class WishService {
 		if(result == 0) {
 			throw new SQLException("위시리스트 추가에 실패하였습니다.");
 		}
-		System.out.println("result" + result);
 
 	}
 }
