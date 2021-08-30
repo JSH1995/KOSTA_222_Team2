@@ -44,17 +44,7 @@ public class MenuView {
 			int choice = Integer.parseInt(sc.nextLine());
 			switch (choice) {
 			case 1:
-
-				// 입력한 숫자들을 하나씩 가져옴 12345를 5 4 3 2 1이런식으로 가져올수 있음
-				/*
-				 * public static void one_of{ int sum; int num=13579; //여기가 입력된 숫자 while(num >
-				 * 0) { System.out.println(num); sum=0; sum =sum+ num%10;
-				 * System.out.println(sum);
-				 * 
-				 * num = num/ 10;
-				 * 
-				 * }
-				 */
+				
 				Calendar cal = Calendar.getInstance();
 
 				String month = Integer.toString(cal.get(Calendar.MONTH) + 1);
@@ -75,52 +65,14 @@ public class MenuView {
 
 				System.out.println("나이를 입력해주세요");
 				int age = Integer.parseInt(sc.nextLine());
-
-				List<String> testList = new ArrayList<String>();
-
-				System.out.println("좋아하는 태그를 몇개 입력하시겠습니까?");
-				int teg2 = Integer.parseInt(sc.nextLine());
-				int i = 0;
-
-				while (i < teg2) {
-					System.out.println("좋아하는 태그를 입력해주세요");
-					String teg = sc.nextLine();
-					testList.add(teg);
-					i++;
-				}
-				int arrListSize = testList.size();
-				String arr[] = testList.toArray(new String[arrListSize]);
-
-				int tt = 0;
-				String tegnum1 = "";
-				while (tt < teg2) {
-					tegnum1 = tegnum1 + testList.get(tt);
-					tt++;
-				}
-				int tegnum = Integer.parseInt(tegnum1);
-				//////
-				List<String> testList2 = new ArrayList<String>();
-
-				System.out.println("좋아하는 장르를 몇개 입력하시겠습니까?");
-				int jnum2 = Integer.parseInt(sc.nextLine());
-				int j = 0;
-
-				while (j < jnum2) {
-					System.out.println("좋아하는 장르를 입력해주세요");
-					String teg = sc.nextLine();
-					testList2.add(teg);
-					j++;
-				}
-				int arrListSize2 = testList.size();
-				String arr2[] = testList.toArray(new String[arrListSize]);
-
-				int jj = 0;
-				String jnum1 = "";
-				while (jj < jnum2) {
-					jnum1 = jnum1 + testList2.get(jj);
-					jj++;
-				}
-				int jnum = Integer.parseInt(jnum1);
+				System.out.println(" 1. 시간 |  2. 외계인  |  3. 우주  | 4. 고전  | 5. 복수 | 6. 패션  | 7. 미래적인  | 8. 편견을 깨는 | 9. 독립 ");
+				System.out.println("좋아하는 태그를 입력해주세요");
+				
+				int tegnum = Integer.parseInt(sc.nextLine());
+				System.out.println("  1. 드라마 |  2. 스릴러  |  3. 범죄  | 4. 로맨스  | 5. 액션 | 6. 다큐멘터리  | 7. 애니메이션  | 8. 코미디 | 9. 공포  | 10. SF ");
+				System.out.println("좋아하는 장르를 입력해주세요");
+				int jnum = Integer.parseInt(sc.nextLine());
+				
 
 				CustomerController.registerUser(usernumber, id, pw, age, datestr, tegnum, jnum); // 가입
 				break;
