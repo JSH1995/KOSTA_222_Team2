@@ -40,9 +40,10 @@ public class WishDAOlmpl implements WishDAO {
 	}
 
 	@Override
-	public int putWishList(int userNo, int movieNo) throws SQLException {
+	public int putWishList(int userNo, int movieNo) throws SQLException, DuplicateException {
 		Connection con = null;
 		PreparedStatement ps = null;
+		List<Movie> movieList = new ArrayList<Movie>();
 		String sql = "insert into 위시리스트 values(?,?)";
 		int result = 0;
 		try {
@@ -51,8 +52,18 @@ public class WishDAOlmpl implements WishDAO {
 			ps.setInt(1, userNo);
 			ps.setInt(2, movieNo);
 			result = ps.executeUpdate();
-			System.out.println("try");
-			System.out.println("result");
+			
+			//if (result == 0) {
+			//	con.rollback();
+			//	throw new SQLException("실패쓰..");
+			//} else {
+				for(Movie m : movieList) {
+					if(movieNo == m.getMovieNo()) {
+						con.rollback();
+						throw new DuplicateException("이미 존재하는 영화라 등록실패쓰..");
+					}
+				}
+			//}
 
 		} finally {
 			DbUtil.dbClose(con, ps);
