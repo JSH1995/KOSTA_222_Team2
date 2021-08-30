@@ -29,6 +29,7 @@ public class RecommendDAOImpl implements RecommendDAO {
 					"select 영화_고유번호 from (select 영화_고유번호, count(영화_고유번호) from 영화 where 나이 between ? and ? group by 영화_고유번호 order by count(영화번호) desc) where rownum<4");
 			ps.setInt(1, (age / 10));
 			ps.setInt(2, (age / 10) + 9);
+			rs = ps.executeQuery();
 
 			if (rs.next()) {
 				list.add(new Movie(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5)));
@@ -96,7 +97,7 @@ public class RecommendDAOImpl implements RecommendDAO {
 			ps = con.prepareStatement(sql2);
 			ps.setInt(1, genreNo);
 			rs = ps.executeQuery();
-			if (rs.next()) {
+			while (rs.next()) {
 				list.add(new Movie(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5)));
 			}
 		} finally {
@@ -117,8 +118,9 @@ public class RecommendDAOImpl implements RecommendDAO {
 			ps = con.prepareStatement("sql");
 			ps.setInt(1, userNo);
 			ps.setInt(2, tagNo);
+			rs = ps.executeQuery();
 
-			if (rs.next()) {
+			while (rs.next()) {
 				list.add(new Movie(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5)));
 			}
 		} finally {

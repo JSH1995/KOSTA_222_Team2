@@ -17,6 +17,11 @@ public class SuccessView {
 	 }
 	}
 
+	public static void printRecMovieList(List<Movie> list) {
+		for(Movie m : list) {
+			System.out.println(m);
+		}
+	}
 	public static void printMovieList(List<Search> searchList) {
 		
 		for(Search search  : searchList) {

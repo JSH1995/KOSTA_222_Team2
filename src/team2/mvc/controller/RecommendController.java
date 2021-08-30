@@ -5,6 +5,7 @@ import java.util.List;
 
 import team2.mvc.model.dto.Movie;
 import team2.mvc.model.service.RecommendService;
+import team2.mvc.view.SuccessView;
 
 public class RecommendController {
 	static RecommendService recommendService = new RecommendService();
@@ -34,6 +35,7 @@ public class RecommendController {
 	public static void recByGenre(int userNo) {
 		try {
 			List<Movie> list = recommendService.recByGenre(userNo);
+			SuccessView.printRecMovieList(list);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

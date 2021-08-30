@@ -291,7 +291,7 @@ public class MenuView {
 			break;
 		case 4:
 			System.out.println("----- 장르 추천 -----");
-			RecommendController.recByGenre(choice, choice);
+			RecommendController.recByGenre(choice);
 			break;
 		case 0:
 
