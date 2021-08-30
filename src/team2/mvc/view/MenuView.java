@@ -13,6 +13,8 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.Set;
 
+import com.sun.org.apache.xpath.internal.operations.Equals;
+
 import team2.mvc.controller.CustomerController;
 import team2.mvc.controller.MovieController;
 import team2.mvc.controller.RecommendController;
@@ -158,6 +160,22 @@ public class MenuView {
 				}
 				
 				logincheck = CustomerController.login(login_id, login_pw);// 로그인
+				if(login_id.equals("admin")) {
+					System.out.println("---- 1: 메인 메뉴  ---- 2: 관리자 메뉴 ---- ");
+					int choice2 = Integer.parseInt(sc.nextLine());
+					switch (choice2) {
+					case 1:
+						printUserMenu(user);
+						break;
+					case 2:
+						adminMenu();
+						break;
+					case 0:
+						System.exit(0);
+
+					}
+					
+				}else
 				printUserMenu(user);
 				break;
 
@@ -178,12 +196,7 @@ public class MenuView {
 
 				break;
 
-			case 4:
-				System.out.println("변경하실 pw를 입력해주세요");
-				String pw1 = sc.nextLine();
-				CustomerController.update_pw(user.getUserNo(), pw1);
-
-				break;
+			
 			case 0:
 				System.exit(0);
 			}
@@ -255,11 +268,12 @@ public class MenuView {
 	 */
 	private static void printPersonalDetailMenu() {
 		System.out.println("------------------- 개인정보 수정 페이지 -------------------");
-		System.out.print("새로운 비밀번호 : ");
-		String userId = sc.nextLine();
-
-		System.out.print("새로운 좋아하는 장르 : ");
-		String userPwd = sc.nextLine();
+		System.out.println("변경하실 pw를 입력해주세요");
+		String pw1 = sc.nextLine();
+		CustomerController.update_pw(user.getUserNo(), pw1);
+		
+//		System.out.print("새로운 좋아하는 장르 : ");
+//		String userPwd = sc.nextLine();
 		// 이런식으로 작성
 	}
 
@@ -468,6 +482,67 @@ public class MenuView {
 	 * @author 이치인 영화 등록 수정 삭제
 	 */
 	// 영화 등록
+	public static void adminMenu() {
+	
+
+		System.out.println("========================== 관리자 메뉴 입니다. ===========================");
+		System.out.println("=============================== 정렬 메뉴 ================================");
+		System.out.println("1. 영화등록 | 2. 영화수정 | 3. 영화삭제 | 4. 배우등록 | 5. 배우수정 | 6. 배우삭제 |");
+		System.out.println("================================================================================================");
+		System.out.println("7. 태그등록 | 8. 태그수정 | 9. 태그삭제 | 10. 영화상세등록 | 11. 영화상세수정 | 12. 영화상세삭제 |");
+		System.out.println("===================================================================================================");
+
+		int choice = Integer.parseInt(sc.nextLine());
+
+		switch (choice) {
+		case 1:
+			registerMovie();
+			break;
+		case 2:
+			updateMovie();
+			break;
+		case 3:
+			deleteMovie();
+			break;
+		case 4:
+			registerActor();
+			break;
+		case 5:
+			updateActor();
+			break;
+		case 6:
+			deleteActor();
+			break;
+		case 7:
+			registerTag();
+			break;
+		case 8:
+			updateTag();
+			break;
+		case 9:
+			deleteTag();
+			break;
+		case 10:
+			registerMovieDetail();
+			break;
+		case 11:
+			updateMovieDetail();
+			break;
+		case 12:
+			deleteMovieDetail();
+			break;
+	
+			
+		default:
+			
+			break;// 문자나 다른거 입력 시 Exception 처리 필요
+
+		}
+
+		
+		
+	}
+	
 	public static void registerMovie() {
 
 		System.out.print("등록할 영화고유번호 입력 : ");

@@ -67,6 +67,7 @@ public class CustomerController {
 		con = DbUtil.getConnection();
 		st = con.createStatement();
 		rs = st.executeQuery("update 사용자 set 비밀번호 ='"+pw1+"' where 사용자_고유번호 = '"+user_nums+"'");
+		System.out.println("성공적으로 변경 되었습니다");
 		
 		}catch(SQLException e) {
 			e.printStackTrace();
