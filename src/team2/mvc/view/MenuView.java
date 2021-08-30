@@ -55,31 +55,31 @@ public class MenuView {
 				SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd/HH:mm:ss");
 				String datestr = sdf.format(cal.getTime());
 
-				System.out.println("사용하실 아이디를 입력해주세요");
+				System.out.print("사용하실 아이디를 입력해주세요: ");
 				String id = sc.nextLine();
 
-				System.out.println("사용하실 비밀번호를 입력해주세요");
+				System.out.print("사용하실 비밀번호를 입력해주세요: ");
 				String pw = sc.nextLine();
 
-				System.out.println("나이를 입력해주세요");
+				System.out.print("나이를 입력해주세요: ");
 				int age = Integer.parseInt(sc.nextLine());
 				System.out.println(
 						" 1. 시간 |  2. 외계인  |  3. 우주  | 4. 고전  | 5. 복수 | 6. 패션  | 7. 미래적인  | 8. 편견을 깨는 | 9. 독립 ");
-				System.out.println("좋아하는 태그를 입력해주세요");
+				System.out.print("좋아하는 태그를 입력해주세요: ");
 
 				int tegnum = Integer.parseInt(sc.nextLine());
 				System.out.println(
 						"  1. 드라마 |  2. 스릴러  |  3. 범죄  | 4. 로맨스  | 5. 액션 | 6. 다큐멘터리  | 7. 애니메이션  | 8. 코미디 | 9. 공포  | 10. SF ");
-				System.out.println("좋아하는 장르를 입력해주세요");
+				System.out.print("좋아하는 장르를 입력해주세요: ");
 				int jnum = Integer.parseInt(sc.nextLine());
 
 				CustomerController.registerUser(usernumber, id, pw, age, datestr, tegnum, jnum); // 가입
 				break;
 			case 2:
-				System.out.println("아이디를 입력해주세요");
+				System.out.print("아이디를 입력해주세요: ");
 				String login_id = sc.nextLine();
 				user_id = login_id;
-				System.out.println("비밀번호를 입력해주세요");
+				System.out.print("비밀번호를 입력해주세요: ");
 				String login_pw = sc.nextLine();
 				user_pw = login_pw;
 
@@ -166,29 +166,12 @@ public class MenuView {
 
 	}
 
-	public static void printAdminMenu(User user) {
-		System.out.println("================== ADMIN MENU =================");
-		System.out.println(" 1. 개인정보 수정  |  2. 영화 DB 관리하기  |  0. 종료");
-		System.out.println("===============================================");
-		int choice = Integer.parseInt(sc.nextLine());
-		switch (choice) {
-		case 1:
-			printPersonalDetailMenu();
-			break;
-		case 2:
-			// printWishListMenu();
-			break;
-		case 0:
-			System.exit(0);
-		}
-	}
-
 	// 로그인
 	public static void login() {
-		System.out.print("아이디 : ");
+		System.out.print("아이디: ");
 		String userId = sc.nextLine();
 
-		System.out.print("비밀번호 : ");
+		System.out.print("비밀번호: ");
 		String userPwd = sc.nextLine();
 
 		CustomerController.login(userId, userPwd);
@@ -199,8 +182,8 @@ public class MenuView {
 	 * 사용자메뉴 - 1. 개인정보 수정
 	 */
 	private static void printPersonalDetailMenu() {
-		System.out.println("------------------- 개인정보 수정 페이지 -------------------");
-		System.out.println("변경하실 pw를 입력해주세요");
+		System.out.println("========= 개인정보 수정 페이지 =========");
+		System.out.print("새로운 비밀번호를 입력해주세요: ");
 		String pw1 = sc.nextLine();
 		CustomerController.update_pw(user.getUserNo(), pw1);
 	}
@@ -221,29 +204,29 @@ public class MenuView {
 	 */
 	private static void printRecommendMenu(User user) {
 		// TODO Auto-generated method stub
-		System.out.println("---------------------------- 영화 추천 페이지 ----------------------------");
+		System.out.println("============================ 영화 추천 페이지 ============================");
 		System.out.println(" 1. 인기순 추천 |  2. 나이별 추천  |  3. 태그 추천  | 4. 장르 추천  |  0. 메인메뉴");
-		System.out.println("----------------------------------------------------------------------");
+		System.out.println("======================================================================");
 		int choice = Integer.parseInt(sc.nextLine());
 		switch (choice) {
 		case 1:
-			System.out.println("[인기순 추천]");
+			System.out.println("- 인기순 추천 -");
 			System.out.println("현재 위시리스트에 가장 많이 담긴 영화들이에요!\n");
 			RecommendController.recByRank();
 			break;
 		case 2:
-			System.out.println("[나이별 추천]");
+			System.out.println("- 나이별 추천 -");
 			System.out.println((int) user.getAge() / 10 * 10 + "대의 위시리스트에 가장 많이 담긴 영화들이에요!\n");
 			RecommendController.recByAge(user.getAge());
 			break;
 		case 3:
-			System.out.println("[태그 추천]");
+			System.out.println("- 태그 추천 -");
 			System.out.println(user.getId() + "님이 좋아하는 영화의 태그를 기반으로 영화를 추천해드릴게요!\n");
 
 			RecommendController.recByTag(user.getUserNo());
 			break;
 		case 4:
-			System.out.println("[장르 추천]");
+			System.out.println("- 장르 추천 -");
 			System.out.println(user.getId() + "님이 좋아하는 영화의 장르를 기반으로 영화를 추천해드릴게요!\n");
 			RecommendController.recByGenre(user.getUserNo());
 			break;
@@ -511,7 +494,7 @@ public class MenuView {
 
 	// 영화 삭제
 	public static void deleteMovie() {
-		System.out.println("삭제할 영화의 고유번호 입력 : ");
+		System.out.print("삭제할 영화의 고유번호 입력 : ");
 		int movieNo = Integer.parseInt(sc.nextLine());
 		MovieController.deleteMovie(movieNo);
 	}
@@ -571,7 +554,7 @@ public class MenuView {
 
 	// 배우 삭제
 	public static void deleteActor() {
-		System.out.println("삭제할 영화의 고유번호 입력 : ");
+		System.out.print("삭제할 영화의 고유번호 입력 : ");
 		int movieNo = Integer.parseInt(sc.nextLine());
 		MovieController.deleteActor(movieNo);
 	}
@@ -607,7 +590,7 @@ public class MenuView {
 
 	// 태그 삭제
 	public static void deleteTag() {
-		System.out.println("삭제할 영화의 고유번호 입력 : ");
+		System.out.print("삭제할 영화의 고유번호 입력 : ");
 		int movieNo = Integer.parseInt(sc.nextLine());
 		MovieController.deleteTag(movieNo);
 	}
@@ -669,7 +652,7 @@ public class MenuView {
 
 	// 영화_상세 정보 삭제
 	public static void deleteMovieDetail() {
-		System.out.println("삭제를 원하는 영화상세정보에 해당하는 영화고유번호 입력 : ");
+		System.out.print("삭제를 원하는 영화상세정보에 해당하는 영화고유번호 입력 : ");
 		int movieNo = Integer.parseInt(sc.nextLine());
 		MovieController.deleteMovieDetail(movieNo);
 	}
@@ -692,16 +675,16 @@ public class MenuView {
 	}
 
 	public static void movieDetail() {
-		System.out.println("========영화 상세 정보 확인========");
+		System.out.print("========영화 상세 정보 확인========");
 		String keyword = insertKeyword();
 		Search sd = SearchController.showMovieDetail(keyword);
 		String mn = sd.getMovieName();
 		String di = sd.getDirector();
 		int movienum = 0;
 
-		System.out.println("=======================================================================");
+		System.out.println("====================================================");
 		System.out.println("1: 현재 영화의 평점 및 코멘트를 작성하시겠습니까? | 0: 종료 |");
-		System.out.println("=======================================================================");
+		System.out.println("====================================================");
 		int choice = Integer.parseInt(sc.nextLine());
 		switch (choice) {
 		case 1:
