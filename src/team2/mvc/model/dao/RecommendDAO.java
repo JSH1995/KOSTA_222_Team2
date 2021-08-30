@@ -11,5 +11,5 @@ public interface RecommendDAO {
 
 	List<Movie> recByGenre(int userNo) throws SQLException;
 
-	List<Movie> recByTag(int userNo, int genreNo) throws SQLException;
+	List<Movie> recByTag(int userNo) throws SQLException;
 }

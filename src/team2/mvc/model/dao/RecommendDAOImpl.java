@@ -26,7 +26,7 @@ public class RecommendDAOImpl implements RecommendDAO {
 		try {
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(
-					"select 영화_고유번호 from (select 영화_고유번호, count(영화_고유번호) from 영화 where 나이 between ? and ? group by 영화_고유번호 order by count(영화번호) desc) where rownum<4");
+					"select 영화_고유번호 from (select 영화_고유번호, count(영화_고유번호) from 영화 where 나이 between ? and ? group by 영화_고유번호 order by count(영화_고유번호) desc) where rownum<4");
 			ps.setInt(1, (age / 10));
 			ps.setInt(2, (age / 10) + 9);
 			rs = ps.executeQuery();
@@ -104,29 +104,49 @@ public class RecommendDAOImpl implements RecommendDAO {
 			DbUtil.dbClose(null, ps, rs);
 		}
 		return list;
-		
 	}
 
 	@Override
-	public List<Movie> recByTag(int userNo, int tagNo) throws SQLException {
+	public List<Movie> recByTag(int userNo) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
+		int tagNo = 0;
 		List<Movie> list = new ArrayList();
+		String sql = "select 태그번호 from (select 태그번호, count(태그번호) from 영화 join 태그 using (영화_고유번호) join 위시리스트 using (영화_고유번호) where 사용자_고유번호 = ? group by 태그번호 order by count(태그번호) desc) where rownum<2";
 		try {
 			con = DbUtil.getConnection();
-			ps = con.prepareStatement("sql");
+			ps = con.prepareStatement(sql);
 			ps.setInt(1, userNo);
-			ps.setInt(2, tagNo);
 			rs = ps.executeQuery();
 
-			while (rs.next()) {
-				list.add(new Movie(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5)));
+			if (rs.next()) {
+				tagNo = rs.getInt(1);
 			}
+			list = getRecListByTag(con, tagNo);
 		} finally {
 			DbUtil.dbClose(con, ps, rs);
 		}
 
+		return list;
+	}
+	
+	public List<Movie> getRecListByTag(Connection con, int tagNo) throws SQLException{
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		List<Movie> list = new ArrayList();
+		String sql2 = "select * from 영화 join 태그 using (영화_고유번호) where 태그번호  = ?";
+		
+		try {
+			ps = con.prepareStatement(sql2);
+			ps.setInt(1, tagNo);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				list.add(new Movie(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5)));
+			}
+		} finally {
+			DbUtil.dbClose(null, ps, rs);
+		}
 		return list;
 	}
 
