@@ -33,8 +33,8 @@ public class RecommendService {
 		return list;
 	}
 
-	public List<Movie> recByGenre(int userNo, int genreNo) throws SQLException, NotFoundException {
-		List<Movie> list = recommendDao.recByGenre(userNo, genreNo);
+	public List<Movie> recByGenre(int userNo) throws SQLException, NotFoundException {
+		List<Movie> list = recommendDao.recByGenre(userNo);
 		if (list.size() == 0) {
 			throw new NotFoundException("해당하는 영화가 없습니다.");
 		}

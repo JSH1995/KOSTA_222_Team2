@@ -31,9 +31,9 @@ public class RecommendController {
 		}
 	}
 
-	public static void recByGenre(int userNo, int genreNo) {
+	public static void recByGenre(int userNo) {
 		try {
-			List<Movie> list = recommendService.recByGenre(userNo, genreNo);
+			List<Movie> list = recommendService.recByGenre(userNo);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
