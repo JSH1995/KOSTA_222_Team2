@@ -121,9 +121,7 @@ public class MenuView {
 						break;
 					case 0:
 						System.exit(0);
-
 					}
-
 				} else
 					printUserMenu();
 				break;
