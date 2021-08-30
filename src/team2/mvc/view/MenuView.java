@@ -25,13 +25,12 @@ import team2.mvc.model.dto.User;
 import team2.mvc.util.DbUtil;
 
 public class MenuView {
-	static int user_number;
+	static User user;
 	static String user_id;
 	static String user_pw;
 	private static Scanner sc = new Scanner(System.in);
 	private static Set<String> keywordList = new HashSet<String>();
-	
-	
+
 	public static void menu() {
 
 		while (true) {
@@ -44,19 +43,16 @@ public class MenuView {
 			switch (choice) {
 			case 1:
 
-				//입력한 숫자들을 하나씩 가져옴 12345를 5  4  3  2  1이런식으로 가져올수 있음
-				/*	public static void one_of{
-						int sum;
-						int num=13579; //여기가 입력된 숫자
-						while(num > 0) {
-									System.out.println(num);
-									sum=0;
-									sum =sum+ num%10;
-									System.out.println(sum);
-				
-									num = num/ 10;
-						
-					}*/ 	
+				// 입력한 숫자들을 하나씩 가져옴 12345를 5 4 3 2 1이런식으로 가져올수 있음
+				/*
+				 * public static void one_of{ int sum; int num=13579; //여기가 입력된 숫자 while(num >
+				 * 0) { System.out.println(num); sum=0; sum =sum+ num%10;
+				 * System.out.println(sum);
+				 * 
+				 * num = num/ 10;
+				 * 
+				 * }
+				 */
 				Calendar cal = Calendar.getInstance();
 
 				String month = Integer.toString(cal.get(Calendar.MONTH) + 1);
@@ -142,10 +138,17 @@ public class MenuView {
 					con = DbUtil.getConnection();
 					st = con.createStatement();
 					rs = st.executeQuery(
-							"select 사용자_고유번호 from 사용자 where 아이디 ='" + user_id + "' and 비밀번호 = '" + user_pw + "'");
+							"select * from 사용자 where 아이디 ='" + user_id + "' and 비밀번호 = '" + user_pw + "'");
 					while (rs.next()) {
-						String user_num = rs.getString("사용자_고유번호");
-						user_number = Integer.parseInt(user_num);
+						int user_num = rs.getInt(1);
+						String u_id = rs.getString(2);
+						String u_pw = rs.getString(3);
+						int u_age = rs.getInt(4);
+						String u_regdate = rs.getString(5);
+						int u_favgenre = rs.getInt(6);
+						int u_favtag = rs.getInt(7);
+						
+						user = new User(user_num, u_id, u_pw, u_age, u_regdate, u_favgenre, u_favtag);
 					}
 				} catch (SQLException e) {
 					e.printStackTrace();
@@ -161,7 +164,7 @@ public class MenuView {
 				SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy/MM/dd/HH:mm:ss");
 				String datestr2 = sdf2.format(cal2.getTime());
 
-				int userNo = user_number;
+				int userNo = user.getUserNo();
 				System.out.println("영화 고유번호를 적어주세요 --추후에 이건 필요없음");
 				int movieNo = Integer.parseInt(sc.nextLine());
 				System.out.println("평점을 적어주세요 (1~5)");
@@ -176,7 +179,7 @@ public class MenuView {
 			case 4:
 				System.out.println("변경하실 pw를 입력해주세요");
 				String pw1 = sc.nextLine();
-				CustomerController.update_pw(user_number, pw1);
+				CustomerController.update_pw(user.getUserNo(), pw1);
 
 				break;
 			case 0:
@@ -186,9 +189,11 @@ public class MenuView {
 	}
 
 	public static void printUserMenu(User user) {
-		System.out.println("-------------------------------- MAIN MENU --------------------------------");
+		System.out.println(
+				"----------------------------------------- MAIN MENU -----------------------------------------");
 		System.out.println(" 1. 개인정보 수정 |  2. 위시리스트 보기  |  3. 추천 영화 보기  | 4. 검색하기  | 5. 최근 검색 리스트 | 0. 종료");
-		System.out.println("---------------------------------------------------------------------------");
+		System.out.println(
+				"---------------------------------------------------------------------------------------------");
 		int choice = Integer.parseInt(sc.nextLine());
 		switch (choice) {
 		case 1:
@@ -208,7 +213,7 @@ public class MenuView {
 			break;
 		case 0:
 			System.exit(0);
-			
+
 		}
 	}
 
@@ -222,7 +227,7 @@ public class MenuView {
 			printPersonalDetailMenu();
 			break;
 		case 2:
-			//printWishListMenu();
+			// printWishListMenu();
 			break;
 		case 0:
 			System.exit(0);
@@ -250,7 +255,7 @@ public class MenuView {
 
 		System.out.print("새로운 좋아하는 장르 : ");
 		String userPwd = sc.nextLine();
-		//이런식으로 작성
+		// 이런식으로 작성
 	}
 
 	/**
@@ -263,8 +268,7 @@ public class MenuView {
 	}
 
 	/**
-	 * @author 홍전형
-	 * 사용자메뉴 - 3. 추천 영화 보기
+	 * @author 홍전형 사용자메뉴 - 3. 추천 영화 보기
 	 */
 	private static void printRecommendMenu(User user) {
 		// TODO Auto-generated method stub
@@ -296,8 +300,7 @@ public class MenuView {
 	}
 
 	/**
-	 * @author 김찬원 
-	 * 	-- 사용자메뉴 - 4. 검색하기
+	 * @author 김찬원 -- 사용자메뉴 - 4. 검색하기
 	 */
 	private static void printSearchMenu() {
 
@@ -378,8 +381,7 @@ public class MenuView {
 	}
 
 	/**
-	 * @author 김찬원
-	 *  - 검색한 결과를 정렬 시켜주는 메소드
+	 * @author 김찬원 - 검색한 결과를 정렬 시켜주는 메소드
 	 */
 
 	private static String sort() {
@@ -415,40 +417,39 @@ public class MenuView {
 		return sortType;
 
 	}
-	
+
 	/**
-	 * @author 김찬원
-	 * 	- 검색 키워드 입력하는 메소드
+	 * @author 김찬원 - 검색 키워드 입력하는 메소드
 	 */
-	
+
 	private static String insertKeyword() {
-		
+
 		System.out.println("==========검색하실 키워드를 입력해 주세요.==========");
 		System.out.print("키워드 : ");
 		String keyword = sc.nextLine();
 		keywordList.add(keyword);
-		
+
 		return keyword;
 	}
-	
+
 	/**
-	 * @author 김찬원
-	 * 최근 검색 키워드를 보여주는 리스트
+	 * @author 김찬원 최근 검색 키워드를 보여주는 리스트
 	 */
-	
+
 	private static void showRecentSearchList() {
-		
+
 		System.out.println("========================= 최근 검색 키워드 리스트 ========================");
-		System.out.println("=======================최근 검색 한 키워드 수 : " + keywordList.size() + "개 ======================" + "\n");
-		
+		System.out.println(
+				"=======================최근 검색 한 키워드 수 : " + keywordList.size() + "개 ======================" + "\n");
+
 		Iterator<String> it = keywordList.iterator();
-		
-		while(it.hasNext()) {
-			
+
+		while (it.hasNext()) {
+
 			String keyword = it.next();
 			System.out.println(keyword);
 		}
-		
+
 	}
 
 	/**
@@ -458,8 +459,7 @@ public class MenuView {
 	static String date1 = "";
 
 	/**
-	 * @author 이치인
-	 * 영화 등록 수정 삭제
+	 * @author 이치인 영화 등록 수정 삭제
 	 */
 	// 영화 등록
 	public static void registerMovie() {
