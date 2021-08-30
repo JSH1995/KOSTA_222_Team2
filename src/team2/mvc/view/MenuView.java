@@ -110,7 +110,7 @@ public class MenuView {
 
 				logincheck = CustomerController.login(login_id, login_pw);// 로그인
 				if (login_id.equals("admin")) {
-					System.out.println("---- 1: 메인 메뉴  ---- 2: 관리자 메뉴 ---- ");
+					System.out.println("1. 메인 메뉴  |  2. 관리자 메뉴");
 					int choice2 = Integer.parseInt(sc.nextLine());
 					switch (choice2) {
 					case 1:
@@ -137,10 +137,10 @@ public class MenuView {
 	public static void printUserMenu() {
 		while (logincheck) {
 			System.out.println(
-					"----------------------------------------- MAIN MENU -----------------------------------------");
+					"========================================= MAIN MENU =========================================");
 			System.out.println(" 1. 개인정보 수정 |  2. 위시리스트 보기  |  3. 추천 영화 보기  | 4. 검색하기  | 5. 최근 검색 리스트 | 0. 종료");
 			System.out.println(
-					"---------------------------------------------------------------------------------------------");
+					"=============================================================================================");
 			int choice = Integer.parseInt(sc.nextLine());
 			switch (choice) {
 			case 1:
@@ -167,9 +167,9 @@ public class MenuView {
 	}
 
 	public static void printAdminMenu(User user) {
-		System.out.println("------------------ MAIN MENU -----------------");
+		System.out.println("================== ADMIN MENU =================");
 		System.out.println(" 1. 개인정보 수정  |  2. 영화 DB 관리하기  |  0. 종료");
-		System.out.println("----------------------------------------------");
+		System.out.println("===============================================");
 		int choice = Integer.parseInt(sc.nextLine());
 		switch (choice) {
 		case 1:
@@ -195,6 +195,7 @@ public class MenuView {
 	}
 
 	/**
+	 * @author 조성휘
 	 * 사용자메뉴 - 1. 개인정보 수정
 	 */
 	private static void printPersonalDetailMenu() {
@@ -205,6 +206,7 @@ public class MenuView {
 	}
 
 	/**
+	 * @author 홍전형
 	 * 사용자메뉴 - 2. 위시리스트 보기
 	 */
 	private static void printWishListMenu(int userNo) {
@@ -214,7 +216,8 @@ public class MenuView {
 	}
 
 	/**
-	 * @author 홍전형 사용자메뉴 - 3. 추천 영화 보기
+	 * @author 홍전형 
+	 * 사용자메뉴 - 3. 추천 영화 보기
 	 */
 	private static void printRecommendMenu(User user) {
 		// TODO Auto-generated method stub
@@ -250,7 +253,8 @@ public class MenuView {
 	}
 
 	/**
-	 * @author 김찬원 -- 사용자메뉴 - 4. 검색하기
+	 * @author 김찬원 
+	 * -- 사용자메뉴 - 4. 검색하기
 	 */
 	private static void printSearchMenu() {
 
