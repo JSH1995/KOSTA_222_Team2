@@ -5,14 +5,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Scanner;
 import java.util.Set;
-
 
 import team2.mvc.controller.CustomerController;
 import team2.mvc.controller.MovieController;
@@ -21,6 +18,7 @@ import team2.mvc.controller.SearchController;
 import team2.mvc.controller.WishController;
 import team2.mvc.model.dto.Actor;
 import team2.mvc.model.dto.MovidDetail;
+import team2.mvc.model.dto.Search;
 import team2.mvc.model.dto.Tag;
 import team2.mvc.model.dto.User;
 import team2.mvc.util.DbUtil;
@@ -130,23 +128,7 @@ public class MenuView {
 				printUserMenu();
 				break;
 
-			case 3:// 사용자 평가 영화 고유번호만 넣어주면 됨
-				Calendar cal2 = Calendar.getInstance();
-				SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy/MM/dd/HH:mm:ss");
-				String datestr2 = sdf2.format(cal2.getTime());
-
-				int userNo = user.getUserNo();
-				System.out.println("영화 고유번호를 적어주세요 --추후에 이건 필요없음");
-				int movieNo = Integer.parseInt(sc.nextLine());
-				System.out.println("평점을 적어주세요 (1~5)");
-				int rate = Integer.parseInt(sc.nextLine());
-				System.out.println("남기실 코멘트를 입력해주세요");
-				String comment = sc.nextLine();
-				String rateDate = datestr2;
-				CustomerController.Evaluation(userNo, movieNo, rate, comment, rateDate);// 사용자 평가
-
-				break;
-
+			
 			
 			case 0:
 				System.exit(0);
@@ -333,9 +315,8 @@ public class MenuView {
 				}
 				break;
 			case 7:
-				System.out.println("========영화 상세 정보 확인========");
-				String keyword = insertKeyword();
-				SearchController.showMovieDetail(keyword);
+				movieDetail();
+				
 				break;
 			case 8:
 				return;
@@ -691,5 +672,63 @@ public class MenuView {
 		System.out.println("삭제를 원하는 영화상세정보에 해당하는 영화고유번호 입력 : ");
 		int movieNo = Integer.parseInt(sc.nextLine());
 		MovieController.deleteMovieDetail(movieNo);
+	}
+	public static void userComment(int movienum) {
+		Calendar cal2 = Calendar.getInstance();
+		SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy/MM/dd/HH:mm:ss");
+		String datestr2 = sdf2.format(cal2.getTime());
+
+		int userNo = user.getUserNo();
+		//System.out.println("영화 고유번호를 적어주세요 --추후에 이건 필요없음");
+		int movieNo = movienum;
+		System.out.println("평점을 적어주세요 (1~5)");
+		int rate = Integer.parseInt(sc.nextLine());
+		System.out.println("남기실 코멘트를 입력해주세요");
+		String comment = sc.nextLine();
+		String rateDate = datestr2;
+		CustomerController.Evaluation(userNo, movieNo, rate, comment, rateDate);
+		
+	}
+	public static void movieDetail() {
+		System.out.println("========영화 상세 정보 확인========");
+		String keyword = insertKeyword();
+		Search sd = SearchController.showMovieDetail(keyword);
+		String mn =sd.getMovieName();
+		String di = sd.getDirector();
+		int movienum=0;
+		
+		System.out.println("=======================================================================");
+		System.out.println("1: 현재 영화의 평점 및 코멘트를 작성하시겠습니까? | 0: 종료 |");
+		System.out.println("=======================================================================");
+		int choice = Integer.parseInt(sc.nextLine());
+		switch(choice){
+		case 1:
+			Connection con = null;
+			Statement st = null;
+			ResultSet rs = null;
+
+			try {
+				con = DbUtil.getConnection();
+				st = con.createStatement();
+				rs = st.executeQuery(
+						"select 영화_고유번호 from 영화 where 작품명  ='" + mn + "' and 감독 = '" + di + "'");
+				if(rs.next()) {
+					movienum = rs.getInt(1);
+				};
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				DbUtil.dbClose(con, st);
+			}
+			
+			userComment(movienum);
+			break;
+		case 2:
+			break;
+		
+		}
+		
+		
 	}
 }
