@@ -339,28 +339,28 @@ public class MenuView {
 				director = insertKeyword();
 				if (SearchController.searchByDirector(director, sortType)) {
 					sortType = sort();
-					SearchController.searchByName(director, sortType);
+					SearchController.searchByDirector(director, sortType);
 				}
 				break;
 			case 4:
 				actor = insertKeyword();
 				if (SearchController.searchByActor(actor, sortType)) {
 					sortType = sort();
-					SearchController.searchByName(actor, sortType);
+					SearchController.searchByActor(actor, sortType);
 				}
 				break;
 			case 5:
 				genre = insertKeyword();
 				if (SearchController.searchByGenre(genre, sortType)) {
 					sortType = sort();
-					SearchController.searchByName(genre, sortType);
+					SearchController.searchByGenre(genre, sortType);
 				}
 				break;
 			case 6:
 				nation = insertKeyword();
 				if (SearchController.searchByNation(nation, sortType)) {
 					sortType = sort();
-					SearchController.searchByName(nation, sortType);
+					SearchController.searchByNation(nation, sortType);
 				}
 				break;
 			case 7:
