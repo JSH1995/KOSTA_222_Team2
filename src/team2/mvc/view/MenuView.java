@@ -44,17 +44,19 @@ public class MenuView {
 			switch (choice) {
 			case 1:
 
-				// 입력한 숫자들을 하나씩 가져옴 12345를 1 2 3 4 5 이런식으로
-				/*
-				 * while(num > 0) {
-				 * 
-				 * sum += num%10;
-				 * 
-				 * num /= 10;
-				 * 
-				 * 
-				 * }
-				 */
+				//입력한 숫자들을 하나씩 가져옴 12345를 5  4  3  2  1이런식으로 가져올수 있음
+				/*	public static void one_of{
+						int sum;
+						int num=13579; //여기가 입력된 숫자
+						while(num > 0) {
+									System.out.println(num);
+									sum=0;
+									sum =sum+ num%10;
+									System.out.println(sum);
+				
+									num = num/ 10;
+						
+					}*/ 	
 				Calendar cal = Calendar.getInstance();
 
 				String month = Integer.toString(cal.get(Calendar.MONTH) + 1);
