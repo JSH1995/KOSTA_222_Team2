@@ -11,7 +11,7 @@ public class Moviement_main {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		MenuView.menu();
+		//MenuView.menu();
 
 		//System.out.println("test");
 		//System.out.println("test2");
@@ -22,6 +22,7 @@ public class Moviement_main {
 		//MenuView.registerMovie();
 		//MenuView.updateMovie();
 		//MenuView.deleteMovie();
-
+		
+		WishController.putWishList(830111734, 31);
 	}
 }

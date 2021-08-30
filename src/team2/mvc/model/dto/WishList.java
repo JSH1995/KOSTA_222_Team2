@@ -5,11 +5,11 @@ import java.util.List;
 public class WishList {
 	
 	private int userNo;
-	private List<Integer> movieNo;
+	private int movieNo;
 	
 	public WishList() {}
 
-	public WishList(int userNo, List<Integer> movieNo) {
+	public WishList(int userNo, int movieNo) {
 		super();
 		this.userNo = userNo;
 		this.movieNo = movieNo;
@@ -23,11 +23,11 @@ public class WishList {
 		this.userNo = userNo;
 	}
 
-	public List<Integer> getMovieNo() {
+	public int getMovieNo() {
 		return movieNo;
 	}
 
-	public void setMovieNo(List<Integer> movieNo) {
+	public void setMovieNo(int movieNo) {
 		this.movieNo = movieNo;
 	}
 

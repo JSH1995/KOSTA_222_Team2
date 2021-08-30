@@ -33,7 +33,7 @@ public class CustomerController {
 	public static boolean login(String id, String password) {
 		try {
 			List<User> list = customerService.login(id,password);
-			System.out.println("로그인 성공");
+			System.out.println("로그인 성공! " + id + "님, 어서오세요!");
 			//su=true;
 			return true;
 		} catch (Exception e) {

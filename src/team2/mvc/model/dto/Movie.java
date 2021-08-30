@@ -52,20 +52,9 @@ public class Movie {
 	
 	@Override
 	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append(" movieNo=");
-		builder.append(movieNo);
-		builder.append(" movieName=");
-		builder.append(movieName);
-		builder.append(", director=");
-		builder.append(director);
-		builder.append(", movieRegDate=");
-		builder.append(movieRegDate);
-		builder.append(", genreNo=");
-		builder.append(genreNo);
-		builder.append("]");
-		return builder.toString();
+		return "["+ movieName + "], " + director ;
 	}
+	
 	
 	
 	

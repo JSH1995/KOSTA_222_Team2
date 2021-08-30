@@ -27,8 +27,8 @@ public class WishController {
 		try {
 			wishService.putWishList(userNo, movieNo);
 			SuccessView.messagePrint("정상적으로 등록되었습니다.");
-		}catch (SQLException e) {
-			FailView.errorMessage("등록에 실패했습니다. 이미 존재하는 영화입니다.");
+		}catch (Exception e) {
+			FailView.errorMessage("이미 위시리스트에 존재하는 영화입니다.");
 		}
 	}
 }

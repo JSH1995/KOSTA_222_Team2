@@ -52,7 +52,7 @@ public class RecommendDAOImpl implements RecommendDAO {
 		ResultSet rs = null;
 		List<Movie> list = new ArrayList();
 		String sql = "select 영화_고유번호, 장르번호, 작품명, 감독, 영화등록일자 from(select count(영화_고유번호), 영화_고유번호, 장르번호, 작품명, 감독, 영화등록일자 "
-				+ "from 위시리스트 join 영화 using (영화_고유번호) group by 영화_고유번호, 장르번호, 작품명, 감독, 영화등록일자 order by count(영화_고유번호) desc) where rownum<4";
+				+ "from 위시리스트 join 영화 using (영화_고유번호) group by 영화_고유번호, 장르번호, 작품명, 감독, 영화등록일자 order by count(영화_고유번호) desc) where rownum<16";
 		try {
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
@@ -101,7 +101,7 @@ public class RecommendDAOImpl implements RecommendDAO {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		List<Movie> list = new ArrayList();
-		String sql2 = "select * from 영화 where 장르번호 = ? and rownum < 5";
+		String sql2 = "select * from 영화 where 장르번호 = ? and rownum < 16";
 		
 		try {
 			ps = con.prepareStatement(sql2);
