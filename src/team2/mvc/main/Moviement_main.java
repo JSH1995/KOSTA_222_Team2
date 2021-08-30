@@ -22,7 +22,7 @@ public class Moviement_main {
 		//MenuView.registerMovie();
 		//MenuView.updateMovie();
 		//MenuView.deleteMovie();
-
+		
 		WishController.putWishList(830111734, 31);
 	}
 }

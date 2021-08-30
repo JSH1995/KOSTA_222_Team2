@@ -20,10 +20,6 @@ public class WishService {
 	}
 	
 	public void putWishList(int userNo, int movieNo) throws SQLException, DuplicateException {
-		int result = wishDAO.putWishList(userNo, movieNo);
-		if(result == 0) {
-			throw new SQLException("위시리스트 추가에 실패하였습니다.");
-		}
-
+		wishDAO.putWishList(userNo, movieNo);
 	}
 }

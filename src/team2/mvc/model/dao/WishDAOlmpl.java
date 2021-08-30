@@ -7,12 +7,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.sun.jdi.request.ClassPrepareRequest;
-
 import team2.mvc.exception.DuplicateException;
 import team2.mvc.model.dto.Movie;
+import team2.mvc.model.dto.WishList;
 import team2.mvc.util.DbUtil;
-import team2.mvc.view.FailView;
 
 public class WishDAOlmpl implements WishDAO {
 	@Override
@@ -40,36 +38,44 @@ public class WishDAOlmpl implements WishDAO {
 	}
 
 	@Override
-	public int putWishList(int userNo, int movieNo) throws SQLException, DuplicateException {
+	public void putWishList(int userNo, int movieNo) throws SQLException, DuplicateException {
 		Connection con = null;
 		PreparedStatement ps = null;
-		List<Movie> movieList = new ArrayList<Movie>();
+		List<WishList> list = new ArrayList<WishList>();
 		String sql = "insert into 위시리스트 values(?,?)";
-		int result = 0;
 		try {
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
 			ps.setInt(1, userNo);
 			ps.setInt(2, movieNo);
-			result = ps.executeUpdate();
+			list = checkWishDuplicate(con);
 			
-			//if (result == 0) {
-			//	con.rollback();
-			//	throw new SQLException("실패쓰..");
-			//} else {
-				for(Movie m : movieList) {
-					if(movieNo == m.getMovieNo()) {
-						con.rollback();
-						throw new DuplicateException("이미 존재하는 영화라 등록실패쓰..");
-					}
+			for(WishList w : list) {
+				if(w.getUserNo() == userNo && w.getMovieNo() == movieNo) {
+					throw new DuplicateException("이미 존재하는 영화입니다.");
 				}
-			//}
-
+			}
+			ps.executeUpdate();
 		} finally {
 			DbUtil.dbClose(con, ps);
-			System.out.println("finally");
 		}
-		return result;
+	}
+
+	public List<WishList> checkWishDuplicate(Connection con) throws SQLException{
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		List<WishList> list = new ArrayList<>();
+		String sql = "select * from 위시리스트";
+		try {
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				list.add(new WishList(rs.getInt(1), rs.getInt(2)));
+			}			
+		}finally {
+			DbUtil.dbClose(null, ps, rs);
+		}
+		return list;
 	}
 
 }

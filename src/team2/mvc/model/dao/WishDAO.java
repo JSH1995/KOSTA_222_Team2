@@ -17,6 +17,6 @@ public interface WishDAO {
 	 * 위시리스트에 영화 추가하기
 	 * @throws DuplicateException 
 	 * */
-	int putWishList(int userNo, int movieNo) throws SQLException, DuplicateException;
+	void putWishList(int userNo, int movieNo) throws SQLException, DuplicateException;
 
 }
