@@ -42,17 +42,23 @@ public class RecommendDAOImpl implements RecommendDAO {
 		return list;
 	}
 
+	/**
+	 * 위시리스트에 가장 많이 담긴 영화를 추천
+	 */
 	@Override
 	public List<Movie> recByRank() throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		List<Movie> list = new ArrayList();
+		String sql = "select 영화_고유번호, 장르번호, 작품명, 감독, 영화등록일자 from(select count(영화_고유번호), 영화_고유번호, 장르번호, 작품명, 감독, 영화등록일자 "
+				+ "from 위시리스트 join 영화 using (영화_고유번호) group by 영화_고유번호, 장르번호, 작품명, 감독, 영화등록일자 order by count(영화_고유번호) desc) where rownum<4";
 		try {
 			con = DbUtil.getConnection();
-			ps = con.prepareStatement("sql");
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
 
-			if (rs.next()) {
+			while (rs.next()) {
 				list.add(new Movie(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5)));
 			}
 		} finally {
@@ -62,6 +68,9 @@ public class RecommendDAOImpl implements RecommendDAO {
 		return list;
 	}
 
+	/**
+	 * 사용자가 선호하는 장르의 영화를 추천
+	 */
 	@Override
 	public List<Movie> recByGenre(int userNo) throws SQLException, NullPointerException {
 		Connection con = null;
@@ -107,6 +116,9 @@ public class RecommendDAOImpl implements RecommendDAO {
 		return list;
 	}
 
+	/**
+	 * 사용자가 선호하는 태그의 영화를 추천
+	 */
 	@Override
 	public List<Movie> recByTag(int userNo) throws SQLException {
 		Connection con = null;

@@ -27,6 +27,7 @@ public class RecommendController {
 	public static void recByRank() {
 		try {
 			List<Movie> list = recommendService.recByRank();
+			SuccessView.printRecMovieList(list);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
