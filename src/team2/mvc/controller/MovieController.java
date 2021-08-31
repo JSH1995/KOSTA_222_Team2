@@ -1,10 +1,11 @@
 package team2.mvc.controller;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import team2.mvc.model.dto.Actor;
 import team2.mvc.model.dto.MovidDetail;
-import team2.mvc.model.dto.Movie;
+import team2.mvc.model.dto.MovieSub;
 import team2.mvc.model.dto.Tag;
 import team2.mvc.model.service.MovieService;
 import team2.mvc.view.FailView;
@@ -181,6 +182,22 @@ public class MovieController {
 			//e.printStackTrace();
 			FailView.errorMessage(e.getMessage());
 		}
+		
+	}
+	
+	/**
+	 * Menuview UI 에 사용할 부수적인 메소드들
+	 * */
+	
+	public static List<MovieSub> selectByMovieNo(int movieNo) {
+		try {
+			List<MovieSub> movieList = movieService.selectByMovieNo(movieNo);
+			return movieList;
+		}catch(SQLException e) {
+			//e.printStackTrace();
+			FailView.errorMessage(e.getMessage());
+		}
+		return null;
 		
 	}
 	

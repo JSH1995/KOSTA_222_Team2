@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashSet;
@@ -140,6 +139,9 @@ public class MenuView {
 			break;
 		case 0:
 			System.exit(0);
+		default:
+			System.out.println("메뉴에 있는 숫자를 눌러주세요");
+			return;
 		}
 	}
 
@@ -677,9 +679,14 @@ public class MenuView {
 
 	public static void movieDetail() {
 		System.out.println("==================영화 상세 정보 검색==================");
+		
 		String keyword = insertKeyword();
+			
 		Search sd = SearchController.showMovieDetail(keyword);
-		SearchController.showComment(keyword);
+		if(sd == null) return;
+		for(Evaluation ev : SearchController.showComment(keyword)) {
+			System.out.println(ev);
+		}
 		String mn = sd.getMovieName();
 
 		int movienum = 0; 
@@ -695,7 +702,7 @@ public class MenuView {
 		int choice = Integer.parseInt(sc.nextLine());
 		switch (choice) {
 		case 1:
-			findMovieNumber(sd, mn, di);
+			movienum = findMovieNumber(sd, mn, di);
 			userComment(movienum);
 			break;
 		case 2:
@@ -709,19 +716,20 @@ public class MenuView {
 			return;
 
 		}
-	}
+
+	}	
+
 	public static int findMovieNumber(Search sd, String mn, String di) {
-		Connection con = null;
-		PreparedStatement ps = null;
-		ResultSet rs = null;
-		String sql = "SELECT 영화_고유번호 FROM 영화 WHERE 작품명 = " + "'"+ mn +"'";
 		
-		String keyword = insertKeyword();
-		sd = SearchController.showMovieDetail(keyword);
 		mn = sd.getMovieName();
 		di = sd.getDirector();
 		int movienum = 0;
 		
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String sql = "SELECT 영화_고유번호 FROM 영화 WHERE 작품명 = " + "'"+ mn +"'";
+			
 		try {
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
@@ -737,4 +745,5 @@ public class MenuView {
 		return movienum;
 	}
 }
+
 

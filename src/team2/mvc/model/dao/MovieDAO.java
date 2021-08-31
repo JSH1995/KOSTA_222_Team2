@@ -1,9 +1,11 @@
 package team2.mvc.model.dao;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import team2.mvc.model.dto.Actor;
 import team2.mvc.model.dto.MovidDetail;
+import team2.mvc.model.dto.MovieSub;
 import team2.mvc.model.dto.Tag;
 
 public interface MovieDAO {
@@ -68,6 +70,13 @@ public interface MovieDAO {
 	 * */
 	int deleteMovieDetail(int movieNo) throws SQLException;
 
+	/**
+	 * Menuview UI 에 사용할 부수적인 메소드들
+	 *     1. 영화 고유번호에 해당하는 레코드 검색
+	 * */
+	
+	List<MovieSub> selectByMovieNo(int movieNo) throws SQLException;
+	
 	
 
 }

@@ -2,13 +2,16 @@ package team2.mvc.model.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
 import team2.mvc.model.dto.Actor;
 import team2.mvc.model.dto.MovidDetail;
 import team2.mvc.model.dto.Movie;
+import team2.mvc.model.dto.MovieSub;
 import team2.mvc.model.dto.Tag;
 import team2.mvc.util.DbUtil;
 
@@ -78,7 +81,7 @@ public class MovieDAOImpl implements MovieDAO {
 		Connection con=null;
 		PreparedStatement ps=null;
 		int result=0;
-		String sql="delete from 영화 where 영화_고유번호=?";
+		String sql="delete 영화 where 영화_고유번호=?";
 		try {
 			con=DbUtil.getConnection();
 			ps=con.prepareStatement(sql);
@@ -100,7 +103,7 @@ public class MovieDAOImpl implements MovieDAO {
 		Connection con=null;
 		PreparedStatement ps=null;
 		int result=0;
-		String sql="insert into 배우(영화_고유번호, 주연1, 주연2, 조연1, 조연2, 조연3) values(?, ?, ?, ?, ?, ?) ";
+		String sql="insert into 배우(영화_고유번호, 주연1, 주연2, 조연1, 조연2, 조연3) values(?, ?, ?, ?, ?, ?)";
 		try {
 			con=DbUtil.getConnection();
 			ps=con.prepareStatement(sql);
@@ -219,7 +222,7 @@ public class MovieDAOImpl implements MovieDAO {
 		Connection con=null;
 		PreparedStatement ps=null;
 		int result=0;
-		String sql="delete from 태그 where 영화_고유번호=?";
+		String sql="delete 태그 where 영화_고유번호=?";
 		try {
 			con=DbUtil.getConnection();
 			ps=con.prepareStatement(sql);
@@ -297,7 +300,7 @@ public class MovieDAOImpl implements MovieDAO {
 		Connection con=null;
 		PreparedStatement ps=null;
 		int result=0;
-		String sql="delete from 영화_상세 where 영화_고유번호=?";
+		String sql="delete 영화_상세 where 영화_고유번호=?";
 		try {
 			con=DbUtil.getConnection();
 			ps=con.prepareStatement(sql);
@@ -310,6 +313,33 @@ public class MovieDAOImpl implements MovieDAO {
 		}
 		return result;
 	}
+	
+	
+	/**
+	 * Menuview UI 에 사용할 부수적인 메소드들
+	 *     1. 영화 고유번호에 해당하는 레코드 검색
+	 * */
 
+	public List<MovieSub> selectByMovieNo(int movieNo) throws SQLException{
+		Connection con=null;
+		PreparedStatement ps=null;
+		ResultSet rs=null;
+		List<MovieSub> movieList=new ArrayList<MovieSub>();
+		String sql="select * from 영화 where 영화_고유번호=?";
+		try {
+			con=DbUtil.getConnection();
+			ps=con.prepareStatement(sql);
+			ps.setInt(1, movieNo);
+			rs=ps.executeQuery();
+			while(rs.next()) {
+				MovieSub movie = new MovieSub(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5));
+				movieList.add(movie);
+			}
+			
+		}finally {
+			DbUtil.dbClose(con, ps, rs);
+		}
+		return movieList;
+	}
 
 }

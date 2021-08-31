@@ -121,7 +121,12 @@ public class SearchController {
 		
 		try {
 			sd = searchService.showMovieDetail(movieName);
-			SuccessView.printMovieDetail(sd);
+			
+			if(sd == null) {
+				System.out.println("없는 영화이거나 입력하신 내용이 일치하지 않습니다.");
+			}else {
+				SuccessView.printMovieDetail(sd);
+			}
 		}catch(Exception e) {
 			FailView.errorMessage(e.getMessage());
 		}
@@ -136,7 +141,6 @@ public class SearchController {
 		
 		try {
 			le = searchService.showComment(movieName);
-			SuccessView.printComment(le);
 		} catch (Exception e) {
 			FailView.errorMessage(e.getMessage());
 		}
