@@ -36,14 +36,16 @@ public interface CustomerDAO {
 	 */
 	int Evaluation(int userNo, int movieNo, int rate, String comment, String rateDate) throws Exception;
 
+	List<User> passwordUpdate(String pw1, String pw2) throws SQLException;
+	
+	
 	/**
-	 * 비밀번호 변경 메소드
+	 * 사용자 비밀번호 변경 메소드
 	 * @param user_nums
 	 * @param pw1
 	 * @throws SQLException
 	 */
 	List<User> passwordUpdate(int user_nums, String pw1) throws SQLException;
-
 	/**
 	 * 사용자 태그 메소드
 	 * @param movienum

@@ -131,6 +131,10 @@ public class CustomerDAOImpl implements CustomerDAO {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	/**
+	 * @author 조성휘
+	 * 사용자가 비밀번호 변경하는 메소드
+	 */
 	@Override
 	public List<User> passwordUpdate(int user_nums, String pw1) throws SQLException {
 		// TODO Auto-generated method stub
