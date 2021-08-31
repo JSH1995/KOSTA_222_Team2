@@ -77,6 +77,8 @@ public interface MovieDAO {
 	
 	List<MovieSub> selectByMovieNo(int movieNo) throws SQLException;
 	
+	List<Tag> tagListByMovieNo(int movieNo) throws SQLException;
+	
 	
 
 }

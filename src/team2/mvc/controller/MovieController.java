@@ -201,5 +201,16 @@ public class MovieController {
 		
 	}
 	
+	public static List<Tag> tagListByMovieNo(int movieNo){
+		try {
+			List<Tag> tagList = movieService.tagListByMovieNo(movieNo);
+			return tagList;
+		}catch(SQLException e) {
+			//e.printStackTrace();
+			FailView.errorMessage(e.getMessage());
+		}
+		return null;
+	}
+	
 
 }

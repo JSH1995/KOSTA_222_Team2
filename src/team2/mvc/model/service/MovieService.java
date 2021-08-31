@@ -143,5 +143,14 @@ public class MovieService {
 		}
 		return movieList;
 	}
+	
+	public List<Tag> tagListByMovieNo(int movieNo) throws SQLException {
+		List<Tag> tagList = movieDAO.tagListByMovieNo(movieNo);
+		if(tagList.size() == 0 || tagList.isEmpty()) {
+			throw new SQLException(movieNo+"번에 해당하는 레코드가 없습니다.");
+		}
+		return tagList;
+	}
+	
 
 }
