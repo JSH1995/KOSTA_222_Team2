@@ -252,6 +252,7 @@ public class MenuView {
 
 	/**
 	 * @author 김찬원 -- 사용자메뉴 - 4. 검색하기 -- 카테고리별 검색을 지원
+	 * 카테고리별 검색 기능 메소드 선택지를 담고 있는 메소드
 	 */
 	private static void printSearchMenu() {
 
@@ -333,7 +334,9 @@ public class MenuView {
 	}
 
 	/**
-	 * @author 김찬원 - 검색한 결과를 정렬 시켜주는 메소드 검색 했던 DB를 정렬 후 다시 재출력 해준다.
+	 * @author 김찬원
+	 * 검색한 결과를 정렬 시켜주는 메소드 검색 했던 DB를 정렬 후 다시 재출력 해주는 메뉴의 메소드
+	 * 
 	 */
 
 	private static String sort() {
@@ -373,7 +376,10 @@ public class MenuView {
 	}
 
 	/**
-	 * @author 김찬원 - 검색 키워드 입력하는 메소드 -- 이후 키워드는 Set에 저장되어 최근 검색 리스트에 포함 된다.
+	 * @author 김찬원 
+	 * 검색 키워드 입력하는 메소드
+	 * 이후 키워드는 Set에 저장되어 최근 검색 리스트에 포함 된다.
+	 * Set<String> keywordList
 	 */
 
 	private static String insertKeyword() {
@@ -388,7 +394,9 @@ public class MenuView {
 	}
 
 	/**
-	 * @author 김찬원 최근 검색 키워드를 보여주는 리스트 -- 프로그램이 돌아가는 동안에 검색했던 키워드들을 Set에 저장하여 출력한다.
+	 * @author 김찬원 
+	 * 최근 검색 키워드를 보여주는 리스트
+	 * 프로그램이 돌아가는 동안에 검색했던 키워드들을 Set에 저장하여 출력한다.
 	 */
 
 	private static void showRecentSearchList() {
@@ -846,8 +854,9 @@ public class MenuView {
 	}
 
 	/**
-	 * @author 김찬원, 조성휘 -- 영화 상세 정보 검색을 위한 입력 메소드 및 메뉴 메소드 -- 이후 평점/코멘트 등록, 위시리스트
-	 *         추가, 특정 영화 DB에 사용자 태그 추가하는 기능의 선택지 부여
+	 * @author 김찬원, 조성휘
+	 * 영화 상세 정보 검색을 위한 입력 메소드 및 메뉴 메소드
+	 * 이후 평점/코멘트 등록, 위시리스트 추가, 특정 영화 DB에 사용자 태그 추가하는 기능의 선택지 부여
 	 */
 
 	public static void movieDetail() {
@@ -898,17 +907,27 @@ public class MenuView {
 		}
 
 	}
+
 	/**
 	 * @author 홍전형
 	 * 사용자가 태그를 추가하는 메서드
 	 * @param movienum
 	 * @return
 	 */
+
 	public static String putUserTag(int movienum) {
 		System.out.println("태그를 입력해주세요: ");
 		String userTag = sc.nextLine();
 		return userTag;
 	}
+	
+	/**
+	 * 
+	 * @param sd
+	 * @param mn
+	 * @param di
+	 * @return
+	 */
 
 	public static int findMovieNumber(Search sd, String mn, String di) {
 
