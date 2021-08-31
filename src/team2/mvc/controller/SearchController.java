@@ -8,9 +8,11 @@
 
 package team2.mvc.controller;
 
+import java.sql.SQLException;
 import java.util.List;
 
-import team2.mvc.model.dto.MovidDetail;
+import team2.mvc.exception.NotFoundException;
+import team2.mvc.model.dto.Evaluation;
 import team2.mvc.model.dto.Movie;
 import team2.mvc.model.dto.Search;
 import team2.mvc.model.service.SearchService;
@@ -125,6 +127,20 @@ public class SearchController {
 		}
 		
 		return sd;
+		
+	}
+	
+	public static List<Evaluation> showComment(String movieName){
+		
+		List<Evaluation> le = null;
+		
+		try {
+			le = searchService.showComment(movieName);
+			SuccessView.printComment(le);
+		} catch (Exception e) {
+			FailView.errorMessage(e.getMessage());
+		}
+		return le;
 		
 	}
 	

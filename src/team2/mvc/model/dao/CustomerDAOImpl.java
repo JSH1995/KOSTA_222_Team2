@@ -128,26 +128,16 @@ public class CustomerDAOImpl implements CustomerDAO {
 	public void putTag(int userNo, int movienum) throws Exception {
 		Connection con = null;
 		PreparedStatement ps = null;
-		List<Tag> list = new ArrayList<Tag>();
-		String sql = "insert into 태그(영화_고유번호, 태그번호) values(?, ?)";
+		
 		
 		try {
-			con = DbUtil.getConnection();
-			ps = con.prepareStatement(sql);
-			ps.setInt(1, );
+	
+			
 			
 		}finally {
 			DbUtil.dbClose(con, ps);
 		}
 		
 	}
-	
-	
-	
-	
-
-
-
-	
 
 }

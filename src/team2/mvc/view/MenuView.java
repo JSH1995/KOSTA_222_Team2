@@ -19,6 +19,7 @@ import team2.mvc.controller.RecommendController;
 import team2.mvc.controller.SearchController;
 import team2.mvc.controller.WishController;
 import team2.mvc.model.dto.Actor;
+import team2.mvc.model.dto.Evaluation;
 import team2.mvc.model.dto.MovidDetail;
 import team2.mvc.model.dto.Search;
 import team2.mvc.model.dto.Tag;
@@ -680,6 +681,7 @@ public class MenuView {
 		System.out.println("==================영화 상세 정보 검색==================");
 		String keyword = insertKeyword();
 		Search sd = SearchController.showMovieDetail(keyword);
+		SearchController.showComment(keyword);
 		String mn = sd.getMovieName();
 
 		int movienum = 0; 
