@@ -10,12 +10,12 @@ import team2.mvc.model.dto.Movie;
 public interface WishDAO {
 
 	/**
-	 * 위시리스트 목록 보기
+	 * 사용자 고유넘버를 받아 위시리스트를 출력
 	 * */
 	List<Movie> viewWishList(int userNo) throws SQLException, NotFoundException;
 
 	/**
-	 * 위시리스트에 영화 추가하기
+	 * 위시리스트에 영화를 추가
 	 * @throws DuplicateException 
 	 * */
 	void putWishList(int userNo, int movieNo) throws SQLException, DuplicateException;
