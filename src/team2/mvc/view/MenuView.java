@@ -510,7 +510,7 @@ public class MenuView {
 		String director = sc.nextLine();
 		System.out.println();
 
-		MovieController.registerMovie(movieNo, genreNo, movieName, director, date11);
+		MovieController.registerMovie(movieNo, genreNo, movieName, director, date1);
 	}
 
 	// 영화_고유번호에 해당하는 영화 레코드 검색하기.
