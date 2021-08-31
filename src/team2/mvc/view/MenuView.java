@@ -678,17 +678,16 @@ public class MenuView {
 		String keyword = insertKeyword();
 		Search sd = SearchController.showMovieDetail(keyword);
 		String mn = sd.getMovieName();
-<<<<<<< HEAD
-		//String di = sd.getDirector();
+
 		int movienum = 0;
 		
 		System.out.println("=======================================================================");
-=======
+
 		String di = sd.getDirector();
-		int movienum = 0;
+
 
 		System.out.println("====================================================");
->>>>>>> 7c8d24377dd32c29c16fa6e9b3938485dc140f80
+
 		System.out.println("1: 현재 영화의 평점 및 코멘트를 작성하시겠습니까? | 0: 종료 |");
 		System.out.println("====================================================");
 		int choice = Integer.parseInt(sc.nextLine());
@@ -701,16 +700,11 @@ public class MenuView {
 
 			try {
 				con = DbUtil.getConnection();
-<<<<<<< HEAD
+
 				ps = con.prepareStatement(sql);
-				rs = ps.executeQuery();
-						//"select 영화_고유번호 from 영화 where 작품명  ='" + mn + "' and 감독 = '" + di + "'");
-				if(rs.next()) {
-=======
-				st = con.createStatement();
-				rs = st.executeQuery("select 영화_고유번호 from 영화 where 작품명  ='" + mn + "' and 감독 = '" + di + "'");
+				rs = ps.executeQuery("select 영화_고유번호 from 영화 where 작품명  ='" + mn + "' and 감독 = '" + di + "'");
 				if (rs.next()) {
->>>>>>> 7c8d24377dd32c29c16fa6e9b3938485dc140f80
+
 					movienum = rs.getInt(1);
 				}
 				;

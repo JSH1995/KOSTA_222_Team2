@@ -11,7 +11,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
+import team2.mvc.model.dto.Evaluation;
 import team2.mvc.model.dto.User;
 import team2.mvc.util.DbUtil;
 
@@ -78,13 +78,15 @@ public class CustomerDAOImpl implements CustomerDAO {
 	}
 
 	
-	public List<team2.mvc.model.dto.Evaluation> Evaluation(int userNo, int movieNo, int rate, String comment,
+	public int Evaluation(int userNo, int movieNo, int rate, String comment,
 			String rateDate) throws Exception {
 		
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		List<team2.mvc.model.dto.Evaluation> list = new ArrayList();
+//		List<team2.mvc.model.dto.Evaluation> list = new ArrayList();
+		int result = 0;
+		
 		try {
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement("insert into 사용자_평가 values(?,?,?,?,?)");
@@ -94,17 +96,18 @@ public class CustomerDAOImpl implements CustomerDAO {
 			ps.setString(4, comment);
 			ps.setString(5, rateDate);
 		
-			
-			rs = ps.executeQuery();
+			result=ps.executeUpdate();
+		//	rs = ps.executeQuery();
 
-			if(rs.next()) {
-				list.add(new team2.mvc.model.dto.Evaluation(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getString(4), rs.getString(5)));
-			}
+//			if(rs.next()) {
+//				list.add(new team2.mvc.model.dto.Evaluation(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getString(4), rs.getString(5)));
+//			}
 		} finally {
-			DbUtil.dbClose(con, ps, rs);
+			DbUtil.dbClose(con, ps);
 		}
 		
-		return list;
+		//return list;
+		return result;
 	}
 	@Override
 	public List<User> passwordUpdate() throws SQLException {
