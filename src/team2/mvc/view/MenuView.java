@@ -804,6 +804,23 @@ public class MenuView {
 			System.out.println("관리자 메뉴로 돌아갑니다.");
 		}
 	}
+	public static void userComment(int movienum) {
+		Calendar cal = Calendar.getInstance();
+		String year = Integer.toString(cal.get(Calendar.YEAR));
+		String month = Integer.toString(cal.get(Calendar.MONTH) + 1);
+		String day = Integer.toString(cal.get(Calendar.DAY_OF_MONTH));
+		String num = year + "/" + month + "/" + day;
+
+		int userNo = user.getUserNo();
+		// System.out.println("영화 고유번호를 적어주세요 --추후에 이건 필요없음");
+		int movieNo = movienum;
+		System.out.println("평점을 적어주세요 (1~5)");
+		int rate = Integer.parseInt(sc.nextLine());
+		System.out.println("남기실 코멘트를 입력해주세요");
+		String comment = sc.nextLine();
+		String rateDate = num;
+		CustomerController.Evaluation(userNo, movieNo, rate, comment, rateDate);
+	}
 
 	/**
 	 * @author 김찬원, 조성휘 -- 영화 상세 정보 검색을 위한 입력 메소드 및 메뉴 메소드 -- 이후 평점/코멘트 등록, 위시리스트
