@@ -35,7 +35,11 @@ public class MovieDAOImpl implements MovieDAO {
 			ps.setString(3, movieName);
 			ps.setString(4, director);
 			
-			result = ps.executeUpdate();
+			try {
+				result = ps.executeUpdate();
+			}catch(Exception e) {
+				System.out.println("영화고유번호가 중복되어");
+			}
 			
 		}finally {
 			DbUtil.dbClose(con, ps);
