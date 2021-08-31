@@ -18,6 +18,14 @@ public class MovieController {
 	
 	/**
 	 * 영화 등록
+	 * @author 이치인
+	 * @param movieNo
+	 * @param genreNo
+	 * @param movieName
+	 * @param director
+	 * @param date1
+	 * @exception SQLException
+	 * 
 	 * */
 	public static void registerMovie(int movieNo, int genreNo, String movieName, String director, String date1) {
 		try {
@@ -32,6 +40,13 @@ public class MovieController {
 	
 	/**
 	 * 영화 수정
+	 * @author 이치인
+	 * @param movieNo
+	 * @param genreNo
+	 * @param movieName
+	 * @param director
+	 * @param date1
+	 * @exception SQLException
 	 * */
 	public static void updateMovie(int movieNo, int genreNo, String movieName, String director, String date1) {
 		try {
@@ -45,6 +60,9 @@ public class MovieController {
 	
 	/**
 	 * 영화 삭제
+	 * @author 이치인
+	 * @param movieNo
+	 * @exception SQLException
 	 * */
 	public static void deleteMovie(int movieNo) {
 		try {
@@ -58,7 +76,10 @@ public class MovieController {
 	}
 	
 	/**
-	 * 배우 등록 
+	 * 배우 등록
+	 * @author 이치인
+	 * @param actor
+	 * @exception SQLException
 	 * */
 	public static void registerActor(Actor actor) {
 		try {
@@ -74,8 +95,10 @@ public class MovieController {
 	
 	/**
 	 * 배우 수정
+	 * @author 이치인
+	 * @param actor
+	 * @exception SQLException
 	 * */
-	
 	public static void updateActor(Actor actor) {
 		try {
 			movieService.updateActor(actor);
@@ -88,8 +111,10 @@ public class MovieController {
 	
 	/**
 	 * 배우 삭제
+	 * @author 이치인
+	 * @param movieNo
+	 * @exception SQLException
 	 * */
-	
 	public static void deleteActor(int movieNo) {
 		try {
 			movieService.deleteActor(movieNo);
@@ -103,6 +128,9 @@ public class MovieController {
 	
 	/**
 	 * 태그 등록
+	 * @author 이치인
+	 * @param tag
+	 * @exception SQLException 
 	 * */
 	public static void registerTag(Tag tag) {
 		try {
@@ -117,8 +145,10 @@ public class MovieController {
 	
 	/**
 	 * 태그 수정
+	 * @author 이치인
+	 * @param tag
+	 * @exception SQLException 
 	 * */
-	
 	public static void updateTag(Tag tag) {
 		try {
 			movieService.updateTag(tag);
@@ -131,6 +161,9 @@ public class MovieController {
 	
 	/**
 	 * 태그 삭제
+	 * @author 이치인
+	 * @param movieNo
+	 * @exception SQLException 
 	 * */
 	public static void deleteTag(int movieNo) {
 		try {
@@ -145,6 +178,9 @@ public class MovieController {
 	
 	/**
 	 * 영화상세정보 등록
+	 * @author 이치인
+	 * @param movieDetail
+	 * @exception SQLException 
 	 * */
 	public static void registerMovieDetail(MovidDetail movieDetail) {
 		try {
@@ -159,8 +195,10 @@ public class MovieController {
 	
 	/**
 	 * 영화상세정보 수정
+	 * @author 이치인
+	 * @param movieDetail
+	 * @exception SQLException 
 	 * */
-	
 	public static void updateMovieDetail(MovidDetail movieDetail) {
 		try {
 			movieService.updateMovieDetail(movieDetail);
@@ -173,6 +211,9 @@ public class MovieController {
 	
 	/**
 	 * 영화상세정보 삭제
+	 * @author 이치인
+	 * @param movieNo
+	 * @exception SQLException 
 	 * */
 	public static void deleteMovieDetail(int movieNo) {
 		try {
@@ -185,10 +226,15 @@ public class MovieController {
 		
 	}
 	
+
+    //Menuview UI 에 사용할 부수적인 메소드들
 	/**
-	 * Menuview UI 에 사용할 부수적인 메소드들
+	 * 영화고유번호에 해당하는 영화 레코드 검색
+	 * @author 이치인
+	 * @param movieNo
+	 * @return List<MovieSub>
+	 * @exception SQLException 
 	 * */
-	
 	public static List<MovieSub> selectByMovieNo(int movieNo) {
 		try {
 			List<MovieSub> movieList = movieService.selectByMovieNo(movieNo);
@@ -200,7 +246,13 @@ public class MovieController {
 		return null;
 		
 	}
-	
+	/**
+	 * 영화고유번호에 해당하는 태그 레코드 검색
+	 * @author 이치인
+	 * @param movieNo
+	 * @return List<Tag>
+	 * @exception SQLException 
+	 * */
 	public static List<Tag> tagListByMovieNo(int movieNo){
 		try {
 			List<Tag> tagList = movieService.tagListByMovieNo(movieNo);
