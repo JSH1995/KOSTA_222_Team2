@@ -5,6 +5,7 @@ import java.util.List;
 
 import team2.mvc.model.dto.Movie;
 import team2.mvc.model.service.RecommendService;
+import team2.mvc.view.FailView;
 import team2.mvc.view.SuccessView;
 
 public class RecommendController {
@@ -19,9 +20,7 @@ public class RecommendController {
 			List<Movie> list = recommendService.recByAge(age);
 			SuccessView.printRecMovieList(list);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+			FailView.errorMessage(e.getMessage());		}
 	}
 
 	public static void recByRank() {
@@ -29,9 +28,7 @@ public class RecommendController {
 			List<Movie> list = recommendService.recByRank();
 			SuccessView.printRecMovieList(list);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+			FailView.errorMessage(e.getMessage());		}
 	}
 
 	public static void recByGenre(int userNo) {
@@ -39,9 +36,7 @@ public class RecommendController {
 			List<Movie> list = recommendService.recByGenre(userNo);
 			SuccessView.printRecMovieList(list);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+			FailView.errorMessage(e.getMessage());		}
 	}
 
 	public static void recByTag(int userNo) {
@@ -49,12 +44,7 @@ public class RecommendController {
 			List<Movie> list = recommendService.recByTag(userNo);
 			SuccessView.printRecMovieList(list);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			FailView.errorMessage(e.getMessage());
 		}
-	}
-	
-	public static void main(String[] args) {
-		recByAge(10);
 	}
 }
