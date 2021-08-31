@@ -8,13 +8,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import team2.mvc.exception.DuplicateException;
+import team2.mvc.exception.NotFoundException;
 import team2.mvc.model.dto.Movie;
 import team2.mvc.model.dto.WishList;
 import team2.mvc.util.DbUtil;
 
 public class WishDAOlmpl implements WishDAO {
 	@Override
-	public List<Movie> viewWishList(int userNo) throws SQLException {
+	public List<Movie> viewWishList(int userNo) throws SQLException, NotFoundException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -27,9 +28,14 @@ public class WishDAOlmpl implements WishDAO {
 			ps.setInt(1, userNo);
 			rs = ps.executeQuery();
 
-			while (rs.next()) {
-				Movie movie = new Movie(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5));
-				movieList.add(movie);
+			if (rs.next()) {
+				while (rs.next()) {
+					Movie movie = new Movie(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4),
+							rs.getString(5));
+					movieList.add(movie);
+				}
+			} else {
+				throw new NotFoundException("위시리스트가 존재하지 않습니다.");
 			}
 		} finally {
 			DbUtil.dbClose(con, ps, rs);
@@ -49,9 +55,9 @@ public class WishDAOlmpl implements WishDAO {
 			ps.setInt(1, userNo);
 			ps.setInt(2, movieNo);
 			list = checkWishDuplicate(con);
-			
-			for(WishList w : list) {
-				if(w.getUserNo() == userNo && w.getMovieNo() == movieNo) {
+
+			for (WishList w : list) {
+				if (w.getUserNo() == userNo && w.getMovieNo() == movieNo) {
 					throw new DuplicateException("이미 존재하는 영화입니다.");
 				}
 			}
@@ -61,7 +67,7 @@ public class WishDAOlmpl implements WishDAO {
 		}
 	}
 
-	public List<WishList> checkWishDuplicate(Connection con) throws SQLException{
+	public List<WishList> checkWishDuplicate(Connection con) throws SQLException {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		List<WishList> list = new ArrayList<>();
@@ -71,8 +77,8 @@ public class WishDAOlmpl implements WishDAO {
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				list.add(new WishList(rs.getInt(1), rs.getInt(2)));
-			}			
-		}finally {
+			}
+		} finally {
 			DbUtil.dbClose(null, ps, rs);
 		}
 		return list;

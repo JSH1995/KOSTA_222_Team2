@@ -18,7 +18,7 @@ public class WishController {
 		try {
 			List<Movie> movieList = wishService.viewWishList(userNo);
 			SuccessView.printWishList(movieList);
-		}catch (SQLException e) {
+		}catch (Exception e) {
 			FailView.errorMessage(e.getMessage());
 		}		
 	}
