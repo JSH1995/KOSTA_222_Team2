@@ -48,18 +48,17 @@ public class CustomerDAOImpl implements CustomerDAO {
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		List<User> list = new ArrayList();
+		List<User> list = new ArrayList<>();
 		try {
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement("select * from 사용자 where 아이디 = ? and 비밀번호 = ?");
 			ps.setString(1, id);
 			ps.setString(2, password);
-			
-			rs = ps.executeQuery();
-		
-			
+			rs = ps.executeQuery();		
 			if(rs.next()) {
-				list.add(new User(rs.getString(1), rs.getString(2)));
+				list.add(new User(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5), rs.getInt(6), rs.getInt(7)));
+			} else {
+				throw new SQLException("잘못된 아이디 혹은 비밀번호입니다.");
 			}
 		} finally {
 			DbUtil.dbClose(con, ps, rs);

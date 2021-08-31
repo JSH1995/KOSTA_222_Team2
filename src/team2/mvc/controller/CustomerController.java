@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 import team2.mvc.model.dto.User;
@@ -31,21 +32,37 @@ public class CustomerController {
 			
 		}
 	}
-	
-	public static boolean login(String id, String password) {
+	/**
+	 * 로그인 성공 여부를 판별하는 메서드
+	 * @param id
+	 * @param password
+	 * @return
+	 */
+	public static boolean loginCheck(String id, String password) {
 		try {
 			List<User> list = customerService.login(id,password);
 			System.out.println("로그인 성공! " + id + "님, 어서오세요!");
 			//su=true;
 			return true;
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			//e.printStackTrace();
-			FailView.errorMessage(e.getMessage());
-			
 		}
 		return false;
-		
+	}
+	/**
+	 * 로그인한 사용자의 정보를 가져오는 메서드
+	 * @param id
+	 * @param password
+	 * @return
+	 */
+	public static List<User> login(String id, String password) {
+		List<User> list = new ArrayList<>();
+		try {
+			System.out.println("될까 안될까...?");
+			list = customerService.login(id,password);
+		} catch (Exception e) {
+			FailView.errorMessage(e.getMessage());
+		}
+		return list;
 	}
 	
 	
