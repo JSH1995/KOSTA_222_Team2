@@ -678,8 +678,15 @@ public class MenuView {
 	public static void movieDetail() {
 		System.out.println("==================영화 상세 정보 검색==================");
 		String keyword = insertKeyword();
+		
+		
 		Search sd = SearchController.showMovieDetail(keyword);
-		SearchController.showComment(keyword);
+		if(sd == null) {
+			return;
+		}
+		for(Evaluation ev : SearchController.showComment(keyword)) {
+			System.out.println(ev);
+		}
 		String mn = sd.getMovieName();
 
 		int movienum = 0; 
