@@ -28,41 +28,6 @@ public class SearchDetail extends Search  {
 		this.userTag = userTag;
 	}
 
-	
-	/**
-	 * TeST
-	 * @param movieName
-	 * @param director
-	 * @param actor1
-	 * @param actor2
-	 * @param supactor1
-	 * @param supactor2
-	 * @param supactor3
-	 * @param genre
-	 * @param nation
-	 * @param releaseDate
-	 * @param runtime
-	 * @param content
-	 * @param userTag
-	 */
-	
-	public SearchDetail(String movieName, String director, String actor1, String actor2, String supactor1,
-			String supactor2, String supactor3, String genre, String nation, String releaseDate, int runtime,
-			String content, List<String> userTag) {
-		super(movieName, director, actor1, actor2, supactor1, supactor2, supactor3, genre, nation, releaseDate,
-				runtime);
-		this.content = content;
-		this.userTag = userTag;
-	}
-	
-	public SearchDetail(String movieName, String director, String actor1, String actor2, String supactor1,
-			String supactor2, String supactor3, String genre, String nation, String releaseDate, int runtime,
-			String content) {
-		super(movieName, director, actor1, actor2, supactor1, supactor2, supactor3, genre, nation, releaseDate,
-				runtime);
-		this.content = content;
-	}
-
 	public String getContent() {
 		return content;
 	}

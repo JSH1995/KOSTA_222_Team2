@@ -23,8 +23,6 @@ public class Search {
 	private double rate;
 	
 	
-	
-	
 	public Search(String movieName, String director, String actor1, String actor2, String supactor1, String supactor2,
 			String supactor3, String genre, String nation, String releaseDate, int runtime, double rate) {
 		
@@ -47,51 +45,7 @@ public class Search {
 		this.runtime = runtime;
 		this.rate = rate;
 	}
-	
-	/**
-	 * 테스트용
-	 * @param movieName
-	 * @param director
-	 * @param actor1
-	 * @param actor2
-	 * @param genre
-	 * @param nation
-	 * @param releaseDate
-	 * @param runtime
-	 */
-	
-	public Search(String movieName, String director, String actor1, String actor2, String genre, String nation, String releaseDate, int runtime) {
-		super();
-		this.movieName = movieName;
-		this.director = director;
-		this.actor1 = actor1;
-		this.actor2 = actor2;
-		this.genre = genre;
-		this.nation = nation;
-		this.releaseDate = releaseDate;
-		this.runtime = runtime;
-	}
-	
-	public Search(String movieName, String director, String actor1, String actor2, String supactor1, String supactor2,
-			String supactor3, String genre, String nation, String releaseDate, int runtime) {
-		super();
-		this.movieName = movieName;
-		this.director = director;
-		this.actor1 = actor1;
-		this.actor2 = actor2;
-		this.supactor1 = supactor1;
-		this.supactor2 = supactor2;
-		this.supactor3 = supactor3;
-		this.genre = genre;
-		this.nation = nation;
-		this.releaseDate = releaseDate;
-		this.runtime = runtime;
-	}
-
-	
-	
-	
-	
+		
 	public String getMovieName() {
 		return movieName;
 	}
@@ -201,7 +155,7 @@ public class Search {
 		builder.append(" | 상영시간 : ");
 		builder.append(runtime);
 		builder.append(" | 평점 : ");
-		builder.append(rate);
+		builder.append((Math.round(rate * 10)) / 10.0);
 		builder.append(" |");
 		return builder.toString();
 	}
