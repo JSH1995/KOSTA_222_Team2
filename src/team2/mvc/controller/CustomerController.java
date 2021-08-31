@@ -18,7 +18,6 @@ import team2.mvc.model.dto.Evaluation;
 
 
 public class CustomerController {
-	
 	static CustomerService customerService =  new CustomerService();
 	
 	public static void registerUser(int userNo, String id, String password, int age, String userRegDate,int favTag, int favGenre ) {
@@ -42,10 +41,8 @@ public class CustomerController {
 			// TODO Auto-generated catch block
 			//e.printStackTrace();
 			FailView.errorMessage(e.getMessage());
-			
 		}
 		return false;
-		
 	}
 	
 	
