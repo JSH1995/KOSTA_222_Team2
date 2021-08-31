@@ -25,14 +25,15 @@ public class CustomerService {
 		}
 		return result;
 	}
-	public List<User> login( String id, String password) throws SQLException, NotFoundException {
-		List<User> list = customerDao.login(id,password);
+
+	public List<User> login(String id, String password) throws SQLException, NotFoundException {
+		List<User> list = customerDao.login(id, password);
 		if (list.size() == 0) {
 			throw new NotFoundException("다시 시도해주세요.");
 		}
 		return list;
 	}
-	
+
 	public int Evaluation( int userNo, int movieNo, int rate, String comment,
 			String rateDate) throws Exception, NotFoundException {
 		int result = customerDao.Evaluation(userNo,movieNo,rate,comment,rateDate);
@@ -40,6 +41,9 @@ public class CustomerService {
 			throw new NotFoundException("다시 시도해주세요.");
 		}
 		return result;
+	}
+	public void putTag(int userNo, int movienum) throws Exception {
+		customerDao.putTag(userNo ,movienum);		
 	}
 	
 	

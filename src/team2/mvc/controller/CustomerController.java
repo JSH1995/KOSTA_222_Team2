@@ -7,12 +7,14 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 import team2.mvc.model.dto.User;
 import team2.mvc.model.service.CustomerService;
 import team2.mvc.util.DbUtil;
 import team2.mvc.view.FailView;
+import team2.mvc.view.SuccessView;
 import team2.mvc.model.dto.Evaluation;
 
 
@@ -30,21 +32,36 @@ public class CustomerController {
 			
 		}
 	}
-	
-	public static boolean login(String id, String password) {
+	/**
+	 * 로그인 성공 여부를 판별하는 메서드
+	 * @param id
+	 * @param password
+	 * @return
+	 */
+	public static boolean loginCheck(String id, String password) {
 		try {
 			List<User> list = customerService.login(id,password);
 			System.out.println("로그인 성공! " + id + "님, 어서오세요!");
-			//su=true;
 			return true;
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			//e.printStackTrace();
-			FailView.errorMessage(e.getMessage());
-			
 		}
 		return false;
-		
+	}
+	/**
+	 * 로그인한 사용자의 정보를 가져오는 메서드
+	 * @param id
+	 * @param password
+	 * @return
+	 */
+	public static List<User> login(String id, String password) {
+		List<User> list = new ArrayList<>();
+		try {
+			System.out.println("로그인 중...");
+			list = customerService.login(id,password);
+		} catch (Exception e) {
+			FailView.errorMessage(e.getMessage());
+		}
+		return list;
 	}
 	
 	
@@ -75,6 +92,17 @@ public class CustomerController {
 		}finally {
 			DbUtil.dbClose(con, st, rs);
 		}
+	}
+
+	public static void putTag(int userNo, int movienum) {
+		try {
+			customerService.putTag(userNo, movienum);
+			SuccessView.messagePrint("등록되었습니다.");
+		} catch (Exception e) {
+			// TODO: handle exception
+			FailView.errorMessage(e.getMessage());
+		}
+		
 	}
 	
 }

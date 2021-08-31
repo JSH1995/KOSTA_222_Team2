@@ -3,6 +3,7 @@ package team2.mvc.view;
 import java.util.List;
 
 import team2.mvc.model.dto.Search;
+import team2.mvc.model.dto.Evaluation;
 import team2.mvc.model.dto.Movie;
 
 public class SuccessView {
@@ -18,7 +19,7 @@ public class SuccessView {
 	 */
 	public static void printWishList(List<Movie> movieList) {
 		for (Movie m : movieList) {
-			System.out.println(m.getMovieName() + "\t\t" +  m.getDirector());
+			System.out.println(m);
 		}
 	}
 
@@ -37,6 +38,10 @@ public class SuccessView {
 
 	public static void printMovieDetail(Search sd) {
 		System.out.println(sd);
+	}
+
+	public static void printComment(List<Evaluation> le) {
+		System.out.println(le);
 	}
 
 }

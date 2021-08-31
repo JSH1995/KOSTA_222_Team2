@@ -9,6 +9,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Scanner;
 import java.util.Set;
 
@@ -18,6 +19,7 @@ import team2.mvc.controller.RecommendController;
 import team2.mvc.controller.SearchController;
 import team2.mvc.controller.WishController;
 import team2.mvc.model.dto.Actor;
+import team2.mvc.model.dto.Evaluation;
 import team2.mvc.model.dto.MovidDetail;
 import team2.mvc.model.dto.Search;
 import team2.mvc.model.dto.Tag;
@@ -33,122 +35,122 @@ public class MenuView {
 	private static Set<String> keywordList = new HashSet<String>();
 
 	public static void menu() {
-
 		while (true) {
-
 			System.out.println("============= Moviement =============");
 			System.out.println("1. 회원가입   |   2. 로그인   |  0. 종료");
 			System.out.println("=====================================");
-
 			int choice = Integer.parseInt(sc.nextLine());
 			switch (choice) {
 			case 1:
-
-				Calendar cal = Calendar.getInstance();
-
-				String month = Integer.toString(cal.get(Calendar.MONTH) + 1);
-				String day = Integer.toString(cal.get(Calendar.DAY_OF_MONTH));
-				String hour = Integer.toString(cal.get(Calendar.HOUR_OF_DAY));
-				String min = Integer.toString(cal.get(Calendar.MINUTE));
-				String sec = Integer.toString(cal.get(Calendar.SECOND));
-				String num = month + day + hour + min + sec;
-				int usernumber = Integer.parseInt(num);
-				SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd/HH:mm:ss");
-				String datestr = sdf.format(cal.getTime());
-
-				System.out.print("사용하실 아이디를 입력해주세요: ");
-				String id = sc.nextLine();
-
-				System.out.print("사용하실 비밀번호를 입력해주세요: ");
-				String pw = sc.nextLine();
-
-				System.out.print("나이를 입력해주세요: ");
-				int age = Integer.parseInt(sc.nextLine());
-				System.out.println(" 1.  시간			|  2.  외계인		|  3.  우주		| 4.  고전	| 5.  복수		| 6.  패션		| 7.  미래적인	| 8.  편견을깨는	| 9.  독립 ");
-				System.out.println(" 10. 좀비			|  11. 오싹해지는	|  12. 악당		| 13. 책		| 14. 비밀스러운	| 15. 마법		| 16. 해커	| 17. 구출		| 18. 풋풋한 ");
-				System.out.println(" 19. 디즈니		|  20. 미로		|  21. 자동차		| 22. 폭발	| 23. 역사		| 24. 가족이생각나는| 25. 괴생명체	| 26. 자연		| 27. 다큐 ");
-				System.out.println(" 28. 반전			|  29. 하이틴		|  30. 느와르		| 31. 섬뜩한	| 32. 영화제수상작	| 33. 경찰		| 34. 타임리프	| 35. 눈이즐거워지는| 36. 실화 ");
-				System.out.println(" 37. OST		|  38. 사랑		|  39. 연기력		| 40. 우정	| 41. 사랑스러운	| 42. 학생		| 43. 영상미	| 44. 요리		| 45. 명작 ");
-				System.out.println(" 46. 성장			|  47. 2인조		|  48. 현실적인	| 49. 퀴어	| 50. 관계		| 51. 재능		| 52. 잔잔한	| 53. 뮤지션		| 54. 인생 ");
-				System.out.println(" 55. 먹방			|  56. 영국배경	|  57. 따뜻한		| 58. 예술	| 59. 웃긴		| 60. 남녀		| 61. 페미니즘	| 62. 연인		| 63. 완성도 ");
-				System.out.println(" 64. 워너브라더스	|  65. 소설원작	|  66. 식당		| 67. 미장센	| 68. 춤			| 69. 블록버스터	| 70. 오디션	| 71. 저항		| 72. 유럽배경 ");
-				System.out.println(" 73. 기억상실		|  74. FBI		|  75. 통쾌		|  ");
- 
-
-				System.out.print("좋아하는 태그를 입력해주세요: ");
-
-				int tegnum = Integer.parseInt(sc.nextLine());
-				System.out.println(
-						"  1. 드라마 |  2. 스릴러  |  3. 범죄  | 4. 로맨스  | 5. 액션 | 6. 다큐멘터리  | 7. 애니메이션  | 8. 코미디 | 9. 공포  | 10. SF ");
-				System.out.print("좋아하는 장르를 입력해주세요: ");
-				int jnum = Integer.parseInt(sc.nextLine());
-
-				CustomerController.registerUser(usernumber, id, pw, age, datestr, tegnum, jnum); // 가입
+				register();
 				break;
 			case 2:
-				System.out.print("아이디를 입력해주세요: ");
-				String login_id = sc.nextLine();
-				user_id = login_id;
-				System.out.print("비밀번호를 입력해주세요: ");
-				String login_pw = sc.nextLine();
-				user_pw = login_pw;
-
-				Connection con = null;
-				Statement st = null;
-				ResultSet rs = null;
-
-				try {
-					con = DbUtil.getConnection();
-					st = con.createStatement();
-					rs = st.executeQuery("select * from 사용자 where 아이디 ='" + user_id + "' and 비밀번호 = '" + user_pw + "'");
-					while (rs.next()) {
-						int user_num = rs.getInt(1);
-						String u_id = rs.getString(2);
-						String u_pw = rs.getString(3);
-						int u_age = rs.getInt(4);
-						String u_regdate = rs.getString(5);
-						int u_favgenre = rs.getInt(6);
-						int u_favtag = rs.getInt(7);
-
-						user = new User(user_num, u_id, u_pw, u_age, u_regdate, u_favgenre, u_favtag);
-					}
-				} catch (SQLException e) {
-					e.printStackTrace();
-				} finally {
-					DbUtil.dbClose(con, st, rs);
-				}
-
-				logincheck = CustomerController.login(login_id, login_pw);// 로그인
-				if (login_id.equals("admin")) {
-					System.out.println("1. 메인 메뉴  |  2. 관리자 메뉴");
-					int choice2 = Integer.parseInt(sc.nextLine());
-					switch (choice2) {
-					case 1:
-						printUserMenu();
-						break;
-					case 2:
-						adminMenu();
-						break;
-					case 0:
-						System.exit(0);
-					}
-				} else
-					printUserMenu();
+				login();
 				break;
-
 			case 0:
 				System.exit(0);
+			default:
+				System.out.println("잘못된 메뉴입니다. 다시 선택해주세요");
+				menu();
 			}
 		}
 	}
+	
+	/**
+	 * 회원가입 메서드 
+	 */
+	public static void register() {
+		Calendar cal = Calendar.getInstance();
 
+		String month = Integer.toString(cal.get(Calendar.MONTH) + 1);
+		String day = Integer.toString(cal.get(Calendar.DAY_OF_MONTH));
+		String hour = Integer.toString(cal.get(Calendar.HOUR_OF_DAY));
+		String min = Integer.toString(cal.get(Calendar.MINUTE));
+		String sec = Integer.toString(cal.get(Calendar.SECOND));
+		String num = month + day + hour + min + sec;
+		int usernumber = Integer.parseInt(num);
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd/HH:mm:ss");
+		String datestr = sdf.format(cal.getTime());
+
+		System.out.print("사용하실 아이디를 입력해주세요: ");
+		String id = sc.nextLine();
+
+		System.out.print("사용하실 비밀번호를 입력해주세요: ");
+		String pw = sc.nextLine();
+
+		System.out.print("나이를 입력해주세요: ");
+		int age = Integer.parseInt(sc.nextLine());
+		System.out.println(" 1.  시간		|  2.  외계인	|  3.  우주	| 4.  고전	| 5.  복수	| 6.  패션	| 7.  미래적인	| 8.  편견을깨는	| 9.  독립 ");
+		System.out.println(" 10. 좀비		|  11. 오싹해지는	|  12. 악당	| 13. 책		| 14. 비밀스러운	| 15. 마법	| 16. 해커	| 17. 구출	| 18. 풋풋한 ");
+		System.out.println(" 19. 디즈니	|  20. 미로	|  21. 자동차	| 22. 폭발	| 23. 역사	| 24. 가족이생각나는| 25. 괴생명체	| 26. 자연	| 27. 다큐 ");
+		System.out.println(" 28. 반전		|  29. 하이틴	|  30. 느와르	| 31. 섬뜩한	| 32. 영화제수상작	| 33. 경찰	| 34. 타임리프	| 35. 눈이즐거워지는| 36. 실화 ");
+		System.out.println(" 37. OST	|  38. 사랑	|  39. 연기력	| 40. 우정	| 41. 사랑스러운	| 42. 학생	| 43. 영상미	| 44. 요리	| 45. 명작 ");
+		System.out.println(" 46. 성장		|  47. 2인조	|  48. 현실적인	| 49. 퀴어	| 50. 관계	| 51. 재능	| 52. 잔잔한	| 53. 뮤지션	| 54. 인생 ");
+		System.out.println(" 55. 먹방		|  56. 영국배경	|  57. 따뜻한	| 58. 예술	| 59. 웃긴	| 60. 남녀	| 61. 페미니즘	| 62. 연인	| 63. 완성도 ");
+		System.out.println(" 64. 워너브라더스	|  65. 소설원작	|  66. 식당	| 67. 미장센	| 68. 춤		| 69. 블록버스터	| 70. 오디션	| 71. 저항	| 72. 유럽배경 ");
+		System.out.println(" 73. 기억상실	|  74. FBI	|  75. 통쾌	|  ");
+
+		System.out.print("좋아하는 태그를 입력해주세요: ");
+		int tagnum = Integer.parseInt(sc.nextLine());
+		System.out.println(
+				"  1. 드라마 |  2. 스릴러  |  3. 범죄  | 4. 로맨스  | 5. 액션 | 6. 다큐멘터리  | 7. 애니메이션  | 8. 코미디 | 9. 공포  | 10. SF ");
+		System.out.print("좋아하는 장르를 입력해주세요: ");
+		int jnum = Integer.parseInt(sc.nextLine());
+
+		CustomerController.registerUser(usernumber, id, pw, age, datestr, tagnum, jnum); // 가입
+	}
+	
+	/**
+	 * 로그인 메서드 
+	 */
+	public static void login() {
+		System.out.print("아이디를 입력해주세요: ");
+		String login_id = sc.nextLine();
+		user_id = login_id;
+		
+		System.out.print("비밀번호를 입력해주세요: ");
+		String login_pw = sc.nextLine();
+		user_pw = login_pw;
+		
+		List<User> list = CustomerController.login(login_id, login_pw);
+		for(User u : list) {
+			u = user;
+		}
+		logincheck = CustomerController.loginCheck(login_id, login_pw);// 로그인
+		
+		if (login_id.equals("admin") && login_pw.equals("admin")) {
+			printAdminMenu();
+		} else {
+			printUserMenu();
+		}
+	}
+	
+	/**
+	 * 관리자 메뉴 출력하는 메서드
+	 */
+	public static void printAdminMenu() {
+		System.out.println("1. 메인 메뉴  |  2. 관리자 메뉴  |  0. 종료");
+		int choice2 = Integer.parseInt(sc.nextLine());
+		switch (choice2) {
+		case 1:
+			printUserMenu();
+			break;
+		case 2:
+			adminMenu();
+			break;
+		case 0:
+			System.exit(0);
+		}
+	}
+
+	/**
+	 * 사용자 메뉴 출력하는 메서드
+	 */
 	public static void printUserMenu() {
 		while (logincheck) {
-			System.out.println(
-					"========================================== 메인 메뉴 ==========================================");
+			System.out.println("=============================================== 메인 메뉴 =====================================");
 			System.out.println(" 1. 개인정보 수정 |  2. 위시리스트 보기  |  3. 추천 영화 보기  | 4. 검색하기  | 5. 최근 검색 리스트 | 0. 종료");
-			System.out.println(
-					"=============================================================================================");
+			System.out.println("=============================================================================================");
 			int choice = Integer.parseInt(sc.nextLine());
 			switch (choice) {
 			case 1:
@@ -168,21 +170,11 @@ public class MenuView {
 				break;
 			case 0:
 				System.exit(0);
-
+			default:
+				System.out.println("잘못된 메뉴입니다. 다시 선택해주세요.");
+				printUserMenu();
 			}
 		}
-
-	}
-
-	// 로그인
-	public static void login() {
-		System.out.print("아이디: ");
-		String userId = sc.nextLine();
-
-		System.out.print("비밀번호: ");
-		String userPwd = sc.nextLine();
-
-		CustomerController.login(userId, userPwd);
 	}
 
 	/**
@@ -190,7 +182,7 @@ public class MenuView {
 	 * 사용자메뉴 - 1. 개인정보 수정
 	 */
 	private static void printPersonalDetailMenu() {
-		System.out.println("========= 개인정보 수정 페이지 =========");
+		System.out.println("--------- 개인정보 수정 페이지 ---------");
 		System.out.print("새로운 비밀번호를 입력해주세요: ");
 		String pw1 = sc.nextLine();
 		CustomerController.update_pw(user.getUserNo(), pw1);
@@ -218,28 +210,31 @@ public class MenuView {
 		int choice = Integer.parseInt(sc.nextLine());
 		switch (choice) {
 		case 1:
-			System.out.println("- 인기순 추천 -");
+			System.out.println("------------ 인기순 추천 ------------");
 			System.out.println("현재 위시리스트에 가장 많이 담긴 영화들이에요!\n");
 			RecommendController.recByRank();
 			break;
 		case 2:
-			System.out.println("- 나이별 추천 -");
+			System.out.println("------------------- 나이별 추천 -------------------");
 			System.out.println((int) user.getAge() / 10 * 10 + "대의 위시리스트에 가장 많이 담긴 영화들이에요!\n");
 			RecommendController.recByAge(user.getAge());
 			break;
 		case 3:
-			System.out.println("- 태그 추천 -");
+			System.out.println("---------------------- 태그 추천 -----------------------");
 			System.out.println(user.getId() + "님이 좋아하는 영화의 태그를 기반으로 영화를 추천해드릴게요!\n");
 
 			RecommendController.recByTag(user.getUserNo());
 			break;
 		case 4:
-			System.out.println("- 장르 추천 -");
+			System.out.println("---------------------- 장르 추천 ----------------------");
 			System.out.println(user.getId() + "님이 좋아하는 영화의 장르를 기반으로 영화를 추천해드릴게요!\n");
 			RecommendController.recByGenre(user.getUserNo());
 			break;
 		case 0:
 			return;
+		default:
+			System.out.println("잘못된 메뉴입니다. 다시 선택해주세요.");
+			printRecommendMenu(user);
 		}
 	}
 
@@ -314,7 +309,7 @@ public class MenuView {
 			case 8:
 				return;
 			case 9:
-				login();
+				//login();
 			default:
 				System.out.println("숫자를 누르거라.");
 				break; // 문자나 다른거 입력 시 Exception 처리 필요
@@ -329,9 +324,8 @@ public class MenuView {
 	 */
 
 	private static String sort() {
-
 		String sortType = null;
-
+		
 		System.out.println("================== 검색하신 결과에 대해 정렬을 할 수 있습니다. ====================");
 		System.out.println("=============================== 정렬 메뉴 ================================");
 		System.out.println("1. 작품명 | 2. 상영시간 | 3. 개봉일자 | 4. 평점 |");
@@ -357,9 +351,7 @@ public class MenuView {
 			break;// 문자나 다른거 입력 시 Exception 처리 필요
 
 		}
-
 		return sortType;
-
 	}
 
 	/**
@@ -369,6 +361,7 @@ public class MenuView {
 	private static String insertKeyword() {
 
 		System.out.println("==========검색하실 키워드를 입력해 주세요.==========");
+		System.out.println("==========키워드는 작품명으로 정확하게 입력해주세요!!==========");
 		System.out.print("키워드 : ");
 		String keyword = sc.nextLine();
 		keywordList.add(keyword);
@@ -393,7 +386,6 @@ public class MenuView {
 			String keyword = it.next();
 			System.out.println(keyword);
 		}
-
 	}
 
 	/**
@@ -408,14 +400,14 @@ public class MenuView {
 	// 영화 등록
 	public static void adminMenu() {
 
-		System.out.println("========================== 관리자 메뉴 입니다. ===========================");
-		System.out.println("=============================== 정렬 메뉴 ================================");
-		System.out.println("1. 영화등록 | 2. 영화수정 | 3. 영화삭제 | 4. 배우등록 | 5. 배우수정 | 6. 배우삭제 |");
+		System.out.println("=============================== 관리자 메뉴 입니다. ================================");
+		System.out.println("================================== 정렬 메뉴 =====================================");
+		System.out.println("1. 영화등록 | 2. 영화수정 | 3. 영화삭제 | 4. 배우등록 | 5. 배우수정 | 6. 배우삭제 | 7. 태그등록");
 		System.out.println(
-				"================================================================================================");
-		System.out.println("7. 태그등록 | 8. 태그수정 | 9. 태그삭제 | 10. 영화상세등록 | 11. 영화상세수정 | 12. 영화상세삭제 |");
+				"================================================================================");
+		System.out.println("8. 태그수정 | 9. 태그삭제 | 10. 영화상세등록 | 11. 영화상세수정 | 12. 영화상세삭제 | 0. 돌아가기 ");
 		System.out.println(
-				"===================================================================================================");
+				"================================================================================");
 
 		int choice = Integer.parseInt(sc.nextLine());
 
@@ -456,7 +448,8 @@ public class MenuView {
 		case 12:
 			deleteMovieDetail();
 			break;
-
+		case 0:
+			
 		default:
 
 			break;// 문자나 다른거 입력 시 Exception 처리 필요
@@ -683,9 +676,10 @@ public class MenuView {
 	}
 
 	public static void movieDetail() {
-		System.out.print("========영화 상세 정보 확인========");
+		System.out.println("==================영화 상세 정보 검색==================");
 		String keyword = insertKeyword();
 		Search sd = SearchController.showMovieDetail(keyword);
+		SearchController.showComment(keyword);
 		String mn = sd.getMovieName();
 
 		int movienum = 0; 
@@ -695,43 +689,57 @@ public class MenuView {
 		String di = sd.getDirector();
 
 
-		System.out.println("=====================================================================================");
-
-		System.out.println("1. 현재 영화의 평점 및 코멘트를 작성하시겠습니까? | 2. 위시리스트에 추가 | 0. 종료 |");
-		System.out.println("=====================================================================================");
+		System.out.println("=================================================================================");
+		System.out.println("1. 현재 영화의 평점 및 코멘트를 작성하시겠습니까? | 2. 위시리스트에 추가 | 3. 태그 추가 | 0. 종료 |");
+		System.out.println("=================================================================================");
 		int choice = Integer.parseInt(sc.nextLine());
 		switch (choice) {
 		case 1:
-			Connection con = null;
-			PreparedStatement ps = null;
-			ResultSet rs = null;
-			String sql = "SELECT 영화_고유번호 FROM 영화 WHERE 작품명 = " + "'"+ mn +"'";
-
-			try {
-				con = DbUtil.getConnection();
-
-				ps = con.prepareStatement(sql);
-				rs = ps.executeQuery("select 영화_고유번호 from 영화 where 작품명  ='" + mn + "' and 감독 = '" + di + "'");
-				if (rs.next()) {
-
-					movienum = rs.getInt(1);
-				}
-				;
-
-			} catch (SQLException e) {
-				e.printStackTrace();
-			} finally {
-				DbUtil.dbClose(con, ps, rs);
-			}
-
+			findMovieNumber(sd, mn, di);
 			userComment(movienum);
 			break;
 		case 2:
+			movienum = findMovieNumber(sd, mn, di);
 			WishController.putWishList(user.getUserNo(), movienum);
 			break;
+		case 3:
+			movienum = findMovieNumber(sd, mn, di);
+			CustomerController.putTag(user.getUserNo(), movienum);
 		case 0:
 			return;
 
 		}
+
 	}	
 }
+
+	}
+	public static int findMovieNumber(Search sd, String mn, String di) {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String sql = "SELECT 영화_고유번호 FROM 영화 WHERE 작품명 = " + "'"+ mn +"'";
+		
+		String keyword = insertKeyword();
+		sd = SearchController.showMovieDetail(keyword);
+		mn = sd.getMovieName();
+		di = sd.getDirector();
+		int movienum = 0;
+		
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery("select 영화_고유번호 from 영화 where 작품명  ='" + mn + "' and 감독 = '" + di + "'");
+			if (rs.next()) {
+				movienum = rs.getInt(1);
+			};
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DbUtil.dbClose(con, ps, rs);
+		}
+		return movienum;
+	}
+}
+
+

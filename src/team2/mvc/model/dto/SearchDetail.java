@@ -12,7 +12,6 @@ public class SearchDetail extends Search  {
 	
 	private String content;
 	private String userTag;
-	private String comment;
 
 	public SearchDetail(String movieName, String director, String actor1, String actor2, String supactor1,
 			String supactor2, String supactor3, String genre, String nation, String releaseDate, int runtime,
@@ -22,12 +21,11 @@ public class SearchDetail extends Search  {
 
 	public SearchDetail(String movieName, String director, String actor1, String actor2, String supactor1,
 			String supactor2, String supactor3, String genre, String nation, String releaseDate, int runtime, double rate,
-			String content, String userTag, String comment) {
+			String content, String userTag) {
 		super(movieName, director, actor1, actor2, supactor1, supactor2, supactor3, genre, nation, releaseDate, runtime,
 				rate);
 		this.content = content;
 		this.userTag = userTag;
-		this.comment = comment;
 	}
 
 	public String getContent() {
@@ -45,14 +43,6 @@ public class SearchDetail extends Search  {
 
 	public void setUserTag(String userTag) {		
 		this.userTag = userTag;
-	}
-	
-	public String getComment() {
-		return comment;
-	}
-
-	public void setComment(String comment) {
-		this.comment = comment;
 	}
 
 	@Override
@@ -97,7 +87,6 @@ public class SearchDetail extends Search  {
 		builder.append("\n" + "==================== 유저들이 입력한 관련 태그 ====================" +"\n");
 		builder.append(userTag);
 		builder.append("\n" + "==================== 유저 코멘트 ====================" +"\n");
-		builder.append(comment);
 
 		return builder.toString();
 	}

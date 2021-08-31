@@ -9,9 +9,9 @@ package team2.mvc.model.dao;
 import java.sql.SQLException;
 import java.util.List;
 
+import team2.mvc.model.dto.Evaluation;
 import team2.mvc.model.dto.Movie;
 import team2.mvc.model.dto.Search;
-import team2.mvc.model.dto.SearchDetail;
 
 public interface SearchDAO {
 	
@@ -33,5 +33,7 @@ public interface SearchDAO {
 	Movie searchByPK(int movieNo) throws SQLException;
 	
 	Search showMovieDetail(String movieName) throws SQLException;
+	
+	List<Evaluation> showComment(String movieName) throws SQLException;
 
 }

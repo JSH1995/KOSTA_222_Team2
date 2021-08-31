@@ -23,6 +23,10 @@ public interface CustomerDAO {
 
 	List<User> passwordUpdate(int user_nums, String pw1) throws SQLException;
 
+	void putTag(int userNo, int movienum) throws Exception;
+
+	
+
 	
 	
 

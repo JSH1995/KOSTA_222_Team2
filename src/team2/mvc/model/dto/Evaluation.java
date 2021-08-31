@@ -62,17 +62,13 @@ public class Evaluation {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("EvaluationDTO [userNo=");
-		builder.append(userNo);
-		builder.append(", movieNo=");
-		builder.append(movieNo);
-		builder.append(", rate=");
+		builder.append(" | 입력하신 평점 : ");
 		builder.append(rate);
-		builder.append(", comment=");
+		builder.append("\n" + " | 코멘트 : ");
 		builder.append(comment);
-		builder.append(", rateDate=");
+		builder.append("/n" + " 평가일자 : ");
 		builder.append(rateDate);
-		builder.append("]");
+		builder.append(" | ");
 		return builder.toString();
 	}
 
