@@ -162,7 +162,7 @@ public class SearchDAOImpl implements SearchDAO {
 			ps.setString(1, "%"+director+"%");
 			rs = ps.executeQuery();
 			
-			while(rs.next()) {
+			/*while(rs.next()) {
 				Search search = new Search(rs.getString(1), 
 						   rs.getString(2), 
 						   rs.getString(3), 
@@ -173,7 +173,7 @@ public class SearchDAOImpl implements SearchDAO {
 						   rs.getInt(8));
 						   rs.getInt(9));
 				searchList.add(search);
-			}
+			}*/
 			
 		} finally {
 			DbUtil.dbClose(con, ps, rs);
