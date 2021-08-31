@@ -702,28 +702,7 @@ public class MenuView {
 		int choice = Integer.parseInt(sc.nextLine());
 		switch (choice) {
 		case 1:
-			Connection con = null;
-			PreparedStatement ps = null;
-			ResultSet rs = null;
-			String sql = "SELECT 영화_고유번호 FROM 영화 WHERE 작품명 = " + "'"+ mn +"'";
-
-			try {
-				con = DbUtil.getConnection();
-
-				ps = con.prepareStatement(sql);
-				rs = ps.executeQuery("select 영화_고유번호 from 영화 where 작품명  ='" + mn + "' and 감독 = '" + di + "'");
-				if (rs.next()) {
-
-					movienum = rs.getInt(1);
-				}
-				;
-
-			} catch (SQLException e) {
-				e.printStackTrace();
-			} finally {
-				DbUtil.dbClose(con, ps, rs);
-			}
-
+			movienum = findMovieNumber();
 			userComment(movienum);
 			break;
 		case 2:
@@ -735,5 +714,35 @@ public class MenuView {
 			return;
 
 		}
+	}
+
+	private static int findMovieNumber() {
+		
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String sql = "SELECT 영화_고유번호 FROM 영화 WHERE 작품명 = " + "'"+ mn +"'";
+		
+		int movienum = 0;
+		
+		try {
+			con = DbUtil.getConnection();
+
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery("select 영화_고유번호 from 영화 where 작품명  ='" + mn + "' and 감독 = '" + di + "'");
+			if (rs.next()) {
+
+				movienum = rs.getInt(1);
+			}
+			;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DbUtil.dbClose(con, ps, rs);
+		}
+		
+		return movienum;
+
 	}
 }
