@@ -19,16 +19,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="3" language="java" name="team2.mvc.controller.RecommendController" project="Moviement" 
-    file="/Moviement/src/team2/mvc/controller/RecommendController.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="162" y="2196"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="4" language="java" name="team2.mvc.controller.SearchController" project="Moviement" 
+  <class id="3" language="java" name="team2.mvc.controller.SearchController" project="Moviement" 
     file="/Moviement/src/team2/mvc/controller/SearchController.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="175" y="2494"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -37,7 +28,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="5" language="java" name="team2.mvc.controller.WishController" project="Moviement" 
+  <class id="4" language="java" name="team2.mvc.controller.WishController" project="Moviement" 
     file="/Moviement/src/team2/mvc/controller/WishController.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1329" y="2713"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -46,7 +37,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="6" language="java" name="team2.mvc.exception.DuplicateException" project="Moviement" 
+  <class id="5" language="java" name="team2.mvc.exception.DuplicateException" project="Moviement" 
     file="/Moviement/src/team2/mvc/exception/DuplicateException.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="605" y="82"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -55,7 +46,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="7" language="java" name="team2.mvc.exception.NotFoundException" project="Moviement" 
+  <class id="6" language="java" name="team2.mvc.exception.NotFoundException" project="Moviement" 
     file="/Moviement/src/team2/mvc/exception/NotFoundException.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="992" y="87"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -64,7 +55,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="8" language="java" name="team2.mvc.main.Moviement_main" project="Moviement" 
+  <class id="7" language="java" name="team2.mvc.main.Moviement_main" project="Moviement" 
     file="/Moviement/src/team2/mvc/main/Moviement_main.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="796" y="86"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -73,7 +64,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="9" language="java" name="team2.mvc.model.dao.CustomerDAOImpl" project="Moviement" 
+  <class id="8" language="java" name="team2.mvc.model.dao.CustomerDAOImpl" project="Moviement" 
     file="/Moviement/src/team2/mvc/model/dao/CustomerDAOImpl.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1336" y="1626"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -82,7 +73,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <interface id="10" language="java" name="team2.mvc.model.dao.CustomerDAO" project="Moviement" 
+  <interface id="9" language="java" name="team2.mvc.model.dao.CustomerDAO" project="Moviement" 
     file="/Moviement/src/team2/mvc/model/dao/CustomerDAO.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="979" y="1624"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -91,7 +82,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <interface id="11" language="java" name="team2.mvc.model.dao.MovieDAO" project="Moviement" 
+  <interface id="10" language="java" name="team2.mvc.model.dao.MovieDAO" project="Moviement" 
     file="/Moviement/src/team2/mvc/model/dao/MovieDAO.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1055" y="1909"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -100,7 +91,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <class id="12" language="java" name="team2.mvc.model.dao.MovieDAOImpl" project="Moviement" 
+  <class id="11" language="java" name="team2.mvc.model.dao.MovieDAOImpl" project="Moviement" 
     file="/Moviement/src/team2/mvc/model/dao/MovieDAOImpl.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1613" y="1914"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -109,7 +100,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <interface id="13" language="java" name="team2.mvc.model.dao.RecommendDAO" project="Moviement" 
+  <interface id="12" language="java" name="team2.mvc.model.dao.RecommendDAO" project="Moviement" 
     file="/Moviement/src/team2/mvc/model/dao/RecommendDAO.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="878" y="2199"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -118,16 +109,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <class id="14" language="java" name="team2.mvc.model.dao.RecommendDAOImpl" project="Moviement" 
-    file="/Moviement/src/team2/mvc/model/dao/RecommendDAOImpl.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1338" y="2185"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <interface id="15" language="java" name="team2.mvc.model.dao.SearchDAO" project="Moviement" 
+  <interface id="13" language="java" name="team2.mvc.model.dao.SearchDAO" project="Moviement" 
     file="/Moviement/src/team2/mvc/model/dao/SearchDAO.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1024" y="2479"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -136,7 +118,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <class id="16" language="java" name="team2.mvc.model.dao.SearchDAOImpl" project="Moviement" 
+  <class id="14" language="java" name="team2.mvc.model.dao.SearchDAOImpl" project="Moviement" 
     file="/Moviement/src/team2/mvc/model/dao/SearchDAOImpl.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1456" y="2477"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -145,7 +127,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <interface id="17" language="java" name="team2.mvc.model.dao.WishDAO" project="Moviement" 
+  <interface id="15" language="java" name="team2.mvc.model.dao.WishDAO" project="Moviement" 
     file="/Moviement/src/team2/mvc/model/dao/WishDAO.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="700" y="2704"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -154,7 +136,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <class id="18" language="java" name="team2.mvc.model.dao.WishDAOlmpl" project="Moviement" 
+  <class id="16" language="java" name="team2.mvc.model.dao.WishDAOlmpl" project="Moviement" 
     file="/Moviement/src/team2/mvc/model/dao/WishDAOlmpl.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="254" y="2708"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -163,7 +145,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="19" language="java" name="team2.mvc.model.dto.Actor" project="Moviement" 
+  <class id="17" language="java" name="team2.mvc.model.dto.Actor" project="Moviement" 
     file="/Moviement/src/team2/mvc/model/dto/Actor.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="118" y="506"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -172,7 +154,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="20" language="java" name="team2.mvc.model.dto.Evaluation" project="Moviement" 
+  <class id="18" language="java" name="team2.mvc.model.dto.Evaluation" project="Moviement" 
     file="/Moviement/src/team2/mvc/model/dto/Evaluation.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="351" y="485"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -181,7 +163,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="21" language="java" name="team2.mvc.model.dto.GenreList" project="Moviement" 
+  <class id="19" language="java" name="team2.mvc.model.dto.GenreList" project="Moviement" 
     file="/Moviement/src/team2/mvc/model/dto/GenreList.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="548" y="405"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -190,7 +172,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="22" language="java" name="team2.mvc.model.dto.MovidDetail" project="Moviement" 
+  <class id="20" language="java" name="team2.mvc.model.dto.MovidDetail" project="Moviement" 
     file="/Moviement/src/team2/mvc/model/dto/MovidDetail.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="766" y="469"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -199,7 +181,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="23" language="java" name="team2.mvc.model.dto.Movie" project="Moviement" 
+  <class id="21" language="java" name="team2.mvc.model.dto.Movie" project="Moviement" 
     file="/Moviement/src/team2/mvc/model/dto/Movie.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1016" y="478"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -208,7 +190,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="24" language="java" name="team2.mvc.model.dto.MovieSub" project="Moviement" 
+  <class id="22" language="java" name="team2.mvc.model.dto.MovieSub" project="Moviement" 
     file="/Moviement/src/team2/mvc/model/dto/MovieSub.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1229" y="480"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -217,7 +199,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="25" language="java" name="team2.mvc.model.dto.Search" project="Moviement" 
+  <class id="23" language="java" name="team2.mvc.model.dto.Search" project="Moviement" 
     file="/Moviement/src/team2/mvc/model/dto/Search.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1690" y="1106"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -226,7 +208,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="26" language="java" name="team2.mvc.model.dto.SearchDetail" project="Moviement" 
+  <class id="24" language="java" name="team2.mvc.model.dto.SearchDetail" project="Moviement" 
     file="/Moviement/src/team2/mvc/model/dto/SearchDetail.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1128" y="855"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -235,7 +217,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="27" language="java" name="team2.mvc.model.dto.Tag" project="Moviement" 
+  <class id="25" language="java" name="team2.mvc.model.dto.Tag" project="Moviement" 
     file="/Moviement/src/team2/mvc/model/dto/Tag.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="69" y="897"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -244,7 +226,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="28" language="java" name="team2.mvc.model.dto.TagList" project="Moviement" 
+  <class id="26" language="java" name="team2.mvc.model.dto.TagList" project="Moviement" 
     file="/Moviement/src/team2/mvc/model/dto/TagList.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="231" y="899"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -253,7 +235,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="29" language="java" name="team2.mvc.model.dto.User" project="Moviement" 
+  <class id="27" language="java" name="team2.mvc.model.dto.User" project="Moviement" 
     file="/Moviement/src/team2/mvc/model/dto/User.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="420" y="1018"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -262,7 +244,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="30" language="java" name="team2.mvc.model.dto.WishList" project="Moviement" 
+  <class id="28" language="java" name="team2.mvc.model.dto.WishList" project="Moviement" 
     file="/Moviement/src/team2/mvc/model/dto/WishList.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1027" y="1143"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -271,7 +253,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="31" language="java" name="team2.mvc.model.service.CustomerService" project="Moviement" 
+  <class id="29" language="java" name="team2.mvc.model.service.CustomerService" project="Moviement" 
     file="/Moviement/src/team2/mvc/model/service/CustomerService.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="588" y="1609"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -280,7 +262,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="32" language="java" name="team2.mvc.model.service.MovieService" project="Moviement" 
+  <class id="30" language="java" name="team2.mvc.model.service.MovieService" project="Moviement" 
     file="/Moviement/src/team2/mvc/model/service/MovieService.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="684" y="1936"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -289,7 +271,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="33" language="java" name="team2.mvc.model.service.RecommendService" project="Moviement" 
+  <class id="31" language="java" name="team2.mvc.model.service.RecommendService" project="Moviement" 
     file="/Moviement/src/team2/mvc/model/service/RecommendService.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="471" y="2200"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -298,7 +280,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="34" language="java" name="team2.mvc.model.service.SearchService" project="Moviement" 
+  <class id="32" language="java" name="team2.mvc.model.service.SearchService" project="Moviement" 
     file="/Moviement/src/team2/mvc/model/service/SearchService.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="629" y="2490"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -307,7 +289,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="35" language="java" name="team2.mvc.model.service.WishService" project="Moviement" 
+  <class id="33" language="java" name="team2.mvc.model.service.WishService" project="Moviement" 
     file="/Moviement/src/team2/mvc/model/service/WishService.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1036" y="2713"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -316,7 +298,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="36" language="java" name="team2.mvc.util.DbUtil" project="Moviement" 
+  <class id="34" language="java" name="team2.mvc.util.DbUtil" project="Moviement" 
     file="/Moviement/src/team2/mvc/util/DbUtil.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="169" y="105"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -325,7 +307,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="37" language="java" name="team2.mvc.view.FailView" project="Moviement" 
+  <class id="35" language="java" name="team2.mvc.view.FailView" project="Moviement" 
     file="/Moviement/src/team2/mvc/view/FailView.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="412" y="83"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -334,7 +316,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="38" language="java" name="team2.mvc.view.MenuView" project="Moviement" 
+  <class id="36" language="java" name="team2.mvc.view.MenuView" project="Moviement" 
     file="/Moviement/src/team2/mvc/view/MenuView.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="700" y="1085"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -343,7 +325,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="39" language="java" name="team2.mvc.view.SuccessView" project="Moviement" 
+  <class id="37" language="java" name="team2.mvc.view.SuccessView" project="Moviement" 
     file="/Moviement/src/team2/mvc/view/SuccessView.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1252" y="114"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -352,116 +334,104 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <realization id="40">    
-    <end type="SOURCE" refId="18"/>    
-    <end type="TARGET" refId="17"/>  
-  </realization>  
-  <association id="41">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="42" name="customerService"/>      
-      <multiplicity id="43" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="31" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="44">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="45" name="movieService"/>      
-      <multiplicity id="46" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="32" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="47">    
-    <end type="SOURCE" refId="33" navigable="false">      
-      <attribute id="48" name="recommendDao"/>      
-      <multiplicity id="49" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="13" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="50">    
-    <end type="SOURCE" refId="9"/>    
-    <end type="TARGET" refId="10"/>  
-  </realization>  
-  <realization id="51">    
+  <realization id="38">    
     <end type="SOURCE" refId="16"/>    
     <end type="TARGET" refId="15"/>  
   </realization>  
-  <realization id="52">    
-    <end type="SOURCE" refId="12"/>    
-    <end type="TARGET" refId="11"/>  
-  </realization>  
-  <association id="53">    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="54" name="searchService"/>      
-      <multiplicity id="55" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="34" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="56">    
-    <end type="SOURCE" refId="34" navigable="false">      
-      <attribute id="57" name="searchDAO"/>      
-      <multiplicity id="58" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="15" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="59">    
-    <end type="SOURCE" refId="26"/>    
-    <end type="TARGET" refId="25"/>  
-  </generalization>  
-  <association id="60">    
-    <end type="SOURCE" refId="31" navigable="false">      
-      <attribute id="61" name="customerDao"/>      
-      <multiplicity id="62" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="10" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="63">    
-    <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="64" name="wishService"/>      
-      <multiplicity id="65" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="35" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="66">    
-    <end type="SOURCE" refId="38" navigable="false">      
-      <attribute id="67" name="user"/>      
-      <multiplicity id="68" minimum="0" maximum="1"/>    
+  <association id="39">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="40" name="customerService"/>      
+      <multiplicity id="41" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="29" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <realization id="69">    
+  <association id="42">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="43" name="movieService"/>      
+      <multiplicity id="44" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="30" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="45">    
+    <end type="SOURCE" refId="31" navigable="false">      
+      <attribute id="46" name="recommendDao"/>      
+      <multiplicity id="47" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="48">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="9"/>  
+  </realization>  
+  <realization id="49">    
     <end type="SOURCE" refId="14"/>    
     <end type="TARGET" refId="13"/>  
   </realization>  
-  <association id="70">    
+  <realization id="50">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="10"/>  
+  </realization>  
+  <association id="51">    
     <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="71" name="recommendService"/>      
-      <multiplicity id="72" minimum="0" maximum="1"/>    
+      <attribute id="52" name="searchService"/>      
+      <multiplicity id="53" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="32" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="54">    
+    <end type="SOURCE" refId="32" navigable="false">      
+      <attribute id="55" name="searchDAO"/>      
+      <multiplicity id="56" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="57">    
+    <end type="SOURCE" refId="24"/>    
+    <end type="TARGET" refId="23"/>  
+  </generalization>  
+  <association id="58">    
+    <end type="SOURCE" refId="29" navigable="false">      
+      <attribute id="59" name="customerDao"/>      
+      <multiplicity id="60" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="9" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="61">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="62" name="wishService"/>      
+      <multiplicity id="63" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="33" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="73">    
-    <end type="SOURCE" refId="32" navigable="false">      
-      <attribute id="74" name="movieDAO"/>      
-      <multiplicity id="75" minimum="0" maximum="1"/>    
+  <association id="64">    
+    <end type="SOURCE" refId="36" navigable="false">      
+      <attribute id="65" name="user"/>      
+      <multiplicity id="66" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="11" navigable="true"/>    
+    <end type="TARGET" refId="27" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="76">    
-    <end type="SOURCE" refId="35" navigable="false">      
-      <attribute id="77" name="wishDAO"/>      
-      <multiplicity id="78" minimum="0" maximum="1"/>    
+  <association id="67">    
+    <end type="SOURCE" refId="30" navigable="false">      
+      <attribute id="68" name="movieDAO"/>      
+      <multiplicity id="69" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="17" navigable="true"/>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="70">    
+    <end type="SOURCE" refId="33" navigable="false">      
+      <attribute id="71" name="wishDAO"/>      
+      <multiplicity id="72" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="15" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 

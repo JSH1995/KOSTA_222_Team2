@@ -1,1 +1,0 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"team2.mvc.controller"},{"l":"team2.mvc.exception"},{"l":"team2.mvc.main"},{"l":"team2.mvc.model.dao"},{"l":"team2.mvc.model.dto"},{"l":"team2.mvc.model.service"},{"l":"team2.mvc.util"},{"l":"team2.mvc.view"}];updateSearchResults();

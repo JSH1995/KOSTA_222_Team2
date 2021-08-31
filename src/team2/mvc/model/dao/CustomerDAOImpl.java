@@ -12,7 +12,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import oracle.jdbc.driver.DBConversion;
 import team2.mvc.model.dto.Evaluation;
 import team2.mvc.model.dto.Tag;
 import team2.mvc.model.dto.User;
