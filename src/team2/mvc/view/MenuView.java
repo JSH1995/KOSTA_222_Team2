@@ -1,3 +1,8 @@
+
+/**
+ * 프로그램의 메뉴 기능을 담당하는 클래스
+ */
+
 package team2.mvc.view;
 
 import java.sql.Connection;

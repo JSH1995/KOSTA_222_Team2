@@ -26,25 +26,6 @@ import team2.mvc.model.dto.SearchDetail;
 import team2.mvc.util.DbUtil;
 
 public class SearchDAOImpl implements SearchDAO {
-
-	
-	
-	/**
-	 * DB에 들어가 있는 영화 전체 검색 기능	 
-	 * 
-	 * 	private int movieNo;
-		private String movieName;
-		private String director;
-		private String movieRegDate;
-		private int genreNo;
-		
-		고유번호
-		장르번호
-		작품명
-		감독
-		영화등록일자
-		
-	 */
 	
 	@Override
 	public List<Search> searchAll(String sortType) throws SQLException {
@@ -88,11 +69,6 @@ public class SearchDAOImpl implements SearchDAO {
 			
 		return searchList;
 	}
-
-		
-	/**
-	 * 작품명으로 검색
-	 */
 	
 	@Override
 	public List<Search> searchByName(String movieName, String sortType) throws SQLException {
@@ -139,11 +115,6 @@ public class SearchDAOImpl implements SearchDAO {
 		return searchList;
 	}
 	
-	/**
-	 * 감독명으로 검색
-	 */
-
-
 	@Override
 	public List<Search> searchByDirector(String director, String sortType) throws SQLException {
 		
@@ -188,12 +159,6 @@ public class SearchDAOImpl implements SearchDAO {
 			
 		return searchList;
 	}
-	
-
-
-	/**
-	 * 주연, 조연명으로 검색
-	 */
 	
 	@Override
 	public List<Search> searchByActor(String actor, String sortType) throws SQLException {
@@ -247,11 +212,6 @@ public class SearchDAOImpl implements SearchDAO {
 			
 		return searchList;
 	}
-
-
-	/**
-	 * 장르이름으로 검색
-	 */
 	
 	@Override
 	public List<Search> searchByGenre(String genre, String sortType) throws SQLException {
@@ -299,10 +259,6 @@ public class SearchDAOImpl implements SearchDAO {
 		return searchList;
 	}
 
-	
-	/**
-	 * 국가로 검색
-	 */
 
 	@Override
 	public List<Search> searchByNation(String nation, String sortType) throws SQLException {
@@ -350,11 +306,6 @@ public class SearchDAOImpl implements SearchDAO {
 		return searchList;
 	}
 
-	
-	/**
-	 * 영화 고유번호로 검색
-	 */
-
 	@Override
 	public Movie searchByPK(int movieNo) throws SQLException {
 
@@ -380,14 +331,6 @@ public class SearchDAOImpl implements SearchDAO {
 			
 		return movie;
 	}
-
-
-	/**
-	 * 상세 정보 보여주기
-	 * 
-	 * 평점, 사용자 태그 추가 필요
-	 */
-	
 	
 	@Override
 	public Search showMovieDetail(String movieName) throws SQLException {
