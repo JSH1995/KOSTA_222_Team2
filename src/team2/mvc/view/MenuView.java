@@ -39,15 +39,15 @@ public class MenuView {
 			System.out.println("============= Moviement =============");
 			System.out.println("1. 회원가입   |   2. 로그인   |  0. 종료");
 			System.out.println("=====================================");
-			int choice = Integer.parseInt(sc.nextLine());
+			String choice = sc.nextLine();
 			switch (choice) {
-			case 1:
+			case "1":
 				register();
 				break;
-			case 2:
+			case "2":
 				login();
 				break;
-			case 0:
+			case "0":
 				System.exit(0);
 			default:
 				System.out.println("잘못된 메뉴입니다. 다시 선택해주세요");
@@ -138,15 +138,15 @@ public class MenuView {
 	 */
 	public static void printAdminMenu() {
 		System.out.println("1. 메인 메뉴  |  2. 관리자 메뉴  |  0. 종료");
-		int choice2 = Integer.parseInt(sc.nextLine());
+		String choice2 = sc.nextLine();
 		switch (choice2) {
-		case 1:
+		case "1":
 			printUserMenu();
 			break;
-		case 2:
+		case "2":
 			adminMenu();
 			break;
-		case 0:
+		case "0":
 			System.exit(0);
 		default:
 			System.out.println("메뉴에 있는 숫자를 눌러주세요");
@@ -260,11 +260,11 @@ public class MenuView {
 			System.out.println(
 					"=========================================================== 검색 메뉴 ===============================================================");
 			System.out.println(
-					"===== 1. 전체 검색 | 2. 작품명 검색 | 3. 감독별 검색 | 4. 배우별 검색 | 5. 장르별 검색 | 6. 국가별 검색 | 7. 상세 정보 확인 | 8. 뒤로가기 | 0. 메인 메뉴 |=====");
+					"===== 1. 전체 검색 | 2. 작품명 검색 | 3. 감독별 검색 | 4. 배우별 검색 | 5. 장르별 검색 | 6. 국가별 검색 | 7. 상세 정보 확인 | 8. 뒤로가기 | 0. 메인 메뉴 =====");
 			System.out.println(
 					"===================================================================================================================================");
 
-			int choice = Integer.parseInt(sc.nextLine());
+			String choice = sc.nextLine();
 			String sortType = "작품명";
 			String movieName;
 			String director;
@@ -273,53 +273,55 @@ public class MenuView {
 			String nation;
 
 			switch (choice) {
-			case 1:
+			case "1":
 				if (SearchController.searchAll(sortType)) {
 					sortType = sort();
 					SearchController.searchAll(sortType);
 				}
 				break;
-			case 2:
+			case "2":
 				movieName = insertKeyword();
 				if (SearchController.searchByName(movieName, sortType)) {
 					sortType = sort();
 					SearchController.searchByName(movieName, sortType);
 				}
 				break;
-			case 3:
+			case "3":
 				director = insertKeyword();
 				if (SearchController.searchByDirector(director, sortType)) {
 					sortType = sort();
 					SearchController.searchByDirector(director, sortType);
 				}
 				break;
-			case 4:
+			case "4":
 				actor = insertKeyword();
 				if (SearchController.searchByActor(actor, sortType)) {
 					sortType = sort();
 					SearchController.searchByActor(actor, sortType);
 				}
 				break;
-			case 5:
+			case "5":
+				System.out.println("================================================ 장르 리스트 ================================================");
+				System.out.println("1. 드라마 |  2. 스릴러  |  3. 범죄  | 4. 로맨스  | 5. 액션 | 6. 다큐멘터리  | 7. 애니메이션  | 8. 코미디 | 9. 공포  | 10. SF ");
 				genre = insertKeyword();
 				if (SearchController.searchByGenre(genre, sortType)) {
 					sortType = sort();
 					SearchController.searchByGenre(genre, sortType);
 				}
 				break;
-			case 6:
+			case "6":
 				nation = insertKeyword();
 				if (SearchController.searchByNation(nation, sortType)) {
 					sortType = sort();
 					SearchController.searchByNation(nation, sortType);
 				}
 				break;
-			case 7:
+			case "7":
 				movieDetail();
 				break;
-			case 8:
+			case "8":
 				return;
-			case 0:
+			case "0":
 				printUserMenu();
 			default:
 				System.out.println("메뉴에 있는 숫자만 입력 해 주세요.");
@@ -348,19 +350,19 @@ public class MenuView {
 		int choice = Integer.parseInt(sc.nextLine());
 
 		switch (choice) {
-		case 1:
+		case "1":
 			sortType = "작품명";
 			break;
-		case 2:
+		case "2":
 			sortType = "상영시간";
 			break;
-		case 3:
+		case "3":
 			sortType = "개봉일자";
 			break;
-		case 4:
+		case "4":
 			sortType = "AVG(평점) DESC";
 			break;
-		case 5:
+		case "5":
 			printSearchMenu();
 		default:
 			System.out.println("메뉴에 있는 숫자만 입력 해 주세요.");
@@ -430,73 +432,73 @@ public class MenuView {
 			System.out.println("9. 태그삭제 | 10. 영화상세등록 | 11. 영화상세수정 | 12. 영화상세삭제 | 13. 메인메뉴 | 14. 로그아웃 | 0. 종료");
 			System.out.println(
 					"================================================================================================");
-
-			int choice = Integer.parseInt(sc.nextLine());
-			switch (choice) {
-			case 1:
-				registerMovie();
-				adminMenu();
-				break;
-			case 2:
-				updateMovie();
-				adminMenu();
-				break;
-			case 3:
-				deleteMovie();
-				adminMenu();
-				break;
-			case 4:
-				registerActor();
-				adminMenu();
-				break;
-			case 5:
-				updateActor();
-				adminMenu();
-				break;
-			case 6:
-				deleteActor();
-				adminMenu();
-				break;
-			case 7:
-				registerTag();
-				adminMenu();
-				break;
-			case 8:
-				updateTag();
-				adminMenu();
-				break;
-			case 9:
-				deleteTag();
-				adminMenu();
-				break;
-			case 10:
-				registerMovieDetail();
-				adminMenu();
-				break;
-			case 11:
-				updateMovieDetail();
-				adminMenu();
-				break;
-			case 12:
-				deleteMovieDetail();
-				adminMenu();
-				break;
-			case 13:
-				System.out.println("관리자 메뉴를 종료하고 메인메뉴로 돌아갑니다.");
-				printUserMenu();
-			case 14:
-				System.out.println("로그아웃되어 로그인 화면으로 돌아갑니다.");
-				break;
-			case 0:
-				System.exit(0);
-			default:
-				System.out.println("메뉴에 해당하는 번호가 없습니다.");
-				adminMenu();
-				break;
-			}
-		} catch (NumberFormatException e) {
-			System.out.println("숫자만 입력해주세요.");
-		}
+	
+			String choice = sc.nextLine();
+				switch (choice) {
+				case "1":
+					registerMovie();
+					adminMenu();
+					break;
+				case "2":
+					updateMovie();
+					adminMenu();
+					break;
+				case "3":
+					deleteMovie();
+					adminMenu();
+					break;
+				case "4":
+					registerActor();
+					adminMenu();
+					break;
+				case "5":
+					updateActor();
+					adminMenu();
+					break;
+				case "6":
+					deleteActor();
+					adminMenu();
+					break;
+				case "7":
+					registerTag();
+					adminMenu();
+					break;
+				case "8":
+					updateTag();
+					adminMenu();
+					break;
+				case "9":
+					deleteTag();
+					adminMenu();
+					break;
+				case "10":
+					registerMovieDetail();
+					adminMenu();
+					break;
+				case "11":
+					updateMovieDetail();
+					adminMenu();
+					break;
+				case "12":
+					deleteMovieDetail();
+					adminMenu();
+					break;
+				case "13":
+					System.out.println("관리자 메뉴를 종료하고 메인메뉴로 돌아갑니다.");
+					printUserMenu();
+				case "14":
+					System.out.println("로그아웃되어 로그인 화면으로 돌아갑니다.");
+					break;
+				case "0":
+					System.exit(0);
+				default:
+					System.out.println("메뉴에 해당하는 번호가 없습니다.");
+					adminMenu();
+					break;
+				}
+		}catch(NumberFormatException e) {
+	        System.out.println("숫자만 입력해주세요.");
+        }
 
 	}
 
@@ -821,22 +823,22 @@ public class MenuView {
 			System.out.println("=================================================================================");
 			System.out.println("1. 현재 영화의 평점 및 코멘트를 작성하시겠습니까? | 2. 위시리스트에 추가 | 3. 태그 추가 | 0. 종료 |");
 			System.out.println("=================================================================================");
-			int choice = Integer.parseInt(sc.nextLine());
+			String choice = sc.nextLine();
 			switch (choice) {
-			case 1:
+			case "1":
 				movienum = findMovieNumber(sd, mn, di);
 				userComment(movienum);
 				break;
-			case 2:
+			case "2":
 				movienum = findMovieNumber(sd, mn, di);
 				WishController.putWishList(user.getUserNo(), movienum);
 				break;
-			case 3:
+			case "3":
 				movienum = findMovieNumber(sd, mn, di);
 				String tag = putUserTag(movienum);
 				CustomerController.putTag(movienum, tag);
 				break;
-			case 0:
+			case "0":
 				return;
 			default:
 				System.out.println("메뉴에 있는 숫자만 입력 해 주세요.");
