@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
 
-import team.mvc.exception.NotFoundException;
+import team2.mvc.exception.NotFoundException;
 import team2.mvc.model.dao.CustomerDAO;
 import team2.mvc.model.dao.CustomerDAOImpl;
 import team2.mvc.model.dto.User;

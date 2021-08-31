@@ -3,8 +3,8 @@ package team2.mvc.model.service;
 import java.sql.SQLException;
 import java.util.List;
 
-import team.mvc.exception.NotFoundException;
 import team2.mvc.model.dto.Movie;
+import team2.mvc.exception.NotFoundException;
 import team2.mvc.model.dao.RecommendDAO;
 import team2.mvc.model.dao.RecommendDAOImpl;
 

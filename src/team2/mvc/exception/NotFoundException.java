@@ -1,4 +1,4 @@
-package team.mvc.exception;
+package team2.mvc.exception;
 
 public class NotFoundException extends Exception {
 	public  NotFoundException() {
