@@ -178,7 +178,7 @@ public class Search {
 		builder.append(releaseDate);
 		builder.append(" | 상영시간 : ");
 		builder.append(runtime);
-		builder.append(" | 평점 : ");
+		builder.append(" | 평균 평점 : ");
 		builder.append((Math.round(rate * 10)) / 10.0);
 		builder.append(" |");
 		return builder.toString();

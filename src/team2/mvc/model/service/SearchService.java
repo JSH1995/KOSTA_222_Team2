@@ -17,7 +17,7 @@ import java.util.List;
 import team2.mvc.exception.NotFoundException;
 import team2.mvc.model.dao.SearchDAO;
 import team2.mvc.model.dao.SearchDAOImpl;
-import team2.mvc.model.dto.MovidDetail;
+import team2.mvc.model.dto.Evaluation;
 import team2.mvc.model.dto.Movie;
 import team2.mvc.model.dto.Search;
 
@@ -122,7 +122,18 @@ public class SearchService {
 		}
 		
 		return sd;
+		
 
 	}
+	
+	public List<Evaluation> showComment(String movieName) throws NotFoundException, SQLException{
+	
+		List<Evaluation> le = searchDAO.showComment(movieName);
+		
+		if(movieName == null) {
+			throw new NotFoundException("아직 후기가 없네요~ 이미 상영하신 영화라면 후기 작성 부탁드려요!!");
+		}
+		return le;
 
+	}
 }
