@@ -64,8 +64,12 @@ public class MenuView {
 
 				System.out.print("나이를 입력해주세요: ");
 				int age = Integer.parseInt(sc.nextLine());
-				System.out.println(
-						" 1. 시간 |  2. 외계인  |  3. 우주  | 4. 고전  | 5. 복수 | 6. 패션  | 7. 미래적인  | 8. 편견을 깨는 | 9. 독립 ");
+				System.out.println(" 1.  시간 |  2.  외계인  |  3.  우주  | 4.  고전  | 5.  복수 | 6.  패션  | 7.  미래적인  | 8.  편견을 깨는 | 9.  독립 ");
+				System.out.println(" 10. 시간 |  11. 외계인  |  13. 우주  | 14. 고전  | 15. 복수 | 16. 패션  | 17. 미래적인  | 18. 편견을 깨는 | 19. 독립 ");
+				System.out.println(" 20. 시간 |  21. 외계인  |  22. 우주  | 23. 고전  | 24. 복수 | 25. 패션  | 26. 미래적인  | 27. 편견을 깨는 | 28. 독립 ");
+				System.out.println(" 1. 시간 |  2. 외계인  |  3. 우주  | 4. 고전  | 5. 복수 | 6. 패션  | 7. 미래적인  | 8. 편견을 깨는 | 9. 독립 ");
+				System.out.println(" 1. 시간 |  2. 외계인  |  3. 우주  | 4. 고전  | 5. 복수 | 6. 패션  | 7. 미래적인  | 8. 편견을 깨는 | 9. 독립 ");
+
 				System.out.print("좋아하는 태그를 입력해주세요: ");
 
 				int tegnum = Integer.parseInt(sc.nextLine());
@@ -688,7 +692,7 @@ public class MenuView {
 
 		System.out.println("====================================================");
 
-		System.out.println("1: 현재 영화의 평점 및 코멘트를 작성하시겠습니까? | 0: 종료 |");
+		System.out.println("1. 현재 영화의 평점 및 코멘트를 작성하시겠습니까? | 2. 위시리스트에 추가 | 0. 종료 |");
 		System.out.println("====================================================");
 		int choice = Integer.parseInt(sc.nextLine());
 		switch (choice) {
@@ -718,9 +722,11 @@ public class MenuView {
 			userComment(movienum);
 			break;
 		case 2:
+			WishController.putWishList(user.getUserNo(), movienum);
 			break;
+		case 0:
+			return;
 
 		}
-
 	}
 }
