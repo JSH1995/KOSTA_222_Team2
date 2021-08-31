@@ -374,6 +374,7 @@ public class MenuView {
 	private static String insertKeyword() {
 
 		System.out.println("==========검색하실 키워드를 입력해 주세요.==========");
+		System.out.println("==========키워드는 작품명으로 정확하게 입력해주세요!!==========");
 		System.out.print("키워드 : ");
 		String keyword = sc.nextLine();
 		keywordList.add(keyword);
@@ -688,7 +689,7 @@ public class MenuView {
 	}
 
 	public static void movieDetail() {
-		System.out.print("========영화 상세 정보 확인========");
+		System.out.println("==================영화 상세 정보 검색==================");
 		String keyword = insertKeyword();
 		Search sd = SearchController.showMovieDetail(keyword);
 		String mn = sd.getMovieName();
@@ -701,7 +702,6 @@ public class MenuView {
 
 
 		System.out.println("=====================================================================================");
-
 		System.out.println("1. 현재 영화의 평점 및 코멘트를 작성하시겠습니까? | 2. 위시리스트에 추가 |3. 태그 추가 | 0. 종료 |");
 		System.out.println("=====================================================================================");
 		int choice = Integer.parseInt(sc.nextLine());
