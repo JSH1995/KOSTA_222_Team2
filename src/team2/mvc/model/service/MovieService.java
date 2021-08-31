@@ -1,10 +1,13 @@
 package team2.mvc.model.service;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import team2.mvc.model.dto.Actor;
 import team2.mvc.model.dto.MovidDetail;
+import team2.mvc.model.dto.MovieSub;
 import team2.mvc.model.dto.Tag;
+import team2.mvc.view.FailView;
 import team2.mvc.model.dao.MovieDAO;
 import team2.mvc.model.dao.MovieDAOImpl;
 
@@ -127,6 +130,18 @@ public class MovieService {
 			throw new SQLException("삭제되지 않았습니다.");
 		} 
 		
+	}
+	
+	/**
+	 * Menuview UI 에 사용할 부수적인 메소드들
+	 * */
+	
+	public List<MovieSub> selectByMovieNo(int movieNo) throws SQLException {
+		List<MovieSub> movieList = movieDAO.selectByMovieNo(movieNo);
+		if(movieList==null) {
+			throw new SQLException(movieNo+"번에 해당하는 레코드가 없습니다.");
+		}
+		return movieList;
 	}
 
 }
