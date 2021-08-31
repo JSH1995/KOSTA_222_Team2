@@ -155,24 +155,24 @@ public class MenuView {
 			System.out.println("========================================== 메인 메뉴 ==========================================");
 			System.out.println(" 1. 개인정보 수정 |  2. 위시리스트 보기  |  3. 추천 영화 보기  | 4. 검색하기  | 5. 최근 검색 리스트 | 0. 종료");
 			System.out.println("=============================================================================================");
-			int choice = Integer.parseInt(sc.nextLine());
+			String choice = sc.nextLine();
 			switch (choice) {
-			case 1:
+			case "1":
 				printPersonalDetailMenu();
 				break;
-			case 2:
+			case "2":
 				printWishListMenu(user.getUserNo());
 				break;
-			case 3:
+			case "3":
 				printRecommendMenu(user);
 				break;
-			case 4:
+			case "4":
 				printSearchMenu();
 				break;
-			case 5:
+			case "5":
 				showRecentSearchList();
 				break;
-			case 0:
+			case "0":
 				System.exit(0);
 			default:
 				System.out.println("잘못된 메뉴입니다. 다시 선택해주세요.");
