@@ -6,6 +6,7 @@ import java.util.List;
 import team2.mvc.model.dto.Movie;
 import team2.mvc.model.service.RecommendService;
 import team2.mvc.view.FailView;
+import team2.mvc.view.MenuView;
 import team2.mvc.view.SuccessView;
 
 public class RecommendController {
@@ -19,6 +20,7 @@ public class RecommendController {
 		try {
 			List<Movie> list = recommendService.recByAge(age);
 			SuccessView.printRecMovieList(list);
+			MenuView.
 		} catch (Exception e) {
 			FailView.errorMessage(e.getMessage());		}
 	}
