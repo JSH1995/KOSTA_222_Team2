@@ -23,8 +23,7 @@ public class RecommendDAOImpl implements RecommendDAO {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		List<Movie> list = new ArrayList();
-		String sql = "select distinct 영화_고유번호, 영화.장르번호, 영화.작품명, 영화.감독, 영화.영화등록일자 from 영화 join 위시리스트 "
-				+ "using (영화_고유번호) join 사용자 using(사용자_고유번호) where 나이 between ? and ? order by 영화_고유번호 desc";
+		String sql = "select distinct 영화_고유번호, 영화.장르번호, 영화.작품명, 영화.감독, 영화.영화등록일자 from 영화 join 위시리스트 using (영화_고유번호) join 사용자 using(사용자_고유번호) where 나이 between ? and ? order by 영화_고유번호 desc";
 ;
 		try {
 			con = DbUtil.getConnection();
@@ -44,7 +43,7 @@ public class RecommendDAOImpl implements RecommendDAO {
 	}
 
 	/**
-	 * 위시리스트에 가장 많이 담긴 영화 15편을 추천
+	 * 위시리스트에 가장 많이 담긴 영화를 추천
 	 */
 	@Override
 	public List<Movie> recByRank() throws SQLException {
@@ -70,7 +69,7 @@ public class RecommendDAOImpl implements RecommendDAO {
 	}
 
 	/**
-	 * 사용자가 선호하는 장르의 영화 15편을 추천
+	 * 사용자가 선호하는 장르의 영화를 추천
 	 */
 	@Override
 	public List<Movie> recByGenre(int userNo) throws SQLException, NullPointerException {
@@ -127,23 +126,17 @@ public class RecommendDAOImpl implements RecommendDAO {
 		ResultSet rs = null;
 		int tagNo = 0;
 		List<Movie> list = new ArrayList();
-		String sql = "select 태그번호 from (select 태그번호, count(태그번호) from 영화 join 태그 using (영화_고유번호) join 위시리스트 "
-				+ "using (영화_고유번호) where 사용자_고유번호 = ? group by 태그번호 order by count(태그번호) desc) where rownum<2";
+		String sql = "select 태그번호 from (select 태그번호, count(태그번호) from 영화 join 태그 using (영화_고유번호) join 위시리스트 using (영화_고유번호) where 사용자_고유번호 = ? group by 태그번호 order by count(태그번호) desc) where rownum<2";
 		try {
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
 			ps.setInt(1, userNo);
-			
-			if(viewWishList(userNo).size() == 0 | viewWishList(userNo) == null) {
-				list = recByFavGenre(userNo);
-			} else {
-				rs = ps.executeQuery();
+			rs = ps.executeQuery();
 
-				if (rs.next()) {
-					tagNo = rs.getInt(1);
-				}
-				list = getRecListByTag(con, tagNo);
+			if (rs.next()) {
+				tagNo = rs.getInt(1);
 			}
+			list = getRecListByTag(con, tagNo);
 		} finally {
 			DbUtil.dbClose(con, ps, rs);
 		}
@@ -168,56 +161,6 @@ public class RecommendDAOImpl implements RecommendDAO {
 			DbUtil.dbClose(null, ps, rs);
 		}
 		return list;
-	}
-	/**
-	 * 사용자의 위시리스트를 가져오는 메서드
-	 * @param userNo
-	 * @return 위시리스트
-	 * @throws SQLException
-	 */
-	public List<Movie> viewWishList(int userNo) throws SQLException {
-		Connection con = null;
-		PreparedStatement ps = null;
-		ResultSet rs = null;
-		List<Movie> movieList = new ArrayList<Movie>();
-		String sql = "select 영화_고유번호, 장르번호, 작품명, 감독, 영화등록일자 from 위시리스트 join 영화 using(영화_고유번호) where 사용자_고유번호 = ?";
-
-		try {
-			con = DbUtil.getConnection();
-			ps = con.prepareStatement(sql);
-			ps.setInt(1, userNo);
-			rs = ps.executeQuery();
-
-			while (rs.next()) {
-				Movie movie = new Movie(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5));
-				movieList.add(movie);
-			}
-		} finally {
-			DbUtil.dbClose(con, ps, rs);
-		}
-		return movieList;
-	}
-	
-	public List<Movie> recByFavGenre(int userNo) throws SQLException {
-		Connection con = null;
-		PreparedStatement ps = null;
-		ResultSet rs = null;
-		List<Movie> movieList = new ArrayList<Movie>();
-		String sql = "select * from 영화 where 장르번호 = (select 장르번호 from 사용자 where 사용자_고유번호 = ?);";
-
-		try {
-			con = DbUtil.getConnection();
-			ps = con.prepareStatement(sql);
-			ps.setInt(1, userNo);
-			rs = ps.executeQuery();
-			while (rs.next()) {
-				Movie movie = new Movie(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5));
-				movieList.add(movie);
-			}
-		} finally {
-			DbUtil.dbClose(con, ps, rs);
-		}
-		return movieList;
 	}
 
 }

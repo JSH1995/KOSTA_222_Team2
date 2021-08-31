@@ -1,5 +1,6 @@
 package team2.mvc.controller;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import team2.mvc.model.dto.Movie;
@@ -54,6 +55,6 @@ public class RecommendController {
 	}
 	
 	public static void main(String[] args) {
-		recByGenre(831102525);
+		recByAge(10);
 	}
 }

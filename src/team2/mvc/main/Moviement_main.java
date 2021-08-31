@@ -9,8 +9,6 @@ public class Moviement_main {
 	
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		MenuView.menu();
-
 	}
 }
