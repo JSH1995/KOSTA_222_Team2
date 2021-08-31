@@ -501,7 +501,7 @@ public class MenuView {
 		System.out.print("등록할 영화고유번호 입력해주세요: ");
 		int movieNo = Integer.parseInt(sc.nextLine());
 		
-		System.out.println("  1. 드라마 |  2. 스릴러  |  3. 범죄  | 4. 로맨스  | 5. 액션 | 6. 다큐멘터리  | 7. 애니메이션  | 8. 코미디 | 9. 공포  | 10. SF ");
+		System.out.println(" 드라마 | 스릴러 | 범죄 | 로맨스 | 액션 | 다큐멘터리 | 애니메이션 | 코미디 | 공포 | SF ");
 
 		System.out.print("해당 장르번호 입력해주세요: ");
 		int genreNo = Integer.parseInt(sc.nextLine());
