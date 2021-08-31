@@ -705,30 +705,34 @@ public class MenuView {
 		int movienum = 0; 
 		String di = sd.getDirector();
 
-
-		System.out.println("=================================================================================");
-		System.out.println("1. 현재 영화의 평점 및 코멘트를 작성하시겠습니까? | 2. 위시리스트에 추가 | 3. 태그 추가 | 0. 종료 |");
-		System.out.println("=================================================================================");
-		int choice = Integer.parseInt(sc.nextLine());
-		switch (choice) {
-		case 1:
-			movienum = findMovieNumber(sd, mn, di);
-			userComment(movienum);
-			break;
-		case 2:
-			movienum = findMovieNumber(sd, mn, di);
-			WishController.putWishList(user.getUserNo(), movienum);
-			break;
-		case 3:
-			movienum = findMovieNumber(sd, mn, di);
-			String tag = putUserTag(movienum);
-			CustomerController.putTag(movienum, tag);
-		case 0:
-			return;
-		default:
-			System.out.println("메뉴에 있는 숫자만 입력 해 주세요.");
-			break;
-
+		
+		while(true) {
+	
+			System.out.println("=================================================================================");
+			System.out.println("1. 현재 영화의 평점 및 코멘트를 작성하시겠습니까? | 2. 위시리스트에 추가 | 3. 태그 추가 | 0. 종료 |");
+			System.out.println("=================================================================================");
+			int choice = Integer.parseInt(sc.nextLine());
+			switch (choice) {
+			case 1:
+				movienum = findMovieNumber(sd, mn, di);
+				userComment(movienum);
+				break;
+			case 2:
+				movienum = findMovieNumber(sd, mn, di);
+				WishController.putWishList(user.getUserNo(), movienum);
+				break;
+			case 3:
+				movienum = findMovieNumber(sd, mn, di);
+				String tag = putUserTag(movienum);
+				CustomerController.putTag(movienum, tag);
+				break;
+			case 0:
+				return;
+			default:
+				System.out.println("메뉴에 있는 숫자만 입력 해 주세요.");
+				break;
+	
+			}
 		}
 
 	}
