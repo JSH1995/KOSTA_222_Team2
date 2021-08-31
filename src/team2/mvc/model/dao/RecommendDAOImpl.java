@@ -14,7 +14,6 @@ public class RecommendDAOImpl implements RecommendDAO {
 
 	/**
 	 * 해당 나이대에 가장 많이 위시리스트에 담긴 영화를 추천
-	 * 
 	 * @param age
 	 */
 	@Override
@@ -84,7 +83,7 @@ public class RecommendDAOImpl implements RecommendDAO {
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
 			ps.setInt(1, userNo);
-			if(existWishList(userNo)) {
+			if (existWishList(userNo)) {
 				rs = ps.executeQuery();
 				if (rs.next()) {
 					genreNo = rs.getInt(1);
@@ -100,6 +99,13 @@ public class RecommendDAOImpl implements RecommendDAO {
 		return list;
 	}
 
+	/**
+	 * 위시리스트가 존재할 때 장르 기반 추천하는 영화 리스트 리턴하는 메서드
+	 * @param con
+	 * @param genreNo
+	 * @return 추천 영화 리스트
+	 * @throws SQLException
+	 */
 	public List<Movie> getRecListByGenre(Connection con, int genreNo) throws SQLException {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -134,8 +140,8 @@ public class RecommendDAOImpl implements RecommendDAO {
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
 			ps.setInt(1, userNo);
-			
-			if(existWishList(userNo)) {
+
+			if (existWishList(userNo)) {
 				rs = ps.executeQuery();
 				if (rs.next()) {
 					tagNo = rs.getInt(1);
@@ -151,6 +157,13 @@ public class RecommendDAOImpl implements RecommendDAO {
 		return list;
 	}
 
+	/**
+	 * 위시리스트가 존재할 때 태그 기반 추천하는 영화 리스트 리턴하는 메서드
+	 * @param con
+	 * @param tagNo
+	 * @return 추천 영화 리스트
+	 * @throws SQLException
+	 */
 	public List<Movie> getRecListByTag(Connection con, int tagNo) throws SQLException {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -169,7 +182,7 @@ public class RecommendDAOImpl implements RecommendDAO {
 		}
 		return list;
 	}
-	
+
 	/**
 	 * 위시리스트가 존재하는지 판단하는 메서드
 	 * @param userNo
@@ -188,9 +201,9 @@ public class RecommendDAOImpl implements RecommendDAO {
 			ps = con.prepareStatement(sql);
 			ps.setInt(1, userNo);
 			rs = ps.executeQuery();
-			if(rs.next()) {
+			if (rs.next()) {
 				result = true;
-			}else {
+			} else {
 				result = false;
 			}
 		} finally {
@@ -199,6 +212,12 @@ public class RecommendDAOImpl implements RecommendDAO {
 		return result;
 	}
 
+	/**
+	 * 위시리스트가 존재하지 않을 때 회원가입시 선택한 장르를 기반으로 추천하는 영화 리턴하는 메서드
+	 * @param userNo
+	 * @return 추천 영화 리스트
+	 * @throws SQLException
+	 */
 	public List<Movie> recByFavGenre(int userNo) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
@@ -211,7 +230,7 @@ public class RecommendDAOImpl implements RecommendDAO {
 			ps = con.prepareStatement(sql);
 			ps.setInt(1, userNo);
 			rs = ps.executeQuery();
-			while(rs.next()) {
+			while (rs.next()) {
 				list.add(new Movie(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5)));
 			}
 		} finally {
@@ -219,7 +238,13 @@ public class RecommendDAOImpl implements RecommendDAO {
 		}
 		return list;
 	}
-	
+
+	/**
+	 * 위시리스트가 존재하지 않을 때 회원가입시 선택한 장르를 기반으로 추천하는 영화 리턴하는 메서드
+	 * @param userNo
+	 * @return 추천 영화 리스트
+	 * @throws SQLException
+	 */
 	public List<Movie> recByFavTag(int userNo) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
@@ -231,7 +256,7 @@ public class RecommendDAOImpl implements RecommendDAO {
 			ps = con.prepareStatement(sql);
 			ps.setInt(1, userNo);
 			rs = ps.executeQuery();
-			while(rs.next()) {
+			while (rs.next()) {
 				list.add(new Movie(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5)));
 			}
 		} finally {
@@ -239,6 +264,5 @@ public class RecommendDAOImpl implements RecommendDAO {
 		}
 		return list;
 	}
-	
 
 }
