@@ -243,6 +243,7 @@ public class MenuView {
 	/**
 	 * @author 김찬원 
 	 * -- 사용자메뉴 - 4. 검색하기
+	 * -- 카테고리별 검색을 지원
 	 */
 	private static void printSearchMenu() {
 
@@ -314,7 +315,7 @@ public class MenuView {
 				printUserMenu();
 			default:
 				System.out.println("메뉴에 있는 숫자만 입력 해 주세요.");
-				break; // 문자나 다른거 입력 시 Exception 처리 필요
+				break;
 
 			}
 		}
@@ -323,6 +324,7 @@ public class MenuView {
 
 	/**
 	 * @author 김찬원 - 검색한 결과를 정렬 시켜주는 메소드
+	 * 검색 했던 DB를 정렬 후 다시 재출력 해준다.
 	 */
 
 	private static String sort() {
@@ -330,7 +332,7 @@ public class MenuView {
 		
 		System.out.println("================== 검색하신 결과에 대해 정렬을 할 수 있습니다. ====================");
 		System.out.println("=============================== 정렬 메뉴 ================================");
-		System.out.println("1. 작품명 | 2. 상영시간 | 3. 개봉일자 | 4. 평점 | 5. 뒤로 가기");
+		System.out.println("==========1. 작품명 | 2. 상영시간 | 3. 개봉일자 | 4. 평점 | 5. 뒤로 가기===========");
 		System.out.println("=======================================================================");
 
 		int choice = Integer.parseInt(sc.nextLine());
@@ -352,7 +354,7 @@ public class MenuView {
 			printSearchMenu();
 		default:
 			System.out.println("메뉴에 있는 숫자만 입력 해 주세요.");
-			break;// 문자나 다른거 입력 시 Exception 처리 필요
+			break;
 
 		}
 		return sortType;
@@ -360,6 +362,7 @@ public class MenuView {
 
 	/**
 	 * @author 김찬원 - 검색 키워드 입력하는 메소드
+	 * -- 이후 키워드는 Set에 저장되어 최근 검색 리스트에 포함 된다.
 	 */
 
 	private static String insertKeyword() {
@@ -375,6 +378,7 @@ public class MenuView {
 
 	/**
 	 * @author 김찬원 최근 검색 키워드를 보여주는 리스트
+	 * -- 프로그램이 돌아가는 동안에 검색했던 키워드들을 Set에 저장하여 출력한다.
 	 */
 
 	private static void showRecentSearchList() {
@@ -456,7 +460,7 @@ public class MenuView {
 			
 		default:
 			System.out.println("메뉴에 있는 숫자만 입력 해 주세요.");
-			break;// 문자나 다른거 입력 시 Exception 처리 필요
+			break;
 
 		}
 
@@ -679,6 +683,13 @@ public class MenuView {
 
 	}
 
+	/**
+	 * @author 김찬원, 조성휘
+	 * -- 영화 상세 정보 검색을 위한 입력 메소드 및 메뉴 메소드
+	 * -- 이후 평점/코멘트 등록, 위시리스트 추가, 특정 영화 DB에 사용자 태그 추가하는 기능의 선택지 부여
+	 */
+	
+	
 	public static void movieDetail() {
 		System.out.println("==================영화 상세 정보 검색==================");
 		
@@ -692,9 +703,6 @@ public class MenuView {
 		String mn = sd.getMovieName();
 
 		int movienum = 0; 
-		
-		//System.out.println("=======================================================================");
-
 		String di = sd.getDirector();
 
 
