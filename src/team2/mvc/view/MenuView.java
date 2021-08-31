@@ -336,7 +336,6 @@ public class MenuView {
 	/**
 	 * @author 김찬원
 	 * 검색한 결과를 정렬 시켜주는 메소드 검색 했던 DB를 정렬 후 다시 재출력 해주는 메뉴의 메소드
-	 * 
 	 */
 
 	private static String sort() {
@@ -835,6 +834,11 @@ public class MenuView {
 			System.out.println("관리자 메뉴로 돌아갑니다.");
 		}
 	}
+	/**
+	 * 사용자가 영화에 평점과 코멘트를 남기는 메서드
+	 * @author 조성휘 
+	 * @param movienum
+	 */
 	public static void userComment(int movienum) {
 		Calendar cal = Calendar.getInstance();
 		String year = Integer.toString(cal.get(Calendar.YEAR));
@@ -912,7 +916,7 @@ public class MenuView {
 	 * @author 홍전형
 	 * 사용자가 태그를 추가하는 메서드
 	 * @param movienum
-	 * @return
+	 * @return 사용자가 입력한 태그
 	 */
 
 	public static String putUserTag(int movienum) {
