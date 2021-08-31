@@ -405,7 +405,6 @@ public class SearchDAOImpl implements SearchDAO {
 				+ " WHERE 작품명 = ?"
 				+ " GROUP BY 작품명, 감독, 주연1, 주연2, 조연1, 조연2, 조연3, 장르이름, 국가, 개봉일자, 상영시간, 작품_줄거리, 사용자_태그, 코멘트";
 
-		
 		try {
 			
 			con = DbUtil.getConnection();
