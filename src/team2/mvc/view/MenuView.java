@@ -114,7 +114,7 @@ public class MenuView {
 		
 		List<User> list = CustomerController.login(login_id, login_pw);
 		for(User u : list) {
-			u = user;
+			user = u;
 		}
 		logincheck = CustomerController.loginCheck(login_id, login_pw);// 로그인
 		
@@ -148,7 +148,7 @@ public class MenuView {
 	 */
 	public static void printUserMenu() {
 		while (logincheck) {
-			System.out.println("=============================================== 메인 메뉴 =====================================");
+			System.out.println("========================================== 메인 메뉴 ==========================================");
 			System.out.println(" 1. 개인정보 수정 |  2. 위시리스트 보기  |  3. 추천 영화 보기  | 4. 검색하기  | 5. 최근 검색 리스트 | 0. 종료");
 			System.out.println("=============================================================================================");
 			int choice = Integer.parseInt(sc.nextLine());
@@ -215,18 +215,18 @@ public class MenuView {
 			RecommendController.recByRank();
 			break;
 		case 2:
-			System.out.println("------------------- 나이별 추천 -------------------");
+			System.out.println("-------------- 나이별 추천 --------------");
 			System.out.println((int) user.getAge() / 10 * 10 + "대의 위시리스트에 가장 많이 담긴 영화들이에요!\n");
 			RecommendController.recByAge(user.getAge());
 			break;
 		case 3:
-			System.out.println("---------------------- 태그 추천 -----------------------");
+			System.out.println("-------------------- 태그 추천 ----------------------");
 			System.out.println(user.getId() + "님이 좋아하는 영화의 태그를 기반으로 영화를 추천해드릴게요!\n");
 
 			RecommendController.recByTag(user.getUserNo());
 			break;
 		case 4:
-			System.out.println("---------------------- 장르 추천 ----------------------");
+			System.out.println("--------------------- 장르 추천 ---------------------");
 			System.out.println(user.getId() + "님이 좋아하는 영화의 장르를 기반으로 영화를 추천해드릴게요!\n");
 			RecommendController.recByGenre(user.getUserNo());
 			break;
