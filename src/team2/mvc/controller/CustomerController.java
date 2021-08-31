@@ -13,6 +13,7 @@ import team2.mvc.model.dto.User;
 import team2.mvc.model.service.CustomerService;
 import team2.mvc.util.DbUtil;
 import team2.mvc.view.FailView;
+import team2.mvc.model.dto.Evaluation;
 
 
 public class CustomerController {
@@ -49,7 +50,7 @@ public class CustomerController {
 	
 	public static void Evaluation(int userNo, int movieNo, int rate, String comment, String rateDate) {
 		try {
-			List<team2.mvc.model.dto.Evaluation> list = customerService.Evaluation(userNo, movieNo, rate, comment,rateDate);
+			customerService.Evaluation(userNo, movieNo, rate, comment,rateDate);
 			System.out.println("완료 되었습니다");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

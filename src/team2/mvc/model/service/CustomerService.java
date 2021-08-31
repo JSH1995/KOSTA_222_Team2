@@ -1,6 +1,6 @@
 package team2.mvc.model.service;
 
-
+import team2.mvc.model.dto.Evaluation;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -33,13 +33,13 @@ public class CustomerService {
 		return list;
 	}
 	
-	public List<team2.mvc.model.dto.Evaluation> Evaluation( int userNo, int movieNo, int rate, String comment,
+	public int Evaluation( int userNo, int movieNo, int rate, String comment,
 			String rateDate) throws Exception, NotFoundException {
-		List<team2.mvc.model.dto.Evaluation> list = customerDao.Evaluation(userNo,movieNo,rate,comment,rateDate);
-		if (list.size() == 0) {
+		int result = customerDao.Evaluation(userNo,movieNo,rate,comment,rateDate);
+		if (result == 0) {
 			throw new NotFoundException("다시 시도해주세요.");
 		}
-		return list;
+		return result;
 	}
 	
 	
