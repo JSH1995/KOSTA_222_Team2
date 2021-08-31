@@ -14,7 +14,7 @@ package team2.mvc.model.service;
 import java.sql.SQLException;
 import java.util.List;
 
-import team.mvc.exception.NotFoundException;
+import team2.mvc.exception.NotFoundException;
 import team2.mvc.model.dao.SearchDAO;
 import team2.mvc.model.dao.SearchDAOImpl;
 import team2.mvc.model.dto.MovidDetail;
