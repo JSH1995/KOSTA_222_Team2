@@ -396,14 +396,14 @@ public class SearchDAOImpl implements SearchDAO {
 		ResultSet rs = null;	
 		Search sd = null;
 		
-		String sql = "SELECT DISTINCT 작품명, 감독, 주연1, 주연2, 조연1, 조연2, 조연3, 장르이름, 국가, 개봉일자, 상영시간, AVG(평점), 작품_줄거리, 사용자_태그 FROM 영화"
+		String sql = "SELECT DISTINCT 작품명, 감독, 주연1, 주연2, 조연1, 조연2, 조연3, 장르이름, 국가, 개봉일자, 상영시간, AVG(평점), 작품_줄거리, 사용자_태그, 코멘트 FROM 영화"
 				+ " JOIN 영화_상세 USING(영화_고유번호)"
 				+ " JOIN 배우 USING(영화_고유번호)"
 				+ " JOIN 장르_목록 USING(장르번호)"
 				+ " JOIN 사용자_평가 USING(영화_고유번호)"
 				+ " JOIN (SELECT 영화_고유번호, AVG(평점) FROM 사용자_평가 GROUP BY 영화_고유번호) USING(영화_고유번호)"
 				+ " WHERE 작품명 = ?"
-				+ " GROUP BY 작품명, 감독, 주연1, 주연2, 조연1, 조연2, 조연3, 장르이름, 국가, 개봉일자, 상영시간, 작품_줄거리, 사용자_태그";
+				+ " GROUP BY 작품명, 감독, 주연1, 주연2, 조연1, 조연2, 조연3, 장르이름, 국가, 개봉일자, 상영시간, 작품_줄거리, 사용자_태그, 코멘트";
 
 		
 		try {
@@ -414,8 +414,7 @@ public class SearchDAOImpl implements SearchDAO {
 			
 			rs = ps.executeQuery();
 			
-			while(rs.next()) {
-				List<String> a = (List<String>)rs.getObject(14, ArrayList.class);						 
+			while(rs.next()) {				 
 				sd = new SearchDetail(rs.getString(1), 
 						   rs.getString(2), 
 						   rs.getString(3), 
@@ -429,7 +428,8 @@ public class SearchDAOImpl implements SearchDAO {
 						   rs.getInt(11),
 						   rs.getDouble(12),
 						   rs.getString(13),
-						   a);
+						   rs.getString(14),
+						   rs.getString(15));
 			}
 			
 		}finally {
