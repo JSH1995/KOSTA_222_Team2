@@ -41,6 +41,10 @@ public class CustomerService {
 		}
 		return result;
 	}
+	public void putTag(int movienum) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 
