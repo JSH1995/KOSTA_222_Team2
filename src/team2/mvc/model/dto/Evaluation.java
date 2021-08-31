@@ -63,10 +63,10 @@ public class Evaluation {
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append(" | 입력하신 평점 : ");
-		builder.append(rate);
-		builder.append("\n" + " | 코멘트 : ");
+		builder.append(rate); 
+		builder.append(" | 코멘트 : ");
 		builder.append(comment);
-		builder.append("/n" + " 평가일자 : ");
+		builder.append(" | 평가일자 : ");
 		builder.append(rateDate);
 		builder.append(" | ");
 		return builder.toString();
