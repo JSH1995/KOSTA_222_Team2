@@ -10,7 +10,10 @@ import team2.mvc.model.dto.Tag;
 import team2.mvc.model.service.MovieService;
 import team2.mvc.view.FailView;
 import team2.mvc.view.SuccessView;
-
+/**
+ * MovieController Class
+ * @author 이치인
+ * */
 public class MovieController {
 	
 	static MovieService movieService = new MovieService();
@@ -18,7 +21,6 @@ public class MovieController {
 	
 	/**
 	 * 영화 등록
-	 * @author 이치인
 	 * @param movieNo
 	 * @param genreNo
 	 * @param movieName
@@ -40,7 +42,6 @@ public class MovieController {
 	
 	/**
 	 * 영화 수정
-	 * @author 이치인
 	 * @param movieNo
 	 * @param genreNo
 	 * @param movieName
@@ -60,7 +61,6 @@ public class MovieController {
 	
 	/**
 	 * 영화 삭제
-	 * @author 이치인
 	 * @param movieNo
 	 * @exception SQLException
 	 * */
@@ -77,7 +77,6 @@ public class MovieController {
 	
 	/**
 	 * 배우 등록
-	 * @author 이치인
 	 * @param actor
 	 * @exception SQLException
 	 * */
@@ -95,7 +94,6 @@ public class MovieController {
 	
 	/**
 	 * 배우 수정
-	 * @author 이치인
 	 * @param actor
 	 * @exception SQLException
 	 * */
@@ -111,7 +109,6 @@ public class MovieController {
 	
 	/**
 	 * 배우 삭제
-	 * @author 이치인
 	 * @param movieNo
 	 * @exception SQLException
 	 * */
@@ -128,7 +125,6 @@ public class MovieController {
 	
 	/**
 	 * 태그 등록
-	 * @author 이치인
 	 * @param tag
 	 * @exception SQLException 
 	 * */
@@ -145,7 +141,6 @@ public class MovieController {
 	
 	/**
 	 * 태그 수정
-	 * @author 이치인
 	 * @param tag
 	 * @exception SQLException 
 	 * */
@@ -161,7 +156,6 @@ public class MovieController {
 	
 	/**
 	 * 태그 삭제
-	 * @author 이치인
 	 * @param movieNo
 	 * @exception SQLException 
 	 * */
@@ -178,7 +172,6 @@ public class MovieController {
 	
 	/**
 	 * 영화상세정보 등록
-	 * @author 이치인
 	 * @param movieDetail
 	 * @exception SQLException 
 	 * */
@@ -195,7 +188,6 @@ public class MovieController {
 	
 	/**
 	 * 영화상세정보 수정
-	 * @author 이치인
 	 * @param movieDetail
 	 * @exception SQLException 
 	 * */
@@ -211,7 +203,6 @@ public class MovieController {
 	
 	/**
 	 * 영화상세정보 삭제
-	 * @author 이치인
 	 * @param movieNo
 	 * @exception SQLException 
 	 * */
@@ -230,7 +221,6 @@ public class MovieController {
     //Menuview UI 에 사용할 부수적인 메소드들
 	/**
 	 * 영화고유번호에 해당하는 영화 레코드 검색
-	 * @author 이치인
 	 * @param movieNo
 	 * @return List<MovieSub>
 	 * @exception SQLException 
@@ -248,7 +238,6 @@ public class MovieController {
 	}
 	/**
 	 * 영화고유번호에 해당하는 태그 레코드 검색
-	 * @author 이치인
 	 * @param movieNo
 	 * @return List<Tag>
 	 * @exception SQLException 
