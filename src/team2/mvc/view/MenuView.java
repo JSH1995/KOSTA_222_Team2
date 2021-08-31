@@ -707,23 +707,41 @@ public class MenuView {
 		int choice = Integer.parseInt(sc.nextLine());
 		switch (choice) {
 		case 1:
-			movienum = findMovieNumber(sd, mn, di);
+			Connection con = null;
+			PreparedStatement ps = null;
+			ResultSet rs = null;
+			String sql = "SELECT 영화_고유번호 FROM 영화 WHERE 작품명 = " + "'"+ mn +"'";
+
+			try {
+				con = DbUtil.getConnection();
+
+				ps = con.prepareStatement(sql);
+				rs = ps.executeQuery("select 영화_고유번호 from 영화 where 작품명  ='" + mn + "' and 감독 = '" + di + "'");
+				if (rs.next()) {
+
+					movienum = rs.getInt(1);
+				}
+				;
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				DbUtil.dbClose(con, ps, rs);
+			}
+
 			userComment(movienum);
 			break;
 		case 2:
-			movienum = findMovieNumber(sd, mn, di);
 			WishController.putWishList(user.getUserNo(), movienum);
 			break;
 		case 3:
-			movienum = findMovieNumber(sd, mn, di);
-			CustomerController.putTag(movienum);
+			CustomerController.putTag(user.getUserNo(), movienum);
 		case 0:
 			return;
 
 		}
 	}
-
-	private static int findMovieNumber(Search sd, String mn, String di) {
+private static int findMovieNumber(Search sd, String mn, String di) {
 		
 		Connection con = null;
 		PreparedStatement ps = null;
@@ -752,4 +770,6 @@ public class MenuView {
 		return movienum;
 
 	}
+
 }
+

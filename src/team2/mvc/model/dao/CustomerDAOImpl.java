@@ -12,6 +12,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import team2.mvc.model.dto.Evaluation;
+import team2.mvc.model.dto.Tag;
 import team2.mvc.model.dto.User;
 import team2.mvc.util.DbUtil;
 
@@ -123,6 +124,23 @@ public class CustomerDAOImpl implements CustomerDAO {
 	public List<User> passwordUpdate(int user_nums, String pw1) throws SQLException {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	@Override
+	public void putTag(int userNo, int movienum) throws Exception {
+		Connection con = null;
+		PreparedStatement ps = null;
+		List<Tag> list = new ArrayList<Tag>();
+		String sql = "insert into 태그(영화_고유번호, 태그번호) values(?, ?)";
+		
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, );
+			
+		}finally {
+			DbUtil.dbClose(con, ps);
+		}
+		
 	}
 	
 	

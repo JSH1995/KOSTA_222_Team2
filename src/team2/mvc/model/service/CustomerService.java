@@ -41,9 +41,8 @@ public class CustomerService {
 		}
 		return result;
 	}
-	public void putTag(int movienum) {
-		// TODO Auto-generated method stub
-		
+	public void putTag(int userNo, int movienum) throws Exception {
+		customerDao.putTag(userNo ,movienum);		
 	}
 	
 	

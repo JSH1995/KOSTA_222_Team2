@@ -18,6 +18,7 @@ import team2.mvc.model.dto.Evaluation;
 
 
 public class CustomerController {
+	
 	static CustomerService customerService =  new CustomerService();
 	
 	public static void registerUser(int userNo, String id, String password, int age, String userRegDate,int favTag, int favGenre ) {
@@ -41,8 +42,10 @@ public class CustomerController {
 			// TODO Auto-generated catch block
 			//e.printStackTrace();
 			FailView.errorMessage(e.getMessage());
+			
 		}
 		return false;
+		
 	}
 	
 	
@@ -75,9 +78,9 @@ public class CustomerController {
 		}
 	}
 
-	public static void putTag(int movienum) {
+	public static void putTag(int userNo, int movienum) {
 		try {
-			customerService.putTag(movienum);
+			customerService.putTag(userNo, movienum);
 			SuccessView.messagePrint("등록되었습니다.");
 		} catch (Exception e) {
 			// TODO: handle exception
