@@ -69,7 +69,7 @@ public class CustomerController {
 		try {
 			customerService.Evaluation(userNo, movieNo, rate, comment,rateDate);
 			System.out.println("완료 되었습니다");
-		} catch (Exception e) {
+		} catch (Exception e) {       
 			// TODO Auto-generated catch block
 			//e.printStackTrace();
 			FailView.errorMessage(e.getMessage());
@@ -94,9 +94,9 @@ public class CustomerController {
 		}
 	}
 
-	public static void putTag(int userNo, int movienum) {
+	public static void putTag(int movienum, String tag) {
 		try {
-			customerService.putTag(userNo, movienum);
+			customerService.putTag(movienum, tag);
 			SuccessView.messagePrint("등록되었습니다.");
 		} catch (Exception e) {
 			// TODO: handle exception

@@ -711,14 +711,20 @@ public class MenuView {
 			break;
 		case 3:
 			movienum = findMovieNumber(sd, mn, di);
-			CustomerController.putTag(user.getUserNo(), movienum);
+			String tag = putUserTag(movienum);
+			CustomerController.putTag(movienum, tag);
 		case 0:
 			return;
 
 		}
 
-	}	
-
+	}
+	public static String putUserTag(int movienum) {
+		System.out.println("태그를 입력해주세요: ");
+		String userTag = sc.nextLine();
+		return userTag;
+	}
+	
 	public static int findMovieNumber(Search sd, String mn, String di) {
 		
 		mn = sd.getMovieName();
