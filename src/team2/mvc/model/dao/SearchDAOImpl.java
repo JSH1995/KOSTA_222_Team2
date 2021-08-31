@@ -437,5 +437,33 @@ public class SearchDAOImpl implements SearchDAO {
 		}
 		return sd;
 	}
+
+
+	@Override
+	public List<Search> showComment(String movieName) throws SQLException {
+		
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;	
+		Search sd = null;
+		String sql = "SELECT 코멘트 FROM 사용자_평가"
+					 + " JOIN 영화 USING(영화_고유번호) WHERE 작품명 = movieName";
+		
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setString(1, movieName);
+			
+			rs = ps.executeQuery();
+			
+		}finally {
+			
+			DbUtil.dbClose(con, ps, rs);
+		}
+	
+		
+		
+		return search;
+	}
 	
 }
