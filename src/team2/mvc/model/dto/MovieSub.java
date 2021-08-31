@@ -1,6 +1,6 @@
 package team2.mvc.model.dto;
 /**
- * 영화 결과 관련 toString 결과값을 다르게 하려고 생성
+ * 영화 결과 관련 toString 결과값을 다르게 하려고 생성한 클래스
  */
 
 public class MovieSub {

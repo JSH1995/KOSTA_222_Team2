@@ -44,25 +44,15 @@ public class DbUtil {
 	}
 
 	/**
-	 * �ݱ�(DML, DDL�� ���)
-	 * 
-	 * @throws SQLException
-	 */
+     * 닫기(DML, DDL인 경우)
+     * @throws SQLException 
+     */
 	public static void dbClose(Connection con, Statement st) {
 		try {
 			if (st != null)
 				st.close();
 			if (con != null)
 				con.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
-
-	public static void main(String[] args) {
-		try {
-			Connection con = DbUtil.getConnection();
-			System.out.println("���� �Ϸ� = " + con);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

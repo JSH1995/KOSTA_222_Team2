@@ -1,6 +1,10 @@
 package team2.mvc.model.dto;
 
 public class TagList {
+	/**
+	 * 태그 목록 관련 클래스
+	 */
+	
 	private int tagNo;
 	private String tagName;
 

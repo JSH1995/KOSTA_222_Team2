@@ -2,7 +2,7 @@ package team2.mvc.model.dto;
 
 import java.util.List;
 /**
- * 위시리스트 결과 관련
+ * 위시리스트 결과 관련 클래스
  */
 
 public class WishList {

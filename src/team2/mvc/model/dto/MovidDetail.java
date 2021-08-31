@@ -1,6 +1,6 @@
 package team2.mvc.model.dto;
 /**
- * 영화의 상세 정보 결과 관련
+ * 영화의 상세 정보 결과 관련 클래스
  */
 
 import java.util.List;
