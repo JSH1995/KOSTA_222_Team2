@@ -126,19 +126,26 @@ public class CustomerDAOImpl implements CustomerDAO {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	/**
+	 * @author 홍전형
+	 * 영화에 사용자가 태그를 추가하는 메서드
+	 */
 	@Override
 	public void putTag(int movienum, String tag) throws Exception {
 		Connection con = null;
 		PreparedStatement ps = null;
-		ResultSet rs = null;
 		int result = 0;
-		String sql = "UPDATE 영화_상세 set 사용자_태그 = ? WHERE 영화_고유번호 = ?;";
+		String sql = "UPDATE 영화_상세 set 사용자_태그 = ? WHERE 영화_고유번호 = ?";
 		try {
 			con = DbUtil.getConnection();
-			ps = con.prepareStatement(null);
-			ps.setString(1, tag);
-			ps.setInt(1, movienum);
-			result = ps.executeUpdate(sql);
+			ps = con.prepareStatement(sql);
+			
+			String previousTag = getUserTag(con, movienum);
+			ps.setString(1, tag + " | " + previousTag);
+			ps.setInt(2, movienum);
+
+			result = ps.executeUpdate();
 			if(result == 0) {
 				throw new SQLException("등록이 불가합니다.");
 			}
@@ -146,6 +153,30 @@ public class CustomerDAOImpl implements CustomerDAO {
 		}finally {
 			DbUtil.dbClose(con, ps);
 		}
+	}
+	/**
+	 * @author 홍전형
+	 * 영화에 들어가있는 사용자 태그를 가져오는 메서드
+	 */
+	public String getUserTag(Connection con, int movienum) throws SQLException{
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String tags = null;
+		String sql = "select 사용자_태그 from 영화_상세 where 영화_고유번호 = ?";
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, movienum);
+			rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				tags = rs.getString(1);
+			}
+		} finally {
+			DbUtil.dbClose(null, ps, rs);
+		}
+		
+		return tags;
+		
 		
 	}
 
