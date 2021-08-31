@@ -1,6 +1,9 @@
 package team2.mvc.model.dto;
 
 public class Actor {
+	/**
+	 * 영화의 배우 결과 관련
+	 */
 
 	
 	private int movieNo;
