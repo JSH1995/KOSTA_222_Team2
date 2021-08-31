@@ -17,13 +17,13 @@ import team2.mvc.util.DbUtil;
 public class CustomerService {
 	CustomerDAO customerDao = new CustomerDAOImpl();
 	
-	public List<User> registerUser(int userNo, String id, String password, int age, String userRegDate,int favTag,int favGenre
+	public int registerUser(int userNo, String id, String password, int age, String userRegDate,int favTag,int favGenre
 			) throws Exception, NotFoundException {
-		List<User> list = customerDao.registerUser(userNo,id,password,age,userRegDate,favTag,favGenre);
-		if (list.size() == 0) {
+		int result = customerDao.registerUser(userNo,id,password,age,userRegDate,favTag,favGenre);
+		if (result == 0) {
 			throw new NotFoundException("다시 시도해주세요.");
 		}
-		return list;
+		return result;
 	}
 	public List<User> login( String id, String password) throws SQLException, NotFoundException {
 		List<User> list = customerDao.login(id,password);

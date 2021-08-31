@@ -18,12 +18,12 @@ import team2.mvc.util.DbUtil;
 public class CustomerDAOImpl implements CustomerDAO {
 	
 
-	public List<User> registerUser(int userNo, String id, String password, int age, String userRegDate,int favTag, int favGenre) throws SQLException {
+	public int registerUser(int userNo, String id, String password, int age, String userRegDate,int favTag, int favGenre) throws SQLException {
 		
 		Connection con = null;
 		PreparedStatement ps = null;
-		ResultSet rs = null;
-		List<User> list = new ArrayList();
+	    int result = 0;
+		
 		try {
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement("insert into 사용자 values(?,?,?,?,?,?,?)");
@@ -35,16 +35,13 @@ public class CustomerDAOImpl implements CustomerDAO {
 			ps.setInt(6, favTag);
 			ps.setInt(7, favGenre);
 			
-			rs = ps.executeQuery();
+			result = ps.executeUpdate();
 
-			if(rs.next()) {
-				list.add(new User(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5),rs.getInt(6),rs.getInt(7)));
-			}
 		} finally {
-			DbUtil.dbClose(con, ps, rs);
+			DbUtil.dbClose(con, ps);
 		}
 		
-		return list;
+		return result;
 	}
 	public List<User> login(String id, String password) throws SQLException {
 		Connection con = null;

@@ -21,7 +21,7 @@ public class CustomerController {
 	
 	public static void registerUser(int userNo, String id, String password, int age, String userRegDate,int favTag, int favGenre ) {
 		try {
-			List<User> list = customerService.registerUser(userNo,id,password,age,userRegDate,favTag,favGenre);
+			customerService.registerUser(userNo,id,password,age,userRegDate,favTag,favGenre);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			//e.printStackTrace();

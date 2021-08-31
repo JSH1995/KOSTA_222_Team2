@@ -7,7 +7,7 @@ import team2.mvc.model.dto.User;
 
 public interface CustomerDAO {
 	
-	List<User> registerUser(int userNo, String id, String password, int age, String userRegDate, int favTag, int favGenre) throws Exception;
+	int registerUser(int userNo, String id, String password, int age, String userRegDate, int favTag, int favGenre) throws Exception;
 	
 	List<User> login(String id, String password) throws SQLException;
 	
