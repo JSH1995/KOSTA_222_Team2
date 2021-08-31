@@ -481,7 +481,7 @@ public class MenuView {
 				case 14:
 					System.out.println("로그아웃되어 로그인 화면으로 돌아갑니다.");
 					break;
-				case 15:
+				case 0:
 					System.exit(0);
 				default:
 					System.out.println("메뉴에 해당하는 번호가 없습니다.");
