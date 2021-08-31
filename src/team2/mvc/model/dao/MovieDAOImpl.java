@@ -342,4 +342,25 @@ public class MovieDAOImpl implements MovieDAO {
 		return movieList;
 	}
 
+	public List<Tag> tagListByMovieNo(int movieNo) throws SQLException{
+		Connection con=null;
+		PreparedStatement ps=null;
+		ResultSet rs=null;
+		List<Tag> tagList=new ArrayList<Tag>();
+		String sql="select * from 영화 where 영화_고유번호=?";
+		try {
+			con=DbUtil.getConnection();
+			ps=con.prepareStatement(sql);
+			ps.setInt(1, movieNo);
+			rs=ps.executeQuery();
+			while(rs.next()) {
+				Tag tag = new Tag(rs.getInt(1), rs.getInt(2));
+				tagList.add(tag);
+			}
+			
+		}finally {
+			DbUtil.dbClose(con, ps, rs);
+		}
+		return tagList;
+	}
 }

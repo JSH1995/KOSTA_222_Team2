@@ -68,7 +68,7 @@ public class MenuView {
 		String sec = Integer.toString(cal.get(Calendar.SECOND));
 		String num = month + day + hour + min + sec;
 		int usernumber = Integer.parseInt(num);
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd/HH:mm:ss");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd/");
 		String datestr = sdf.format(cal.getTime());
 
 		System.out.print("사용하실 아이디를 입력해주세요: ");
@@ -251,7 +251,7 @@ public class MenuView {
 			System.out.println(
 					"======================================================== 검색 메뉴 ============================================================");
 			System.out.println(
-					"1. 전체 검색 | 2. 작품명 검색 | 3. 감독별 검색 | 4. 배우별 검색 | 5. 장르별 검색 | 6. 국가별 검색 | 7. 상세 정보 확인 | 8. 뒤로가기 | 9. 메인 메뉴 |");
+					"=== 1. 전체 검색 | 2. 작품명 검색 | 3. 감독별 검색 | 4. 배우별 검색 | 5. 장르별 검색 | 6. 국가별 검색 | 7. 상세 정보 확인 | 8. 뒤로가기 | 0. 메인 메뉴 |===");
 			System.out.println(
 					"=============================================================================================================================");
 
@@ -310,10 +310,10 @@ public class MenuView {
 				break;
 			case 8:
 				return;
-			case 9:
-				//login();
+			case 0:
+				printUserMenu();
 			default:
-				System.out.println("숫자를 누르거라.");
+				System.out.println("메뉴에 있는 숫자만 입력 해 주세요.");
 				break; // 문자나 다른거 입력 시 Exception 처리 필요
 
 			}
@@ -330,7 +330,7 @@ public class MenuView {
 		
 		System.out.println("================== 검색하신 결과에 대해 정렬을 할 수 있습니다. ====================");
 		System.out.println("=============================== 정렬 메뉴 ================================");
-		System.out.println("1. 작품명 | 2. 상영시간 | 3. 개봉일자 | 4. 평점 |");
+		System.out.println("1. 작품명 | 2. 상영시간 | 3. 개봉일자 | 4. 평점 | 5. 뒤로 가기");
 		System.out.println("=======================================================================");
 
 		int choice = Integer.parseInt(sc.nextLine());
@@ -348,8 +348,10 @@ public class MenuView {
 		case 4:
 			sortType = "AVG(평점) DESC";
 			break;
+		case 5:
+			printSearchMenu();
 		default:
-			System.out.println("숫자를 누르거라.");
+			System.out.println("메뉴에 있는 숫자만 입력 해 주세요.");
 			break;// 문자나 다른거 입력 시 Exception 처리 필요
 
 		}
@@ -453,7 +455,7 @@ public class MenuView {
 		case 0:
 			
 		default:
-
+			System.out.println("메뉴에 있는 숫자만 입력 해 주세요.");
 			break;// 문자나 다른거 입력 시 Exception 처리 필요
 
 		}
@@ -715,6 +717,9 @@ public class MenuView {
 			CustomerController.putTag(movienum, tag);
 		case 0:
 			return;
+		default:
+			System.out.println("메뉴에 있는 숫자만 입력 해 주세요.");
+			break;
 
 		}
 
