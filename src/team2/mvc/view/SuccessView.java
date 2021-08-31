@@ -18,7 +18,7 @@ public class SuccessView {
 	 */
 	public static void printWishList(List<Movie> movieList) {
 		for (Movie m : movieList) {
-			System.out.println(m.getMovieName() + "\t\" +  m.getDirector());
+			System.out.println(m.getMovieName() + "\t\t" +  m.getDirector());
 		}
 	}
 
