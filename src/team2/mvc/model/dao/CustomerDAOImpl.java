@@ -11,6 +11,8 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
+import oracle.jdbc.driver.DBConversion;
 import team2.mvc.model.dto.Evaluation;
 import team2.mvc.model.dto.Tag;
 import team2.mvc.model.dto.User;
@@ -125,14 +127,21 @@ public class CustomerDAOImpl implements CustomerDAO {
 		return null;
 	}
 	@Override
-	public void putTag(int userNo, int movienum) throws Exception {
+	public void putTag(int movienum, String tag) throws Exception {
 		Connection con = null;
 		PreparedStatement ps = null;
-		
-		
+		ResultSet rs = null;
+		int result = 0;
+		String sql = "UPDATE 영화_상세 set 사용자_태그 = ? WHERE 영화_고유번호 = ?;";
 		try {
-	
-			
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(null);
+			ps.setString(1, tag);
+			ps.setInt(1, movienum);
+			result = ps.executeUpdate(sql);
+			if(result == 0) {
+				throw new SQLException("등록이 불가합니다.");
+			}
 			
 		}finally {
 			DbUtil.dbClose(con, ps);

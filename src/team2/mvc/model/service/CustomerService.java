@@ -42,8 +42,8 @@ public class CustomerService {
 		}
 		return result;
 	}
-	public void putTag(int userNo, int movienum) throws Exception {
-		customerDao.putTag(userNo ,movienum);		
+	public void putTag(int movienum, String tag) throws Exception {
+		customerDao.putTag(movienum, tag);		
 	}
 	
 	
