@@ -10,7 +10,10 @@ import team2.mvc.model.dto.Tag;
 import team2.mvc.view.FailView;
 import team2.mvc.model.dao.MovieDAO;
 import team2.mvc.model.dao.MovieDAOImpl;
-
+/**
+ * MovieService Class
+ * @author 이치인
+ * */
 public class MovieService {
 	
     private MovieDAO movieDAO = new MovieDAOImpl();
@@ -18,7 +21,6 @@ public class MovieService {
     
 	/**
 	 * 영화 등록
-	 * @author 이치인
 	 * @param movieNo
 	 * @param genreNo
 	 * @param movieName
@@ -36,7 +38,6 @@ public class MovieService {
 	}
 	/**
 	 * 영화 수정
-	 * @author 이치인
 	 * @param movieNo
 	 * @param genreNo
 	 * @param movieName
@@ -55,7 +56,6 @@ public class MovieService {
 	
 	/**
 	 * 영화 삭제
-	 * @author 이치인
 	 * @param movieNo
 	 * @throws SQLException 
 	 * */
@@ -69,7 +69,6 @@ public class MovieService {
 	
 	/**
 	 * 배우 등록
-	 * @author 이치인
 	 * @param actor
 	 * @throws SQLException 
 	 * */
@@ -83,7 +82,6 @@ public class MovieService {
 	
 	/**
 	 * 배우 수정
-	 * @author 이치인
 	 * @param actor
 	 * @throws SQLException 
 	 * */
@@ -98,7 +96,6 @@ public class MovieService {
 	
 	/**
 	 * 배우 삭제
-	 * @author 이치인
 	 * @param movieNo
 	 * @throws SQLException 
 	 * */
@@ -112,7 +109,6 @@ public class MovieService {
 	
 	/**
 	 * 태그 등록
-	 * @author 이치인
 	 * @param tag
 	 * @throws SQLException  
 	 * */
@@ -126,7 +122,6 @@ public class MovieService {
 	
 	/**
 	 * 태그 수정
-	 * @author 이치인
 	 * @param tag
 	 * @throws SQLException 
 	 * */
@@ -141,7 +136,6 @@ public class MovieService {
 	
 	/**
 	 * 태그 삭제
-	 * @author 이치인
 	 * @param movieNo
 	 * @throws SQLException  
 	 * */
@@ -155,7 +149,6 @@ public class MovieService {
 	
 	/**
 	 * 영화상세정보 등록
-	 * @author 이치인
 	 * @param movieDetail
 	 * @throws SQLException  
 	 * */
@@ -169,7 +162,6 @@ public class MovieService {
 	
 	/**
 	 * 영화상세정보 수정
-	 * @author 이치인
 	 * @param movieDetail
 	 * @throws SQLException 
 	 * */
@@ -183,7 +175,6 @@ public class MovieService {
 	}
 	/**
 	 * 영화상세정보 삭제
-	 * @author 이치인
 	 * @param movieNo
 	 * @throws SQLException 
 	 * */
@@ -198,7 +189,6 @@ public class MovieService {
 	
 	/**
 	 * 영화고유번호에 해당하는 영화 레코드 검색
-	 * @author 이치인
 	 * @param movieNo
 	 * @return List<MovieSub>
 	 * @throws SQLException 
@@ -213,7 +203,6 @@ public class MovieService {
 	
 	/**
 	 * 영화고유번호에 해당하는 태그 레코드 검색
-	 * @author 이치인
 	 * @param movieNo
 	 * @return List<Tag>
 	 * @throws SQLException 
