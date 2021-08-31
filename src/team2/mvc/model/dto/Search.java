@@ -84,6 +84,30 @@ public class Search {
 	public void setActor2(String actor2) {
 		this.actor2 = actor2;
 	}
+	
+	public String getSupactor1() {
+		return supactor1;
+	}
+
+	public void setSupactor1(String supactor1) {
+		this.supactor1 = supactor1;
+	}
+
+	public String getSupactor2() {
+		return supactor2;
+	}
+
+	public void setSupactor2(String supactor2) {
+		this.supactor2 = supactor2;
+	}
+
+	public String getSupactor3() {
+		return supactor3;
+	}
+
+	public void setSupactor3(String supactor3) {
+		this.supactor3 = supactor3;
+	}
 
 	public String getGenre() {
 		return genre;

@@ -53,7 +53,7 @@ public class SearchDAOImpl implements SearchDAO {
 		List<Search> searchList = new ArrayList<Search>();
 		String sort = sortType;
 		
-		String sql = "SELECT DISTINCT 작품명, 감독, 주연1, 주연2, 장르이름, 국가, 개봉일자, 상영시간, AVG(평점) FROM 영화"
+		String sql = "SELECT DISTINCT 작품명, 감독, 주연1, 주연2, 장르이름, 국가, 개봉일자, 상영시간, AVG(평점)  FROM 영화"
 				+ " JOIN 영화_상세 USING(영화_고유번호)"
 				+ " JOIN 배우 USING(영화_고유번호)"
 				+ " JOIN 장르_목록 USING(장르번호)"
@@ -77,7 +77,7 @@ public class SearchDAOImpl implements SearchDAO {
 										   rs.getString(6), 
 										   rs.getString(7), 
 										   rs.getInt(8),
-										   rs.getInt(9));
+										   rs.getDouble(9));
 				searchList.add(search);
 			}
 			
@@ -102,11 +102,14 @@ public class SearchDAOImpl implements SearchDAO {
 		List<Search> searchList = new ArrayList<Search>();
 		String sort = sortType;
 		
-		String sql = "SELECT 작품명, 감독, 주연1, 주연2, 장르이름, 국가, 개봉일자, 상영시간 FROM 영화"
+		String sql = "SELECT DISTINCT 작품명, 감독, 주연1, 주연2, 장르이름, 국가, 개봉일자, 상영시간, AVG(평점) FROM 영화"
 				+ " JOIN 영화_상세 USING(영화_고유번호)"
 				+ " JOIN 배우 USING(영화_고유번호)"
 				+ " JOIN 장르_목록 USING(장르번호)"
+				+ " JOIN 사용자_평가 USING(영화_고유번호)"
+				+ " JOIN (SELECT 영화_고유번호, AVG(평점) FROM 사용자_평가 GROUP BY 영화_고유번호) USING(영화_고유번호)"
 				+ " WHERE 작품명 LIKE ?"
+				+ " GROUP BY 작품명, 감독, 주연1, 주연2, 장르이름, 국가, 개봉일자, 상영시간"
 				+ " ORDER BY " + sort;
 		
 		try {			
@@ -124,7 +127,7 @@ public class SearchDAOImpl implements SearchDAO {
 						   rs.getString(6), 
 						   rs.getString(7), 
 						   rs.getInt(8),
-						   rs.getInt(9));
+						   rs.getDouble(9));
 				searchList.add(search);
 			}
 			
@@ -149,11 +152,14 @@ public class SearchDAOImpl implements SearchDAO {
 		List<Search> searchList = new ArrayList<Search>();
 		String sort = sortType;
 		
-		String sql = "SELECT 작품명, 감독, 주연1, 주연2, 장르이름, 국가, 개봉일자, 상영시간 FROM 영화"
+		String sql = "SELECT DISTINCT 작품명, 감독, 주연1, 주연2, 장르이름, 국가, 개봉일자, 상영시간, AVG(평점) FROM 영화"
 				+ " JOIN 영화_상세 USING(영화_고유번호)"
 				+ " JOIN 배우 USING(영화_고유번호)"
 				+ " JOIN 장르_목록 USING(장르번호)"
+				+ " JOIN 사용자_평가 USING(영화_고유번호)"
+				+ " JOIN (SELECT 영화_고유번호, AVG(평점) FROM 사용자_평가 GROUP BY 영화_고유번호) USING(영화_고유번호)"
 				+ " WHERE 감독 LIKE ?"
+				+ " GROUP BY 작품명, 감독, 주연1, 주연2, 장르이름, 국가, 개봉일자, 상영시간"
 				+ " ORDER BY " + sort;
 		
 		try {			
@@ -170,8 +176,8 @@ public class SearchDAOImpl implements SearchDAO {
 						   rs.getString(5), 
 						   rs.getString(6), 
 						   rs.getString(7), 
-						   rs.getInt(8));
-						   rs.getInt(9));
+						   rs.getInt(8),
+						   rs.getDouble(9));
 				searchList.add(search);
 			}
 			
@@ -197,11 +203,14 @@ public class SearchDAOImpl implements SearchDAO {
 		List<Search> searchList = new ArrayList<Search>();
 		String sort = sortType;
 		
-		String sql = "SELECT 작품명, 감독, 주연1, 주연2, 조연1, 조연2, 조연3, 장르이름, 국가, 개봉일자, 상영시간 FROM 영화"
+		String sql = "SELECT DISTINCT 작품명, 감독, 주연1, 주연2, 조연1, 조연2, 조연3, 장르이름, 국가, 개봉일자, 상영시간, AVG(평점) FROM 영화"
 				+ " JOIN 영화_상세 USING(영화_고유번호)"
 				+ " JOIN 배우 USING(영화_고유번호)"
 				+ " JOIN 장르_목록 USING(장르번호)"
+				+ " JOIN 사용자_평가 USING(영화_고유번호)"
+				+ " JOIN (SELECT 영화_고유번호, AVG(평점) FROM 사용자_평가 GROUP BY 영화_고유번호) USING(영화_고유번호)"
 				+ " WHERE 주연1 LIKE ? OR 주연2 LIKE ? OR 조연1 LIKE ? OR 조연2 LIKE ? OR 조연3 LIKE ?"
+				+ " GROUP BY 작품명, 감독, 주연1, 주연2, 조연1, 조연2, 조연3, 장르이름, 국가, 개봉일자, 상영시간"
 				+ " ORDER BY " + sort;
 		
 		try {			
@@ -226,8 +235,8 @@ public class SearchDAOImpl implements SearchDAO {
 						   rs.getString(8),
 						   rs.getString(9),
 						   rs.getString(10),
-						   rs.getInt(11));
-						   //rs.getInt(9));
+						   rs.getInt(11),
+						   rs.getDouble(12));
 				searchList.add(search);
 			}
 			
@@ -252,11 +261,14 @@ public class SearchDAOImpl implements SearchDAO {
 		List<Search> searchList = new ArrayList<Search>();
 		String sort = sortType;
 		
-		String sql = "SELECT 작품명, 감독, 주연1, 주연2, 장르이름, 국가, 개봉일자, 상영시간 FROM 영화"
+		String sql = "SELECT DISTINCT 작품명, 감독, 주연1, 주연2, 장르이름, 국가, 개봉일자, 상영시간, AVG(평점) FROM 영화"
 				+ " JOIN 영화_상세 USING(영화_고유번호)"
 				+ " JOIN 배우 USING(영화_고유번호)"
 				+ " JOIN 장르_목록 USING(장르번호)"
+				+ " JOIN 사용자_평가 USING(영화_고유번호)"
+				+ " JOIN (SELECT 영화_고유번호, AVG(평점) FROM 사용자_평가 GROUP BY 영화_고유번호) USING(영화_고유번호)"
 				+ " WHERE 장르이름 LIKE ?"
+				+ " GROUP BY 작품명, 감독, 주연1, 주연2, 장르이름, 국가, 개봉일자, 상영시간"
 				+ " ORDER BY " + sort;
 		
 		try {			
@@ -273,8 +285,9 @@ public class SearchDAOImpl implements SearchDAO {
 						   rs.getString(5), 
 						   rs.getString(6), 
 						   rs.getString(7), 
-						   rs.getInt(8));
-						   rs.getInt(9));
+						   rs.getInt(8),
+						   rs.getDouble(9));
+				
 				searchList.add(search);
 			}
 			
@@ -299,11 +312,14 @@ public class SearchDAOImpl implements SearchDAO {
 		List<Search> searchList = new ArrayList<Search>();
 		String sort = sortType;
 		
-		String sql = "SELECT 작품명, 감독, 주연1, 주연2, 장르이름, 국가, 개봉일자, 상영시간 FROM 영화"
+		String sql = "SELECT DISTINCT 작품명, 감독, 주연1, 주연2, 장르이름, 국가, 개봉일자, 상영시간, AVG(평점) FROM 영화"
 				+ " JOIN 영화_상세 USING(영화_고유번호)"
 				+ " JOIN 배우 USING(영화_고유번호)"
 				+ " JOIN 장르_목록 USING(장르번호)"
+				+ " JOIN 사용자_평가 USING(영화_고유번호)"
+				+ " JOIN (SELECT 영화_고유번호, AVG(평점) FROM 사용자_평가 GROUP BY 영화_고유번호) USING(영화_고유번호)"
 				+ " WHERE 국가 LIKE ?"
+				+ " GROUP BY 작품명, 감독, 주연1, 주연2, 장르이름, 국가, 개봉일자, 상영시간"
 				+ " ORDER BY " + sort;
 		
 		try {			
@@ -320,8 +336,9 @@ public class SearchDAOImpl implements SearchDAO {
 						   rs.getString(5), 
 						   rs.getString(6), 
 						   rs.getString(7), 
-						   rs.getInt(8));
-						   rs.getInt(9));
+						   rs.getInt(8),
+						   rs.getDouble(9));
+				
 				searchList.add(search);
 			}
 			
@@ -379,11 +396,15 @@ public class SearchDAOImpl implements SearchDAO {
 		ResultSet rs = null;	
 		Search sd = null;
 		
-		String sql = "SELECT 작품명, 감독, 주연1, 주연2, 조연1, 조연2, 조연3, 장르이름, 국가, 개봉일자, 상영시간, 작품_줄거리 FROM 영화"
+		String sql = "SELECT DISTINCT 작품명, 감독, 주연1, 주연2, 조연1, 조연2, 조연3, 장르이름, 국가, 개봉일자, 상영시간, AVG(평점), 작품_줄거리, 사용자_태그, 코멘트 FROM 영화"
 				+ " JOIN 영화_상세 USING(영화_고유번호)"
 				+ " JOIN 배우 USING(영화_고유번호)"
 				+ " JOIN 장르_목록 USING(장르번호)"
-				+ " WHERE 작품명 = ?";
+				+ " JOIN 사용자_평가 USING(영화_고유번호)"
+				+ " JOIN (SELECT 영화_고유번호, AVG(평점) FROM 사용자_평가 GROUP BY 영화_고유번호) USING(영화_고유번호)"
+				+ " WHERE 작품명 = ?"
+				+ " GROUP BY 작품명, 감독, 주연1, 주연2, 조연1, 조연2, 조연3, 장르이름, 국가, 개봉일자, 상영시간, 작품_줄거리, 사용자_태그, 코멘트";
+
 		
 		try {
 			
@@ -393,8 +414,7 @@ public class SearchDAOImpl implements SearchDAO {
 			
 			rs = ps.executeQuery();
 			
-			while(rs.next()) {
-				// List<String> a = (List<String>)rs.getObject(13, ArrayList.class);						 
+			while(rs.next()) {				 
 				sd = new SearchDetail(rs.getString(1), 
 						   rs.getString(2), 
 						   rs.getString(3), 
@@ -406,8 +426,10 @@ public class SearchDAOImpl implements SearchDAO {
 						   rs.getString(9),
 						   rs.getString(10),
 						   rs.getInt(11),
-						   rs.getString(12));
-						   //, a);
+						   rs.getDouble(12),
+						   rs.getString(13),
+						   rs.getString(14),
+						   rs.getString(15));
 			}
 			
 		}finally {
@@ -415,42 +437,6 @@ public class SearchDAOImpl implements SearchDAO {
 			DbUtil.dbClose(con, ps, rs);
 		}
 		return sd;
-	}
-	
-	
-	
-	
-	
-	
-
-	@Override
-	public List<Search> searchMovie(String keyword) throws SQLException {
-		
-		Connection con = null;
-		PreparedStatement ps = null;
-		ResultSet rs = null;
-		List<Search> movieList = new ArrayList<Search>();
-		
-//		if(keyword)
-//		
-//		
-		String sql = "";
-		
-		try {			
-			con = DbUtil.getConnection();
-			ps = con.prepareStatement(sql);
-			rs = ps.executeQuery();
-			
-			while(rs.next()) {
-			//	Search movie = new Search(rs.getInt(1),rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5));
-			//	movieList.add(movie);
-			}
-			
-		} finally {
-			DbUtil.dbClose(con, ps, rs);
-		}
-			
-		return movieList;
 	}
 	
 }
