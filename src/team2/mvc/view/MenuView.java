@@ -345,7 +345,7 @@ public class MenuView {
 			sortType = "개봉일자";
 			break;
 		case 4:
-			sortType = "평점";
+			sortType = "AVG(평점) DESC";
 			break;
 		default:
 			System.out.println("숫자를 누르거라.");
