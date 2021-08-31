@@ -702,7 +702,7 @@ public class MenuView {
 		int choice = Integer.parseInt(sc.nextLine());
 		switch (choice) {
 		case 1:
-			movienum = findMovieNumber();
+			movienum = findMovieNumber(sd, mn);
 			userComment(movienum);
 			break;
 		case 2:
@@ -714,7 +714,7 @@ public class MenuView {
 		}
 	}
 
-	private static int findMovieNumber() {
+	private static int findMovieNumber(Search sd, String mn) {
 		
 		Connection con = null;
 		PreparedStatement ps = null;
