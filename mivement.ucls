@@ -3,7 +3,7 @@
   associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
   <class id="1" language="java" name="team2.mvc.controller.CustomerController" project="Moviement" 
     file="/Moviement/src/team2/mvc/controller/CustomerController.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="156" y="1516"/>    
+    <position height="-1" width="-1" x="186" y="1620"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -12,7 +12,7 @@
   </class>  
   <class id="2" language="java" name="team2.mvc.controller.MovieController" project="Moviement" 
     file="/Moviement/src/team2/mvc/controller/MovieController.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="195" y="1837"/>    
+    <position height="-1" width="-1" x="180" y="1920"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -21,7 +21,7 @@
   </class>  
   <class id="3" language="java" name="team2.mvc.controller.RecommendController" project="Moviement" 
     file="/Moviement/src/team2/mvc/controller/RecommendController.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="240" y="2229"/>    
+    <position height="-1" width="-1" x="162" y="2196"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -48,7 +48,7 @@
   </class>  
   <class id="6" language="java" name="team2.mvc.exception.DuplicateException" project="Moviement" 
     file="/Moviement/src/team2/mvc/exception/DuplicateException.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="593" y="105"/>    
+    <position height="-1" width="-1" x="605" y="82"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -57,7 +57,7 @@
   </class>  
   <class id="7" language="java" name="team2.mvc.exception.NotFoundException" project="Moviement" 
     file="/Moviement/src/team2/mvc/exception/NotFoundException.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="989" y="103"/>    
+    <position height="-1" width="-1" x="992" y="87"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -66,7 +66,7 @@
   </class>  
   <class id="8" language="java" name="team2.mvc.main.Moviement_main" project="Moviement" 
     file="/Moviement/src/team2/mvc/main/Moviement_main.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="773" y="115"/>    
+    <position height="-1" width="-1" x="796" y="86"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -75,7 +75,7 @@
   </class>  
   <class id="9" language="java" name="team2.mvc.model.dao.CustomerDAOImpl" project="Moviement" 
     file="/Moviement/src/team2/mvc/model/dao/CustomerDAOImpl.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1568" y="1509"/>    
+    <position height="-1" width="-1" x="1336" y="1626"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -84,7 +84,7 @@
   </class>  
   <interface id="10" language="java" name="team2.mvc.model.dao.CustomerDAO" project="Moviement" 
     file="/Moviement/src/team2/mvc/model/dao/CustomerDAO.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1034" y="1500"/>    
+    <position height="-1" width="-1" x="979" y="1624"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -93,7 +93,7 @@
   </interface>  
   <interface id="11" language="java" name="team2.mvc.model.dao.MovieDAO" project="Moviement" 
     file="/Moviement/src/team2/mvc/model/dao/MovieDAO.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1331" y="1831"/>    
+    <position height="-1" width="-1" x="1055" y="1909"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -102,7 +102,7 @@
   </interface>  
   <class id="12" language="java" name="team2.mvc.model.dao.MovieDAOImpl" project="Moviement" 
     file="/Moviement/src/team2/mvc/model/dao/MovieDAOImpl.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1760" y="1818"/>    
+    <position height="-1" width="-1" x="1613" y="1914"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -111,7 +111,7 @@
   </class>  
   <interface id="13" language="java" name="team2.mvc.model.dao.RecommendDAO" project="Moviement" 
     file="/Moviement/src/team2/mvc/model/dao/RecommendDAO.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="813" y="2225"/>    
+    <position height="-1" width="-1" x="878" y="2199"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -120,7 +120,7 @@
   </interface>  
   <class id="14" language="java" name="team2.mvc.model.dao.RecommendDAOImpl" project="Moviement" 
     file="/Moviement/src/team2/mvc/model/dao/RecommendDAOImpl.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1304" y="2217"/>    
+    <position height="-1" width="-1" x="1338" y="2185"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -165,7 +165,7 @@
   </class>  
   <class id="19" language="java" name="team2.mvc.model.dto.Actor" project="Moviement" 
     file="/Moviement/src/team2/mvc/model/dto/Actor.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="111" y="531"/>    
+    <position height="-1" width="-1" x="118" y="506"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -174,7 +174,7 @@
   </class>  
   <class id="20" language="java" name="team2.mvc.model.dto.Evaluation" project="Moviement" 
     file="/Moviement/src/team2/mvc/model/dto/Evaluation.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="347" y="525"/>    
+    <position height="-1" width="-1" x="351" y="485"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -183,7 +183,7 @@
   </class>  
   <class id="21" language="java" name="team2.mvc.model.dto.GenreList" project="Moviement" 
     file="/Moviement/src/team2/mvc/model/dto/GenreList.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="547" y="438"/>    
+    <position height="-1" width="-1" x="548" y="405"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -192,7 +192,7 @@
   </class>  
   <class id="22" language="java" name="team2.mvc.model.dto.MovidDetail" project="Moviement" 
     file="/Moviement/src/team2/mvc/model/dto/MovidDetail.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="770" y="465"/>    
+    <position height="-1" width="-1" x="766" y="469"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -201,7 +201,7 @@
   </class>  
   <class id="23" language="java" name="team2.mvc.model.dto.Movie" project="Moviement" 
     file="/Moviement/src/team2/mvc/model/dto/Movie.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1032" y="509"/>    
+    <position height="-1" width="-1" x="1016" y="478"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -210,7 +210,7 @@
   </class>  
   <class id="24" language="java" name="team2.mvc.model.dto.MovieSub" project="Moviement" 
     file="/Moviement/src/team2/mvc/model/dto/MovieSub.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1236" y="506"/>    
+    <position height="-1" width="-1" x="1229" y="480"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -219,7 +219,7 @@
   </class>  
   <class id="25" language="java" name="team2.mvc.model.dto.Search" project="Moviement" 
     file="/Moviement/src/team2/mvc/model/dto/Search.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1615" y="566"/>    
+    <position height="-1" width="-1" x="1690" y="1106"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -273,7 +273,7 @@
   </class>  
   <class id="31" language="java" name="team2.mvc.model.service.CustomerService" project="Moviement" 
     file="/Moviement/src/team2/mvc/model/service/CustomerService.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="561" y="1512"/>    
+    <position height="-1" width="-1" x="588" y="1609"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -282,7 +282,7 @@
   </class>  
   <class id="32" language="java" name="team2.mvc.model.service.MovieService" project="Moviement" 
     file="/Moviement/src/team2/mvc/model/service/MovieService.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="710" y="1840"/>    
+    <position height="-1" width="-1" x="684" y="1936"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -291,7 +291,7 @@
   </class>  
   <class id="33" language="java" name="team2.mvc.model.service.RecommendService" project="Moviement" 
     file="/Moviement/src/team2/mvc/model/service/RecommendService.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="547" y="2229"/>    
+    <position height="-1" width="-1" x="471" y="2200"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -327,7 +327,7 @@
   </class>  
   <class id="37" language="java" name="team2.mvc.view.FailView" project="Moviement" 
     file="/Moviement/src/team2/mvc/view/FailView.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="421" y="127"/>    
+    <position height="-1" width="-1" x="412" y="83"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -336,7 +336,7 @@
   </class>  
   <class id="38" language="java" name="team2.mvc.view.MenuView" project="Moviement" 
     file="/Moviement/src/team2/mvc/view/MenuView.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="697" y="1049"/>    
+    <position height="-1" width="-1" x="695" y="1083"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -345,7 +345,7 @@
   </class>  
   <class id="39" language="java" name="team2.mvc.view.SuccessView" project="Moviement" 
     file="/Moviement/src/team2/mvc/view/SuccessView.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1260" y="119"/>    
+    <position height="-1" width="-1" x="1252" y="114"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
