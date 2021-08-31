@@ -54,10 +54,10 @@ public class WishDAOlmpl implements WishDAO {
 			ps = con.prepareStatement(sql);
 			ps.setInt(1, userNo);
 			ps.setInt(2, movieNo);
-			list = checkWishDuplicate(con);
+			list = checkWishDuplicate(con, userNo);
 
 			for (WishList w : list) {
-				if (w.getUserNo() == userNo && w.getMovieNo() == movieNo) {
+				if (w.getMovieNo() == movieNo) {
 					throw new DuplicateException("이미 존재하는 영화입니다.");
 				}
 			}
@@ -67,13 +67,14 @@ public class WishDAOlmpl implements WishDAO {
 		}
 	}
 
-	public List<WishList> checkWishDuplicate(Connection con) throws SQLException {
+	public List<WishList> checkWishDuplicate(Connection con, int userNo) throws SQLException {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		List<WishList> list = new ArrayList<>();
-		String sql = "select * from 위시리스트";
+		String sql = "select * from 위시리스트 where 사용자_고유번호 = ?";
 		try {
 			ps = con.prepareStatement(sql);
+			ps.setInt(1, userNo);
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				list.add(new WishList(rs.getInt(1), rs.getInt(2)));
