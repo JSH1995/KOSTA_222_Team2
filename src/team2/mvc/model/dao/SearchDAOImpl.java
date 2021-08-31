@@ -53,10 +53,13 @@ public class SearchDAOImpl implements SearchDAO {
 		List<Search> searchList = new ArrayList<Search>();
 		String sort = sortType;
 		
-		String sql = "SELECT 작품명, 감독, 주연1, 주연2, 장르이름, 국가, 개봉일자, 상영시간 FROM 영화"
+		String sql = "SELECT DISTINCT 작품명, 감독, 주연1, 주연2, 장르이름, 국가, 개봉일자, 상영시간, AVG(평점) FROM 영화"
 				+ " JOIN 영화_상세 USING(영화_고유번호)"
 				+ " JOIN 배우 USING(영화_고유번호)"
 				+ " JOIN 장르_목록 USING(장르번호)"
+				+ " JOIN 사용자_평가 USING(영화_고유번호)"
+				+ " JOIN (SELECT 영화_고유번호, AVG(평점) FROM 사용자_평가 GROUP BY 영화_고유번호) USING(영화_고유번호)"
+				+ " GROUP BY 작품명, 감독, 주연1, 주연2, 장르이름, 국가, 개봉일자, 상영시간"
 				+ " ORDER BY " + sort;
 		
 		
@@ -73,8 +76,8 @@ public class SearchDAOImpl implements SearchDAO {
 										   rs.getString(5), 
 										   rs.getString(6), 
 										   rs.getString(7), 
-										   rs.getInt(8)); 
-										   //rs.getInt(9));
+										   rs.getInt(8),
+										   rs.getInt(9));
 				searchList.add(search);
 			}
 			
@@ -120,8 +123,8 @@ public class SearchDAOImpl implements SearchDAO {
 						   rs.getString(5), 
 						   rs.getString(6), 
 						   rs.getString(7), 
-						   rs.getInt(8));
-						   //rs.getInt(9));
+						   rs.getInt(8),
+						   rs.getInt(9));
 				searchList.add(search);
 			}
 			
@@ -168,7 +171,7 @@ public class SearchDAOImpl implements SearchDAO {
 						   rs.getString(6), 
 						   rs.getString(7), 
 						   rs.getInt(8));
-						   //rs.getInt(9));
+						   rs.getInt(9));
 				searchList.add(search);
 			}
 			
@@ -271,7 +274,7 @@ public class SearchDAOImpl implements SearchDAO {
 						   rs.getString(6), 
 						   rs.getString(7), 
 						   rs.getInt(8));
-						   //rs.getInt(9));
+						   rs.getInt(9));
 				searchList.add(search);
 			}
 			
@@ -318,7 +321,7 @@ public class SearchDAOImpl implements SearchDAO {
 						   rs.getString(6), 
 						   rs.getString(7), 
 						   rs.getInt(8));
-						   //rs.getInt(9));
+						   rs.getInt(9));
 				searchList.add(search);
 			}
 			

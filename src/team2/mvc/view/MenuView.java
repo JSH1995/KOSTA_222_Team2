@@ -350,7 +350,7 @@ public class MenuView {
 			sortType = "개봉일자";
 			break;
 		case 4:
-			sortType = "평점";
+			sortType = "AVG(평점) DESC";
 			break;
 		default:
 			System.out.println("숫자를 누르거라.");
@@ -690,15 +690,15 @@ public class MenuView {
 
 		int movienum = 0;
 		
-		System.out.println("=======================================================================");
+		//System.out.println("=======================================================================");
 
 		String di = sd.getDirector();
 
 
-		System.out.println("====================================================");
+		System.out.println("=====================================================================================");
 
 		System.out.println("1. 현재 영화의 평점 및 코멘트를 작성하시겠습니까? | 2. 위시리스트에 추가 | 0. 종료 |");
-		System.out.println("====================================================");
+		System.out.println("=====================================================================================");
 		int choice = Integer.parseInt(sc.nextLine());
 		switch (choice) {
 		case 1:
