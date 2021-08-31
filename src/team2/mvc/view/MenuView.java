@@ -679,7 +679,7 @@ public class MenuView {
 		Search sd = SearchController.showMovieDetail(keyword);
 		String mn = sd.getMovieName();
 
-		int movienum = 0;
+		int movienum = 0; 
 		
 		System.out.println("=======================================================================");
 
