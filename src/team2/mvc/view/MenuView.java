@@ -405,17 +405,7 @@ public class MenuView {
 		}
 	}
 
-	/**
-	 * 영화, 영화상세정보, 태그, 배우 등록 수정 삭제
-	 */
-
 	static String date1 = "";
-
-	/**
-	 * 영화, 영화상세정보, 태그, 배우 등록 수정 삭제
-	 */
-
-	static String date11 = "";
 
 	/**
 	 * @author 이치인 영화 등록 수정 삭제
@@ -506,6 +496,7 @@ public class MenuView {
 		System.out.println("=====새 영화 등록=====");
 		System.out.print("등록할 영화고유번호 입력해주세요: ");
 		int movieNo = Integer.parseInt(sc.nextLine());
+
 		System.out.println(
 				"  1. 드라마 |  2. 스릴러  |  3. 범죄  | 4. 로맨스  | 5. 액션 | 6. 다큐멘터리  | 7. 애니메이션  | 8. 코미디 | 9. 공포  | 10. SF ");
 
@@ -572,24 +563,31 @@ public class MenuView {
 		System.out.println("=====배우 등록===== ");
 		System.out.print("배우 등록할 영화고유번호 입력해주세요: ");
 		int movieNo = Integer.parseInt(sc.nextLine());
+		List<MovieSub> movieList = selectByMovieNo(movieNo);
+		if (movieList != null) {
+			System.out.println("\n선택하신 영화번호에 해당하는 현재 데이터입니다.");
+			System.out.println(movieList + "\n");
 
-		System.out.print("주연1 : ");
-		String mainActor1 = sc.nextLine();
-
-		System.out.print("주연2 : ");
-		String mainActor2 = sc.nextLine();
-
-		System.out.print("조연1 : ");
-		String supActor1 = sc.nextLine();
-
-		System.out.print("조연2 : ");
-		String supActor2 = sc.nextLine();
-
-		System.out.print("조연3 : ");
-		String supActor3 = sc.nextLine();
-
-		Actor actor = new Actor(movieNo, mainActor1, mainActor2, supActor1, supActor2, supActor3);
-		MovieController.registerActor(actor);
+			System.out.print("주연1 : ");
+			String mainActor1 = sc.nextLine();
+	
+			System.out.print("주연2 : ");
+			String mainActor2 = sc.nextLine();
+	
+			System.out.print("조연1 : ");
+			String supActor1 = sc.nextLine();
+	
+			System.out.print("조연2 : ");
+			String supActor2 = sc.nextLine();
+	
+			System.out.print("조연3 : ");
+			String supActor3 = sc.nextLine();
+	
+			Actor actor = new Actor(movieNo, mainActor1, mainActor2, supActor1, supActor2, supActor3);
+			MovieController.registerActor(actor);
+		} else {
+			System.out.println("관리자 메뉴로 돌아갑니다.");
+		}
 	}
 
 	// 배우 수정
@@ -597,24 +595,31 @@ public class MenuView {
 		System.out.println("=====배우리스트 수정===== ");
 		System.out.print("수정할 해당 영화고유번호를 입력해주세요: ");
 		int movieNo = Integer.parseInt(sc.nextLine());
-
-		System.out.print("주연1 : ");
-		String mainActor1 = sc.nextLine();
-
-		System.out.print("주연2 : ");
-		String mainActor2 = sc.nextLine();
-
-		System.out.print("조연1 : ");
-		String supActor1 = sc.nextLine();
-
-		System.out.print("조연2 : ");
-		String supActor2 = sc.nextLine();
-
-		System.out.print("조연3 : ");
-		String supActor3 = sc.nextLine();
-
-		Actor actor = new Actor(movieNo, mainActor1, mainActor2, supActor1, supActor2, supActor3);
-		MovieController.updateActor(actor);
+		List<MovieSub> movieList = selectByMovieNo(movieNo);
+		if (movieList != null) {
+			System.out.println("\n선택하신 영화번호에 해당하는 현재 데이터입니다.");
+			System.out.println(movieList + "\n");
+			
+			System.out.print("주연1 : ");
+			String mainActor1 = sc.nextLine();
+	
+			System.out.print("주연2 : ");
+			String mainActor2 = sc.nextLine();
+	
+			System.out.print("조연1 : ");
+			String supActor1 = sc.nextLine();
+	
+			System.out.print("조연2 : ");
+			String supActor2 = sc.nextLine();
+	
+			System.out.print("조연3 : ");
+			String supActor3 = sc.nextLine();
+	
+			Actor actor = new Actor(movieNo, mainActor1, mainActor2, supActor1, supActor2, supActor3);
+			MovieController.updateActor(actor);
+		} else {
+			System.out.println("관리자 메뉴로 돌아갑니다.");
+		}
 	}
 
 	// 배우 삭제
@@ -632,32 +637,38 @@ public class MenuView {
 
 		System.out.print("새롭게 태그 추가할 영화고유번호 입력해주세요: ");
 		int movieNo = Integer.parseInt(sc.nextLine());
-		System.out.println();
-
-		System.out.println("[태그 목록]");
-		System.out.println(
-				" 1.  시간			|  2.  외계인		|  3.  우주		| 4.  고전	| 5.  복수		| 6.  패션		| 7.  미래적인	| 8.  편견을깨는	| 9.  독립 ");
-		System.out.println(
-				" 10. 좀비			|  11. 오싹해지는	|  12. 악당		| 13. 책		| 14. 비밀스러운	| 15. 마법		| 16. 해커	| 17. 구출		| 18. 풋풋한 ");
-		System.out.println(
-				" 19. 디즈니		|  20. 미로		|  21. 자동차		| 22. 폭발	| 23. 역사		| 24. 가족이생각나는| 25. 괴생명체	| 26. 자연		| 27. 다큐 ");
-		System.out.println(
-				" 28. 반전			|  29. 하이틴		|  30. 느와르		| 31. 섬뜩한	| 32. 영화제수상작	| 33. 경찰		| 34. 타임리프	| 35. 눈이즐거워지는| 36. 실화 ");
-		System.out.println(
-				" 37. OST		|  38. 사랑		|  39. 연기력		| 40. 우정	| 41. 사랑스러운	| 42. 학생		| 43. 영상미	| 44. 요리		| 45. 명작 ");
-		System.out.println(
-				" 46. 성장			|  47. 2인조		|  48. 현실적인	| 49. 퀴어	| 50. 관계		| 51. 재능		| 52. 잔잔한	| 53. 뮤지션		| 54. 인생 ");
-		System.out.println(
-				" 55. 먹방			|  56. 영국배경	|  57. 따뜻한		| 58. 예술	| 59. 웃긴		| 60. 남녀		| 61. 페미니즘	| 62. 연인		| 63. 완성도 ");
-		System.out.println(
-				" 64. 워너브라더스	|  65. 소설원작	|  66. 식당		| 67. 미장센	| 68. 춤			| 69. 블록버스터	| 70. 오디션	| 71. 저항		| 72. 유럽배경 ");
-		System.out.println(" 73. 기억상실		|  74. FBI		|  75. 통쾌		|  ");
-
-		System.out.print("목록에서 해당하는 태그번호를 찾아 입력해주세요: ");
-		int tagNo = Integer.parseInt(sc.nextLine());
-
-		Tag tag = new Tag(movieNo, tagNo);
-		MovieController.registerTag(tag);
+		List<MovieSub> movieList = selectByMovieNo(movieNo);
+		if (movieList != null) {
+			System.out.println("\n선택하신 영화번호에 해당하는 현재 데이터입니다.");
+			System.out.println(movieList + "\n");
+	
+			System.out.println("[태그 목록]");
+			System.out.println(
+					" 1.  시간			|  2.  외계인		|  3.  우주		| 4.  고전	| 5.  복수		| 6.  패션		| 7.  미래적인	| 8.  편견을깨는	| 9.  독립 ");
+			System.out.println(
+					" 10. 좀비			|  11. 오싹해지는	|  12. 악당		| 13. 책		| 14. 비밀스러운	| 15. 마법		| 16. 해커	| 17. 구출		| 18. 풋풋한 ");
+			System.out.println(
+					" 19. 디즈니		|  20. 미로		|  21. 자동차		| 22. 폭발	| 23. 역사		| 24. 가족이생각나는| 25. 괴생명체	| 26. 자연		| 27. 다큐 ");
+			System.out.println(
+					" 28. 반전			|  29. 하이틴		|  30. 느와르		| 31. 섬뜩한	| 32. 영화제수상작	| 33. 경찰		| 34. 타임리프	| 35. 눈이즐거워지는| 36. 실화 ");
+			System.out.println(
+					" 37. OST		|  38. 사랑		|  39. 연기력		| 40. 우정	| 41. 사랑스러운	| 42. 학생		| 43. 영상미	| 44. 요리		| 45. 명작 ");
+			System.out.println(
+					" 46. 성장			|  47. 2인조		|  48. 현실적인	| 49. 퀴어	| 50. 관계		| 51. 재능		| 52. 잔잔한	| 53. 뮤지션		| 54. 인생 ");
+			System.out.println(
+					" 55. 먹방			|  56. 영국배경	|  57. 따뜻한		| 58. 예술	| 59. 웃긴		| 60. 남녀		| 61. 페미니즘	| 62. 연인		| 63. 완성도 ");
+			System.out.println(
+					" 64. 워너브라더스	|  65. 소설원작	|  66. 식당		| 67. 미장센	| 68. 춤			| 69. 블록버스터	| 70. 오디션	| 71. 저항		| 72. 유럽배경 ");
+			System.out.println(" 73. 기억상실		|  74. FBI		|  75. 통쾌		|  ");
+	
+			System.out.print("목록에서 해당하는 태그번호를 찾아 입력해주세요: ");
+			int tagNo = Integer.parseInt(sc.nextLine());
+	
+			Tag tag = new Tag(movieNo, tagNo);
+			MovieController.registerTag(tag);
+		} else {
+			System.out.println("관리자 메뉴로 돌아갑니다.");
+		}
 	}
 
 	// 영화고유번호에 해당하는 태그리스트 검색 기능
@@ -716,29 +727,34 @@ public class MenuView {
 
 		System.out.print("상세정보를 추가할 영화고유번호를 입력해주세요: ");
 		int movieNo = Integer.parseInt(sc.nextLine());
-
-		System.out.print("줄거리: ");
-		String content = sc.nextLine();
-
-		System.out.println("[ex] 2시간 6분 → 126");
-		System.out.print("런타임: ");
-		int runtime = Integer.parseInt(sc.nextLine());
-		// System.out.print("분");
-
-		System.out.println("[ex] 2022-02-22");
-		System.out.print("개봉일자: ");
-		String releaseDate = sc.nextLine();
-
-		System.out.print("국가: ");
-		String nation = sc.nextLine();
-
-		System.out.print("사용자 태그: ");
-		String userTag = sc.nextLine();
-
-		// int movieNo, String content, int runtime, String releaseDate, String nation,
-		// List<String> userTag
-		MovidDetail movieDetail = new MovidDetail(movieNo, content, runtime, releaseDate, nation, userTag);
-		MovieController.registerMovieDetail(movieDetail);
+		List<MovieSub> movieList = selectByMovieNo(movieNo);
+		if (movieList != null) {
+			System.out.println("\n선택하신 영화번호에 해당하는 현재 데이터입니다.");
+			System.out.println(movieList + "\n");
+	
+			System.out.print("줄거리: ");
+			String content = sc.nextLine();
+	
+			System.out.println("[ex] 2시간 6분 → 126");
+			System.out.print("런타임: ");
+			int runtime = Integer.parseInt(sc.nextLine());
+			// System.out.print("분");
+	
+			System.out.println("[ex] 2022-02-22");
+			System.out.print("개봉일자: ");
+			String releaseDate = sc.nextLine();
+	
+			System.out.print("국가: ");
+			String nation = sc.nextLine();
+	
+			System.out.print("사용자 태그: ");
+			String userTag = sc.nextLine();
+	
+			MovidDetail movieDetail = new MovidDetail(movieNo, content, runtime, releaseDate, nation, userTag);
+			MovieController.registerMovieDetail(movieDetail);
+		} else {
+			System.out.println("관리자 메뉴로 돌아갑니다.");
+		}
 	}
 
 	// 영화_상세 내용 수정
@@ -746,52 +762,47 @@ public class MenuView {
 
 		System.out.print("수정하려는 해당 영화고유번호를 입력해주세요: ");
 		int movieNo = Integer.parseInt(sc.nextLine());
-
-		System.out.print("줄거리: ");
-		String content = sc.nextLine();
-
-		System.out.println("[ex] 2시간 6분 → 126");
-		System.out.print("런타임: ");
-		int runtime = Integer.parseInt(sc.nextLine());
-
-		System.out.println("[ex] 2022-02-22");
-		System.out.print("개봉일자: ");
-		String releaseDate = sc.nextLine();
-
-		System.out.print("국가: ");
-		String nation = sc.nextLine();
-
-		System.out.print("사용자 지정 태그: ");
-		String userTag = sc.nextLine();
-
-		MovidDetail movieDetail = new MovidDetail(movieNo, content, runtime, releaseDate, nation, userTag);
-		MovieController.updateMovieDetail(movieDetail);
+		List<MovieSub> movieList = selectByMovieNo(movieNo);
+		if (movieList != null) {
+			System.out.println("\n선택하신 영화번호에 해당하는 현재 데이터입니다.");
+			System.out.println(movieList + "\n");
+	
+			System.out.print("줄거리: ");
+			String content = sc.nextLine();
+	
+			System.out.println("[ex] 2시간 6분 → 126");
+			System.out.print("런타임: ");
+			int runtime = Integer.parseInt(sc.nextLine());
+	
+			System.out.println("[ex] 2022-02-22");
+			System.out.print("개봉일자: ");
+			String releaseDate = sc.nextLine();
+	
+			System.out.print("국가: ");
+			String nation = sc.nextLine();
+	
+			System.out.print("사용자 지정 태그: ");
+			String userTag = sc.nextLine();
+	
+			MovidDetail movieDetail = new MovidDetail(movieNo, content, runtime, releaseDate, nation, userTag);
+			MovieController.updateMovieDetail(movieDetail);
+		} else {
+			System.out.println("관리자 메뉴로 돌아갑니다.");
+		}
 	}
 
 	// 영화_상세 정보 삭제
 	public static void deleteMovieDetail() {
 		System.out.print("삭제하려는 해당 영화고유번호를 입력해주세요: ");
 		int movieNo = Integer.parseInt(sc.nextLine());
-		MovieController.deleteMovieDetail(movieNo);
-	}
-
-	public static void userComment(int movienum) {
-		Calendar cal = Calendar.getInstance();
-		String year = Integer.toString(cal.get(Calendar.YEAR));
-		String month = Integer.toString(cal.get(Calendar.MONTH) + 1);
-		String day = Integer.toString(cal.get(Calendar.DAY_OF_MONTH));
-		String num = year + "/" + month + "/" + day;
-
-		int userNo = user.getUserNo();
-		// System.out.println("영화 고유번호를 적어주세요 --추후에 이건 필요없음");
-		int movieNo = movienum;
-		System.out.println("평점을 적어주세요 (1~5)");
-		int rate = Integer.parseInt(sc.nextLine());
-		System.out.println("남기실 코멘트를 입력해주세요");
-		String comment = sc.nextLine();
-		String rateDate = num;
-		CustomerController.Evaluation(userNo, movieNo, rate, comment, rateDate);
-
+		List<MovieSub> movieList = selectByMovieNo(movieNo);
+		if (movieList != null) {
+			System.out.println("\n선택하신 영화번호에 해당하는 현재 데이터입니다.");
+			System.out.println(movieList + "\n");
+			MovieController.deleteMovieDetail(movieNo);
+		} else {
+			System.out.println("관리자 메뉴로 돌아갑니다.");
+		}
 	}
 
 	/**

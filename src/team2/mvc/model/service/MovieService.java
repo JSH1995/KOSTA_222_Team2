@@ -40,7 +40,7 @@ public class MovieService {
 	public void deleteMovie(int movieNo) throws SQLException {
 		int result = movieDAO.deleteMovie(movieNo);
 		if(result == 0) {
-			throw new SQLException("삭제되지 않았습니다.");
+			throw new SQLException(movieNo+"번에 해당하는 영화정보가 존재하지 않습니다.");
 		}
 		
 	}
@@ -69,7 +69,7 @@ public class MovieService {
 	public void deleteActor(int movieNo) throws SQLException {
 		int result = movieDAO.deleteActor(movieNo);
 		if(result == 0) {
-			throw new SQLException("삭제되지 않았습니다.");
+			throw new SQLException(movieNo+"번에 해당하는 배우리스트가 없습니다.");
 		}
 		
 	}
@@ -98,7 +98,7 @@ public class MovieService {
 	public void deleteTag(int movieNo) throws SQLException {
 		int result = movieDAO.deleteTag(movieNo);
 		if(result == 0) {
-			throw new SQLException("삭제되지 않았습니다.");
+			throw new SQLException(movieNo+"번에 해당하는 레코드가 없습니다.");
 		}
 		
 	}
@@ -127,7 +127,7 @@ public class MovieService {
 	public void deleteMovieDetail(int movieNo) throws SQLException {
 		int result = movieDAO.deleteMovieDetail(movieNo);
 		if(result == 0) {
-			throw new SQLException("삭제되지 않았습니다.");
+			throw new SQLException(movieNo+"번에 해당하는 상세정보 레코드가 없습니다.");
 		} 
 		
 	}
