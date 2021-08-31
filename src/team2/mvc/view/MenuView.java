@@ -245,6 +245,7 @@ public class MenuView {
 	/**
 	 * @author 김찬원 
 	 * -- 사용자메뉴 - 4. 검색하기
+	 * -- 카테고리별 검색을 지원
 	 */
 	private static void printSearchMenu() {
 
@@ -315,8 +316,13 @@ public class MenuView {
 			case 0:
 				printUserMenu();
 			default:
+<<<<<<< HEAD
+				System.out.println("메뉴에 있는 숫자만 입력 해 주세요.");
+				break;
+=======
 				System.out.println("메뉴에 있는 숫자만 입력해주세요.");
 				break; // 문자나 다른거 입력 시 Exception 처리 필요
+>>>>>>> 0331541a27e4368bd3c4fb7529bc9a509f779e14
 
 			}
 		}
@@ -325,16 +331,24 @@ public class MenuView {
 
 	/**
 	 * @author 김찬원 - 검색한 결과를 정렬 시켜주는 메소드
+	 * 검색 했던 DB를 정렬 후 다시 재출력 해준다.
 	 */
 
 	private static String sort() {
 		String sortType = null;
 		
+<<<<<<< HEAD
+		System.out.println("================== 검색하신 결과에 대해 정렬을 할 수 있습니다. ====================");
+		System.out.println("=============================== 정렬 메뉴 ================================");
+		System.out.println("==========1. 작품명 | 2. 상영시간 | 3. 개봉일자 | 4. 평점 | 5. 뒤로 가기===========");
+		System.out.println("=======================================================================");
+=======
 		System.out.println();
 		System.out.println("========== 검색하신 결과에 대해 정렬을 할 수 있습니다 =========");
 		System.out.println("====================== 정렬 메뉴 ======================");
 		System.out.println("1. 작품명 | 2. 상영시간 | 3. 개봉일자 | 4. 평점 | 5. 뒤로 가기");
 		System.out.println("=====================================================");
+>>>>>>> 0331541a27e4368bd3c4fb7529bc9a509f779e14
 
 		int choice = Integer.parseInt(sc.nextLine());
 
@@ -354,8 +368,13 @@ public class MenuView {
 		case 5:
 			printSearchMenu();
 		default:
+<<<<<<< HEAD
+			System.out.println("메뉴에 있는 숫자만 입력 해 주세요.");
+			break;
+=======
 			System.out.println("메뉴에 있는 숫자만 입력해주세요.");
 			break;// 문자나 다른거 입력 시 Exception 처리 필요
+>>>>>>> 0331541a27e4368bd3c4fb7529bc9a509f779e14
 
 		}
 		return sortType;
@@ -363,6 +382,7 @@ public class MenuView {
 
 	/**
 	 * @author 김찬원 - 검색 키워드 입력하는 메소드
+	 * -- 이후 키워드는 Set에 저장되어 최근 검색 리스트에 포함 된다.
 	 */
 
 	private static String insertKeyword() {
@@ -379,6 +399,7 @@ public class MenuView {
 
 	/**
 	 * @author 김찬원 최근 검색 키워드를 보여주는 리스트
+	 * -- 프로그램이 돌아가는 동안에 검색했던 키워드들을 Set에 저장하여 출력한다.
 	 */
 
 	private static void showRecentSearchList() {
@@ -412,6 +433,64 @@ public class MenuView {
 	 */
 	// 영화 등록
 	public static void adminMenu() {
+<<<<<<< HEAD
+
+		System.out.println("=============================== 관리자 메뉴 입니다. ================================");
+		System.out.println("================================== 정렬 메뉴 =====================================");
+		System.out.println("1. 영화등록 | 2. 영화수정 | 3. 영화삭제 | 4. 배우등록 | 5. 배우수정 | 6. 배우삭제 | 7. 태그등록");
+		System.out.println(
+				"================================================================================");
+		System.out.println("8. 태그수정 | 9. 태그삭제 | 10. 영화상세등록 | 11. 영화상세수정 | 12. 영화상세삭제 | 0. 돌아가기 ");
+		System.out.println(
+				"================================================================================");
+
+		int choice = Integer.parseInt(sc.nextLine());
+
+		switch (choice) {
+		case 1:
+			registerMovie();
+			break;
+		case 2:
+			updateMovie();
+			break;
+		case 3:
+			deleteMovie();
+			break;
+		case 4:
+			registerActor();
+			break;
+		case 5:
+			updateActor();
+			break;
+		case 6:
+			deleteActor();
+			break;
+		case 7:
+			registerTag();
+			break;
+		case 8:
+			updateTag();
+			break;
+		case 9:
+			deleteTag();
+			break;
+		case 10:
+			registerMovieDetail();
+			break;
+		case 11:
+			updateMovieDetail();
+			break;
+		case 12:
+			deleteMovieDetail();
+			break;
+		case 0:
+			
+		default:
+			System.out.println("메뉴에 있는 숫자만 입력 해 주세요.");
+			break;
+
+		}
+=======
 		try {
 			System.out.println("========================================== 관리자 메뉴 ============================================");
 			System.out.println("1. 영화등록 | 2. 영화수정 | 3. 영화삭제 | 4. 배우등록 | 5. 배우수정 | 6. 배우삭제 | 7. 태그등록 | 8. 태그수정");
@@ -487,6 +566,7 @@ public class MenuView {
 		}catch(NumberFormatException e) {
 	        System.out.println("숫자만 입력해주세요.");
         }
+>>>>>>> 0331541a27e4368bd3c4fb7529bc9a509f779e14
 
 	}
 
@@ -762,6 +842,13 @@ public class MenuView {
 
 	}
 
+	/**
+	 * @author 김찬원, 조성휘
+	 * -- 영화 상세 정보 검색을 위한 입력 메소드 및 메뉴 메소드
+	 * -- 이후 평점/코멘트 등록, 위시리스트 추가, 특정 영화 DB에 사용자 태그 추가하는 기능의 선택지 부여
+	 */
+	
+	
 	public static void movieDetail() {
 		System.out.println("==================영화 상세 정보 검색==================");
 		
@@ -775,35 +862,36 @@ public class MenuView {
 		String mn = sd.getMovieName();
 
 		int movienum = 0; 
-		
-		//System.out.println("=======================================================================");
-
 		String di = sd.getDirector();
 
-
-		System.out.println("=================================================================================");
-		System.out.println("1. 현재 영화의 평점 및 코멘트를 작성하시겠습니까? | 2. 위시리스트에 추가 | 3. 태그 추가 | 0. 종료 |");
-		System.out.println("=================================================================================");
-		int choice = Integer.parseInt(sc.nextLine());
-		switch (choice) {
-		case 1:
-			movienum = findMovieNumber(sd, mn, di);
-			userComment(movienum);
-			break;
-		case 2:
-			movienum = findMovieNumber(sd, mn, di);
-			WishController.putWishList(user.getUserNo(), movienum);
-			break;
-		case 3:
-			movienum = findMovieNumber(sd, mn, di);
-			String tag = putUserTag(movienum);
-			CustomerController.putTag(movienum, tag);
-		case 0:
-			return;
-		default:
-			System.out.println("메뉴에 있는 숫자만 입력 해 주세요.");
-			break;
-
+		
+		while(true) {
+	
+			System.out.println("=================================================================================");
+			System.out.println("1. 현재 영화의 평점 및 코멘트를 작성하시겠습니까? | 2. 위시리스트에 추가 | 3. 태그 추가 | 0. 종료 |");
+			System.out.println("=================================================================================");
+			int choice = Integer.parseInt(sc.nextLine());
+			switch (choice) {
+			case 1:
+				movienum = findMovieNumber(sd, mn, di);
+				userComment(movienum);
+				break;
+			case 2:
+				movienum = findMovieNumber(sd, mn, di);
+				WishController.putWishList(user.getUserNo(), movienum);
+				break;
+			case 3:
+				movienum = findMovieNumber(sd, mn, di);
+				String tag = putUserTag(movienum);
+				CustomerController.putTag(movienum, tag);
+				break;
+			case 0:
+				return;
+			default:
+				System.out.println("메뉴에 있는 숫자만 입력 해 주세요.");
+				break;
+	
+			}
 		}
 
 	}
