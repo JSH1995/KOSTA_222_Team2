@@ -2,7 +2,7 @@ package team2.mvc.model.dto;
 
 public class Tag {
 	/**
-	 * 영화의 배우 결과 관련 클래스
+	 * 영화의 태그 관련 클래스
 	 */
 	
 	private int movieNo;
