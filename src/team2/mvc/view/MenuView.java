@@ -702,13 +702,15 @@ public class MenuView {
 		int choice = Integer.parseInt(sc.nextLine());
 		switch (choice) {
 		case 1:
-			movienum = findMovieNumber(sd, mn);
+			movienum = findMovieNumber(sd, mn, di);
 			userComment(movienum);
 			break;
 		case 2:
+			movienum = findMovieNumber(sd, mn, di);
 			WishController.putWishList(user.getUserNo(), movienum);
 			break;
 		case 3:
+			movienum = findMovieNumber(sd, mn, di);
 			CustomerController.putTag(movienum);
 		case 0:
 			return;
@@ -716,7 +718,7 @@ public class MenuView {
 		}
 	}
 
-	private static int findMovieNumber(Search sd, String mn) {
+	private static int findMovieNumber(Search sd, String mn, String di) {
 		
 		Connection con = null;
 		PreparedStatement ps = null;
