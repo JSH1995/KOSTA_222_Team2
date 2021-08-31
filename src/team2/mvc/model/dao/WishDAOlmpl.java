@@ -28,15 +28,15 @@ public class WishDAOlmpl implements WishDAO {
 			ps.setInt(1, userNo);
 			rs = ps.executeQuery();
 
-			if (rs.next()) {
-				while (rs.next()) {
-					Movie movie = new Movie(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4),
-							rs.getString(5));
-					movieList.add(movie);
-				}
-			} else {
+			while (rs.next()) {
+				Movie movie = new Movie(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5));
+				movieList.add(movie);
+
+			}
+			if (movieList.size() == 0) {
 				throw new NotFoundException("위시리스트가 존재하지 않습니다.");
 			}
+
 		} finally {
 			DbUtil.dbClose(con, ps, rs);
 		}
