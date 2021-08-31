@@ -18,10 +18,6 @@ import team2.mvc.util.DbUtil;
  */
 public class WishDAOlmpl implements WishDAO {
 	@Override
-	/**
-	 * 사용자 고유넘버를 받아 위시리스트를 출력
-	 * @author 홍전형
-	 */
 	public List<Movie> viewWishList(int userNo) throws SQLException, NotFoundException {
 		Connection con = null;
 		PreparedStatement ps = null;
@@ -54,10 +50,6 @@ public class WishDAOlmpl implements WishDAO {
 	 * @author 홍전형
 	 */
 	@Override
-	/**
-	 * 위시리스트에 영화를 추가
-	 * @author 홍전형
-	 */
 	public void putWishList(int userNo, int movieNo) throws SQLException, DuplicateException {
 		Connection con = null;
 		PreparedStatement ps = null;
