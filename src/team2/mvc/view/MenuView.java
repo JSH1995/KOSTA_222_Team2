@@ -750,9 +750,13 @@ public class MenuView {
 	}
 
 	public static void userComment(int movienum) {
-		Calendar cal2 = Calendar.getInstance();
-		SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy/MM/dd/HH:mm:ss");
-		String datestr2 = sdf2.format(cal2.getTime());
+		Calendar cal = Calendar.getInstance();
+		String year = Integer.toString(cal.get(Calendar.YEAR));
+		String month = Integer.toString(cal.get(Calendar.MONTH) + 1);
+		String day = Integer.toString(cal.get(Calendar.DAY_OF_MONTH));
+		String num = year+"/"+month+"/"+day;
+	
+		
 
 		int userNo = user.getUserNo();
 		// System.out.println("영화 고유번호를 적어주세요 --추후에 이건 필요없음");
@@ -761,7 +765,7 @@ public class MenuView {
 		int rate = Integer.parseInt(sc.nextLine());
 		System.out.println("남기실 코멘트를 입력해주세요");
 		String comment = sc.nextLine();
-		String rateDate = datestr2;
+		String rateDate = num;
 		CustomerController.Evaluation(userNo, movieNo, rate, comment, rateDate);
 
 	}
