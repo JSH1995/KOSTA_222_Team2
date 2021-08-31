@@ -81,7 +81,7 @@ public class MovieDAOImpl implements MovieDAO {
 		Connection con=null;
 		PreparedStatement ps=null;
 		int result=0;
-		String sql="delete from 영화 where 영화_고유번호=?";
+		String sql="delete 영화 where 영화_고유번호=?";
 		try {
 			con=DbUtil.getConnection();
 			ps=con.prepareStatement(sql);
@@ -103,7 +103,7 @@ public class MovieDAOImpl implements MovieDAO {
 		Connection con=null;
 		PreparedStatement ps=null;
 		int result=0;
-		String sql="insert into 배우(영화_고유번호, 주연1, 주연2, 조연1, 조연2, 조연3) values(?, ?, ?, ?, ?, ?) ";
+		String sql="insert into 배우(영화_고유번호, 주연1, 주연2, 조연1, 조연2, 조연3) values(?, ?, ?, ?, ?, ?)";
 		try {
 			con=DbUtil.getConnection();
 			ps=con.prepareStatement(sql);
@@ -222,7 +222,7 @@ public class MovieDAOImpl implements MovieDAO {
 		Connection con=null;
 		PreparedStatement ps=null;
 		int result=0;
-		String sql="delete from 태그 where 영화_고유번호=?";
+		String sql="delete 태그 where 영화_고유번호=?";
 		try {
 			con=DbUtil.getConnection();
 			ps=con.prepareStatement(sql);
@@ -300,7 +300,7 @@ public class MovieDAOImpl implements MovieDAO {
 		Connection con=null;
 		PreparedStatement ps=null;
 		int result=0;
-		String sql="delete from 영화_상세 where 영화_고유번호=?";
+		String sql="delete 영화_상세 where 영화_고유번호=?";
 		try {
 			con=DbUtil.getConnection();
 			ps=con.prepareStatement(sql);

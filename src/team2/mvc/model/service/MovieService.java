@@ -138,7 +138,7 @@ public class MovieService {
 	
 	public List<MovieSub> selectByMovieNo(int movieNo) throws SQLException {
 		List<MovieSub> movieList = movieDAO.selectByMovieNo(movieNo);
-		if(movieList==null) {
+		if(movieList.size() == 0 || movieList.isEmpty()) {
 			throw new SQLException(movieNo+"번에 해당하는 레코드가 없습니다.");
 		}
 		return movieList;
