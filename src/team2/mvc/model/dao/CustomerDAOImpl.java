@@ -20,7 +20,10 @@ import team2.mvc.util.DbUtil;
 
 public class CustomerDAOImpl implements CustomerDAO {
 	
-
+	/**
+	 * @author 조성휘
+	 * 회원가입하는 메소드
+	 */
 	public int registerUser(int userNo, String id, String password, int age, String userRegDate,int favTag, int favGenre) throws SQLException {
 		
 		Connection con = null;
@@ -46,6 +49,10 @@ public class CustomerDAOImpl implements CustomerDAO {
 		
 		return result;
 	}
+	/**
+	 * @author 조성휘
+	 * 사용자가 로그인하는 메소드
+	 */
 	public List<User> login(String id, String password) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
@@ -79,7 +86,10 @@ public class CustomerDAOImpl implements CustomerDAO {
 		return null;
 	}
 
-	
+	/**
+	 * @author 조성휘
+	 * 사용자가 사용자 평가를 추가하는 메소드
+	 */
 	public int Evaluation(int userNo, int movieNo, int rate, String comment,
 			String rateDate) throws Exception {
 		

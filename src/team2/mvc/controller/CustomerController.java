@@ -22,6 +22,17 @@ public class CustomerController {
 	
 	static CustomerService customerService =  new CustomerService();
 	
+	/**
+	 * 회원 가입 메서드
+	 * @param userNo
+	 * @param id
+	 * @param password
+	 * @param age
+	 * @param userRegDate
+	 * @param favTag
+	 * @param favGenre
+	 */
+	
 	public static void registerUser(int userNo, String id, String password, int age, String userRegDate,int favTag, int favGenre ) {
 		try {
 			customerService.registerUser(userNo,id,password,age,userRegDate,favTag,favGenre);
@@ -64,7 +75,14 @@ public class CustomerController {
 		return list;
 	}
 	
-	
+	/**
+	 * 사용자 평가를 입력하는 메서드
+	 * @param userNo
+	 * @param movieNo
+	 * @param rate
+	 * @param comment
+	 * @param rateDate
+	 */
 	public static void Evaluation(int userNo, int movieNo, int rate, String comment, String rateDate) {
 		try {
 			customerService.Evaluation(userNo, movieNo, rate, comment,rateDate);
@@ -75,7 +93,11 @@ public class CustomerController {
 			FailView.errorMessage(e.getMessage());
 		}
 	}
-
+/**
+ * 비밀번호 변경 메소드
+ * @param user_nums
+ * @param pw1
+ */
 	public static void update_pw(int user_nums, String pw1) {
 		Connection con= null;
 		Statement st=null;
@@ -93,7 +115,11 @@ public class CustomerController {
 			DbUtil.dbClose(con, st, rs);
 		}
 	}
-
+	/**
+	 * 사용자 태그 메서드
+	 * @param movienum
+	 * @param tag
+	 */
 	public static void putTag(int movienum, String tag) {
 		try {
 			customerService.putTag(movienum, tag);

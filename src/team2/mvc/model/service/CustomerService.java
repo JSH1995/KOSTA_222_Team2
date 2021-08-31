@@ -16,7 +16,11 @@ import team2.mvc.util.DbUtil;
 
 public class CustomerService {
 	CustomerDAO customerDao = new CustomerDAOImpl();
-	
+	/**
+	 * 회원가입 실패하면 뜨는 메소드
+	 * @throws Exception
+	 * @throws NotFoundException
+	 */
 	public int registerUser(int userNo, String id, String password, int age, String userRegDate,int favTag,int favGenre
 			) throws Exception, NotFoundException {
 		int result = customerDao.registerUser(userNo,id,password,age,userRegDate,favTag,favGenre);
@@ -25,7 +29,15 @@ public class CustomerService {
 		}
 		return result;
 	}
+	/**
+	 * 로그인 실패하면 뜨는 메소드
+	 * @param id
+	 * @param password
+	 * @throws SQLException
+	 * @throws NotFoundException
+	 */
 
+	
 	public List<User> login(String id, String password) throws SQLException, NotFoundException {
 		List<User> list = customerDao.login(id, password);
 		if (list.size() == 0) {
@@ -33,7 +45,16 @@ public class CustomerService {
 		}
 		return list;
 	}
-
+	/**
+	 * 사용자 평가 추가할때 실패하면 뜨는 메소드
+	 * @param userNo
+	 * @param movieNo
+	 * @param rate
+	 * @param comment
+	 * @param rateDate
+	 * @throws Exception
+	 * @throws NotFoundException
+	 */
 	public int Evaluation( int userNo, int movieNo, int rate, String comment,
 			String rateDate) throws Exception, NotFoundException {
 		int result = customerDao.Evaluation(userNo,movieNo,rate,comment,rateDate);
@@ -42,6 +63,12 @@ public class CustomerService {
 		}
 		return result;
 	}
+/**
+ * 사용자 태그 메소드
+ * @param movienum
+ * @param tag
+ * @throws Exception
+ */
 	public void putTag(int movienum, String tag) throws Exception {
 		customerDao.putTag(movienum, tag);		
 	}
