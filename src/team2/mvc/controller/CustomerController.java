@@ -42,7 +42,6 @@ public class CustomerController {
 		try {
 			List<User> list = customerService.login(id,password);
 			System.out.println("로그인 성공! " + id + "님, 어서오세요!");
-			//su=true;
 			return true;
 		} catch (Exception e) {
 		}
@@ -57,7 +56,7 @@ public class CustomerController {
 	public static List<User> login(String id, String password) {
 		List<User> list = new ArrayList<>();
 		try {
-			System.out.println("될까 안될까...?");
+			System.out.println("로그인 중...");
 			list = customerService.login(id,password);
 		} catch (Exception e) {
 			FailView.errorMessage(e.getMessage());
