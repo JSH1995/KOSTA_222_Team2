@@ -12,6 +12,14 @@ import team2.mvc.model.dto.Movie;
 public class WishService {
 	WishDAO wishDAO = new WishDAOlmpl();
 
+	/**
+	 * 사용자 고유넘버를 받아 위시리스트를 출력
+	 * @author 홍전형
+	 * @param userNo
+	 * @return 위시리스트
+	 * @throws SQLException
+	 * @throws NotFoundException
+	 */
 	public List<Movie> viewWishList(int userNo) throws SQLException, NotFoundException {
 			List<Movie> movieList = wishDAO.viewWishList(userNo);
 			if(movieList==null || movieList.isEmpty()) {
@@ -19,7 +27,14 @@ public class WishService {
 			}
 		return movieList;
 	}
-	
+	/**
+	 * 위시리스트에 영화를 추가하는 메서드
+	 * @author 홍전형
+	 * @param userNo
+	 * @param movieNo
+	 * @throws SQLException
+	 * @throws DuplicateException
+	 */
 	public void putWishList(int userNo, int movieNo) throws SQLException, DuplicateException {
 		wishDAO.putWishList(userNo, movieNo);
 	}

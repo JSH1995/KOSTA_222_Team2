@@ -1,4 +1,7 @@
 package team2.mvc.model.dto;
+/**
+ * 영화 결과 관련
+ */
 
 public class Movie {
 	private int movieNo;

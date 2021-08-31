@@ -884,9 +884,10 @@ public class MenuView {
 		}
 
 	}
-	
+
 	/**
-	 * 
+	 * @author 홍전형
+	 * 사용자가 태그를 추가하는 메서드
 	 * @param movienum
 	 * @return
 	 */

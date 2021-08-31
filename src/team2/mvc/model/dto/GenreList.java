@@ -1,4 +1,7 @@
 package team2.mvc.model.dto;
+/**
+ * 영화의 장르 결과 관련
+ */
 
 public class GenreList {
 	private int genreNo;
