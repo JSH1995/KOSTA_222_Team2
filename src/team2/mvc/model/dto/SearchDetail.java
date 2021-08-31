@@ -6,8 +6,6 @@
 
 package team2.mvc.model.dto;
 
-import java.util.List;
-
 public class SearchDetail extends Search  {
 	
 	private String content;
