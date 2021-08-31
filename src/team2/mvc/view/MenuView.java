@@ -139,7 +139,7 @@ public class MenuView {
 			case 0:
 				System.exit(0);
 			default:
-				System.out.println("잘못된 메뉴입니다.");
+				System.out.println("잘못된 메뉴입니다. 다시 선택해주세요");
 				menu();
 			}
 		}
@@ -148,10 +148,10 @@ public class MenuView {
 	public static void printUserMenu() {
 		while (logincheck) {
 			System.out.println(
-					"========================================== 메인 메뉴 ==========================================");
+					"=============================================== 메인 메뉴 ===============================================");
 			System.out.println(" 1. 개인정보 수정 |  2. 위시리스트 보기  |  3. 추천 영화 보기  | 4. 검색하기  | 5. 최근 검색 리스트 | 0. 종료");
 			System.out.println(
-					"=============================================================================================");
+					"=======================================================================================================");
 			int choice = Integer.parseInt(sc.nextLine());
 			switch (choice) {
 			case 1:
@@ -172,7 +172,7 @@ public class MenuView {
 			case 0:
 				System.exit(0);
 			default:
-				System.out.println("잘못된 메뉴입니다.");
+				System.out.println("잘못된 메뉴입니다. 다시 선택해주세요.");
 				printUserMenu();
 			}
 		}
@@ -195,7 +195,7 @@ public class MenuView {
 	 * 사용자메뉴 - 1. 개인정보 수정
 	 */
 	private static void printPersonalDetailMenu() {
-		System.out.println("========= 개인정보 수정 페이지 =========");
+		System.out.println("--------- 개인정보 수정 페이지 ---------");
 		System.out.print("새로운 비밀번호를 입력해주세요: ");
 		String pw1 = sc.nextLine();
 		CustomerController.update_pw(user.getUserNo(), pw1);
@@ -223,28 +223,31 @@ public class MenuView {
 		int choice = Integer.parseInt(sc.nextLine());
 		switch (choice) {
 		case 1:
-			System.out.println("- 인기순 추천 -");
+			System.out.println("------------ 인기순 추천 ------------");
 			System.out.println("현재 위시리스트에 가장 많이 담긴 영화들이에요!\n");
 			RecommendController.recByRank();
 			break;
 		case 2:
-			System.out.println("- 나이별 추천 -");
+			System.out.println("------------------- 나이별 추천 -------------------");
 			System.out.println((int) user.getAge() / 10 * 10 + "대의 위시리스트에 가장 많이 담긴 영화들이에요!\n");
 			RecommendController.recByAge(user.getAge());
 			break;
 		case 3:
-			System.out.println("- 태그 추천 -");
+			System.out.println("---------------------- 태그 추천 -----------------------");
 			System.out.println(user.getId() + "님이 좋아하는 영화의 태그를 기반으로 영화를 추천해드릴게요!\n");
 
 			RecommendController.recByTag(user.getUserNo());
 			break;
 		case 4:
-			System.out.println("- 장르 추천 -");
+			System.out.println("---------------------- 장르 추천 ----------------------");
 			System.out.println(user.getId() + "님이 좋아하는 영화의 장르를 기반으로 영화를 추천해드릴게요!\n");
 			RecommendController.recByGenre(user.getUserNo());
 			break;
 		case 0:
 			return;
+		default:
+			System.out.println("잘못된 메뉴입니다. 다시 선택해주세요.");
+			printRecommendMenu(user);
 		}
 	}
 
@@ -701,72 +704,51 @@ public class MenuView {
 		String di = sd.getDirector();
 
 
-		System.out.println("=====================================================================================");
-		System.out.println("1. 현재 영화의 평점 및 코멘트를 작성하시겠습니까? | 2. 위시리스트에 추가 |3. 태그 추가 | 0. 종료 |");
-		System.out.println("=====================================================================================");
+		System.out.println("=================================================================================");
+		System.out.println("1. 현재 영화의 평점 및 코멘트를 작성하시겠습니까? | 2. 위시리스트에 추가 | 3. 태그 추가 | 0. 종료 |");
+		System.out.println("=================================================================================");
 		int choice = Integer.parseInt(sc.nextLine());
 		switch (choice) {
 		case 1:
-			Connection con = null;
-			PreparedStatement ps = null;
-			ResultSet rs = null;
-			String sql = "SELECT 영화_고유번호 FROM 영화 WHERE 작품명 = " + "'"+ mn +"'";
-
-			try {
-				con = DbUtil.getConnection();
-
-				ps = con.prepareStatement(sql);
-				rs = ps.executeQuery("select 영화_고유번호 from 영화 where 작품명  ='" + mn + "' and 감독 = '" + di + "'");
-				if (rs.next()) {
-
-					movienum = rs.getInt(1);
-				}
-				;
-
-			} catch (SQLException e) {
-				e.printStackTrace();
-			} finally {
-				DbUtil.dbClose(con, ps, rs);
-			}
-
+			findMovieNumber(sd, mn, di);
 			userComment(movienum);
 			break;
 		case 2:
+			movienum = findMovieNumber(sd, mn, di);
 			WishController.putWishList(user.getUserNo(), movienum);
 			break;
 		case 3:
+			movienum = findMovieNumber(sd, mn, di);
 			CustomerController.putTag(user.getUserNo(), movienum);
 		case 0:
 			return;
 
 		}
 	}
-private static int findMovieNumber(Search sd, String mn, String di) {
-		
+	public static int findMovieNumber(Search sd, String mn, String di) {
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		String sql = "SELECT 영화_고유번호 FROM 영화 WHERE 작품명 = " + "'"+ mn +"'";
 		
+		String keyword = insertKeyword();
+		sd = SearchController.showMovieDetail(keyword);
+		mn = sd.getMovieName();
+		di = sd.getDirector();
 		int movienum = 0;
 		
 		try {
 			con = DbUtil.getConnection();
-
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery("select 영화_고유번호 from 영화 where 작품명  ='" + mn + "' and 감독 = '" + di + "'");
 			if (rs.next()) {
-
 				movienum = rs.getInt(1);
-			}
-			;
-
+			};
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			DbUtil.dbClose(con, ps, rs);
 		}
-		
 		return movienum;
 
 	}
