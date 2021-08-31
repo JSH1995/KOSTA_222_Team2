@@ -13,6 +13,7 @@ import team2.mvc.model.dto.User;
 import team2.mvc.model.service.CustomerService;
 import team2.mvc.util.DbUtil;
 import team2.mvc.view.FailView;
+import team2.mvc.view.SuccessView;
 import team2.mvc.model.dto.Evaluation;
 
 
@@ -75,6 +76,17 @@ public class CustomerController {
 		}finally {
 			DbUtil.dbClose(con, st, rs);
 		}
+	}
+
+	public static void putTag(int movienum) {
+		try {
+			customerService.putTag(movienum);
+			SuccessView.messagePrint("등록되었습니다.");
+		} catch (Exception e) {
+			// TODO: handle exception
+			FailView.errorMessage(e.getMessage());
+		}
+		
 	}
 	
 }

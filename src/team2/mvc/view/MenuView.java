@@ -697,7 +697,7 @@ public class MenuView {
 
 		System.out.println("=====================================================================================");
 
-		System.out.println("1. 현재 영화의 평점 및 코멘트를 작성하시겠습니까? | 2. 위시리스트에 추가 | 0. 종료 |");
+		System.out.println("1. 현재 영화의 평점 및 코멘트를 작성하시겠습니까? | 2. 위시리스트에 추가 |3. 태그 추가 | 0. 종료 |");
 		System.out.println("=====================================================================================");
 		int choice = Integer.parseInt(sc.nextLine());
 		switch (choice) {
@@ -708,6 +708,8 @@ public class MenuView {
 		case 2:
 			WishController.putWishList(user.getUserNo(), movienum);
 			break;
+		case 3:
+			CustomerController.putTag(movienum);
 		case 0:
 			return;
 
