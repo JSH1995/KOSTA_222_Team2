@@ -875,7 +875,12 @@ public class MenuView {
 		}
 
 	}
-
+	/**
+	 * @author 홍전형
+	 * 사용자가 태그를 추가하는 메서드
+	 * @param movienum
+	 * @return
+	 */
 	public static String putUserTag(int movienum) {
 		System.out.println("태그를 입력해주세요: ");
 		String userTag = sc.nextLine();

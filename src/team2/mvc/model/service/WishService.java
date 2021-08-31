@@ -11,10 +11,12 @@ import team2.mvc.model.dto.Movie;
 
 public class WishService {
 	WishDAO wishDAO = new WishDAOlmpl();
+
 	/**
-	 * 위시리스트 보는 메소드
+	 * 사용자 고유넘버를 받아 위시리스트를 출력
 	 * @author 홍전형
 	 * @param userNo
+	 * @return 위시리스트
 	 * @throws SQLException
 	 * @throws NotFoundException
 	 */
@@ -26,7 +28,7 @@ public class WishService {
 		return movieList;
 	}
 	/**
-	 * 사용자 위시리스트에 넣는 메소드
+	 * 위시리스트에 영화를 추가하는 메서드
 	 * @author 홍전형
 	 * @param userNo
 	 * @param movieNo
