@@ -702,7 +702,7 @@ public class MenuView {
 		int choice = Integer.parseInt(sc.nextLine());
 		switch (choice) {
 		case 1:
-			findMovieNumber();
+			movienum = findMovieNumber();
 			userComment(movienum);
 			break;
 		case 2:
@@ -714,13 +714,15 @@ public class MenuView {
 		}
 	}
 
-	private static void findMovieNumber() {
+	private static int findMovieNumber() {
 		
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		String sql = "SELECT 영화_고유번호 FROM 영화 WHERE 작품명 = " + "'"+ mn +"'";
-
+		
+		int movienum = 0;
+		
 		try {
 			con = DbUtil.getConnection();
 
@@ -737,6 +739,8 @@ public class MenuView {
 		} finally {
 			DbUtil.dbClose(con, ps, rs);
 		}
+		
+		return movienum;
 
 	}
 }
