@@ -34,5 +34,4 @@ public interface SearchDAO {
 	
 	Search showMovieDetail(String movieName) throws SQLException;
 
-	List<Search> searchMovie(String keyword) throws SQLException;
 }
