@@ -12,7 +12,10 @@ import team2.mvc.exception.NotFoundException;
 import team2.mvc.model.dto.Movie;
 import team2.mvc.model.dto.WishList;
 import team2.mvc.util.DbUtil;
-
+/**
+ * 사용자 고유번호를 이용해서 사용자의 위시리스트를 가져오는 메소드
+ * @author 홍전형
+ */
 public class WishDAOlmpl implements WishDAO {
 	@Override
 	/**
@@ -46,7 +49,10 @@ public class WishDAOlmpl implements WishDAO {
 		}
 		return movieList;
 	}
-
+	/**
+	 * 사용자의 위시리스트 추가하는 메소드
+	 * @author 홍전형
+	 */
 	@Override
 	/**
 	 * 위시리스트에 영화를 추가
@@ -74,6 +80,7 @@ public class WishDAOlmpl implements WishDAO {
 			DbUtil.dbClose(con, ps);
 		}
 	}
+
 
 	/**
 	 * 위시리스트 중복 체크를 위해 사용자의 위시리스트를 가져오는 메서드
