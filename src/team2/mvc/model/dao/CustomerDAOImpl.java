@@ -141,7 +141,11 @@ public class CustomerDAOImpl implements CustomerDAO {
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
 			
+			
 			String previousTag = getUserTag(con, movienum);
+			
+			if(previousTag == null) previousTag = "";
+			
 			ps.setString(1, tag + " | " + previousTag);
 			ps.setInt(2, movienum);
 
