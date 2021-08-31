@@ -146,6 +146,7 @@ public class MenuView {
 	}
 
 	/**
+	 * @author 홍전형
 	 * 사용자 메뉴 출력하는 메서드
 	 */
 	public static void printUserMenu() {
@@ -313,7 +314,7 @@ public class MenuView {
 			case 0:
 				printUserMenu();
 			default:
-				System.out.println("메뉴에 있는 숫자만 입력 해 주세요.");
+				System.out.println("메뉴에 있는 숫자만 입력해주세요.");
 				break; // 문자나 다른거 입력 시 Exception 처리 필요
 
 			}
@@ -328,10 +329,10 @@ public class MenuView {
 	private static String sort() {
 		String sortType = null;
 		
-		System.out.println("================== 검색하신 결과에 대해 정렬을 할 수 있습니다. ====================");
-		System.out.println("=============================== 정렬 메뉴 ================================");
+		System.out.println("========== 검색하신 결과에 대해 정렬을 할 수 있습니다 =========");
+		System.out.println("====================== 정렬 메뉴 ======================");
 		System.out.println("1. 작품명 | 2. 상영시간 | 3. 개봉일자 | 4. 평점 | 5. 뒤로 가기");
-		System.out.println("=======================================================================");
+		System.out.println("=====================================================");
 
 		int choice = Integer.parseInt(sc.nextLine());
 
@@ -351,7 +352,7 @@ public class MenuView {
 		case 5:
 			printSearchMenu();
 		default:
-			System.out.println("메뉴에 있는 숫자만 입력 해 주세요.");
+			System.out.println("메뉴에 있는 숫자만 입력해주세요.");
 			break;// 문자나 다른거 입력 시 Exception 처리 필요
 
 		}
@@ -364,8 +365,9 @@ public class MenuView {
 
 	private static String insertKeyword() {
 
-		System.out.println("==========검색하실 키워드를 입력해 주세요.==========");
-		System.out.println("==========키워드는 작품명으로 정확하게 입력해주세요!!==========");
+		System.out.println("=================== 영화 상세정보 검색 ===================");
+		System.out.println("============== 검색하실 키워드를 입력해 주세요 ==============");
+		System.out.println("========== 키워드는 작품명으로 정확하게 입력해주세요! ==========");
 		System.out.print("키워드 : ");
 		String keyword = sc.nextLine();
 		keywordList.add(keyword);
