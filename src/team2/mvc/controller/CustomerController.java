@@ -102,7 +102,5 @@ public class CustomerController {
 			// TODO: handle exception
 			FailView.errorMessage(e.getMessage());
 		}
-		
 	}
-	
 }
