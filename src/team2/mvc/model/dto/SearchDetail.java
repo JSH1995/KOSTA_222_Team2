@@ -15,12 +15,12 @@ public class SearchDetail extends Search  {
 
 	public SearchDetail(String movieName, String director, String actor1, String actor2, String supactor1,
 			String supactor2, String supactor3, String genre, String nation, String releaseDate, int runtime,
-			int rate) {
+			double rate) {
 		super(movieName, director, actor1, actor2, supactor1, supactor2, supactor3, genre, nation, releaseDate, runtime, rate);
 	}
 
 	public SearchDetail(String movieName, String director, String actor1, String actor2, String supactor1,
-			String supactor2, String supactor3, String genre, String nation, String releaseDate, int runtime, int rate,
+			String supactor2, String supactor3, String genre, String nation, String releaseDate, int runtime, double rate,
 			String content, List<String> userTag) {
 		super(movieName, director, actor1, actor2, supactor1, supactor2, supactor3, genre, nation, releaseDate, runtime,
 				rate);
@@ -46,38 +46,10 @@ public class SearchDetail extends Search  {
 
 	@Override
 	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("SearchDetail [content=");
-		builder.append(content);
-		builder.append(", userTag=");
-		builder.append(userTag);
-		builder.append(", getMovieName()=");
-		builder.append(getMovieName());
-		builder.append(", getDirector()=");
-		builder.append(getDirector());
-		builder.append(", getActor1()=");
-		builder.append(getActor1());
-		builder.append(", getActor2()=");
-		builder.append(getActor2());
-		builder.append(", getGenre()=");
-		builder.append(getGenre());
-		builder.append(", getNation()=");
-		builder.append(getNation());
-		builder.append(", getReleaseDate()=");
-		builder.append(getReleaseDate());
-		builder.append(", getRuntime()=");
-		builder.append(getRuntime());
-		builder.append(", getRate()=");
-		builder.append(getRate());
-		builder.append(", toString()=");
-		builder.append(super.toString());
-		builder.append(", getClass()=");
-		builder.append(getClass());
-		builder.append(", hashCode()=");
-		builder.append(hashCode());
-		builder.append("]");
-		return builder.toString();
+		return "SearchDetail [content=" + content + ", userTag=" + userTag + "]";
 	}
+
+	
 	
 	
 
