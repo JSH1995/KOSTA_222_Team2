@@ -33,5 +33,7 @@ public interface SearchDAO {
 	Movie searchByPK(int movieNo) throws SQLException;
 	
 	Search showMovieDetail(String movieName) throws SQLException;
+	
+	Search showComment(String movieName) throws SQLException;
 
 }
