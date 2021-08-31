@@ -20,6 +20,7 @@ import team2.mvc.controller.WishController;
 import team2.mvc.model.dto.Actor;
 import team2.mvc.model.dto.Evaluation;
 import team2.mvc.model.dto.MovidDetail;
+import team2.mvc.model.dto.MovieSub;
 import team2.mvc.model.dto.Search;
 import team2.mvc.model.dto.Tag;
 import team2.mvc.model.dto.User;
@@ -401,109 +402,153 @@ public class MenuView {
 	static String date1 = "";
 
 	/**
+	 * 영화, 영화상세정보, 태그, 배우 등록 수정 삭제
+	 */
+
+	static String date11 = "";
+
+	/**
 	 * @author 이치인 영화 등록 수정 삭제
 	 */
 	// 영화 등록
 	public static void adminMenu() {
-
-		System.out.println("=============================== 관리자 메뉴 입니다. ================================");
-		System.out.println("================================== 정렬 메뉴 =====================================");
-		System.out.println("1. 영화등록 | 2. 영화수정 | 3. 영화삭제 | 4. 배우등록 | 5. 배우수정 | 6. 배우삭제 | 7. 태그등록");
-		System.out.println(
-				"================================================================================");
-		System.out.println("8. 태그수정 | 9. 태그삭제 | 10. 영화상세등록 | 11. 영화상세수정 | 12. 영화상세삭제 | 0. 돌아가기 ");
-		System.out.println(
-				"================================================================================");
-
-		int choice = Integer.parseInt(sc.nextLine());
-
-		switch (choice) {
-		case 1:
-			registerMovie();
-			break;
-		case 2:
-			updateMovie();
-			break;
-		case 3:
-			deleteMovie();
-			break;
-		case 4:
-			registerActor();
-			break;
-		case 5:
-			updateActor();
-			break;
-		case 6:
-			deleteActor();
-			break;
-		case 7:
-			registerTag();
-			break;
-		case 8:
-			updateTag();
-			break;
-		case 9:
-			deleteTag();
-			break;
-		case 10:
-			registerMovieDetail();
-			break;
-		case 11:
-			updateMovieDetail();
-			break;
-		case 12:
-			deleteMovieDetail();
-			break;
-		case 0:
-			
-		default:
-			System.out.println("메뉴에 있는 숫자만 입력 해 주세요.");
-			break;// 문자나 다른거 입력 시 Exception 처리 필요
-
-		}
+		try {
+			System.out.println("========================================== 관리자 메뉴 ============================================");
+			System.out.println("1. 영화등록 | 2. 영화수정 | 3. 영화삭제 | 4. 배우등록 | 5. 배우수정 | 6. 배우삭제 | 7. 태그등록 | 8. 태그수정");
+			System.out.println(
+					"================================================================================================");
+			System.out.println("9. 태그삭제 | 10. 영화상세등록 | 11. 영화상세수정 | 12. 영화상세삭제 | 13. 메인메뉴 | 14. 로그아웃 | 0. 종료");
+			System.out.println(
+					"================================================================================================");
+	
+			int choice = Integer.parseInt(sc.nextLine());
+				switch (choice) {
+				case 1:
+					registerMovie();
+					adminMenu();
+					break;
+				case 2:
+					updateMovie();
+					adminMenu();
+					break;
+				case 3:
+					deleteMovie();
+					adminMenu();
+					break;
+				case 4:
+					registerActor();
+					adminMenu();
+					break;
+				case 5:
+					updateActor();
+					adminMenu();
+					break;
+				case 6:
+					deleteActor();
+					adminMenu();
+					break;
+				case 7:
+					registerTag();
+					adminMenu();
+					break;
+				case 8:
+					updateTag();
+					adminMenu();
+					break;
+				case 9:
+					deleteTag();
+					adminMenu();
+					break;
+				case 10:
+					registerMovieDetail();
+					adminMenu();
+					break;
+				case 11:
+					updateMovieDetail();
+					adminMenu();
+					break;
+				case 12:
+					deleteMovieDetail();
+					adminMenu();
+					break;
+				case 13:
+					System.out.println("관리자 메뉴를 종료하고 메인메뉴로 돌아갑니다.");
+					printUserMenu();
+				case 14:
+					System.out.println("로그아웃되어 로그인 화면으로 돌아갑니다.");
+					break;
+				case 15:
+					System.exit(0);
+				default:
+					System.out.println("메뉴에 해당하는 번호가 없습니다.");
+					adminMenu();
+					break;
+				}
+		}catch(NumberFormatException e) {
+	        System.out.println("숫자만 입력해주세요.");
+        }
 
 	}
 
 	public static void registerMovie() {
-
-		System.out.print("등록할 영화고유번호 입력 : ");
+        System.out.println("=====새 영화 등록=====");
+		System.out.print("등록할 영화고유번호 입력해주세요: ");
 		int movieNo = Integer.parseInt(sc.nextLine());
+		
+		System.out.println("  1. 드라마 |  2. 스릴러  |  3. 범죄  | 4. 로맨스  | 5. 액션 | 6. 다큐멘터리  | 7. 애니메이션  | 8. 코미디 | 9. 공포  | 10. SF ");
 
-		System.out.print("장르번호 등록 : ");
+		System.out.print("해당 장르번호 입력해주세요: ");
 		int genreNo = Integer.parseInt(sc.nextLine());
 
-		System.out.print("작품명 등록 : ");
+		System.out.print("영화명을 입력해주세요: ");
 		String movieName = sc.nextLine();
 
-		System.out.print("작품감독 등록 : ");
+		System.out.print("감독명을 입력해주세요: ");
 		String director = sc.nextLine();
+		System.out.println();
 
-		MovieController.registerMovie(movieNo, genreNo, movieName, director, date1);
+		MovieController.registerMovie(movieNo, genreNo, movieName, director, date11);
+	}
+	
+	//영화_고유번호에 해당하는 영화 레코드 검색하기.
+	public static List<MovieSub> selectByMovieNo(int movieNo) {
+		List<MovieSub> movieList = MovieController.selectByMovieNo(movieNo);
+		return movieList;
 	}
 
 	// 영화 수정
 	public static void updateMovie() {
-
-		System.out.print("수정할 영화고유번호 입력 : ");
+		System.out.println("=====영화 수정===== ");
+    
+		System.out.print("해당 영화고유번호를 입력해주세요: ");
 		int movieNo = Integer.parseInt(sc.nextLine());
-
-		System.out.print("장르번호 수정 : ");
-		int genreNo = Integer.parseInt(sc.nextLine());
-
-		System.out.print("작품명 수정 : ");
-		String movieName = sc.nextLine();
-
-		System.out.print("작품감독 수정 : ");
-		String director = sc.nextLine();
-
-		MovieController.updateMovie(movieNo, genreNo, movieName, director, date1);
+		List<MovieSub> movieList = selectByMovieNo(movieNo);
+		if(movieList != null) {
+			System.out.println("\n선택하신 영화번호에 해당하는 현재 데이터입니다.");
+			System.out.println(movieList+"\n");
+	        System.out.println("[변경 가능한 장르 목록]");
+			System.out.println("  1. 드라마 |  2. 스릴러  |  3. 범죄  | 4. 로맨스  | 5. 액션 | 6. 다큐멘터리  | 7. 애니메이션  | 8. 코미디 | 9. 공포  | 10. SF ");
+			System.out.print("장르를 변경해주세요:  ");
+			int genreNo = Integer.parseInt(sc.nextLine());
+	        
+			System.out.print("영화명을 변경해주세요: ");
+			String movieName = sc.nextLine();
+	
+			System.out.print("감독명을 변경해주세요: ");
+			String director = sc.nextLine();
+			
+			MovieController.updateMovie(movieNo, genreNo, movieName, director, date1);
+		}else {
+			System.out.println("관리자 메뉴로 돌아갑니다.");
+		}
 	}
 
 	// 영화 삭제
 	public static void deleteMovie() {
-		System.out.print("삭제할 영화의 고유번호 입력 : ");
+		
+		System.out.print("삭제하려는 해당 영화고유번호를 입력해주세요: ");
 		int movieNo = Integer.parseInt(sc.nextLine());
-		MovieController.deleteMovie(movieNo);
+		MovieController.deleteMovie(movieNo); 
 	}
 
 	/**
@@ -511,8 +556,8 @@ public class MenuView {
 	 */
 	// 배우 등록
 	public static void registerActor() {
-
-		System.out.print("해당 작품번호 : ");
+		System.out.println("=====배우 등록===== ");
+		System.out.print("배우 등록할 영화고유번호 입력해주세요: ");
 		int movieNo = Integer.parseInt(sc.nextLine());
 
 		System.out.print("주연1 : ");
@@ -536,8 +581,8 @@ public class MenuView {
 
 	// 배우 수정
 	public static void updateActor() {
-
-		System.out.print("수정할 해당 작품번호 : ");
+		System.out.println("=====배우리스트 수정===== ");
+		System.out.print("수정할 해당 영화고유번호를 입력해주세요: ");
 		int movieNo = Integer.parseInt(sc.nextLine());
 
 		System.out.print("주연1 : ");
@@ -561,7 +606,7 @@ public class MenuView {
 
 	// 배우 삭제
 	public static void deleteActor() {
-		System.out.print("삭제할 영화의 고유번호 입력 : ");
+		System.out.print("삭제하려는 해당 영화고유번호를 입력해주세요: ");
 		int movieNo = Integer.parseInt(sc.nextLine());
 		MovieController.deleteActor(movieNo);
 	}
@@ -572,23 +617,54 @@ public class MenuView {
 	// 태그 등록
 	public static void registerTag() {
 
-		System.out.print("등록할 작품번호 : ");
+		System.out.print("새롭게 태그 추가할 영화고유번호 입력해주세요: ");
 		int movieNo = Integer.parseInt(sc.nextLine());
-
-		System.out.print("등록할 태그 : ");
+		System.out.println();
+		
+		System.out.println("[태그 목록]");
+		System.out.println(" 1.  시간			|  2.  외계인		|  3.  우주		| 4.  고전	| 5.  복수		| 6.  패션		| 7.  미래적인	| 8.  편견을깨는	| 9.  독립 ");
+		System.out.println(" 10. 좀비			|  11. 오싹해지는	|  12. 악당		| 13. 책		| 14. 비밀스러운	| 15. 마법		| 16. 해커	| 17. 구출		| 18. 풋풋한 ");
+		System.out.println(" 19. 디즈니		|  20. 미로		|  21. 자동차		| 22. 폭발	| 23. 역사		| 24. 가족이생각나는| 25. 괴생명체	| 26. 자연		| 27. 다큐 ");
+		System.out.println(" 28. 반전			|  29. 하이틴		|  30. 느와르		| 31. 섬뜩한	| 32. 영화제수상작	| 33. 경찰		| 34. 타임리프	| 35. 눈이즐거워지는| 36. 실화 ");
+		System.out.println(" 37. OST		|  38. 사랑		|  39. 연기력		| 40. 우정	| 41. 사랑스러운	| 42. 학생		| 43. 영상미	| 44. 요리		| 45. 명작 ");
+		System.out.println(" 46. 성장			|  47. 2인조		|  48. 현실적인	| 49. 퀴어	| 50. 관계		| 51. 재능		| 52. 잔잔한	| 53. 뮤지션		| 54. 인생 ");
+		System.out.println(" 55. 먹방			|  56. 영국배경	|  57. 따뜻한		| 58. 예술	| 59. 웃긴		| 60. 남녀		| 61. 페미니즘	| 62. 연인		| 63. 완성도 ");
+		System.out.println(" 64. 워너브라더스	|  65. 소설원작	|  66. 식당		| 67. 미장센	| 68. 춤			| 69. 블록버스터	| 70. 오디션	| 71. 저항		| 72. 유럽배경 ");
+		System.out.println(" 73. 기억상실		|  74. FBI		|  75. 통쾌		|  ");
+		
+		System.out.print("목록에서 해당하는 태그번호를 찾아 입력해주세요: ");
 		int tagNo = Integer.parseInt(sc.nextLine());
 
 		Tag tag = new Tag(movieNo, tagNo);
 		MovieController.registerTag(tag);
 	}
 
+	//영화고유번호에 해당하는 태그리스트 검색 기능
+	public static List<Tag> tagListByMovieNo(int movieNo) {
+		List<Tag> tagList = MovieController.tagListByMovieNo(movieNo);
+		return tagList;
+	}
 	// 태그 수정
 	public static void updateTag() {
 
-		System.out.print("태그 변경할 작품번호 : ");
+		System.out.print("변경하고자 하는 영화고유번호 입력해주세요: ");
 		int movieNo = Integer.parseInt(sc.nextLine());
+		List<Tag> tagList = tagListByMovieNo(movieNo);
+		System.out.println("\n선택하신 영화번호에 해당하는 현재 데이터입니다.");
+		System.out.println(tagList+"\n");
+		
+		System.out.println("[태그 목록]");
+		System.out.println(" 1.  시간			|  2.  외계인		|  3.  우주		| 4.  고전	| 5.  복수		| 6.  패션		| 7.  미래적인	| 8.  편견을깨는	| 9.  독립 ");
+		System.out.println(" 10. 좀비			|  11. 오싹해지는	|  12. 악당		| 13. 책		| 14. 비밀스러운	| 15. 마법		| 16. 해커	| 17. 구출		| 18. 풋풋한 ");
+		System.out.println(" 19. 디즈니		|  20. 미로		|  21. 자동차		| 22. 폭발	| 23. 역사		| 24. 가족이생각나는| 25. 괴생명체	| 26. 자연		| 27. 다큐 ");
+		System.out.println(" 28. 반전			|  29. 하이틴		|  30. 느와르		| 31. 섬뜩한	| 32. 영화제수상작	| 33. 경찰		| 34. 타임리프	| 35. 눈이즐거워지는| 36. 실화 ");
+		System.out.println(" 37. OST		|  38. 사랑		|  39. 연기력		| 40. 우정	| 41. 사랑스러운	| 42. 학생		| 43. 영상미	| 44. 요리		| 45. 명작 ");
+		System.out.println(" 46. 성장			|  47. 2인조		|  48. 현실적인	| 49. 퀴어	| 50. 관계		| 51. 재능		| 52. 잔잔한	| 53. 뮤지션		| 54. 인생 ");
+		System.out.println(" 55. 먹방			|  56. 영국배경	|  57. 따뜻한		| 58. 예술	| 59. 웃긴		| 60. 남녀		| 61. 페미니즘	| 62. 연인		| 63. 완성도 ");
+		System.out.println(" 64. 워너브라더스	|  65. 소설원작	|  66. 식당		| 67. 미장센	| 68. 춤			| 69. 블록버스터	| 70. 오디션	| 71. 저항		| 72. 유럽배경 ");
+		System.out.println(" 73. 기억상실		|  74. FBI		|  75. 통쾌		|  ");
 
-		System.out.print("수정할 태그 : ");
+		System.out.print("목록에서 해당하는 태그번호를 찾아 입력해주세요: ");
 		int tagNo = Integer.parseInt(sc.nextLine());
 
 		Tag tag = new Tag(movieNo, tagNo);
@@ -597,7 +673,7 @@ public class MenuView {
 
 	// 태그 삭제
 	public static void deleteTag() {
-		System.out.print("삭제할 영화의 고유번호 입력 : ");
+		System.out.print("삭제하려는 해당 영화고유번호를 입력해주세요: ");
 		int movieNo = Integer.parseInt(sc.nextLine());
 		MovieController.deleteTag(movieNo);
 	}
@@ -608,22 +684,25 @@ public class MenuView {
 	// 영화_상세 등록
 	public static void registerMovieDetail() {
 
-		System.out.print("새롭게 등록할 작품번호 : ");
+		System.out.print("상세정보를 추가할 영화고유번호를 입력해주세요: ");
 		int movieNo = Integer.parseInt(sc.nextLine());
 
-		System.out.print("줄거리 : ");
+		System.out.print("줄거리: ");
 		String content = sc.nextLine();
-
-		System.out.print("런타임 : ");
+		
+		System.out.println("[ex] 2시간 6분 → 126");
+		System.out.print("런타임: ");
 		int runtime = Integer.parseInt(sc.nextLine());
-
-		System.out.print("개봉일자 : ");
+		//System.out.print("분");
+		
+		System.out.println("[ex] 2022-02-22");
+		System.out.print("개봉일자: ");
 		String releaseDate = sc.nextLine();
 
-		System.out.print("국가 : ");
+		System.out.print("국가: ");
 		String nation = sc.nextLine();
 
-		System.out.print("사용자 지정 태그 : ");
+		System.out.print("사용자 태그: ");
 		String userTag = sc.nextLine();
 
 		// int movieNo, String content, int runtime, String releaseDate, String nation,
@@ -635,22 +714,24 @@ public class MenuView {
 	// 영화_상세 내용 수정
 	public static void updateMovieDetail() {
 
-		System.out.print("수정할 작품번호 : ");
+		System.out.print("수정하려는 해당 영화고유번호를 입력해주세요: ");
 		int movieNo = Integer.parseInt(sc.nextLine());
 
-		System.out.print("줄거리 수정 : ");
+		System.out.print("줄거리: ");
 		String content = sc.nextLine();
-
-		System.out.print("런타임 수정 : ");
+		
+		System.out.println("[ex] 2시간 6분 → 126");
+		System.out.print("런타임: ");
 		int runtime = Integer.parseInt(sc.nextLine());
 
-		System.out.print("개봉일자 수정 : ");
+		System.out.println("[ex] 2022-02-22");
+		System.out.print("개봉일자: ");
 		String releaseDate = sc.nextLine();
 
-		System.out.print("국가 수정 : ");
+		System.out.print("국가: ");
 		String nation = sc.nextLine();
 
-		System.out.print("사용자 지정 태그 수정 : ");
+		System.out.print("사용자 지정 태그: ");
 		String userTag = sc.nextLine();
 
 		MovidDetail movieDetail = new MovidDetail(movieNo, content, runtime, releaseDate, nation, userTag);
@@ -659,7 +740,7 @@ public class MenuView {
 
 	// 영화_상세 정보 삭제
 	public static void deleteMovieDetail() {
-		System.out.print("삭제를 원하는 영화상세정보에 해당하는 영화고유번호 입력 : ");
+		System.out.print("삭제하려는 해당 영화고유번호를 입력해주세요: ");
 		int movieNo = Integer.parseInt(sc.nextLine());
 		MovieController.deleteMovieDetail(movieNo);
 	}
