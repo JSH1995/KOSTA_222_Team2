@@ -82,11 +82,11 @@ public class SearchDetail extends Search  {
 		builder.append(", ");
 		builder.append(getSupactor3());
 		builder.append("\n");
-		builder.append("\n" + "==================== 줄거리 ====================" +"\n");
+		builder.append("\n" + "============================== 줄거리 ==============================" +"\n");
 		builder.append(content);
-		builder.append("\n" + "==================== 유저들이 입력한 관련 태그 ====================" +"\n");
+		builder.append("\n" + "====================== 유저들이 입력한 관련 태그 =======================" +"\n");
 		builder.append(userTag);
-		builder.append("\n" + "==================== 유저 코멘트 ====================" +"\n");
+		builder.append("\n" + "============================= 유저 코멘트 ===========================" +"\n");
 
 		return builder.toString();
 	}

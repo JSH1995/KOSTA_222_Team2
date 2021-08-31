@@ -336,7 +336,7 @@
   </class>  
   <class id="38" language="java" name="team2.mvc.view.MenuView" project="Moviement" 
     file="/Moviement/src/team2/mvc/view/MenuView.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="695" y="1083"/>    
+    <position height="-1" width="-1" x="700" y="1085"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
