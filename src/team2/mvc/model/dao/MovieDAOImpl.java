@@ -363,4 +363,7 @@ public class MovieDAOImpl implements MovieDAO {
 		}
 		return tagList;
 	}
+	
+
+	
 }
