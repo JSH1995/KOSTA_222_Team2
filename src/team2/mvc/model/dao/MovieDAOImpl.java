@@ -21,9 +21,9 @@ public class MovieDAOImpl implements MovieDAO {
 		
 	}
 	
-	/**
-	 * 영화 등록
-	 * */
+	
+	//영화 등록
+
 	public int registerMovie(int movieNo, int genreNo, String movieName, String director, String date1) throws SQLException {
 		Connection con=null;
 		PreparedStatement ps=null;
@@ -50,9 +50,7 @@ public class MovieDAOImpl implements MovieDAO {
 		return result; 
 	}
 	
-	/**
-	 * 영화_고유번호에 해당하는 영화정보 수정
-	 * */
+	//영화_고유번호에 해당하는 영화정보 수정
 	public int updateMovie(int movieNo, int genreNo, String movieName, String director, String date1) throws SQLException {
 		Connection con=null;
 		PreparedStatement ps=null;
@@ -74,9 +72,8 @@ public class MovieDAOImpl implements MovieDAO {
 		return result;
 	}
 	
-	/**
-	 * 영화_고유번호에 해당하는 영화 삭제
-	 * */
+
+	 //영화_고유번호에 해당하는 영화 삭제
 	public int deleteMovie(int movieNo) throws SQLException {
 		Connection con=null;
 		PreparedStatement ps=null;
@@ -96,9 +93,9 @@ public class MovieDAOImpl implements MovieDAO {
 	}
 	
 	
-	/**
-	 * 배우 등록
-	 * */
+	
+	//배우 등록
+
 	public int registerActor(Actor actor) throws SQLException {
 		Connection con=null;
 		PreparedStatement ps=null;
@@ -123,9 +120,9 @@ public class MovieDAOImpl implements MovieDAO {
 		return result;
 	}
 	
-	/**
-	 * 영화_고유번호에 해당하는 배우정보 수정
-	 * */
+
+	//영화_고유번호에 해당하는 배우정보 수정
+
 	public int updateActor(Actor actor) throws SQLException {
 		Connection con=null;
 		PreparedStatement ps=null;
@@ -150,9 +147,7 @@ public class MovieDAOImpl implements MovieDAO {
 		return result;
 	}
 	
-	/**
-	 * 영화_고유번호에 해당하는 배우 삭제
-	 * */
+    //영화_고유번호에 해당하는 배우 삭제
 	public int deleteActor(int movieNo) throws SQLException {
 		Connection con=null;
 		PreparedStatement ps=null;
@@ -171,9 +166,9 @@ public class MovieDAOImpl implements MovieDAO {
 		return result;
 	}
 	
-	/**
-	 * 태그 등록
-	 * */
+
+	//태그 등록
+
 	public int registerTag(Tag tag) throws SQLException {
 		Connection con=null;
 		PreparedStatement ps=null;
@@ -193,9 +188,9 @@ public class MovieDAOImpl implements MovieDAO {
 		return result;
 	}
 	
-	/**
-	 * 영화_고유번호에 해당하는 태그정보 수정
-	 * */
+	
+	//영화_고유번호에 해당하는 태그정보 수정
+
 	public int updateTag(Tag tag) throws SQLException {
 		Connection con=null;
 		PreparedStatement ps=null;
@@ -215,9 +210,9 @@ public class MovieDAOImpl implements MovieDAO {
 		return result;
 	}
 	
-	/**
-	 * 영화_고유번호에 해당하는 태그 삭제
-	 * */
+
+	//영화_고유번호에 해당하는 태그 삭제
+
 	public int deleteTag(int movieNo) throws SQLException {
 		Connection con=null;
 		PreparedStatement ps=null;
@@ -238,9 +233,8 @@ public class MovieDAOImpl implements MovieDAO {
 	
 	
 
-	/**
-	 * 영화상세정보 등록
-	 * */
+
+	//영화상세정보 등록
 	public int registerMovieDetail(MovidDetail movieDetail) throws SQLException {
 		Connection con=null;
 		PreparedStatement ps=null;
@@ -265,10 +259,9 @@ public class MovieDAOImpl implements MovieDAO {
 		}
 		return result;
 	}
-	
-	/**
-	 * 영화_고유번호에 해당하는 영화상세정보 수정
-	 * */
+
+	//영화_고유번호에 해당하는 영화상세정보 수정
+
 	public int updateMovieDetail(MovidDetail movieDetail) throws SQLException {
 		Connection con=null;
 		PreparedStatement ps=null;
@@ -293,9 +286,9 @@ public class MovieDAOImpl implements MovieDAO {
 		return result;
 	}
 	
-	/**
-	 * 영화_고유번호에 해당하는 영화상세정보 삭제
-	 * */
+
+	//영화_고유번호에 해당하는 영화상세정보 삭제
+
 	public int deleteMovieDetail(int movieNo) throws SQLException {
 		Connection con=null;
 		PreparedStatement ps=null;
@@ -315,11 +308,7 @@ public class MovieDAOImpl implements MovieDAO {
 	}
 	
 	
-	/**
-	 * Menuview UI 에 사용할 부수적인 메소드들
-	 *     1. 영화 고유번호에 해당하는 레코드 검색
-	 * */
-
+    //영화고유번호에 해당하는 영화 레코드 검색
 	public List<MovieSub> selectByMovieNo(int movieNo) throws SQLException{
 		Connection con=null;
 		PreparedStatement ps=null;
@@ -341,7 +330,8 @@ public class MovieDAOImpl implements MovieDAO {
 		}
 		return movieList;
 	}
-
+	
+	//영화고유번호에 해당하는 태그 레코드 검색
 	public List<Tag> tagListByMovieNo(int movieNo) throws SQLException{
 		Connection con=null;
 		PreparedStatement ps=null;
@@ -363,4 +353,7 @@ public class MovieDAOImpl implements MovieDAO {
 		}
 		return tagList;
 	}
+	
+
+	
 }

@@ -2,12 +2,9 @@
 /**
  * @author 김찬원
  * 
- * 8/27(금)
- *  - 반복 되는 메소드가 많으므로 이후 단축 시킬 예정
- *  - 최근 검색 리스트 미구현
+ * 검색 및 출력 기능에 대한 Service 클래스
  * 
  */
-
 
 package team2.mvc.model.service;
 
@@ -25,6 +22,18 @@ public class SearchService {
 	
 	SearchDAO searchDAO = new SearchDAOImpl();
 	
+	
+	/**
+	 * @author 김찬원
+	 * 전체 DB 검색 및 결과를 출력
+	 * sortType을 입력을 통해 정렬 형태를 바꿔 결과 재출력 가능
+	 * @param sortType
+	 * @return List<Search>
+	 * @throws SQLException, NotFoundException
+	 */
+
+	
+	
 	public List<Search> searchAll(String sortType) throws NotFoundException, SQLException{
 		
 		List<Search> searchList = searchDAO.searchAll(sortType);
@@ -37,10 +46,16 @@ public class SearchService {
 		
 	}
 	
-	public List<Movie> recentSearch(){
-		return null;
-		
-	}
+	
+	/**
+	 * @author 김찬원
+	 * 작품명을 토대로 검색 및 결과를 출력
+	 * sortType을 입력을 통해 정렬 형태를 바꿔 결과 재출력 가능
+	 * @param movieName
+	 * @param sortType
+	 * @return List<Search>
+	 * @throws SQLException, NotFoundException
+	 */
 	
 	public List<Search> searchByName(String movieName, String sortType) throws NotFoundException, SQLException{
 		
@@ -54,6 +69,16 @@ public class SearchService {
 		
 	}
 	
+	/**
+	 * @author 김찬원
+	 * 감독명을 토대로 검색 및 결과를 출력
+	 * sortType을 입력을 통해 정렬 형태를 바꿔 결과 재출력 가능
+	 * @param director
+	 * @param sortType
+	 * @return List<Search>
+	 * @throws SQLException, NotFoundException
+	 */
+	
 	public List<Search> searchByDirector(String director, String sortType) throws NotFoundException, SQLException{
 		List<Search> searchList = searchDAO.searchByDirector(director, sortType);
 		
@@ -64,6 +89,16 @@ public class SearchService {
 		return searchList;	
 		
 	}
+	
+	/**
+	 * @author 김찬원
+	 * 배우명을 토대로 검색 및 결과를 출력
+	 * sortType을 입력을 통해 정렬 형태를 바꿔 결과 재출력 가능
+	 * @param actor
+	 * @param sortType
+	 * @return List<Search>
+	 * @throws SQLException, NotFoundException
+	 */
 	
 	public List<Search> searchByActor(String actor, String sortType) throws NotFoundException, SQLException{
 		
@@ -77,6 +112,16 @@ public class SearchService {
 		
 	}
 	
+	/**
+	 * @author 김찬원
+	 * 장르명을 토대로 검색 및 결과를 출력
+	 * sortType을 입력을 통해 정렬 형태를 바꿔 결과 재출력 가능
+	 * @param genre
+	 * @param sortType
+	 * @return List<Search>
+	 * @throws SQLException, NotFoundException
+	 */
+	
 	public List<Search> searchByGenre(String genre, String sortType) throws NotFoundException, SQLException{
 		
 		List<Search> searchList = searchDAO.searchByGenre(genre, sortType);
@@ -88,6 +133,16 @@ public class SearchService {
 		return searchList;
 		
 	}
+	
+	/**
+	 * @author 김찬원
+	 * 국가명을 토대로 검색 및 결과를 출력
+	 * sortType을 입력을 통해 정렬 형태를 바꿔 결과 재출력 가능
+	 * @param nation
+	 * @param sortType
+	 * @return List<Search>
+	 * @throws SQLException, NotFoundException
+	 */
 	
 	public List<Search> searchByNation(String nation, String sortType) throws NotFoundException, SQLException{
 		
@@ -101,6 +156,14 @@ public class SearchService {
 		
 	}
 	
+	/**
+	 * @author 김찬원
+	 * 영화 고유번호를 토대로 검색 및 데이터 담기
+	 * @param movieNo
+	 * @return Movie
+	 * @throws SQLException, NotFoundException
+	 */
+	
 	public Movie searchByPK(int movieNo) throws NotFoundException, SQLException{
 		
 		Movie movie =  searchDAO.searchByPK(movieNo);
@@ -112,6 +175,14 @@ public class SearchService {
 		return movie;
 		
 	}
+	
+	/**
+	 * @author 김찬원
+	 * 작품명을 토대로 상세 영화 정보를 검색 및 결과를 출력
+	 * @param movieName
+	 * @return Search
+	 * @throws SQLException, NotFoundException
+	 */
 
 	public Search showMovieDetail(String movieName) throws NotFoundException, SQLException {
 		
@@ -125,6 +196,14 @@ public class SearchService {
 		
 
 	}
+	
+	/**
+	 * @author 김찬원
+	 * 특정 영화에 대한 개인 평점/평가 날짜/코멘트를 출력하는 메소드
+	 * @param movieName
+	 * @return List<Evaluation>
+	 * @throws SQLException, NotFoundException
+	 */
 	
 	public List<Evaluation> showComment(String movieName) throws NotFoundException, SQLException{
 	

@@ -12,10 +12,6 @@ import team2.mvc.util.DbUtil;
 
 public class RecommendDAOImpl implements RecommendDAO {
 
-	/**
-	 * 해당 나이대에 가장 많이 위시리스트에 담긴 영화를 추천
-	 * @param age
-	 */
 	@Override
 	public List<Movie> recByAge(int age) throws SQLException {
 		Connection con = null;
@@ -41,9 +37,6 @@ public class RecommendDAOImpl implements RecommendDAO {
 		return list;
 	}
 
-	/**
-	 * 위시리스트에 가장 많이 담긴 영화를 추천
-	 */
 	@Override
 	public List<Movie> recByRank() throws SQLException {
 		Connection con = null;
@@ -67,9 +60,6 @@ public class RecommendDAOImpl implements RecommendDAO {
 		return list;
 	}
 
-	/**
-	 * 사용자가 선호하는 장르의 영화를 추천
-	 */
 	@Override
 	public List<Movie> recByGenre(int userNo) throws SQLException, NullPointerException {
 		Connection con = null;
@@ -99,13 +89,6 @@ public class RecommendDAOImpl implements RecommendDAO {
 		return list;
 	}
 
-	/**
-	 * 위시리스트가 존재할 때 장르 기반 추천하는 영화 리스트 리턴하는 메서드
-	 * @param con
-	 * @param genreNo
-	 * @return 추천 영화 리스트
-	 * @throws SQLException
-	 */
 	public List<Movie> getRecListByGenre(Connection con, int genreNo) throws SQLException {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -126,7 +109,11 @@ public class RecommendDAOImpl implements RecommendDAO {
 	}
 
 	/**
-	 * 사용자가 선호하는 태그의 영화를 추천
+	 * @author 홍전형
+	 * @param 유저 고유번호
+	 * 위시리스트가 존재하지 않을 때 회원가입시 입력받은 사용자 선호 태그를 기반으로 영화를 추천
+	 * @return 유저가 선호하는 태그 기반 영화 추천 리스트
+	 * @throws SQLException
 	 */
 	@Override
 	public List<Movie> recByTag(int userNo) throws SQLException {
@@ -158,6 +145,7 @@ public class RecommendDAOImpl implements RecommendDAO {
 	}
 
 	/**
+	 * @author 홍전형
 	 * 위시리스트가 존재할 때 태그 기반 추천하는 영화 리스트 리턴하는 메서드
 	 * @param con
 	 * @param tagNo
@@ -184,6 +172,7 @@ public class RecommendDAOImpl implements RecommendDAO {
 	}
 
 	/**
+	 * @author 홍전형
 	 * 위시리스트가 존재하는지 판단하는 메서드
 	 * @param userNo
 	 * @return true if wish-list exist, false if not
@@ -213,7 +202,8 @@ public class RecommendDAOImpl implements RecommendDAO {
 	}
 
 	/**
-	 * 위시리스트가 존재하지 않을 때 회원가입시 선택한 장르를 기반으로 추천하는 영화 리턴하는 메서드
+	 * @author 홍전형
+	 * 위시리스트가 존재하지 않을 때 회원가입시 입력받은 사용자 선호 장르를 기반으로 영화를 추천
 	 * @param userNo
 	 * @return 추천 영화 리스트
 	 * @throws SQLException
@@ -240,6 +230,7 @@ public class RecommendDAOImpl implements RecommendDAO {
 	}
 
 	/**
+	 * @author 홍전형
 	 * 위시리스트가 존재하지 않을 때 회원가입시 선택한 장르를 기반으로 추천하는 영화 리턴하는 메서드
 	 * @param userNo
 	 * @return 추천 영화 리스트

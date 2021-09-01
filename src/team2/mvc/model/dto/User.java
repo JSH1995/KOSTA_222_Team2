@@ -3,6 +3,9 @@ package team2.mvc.model.dto;
 import java.sql.Array;
 
 public class User {
+	/**
+	 * 사용자 관련 클래스
+	 */
 
 	private int userNo;
 	private String id;

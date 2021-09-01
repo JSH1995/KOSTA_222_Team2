@@ -1,6 +1,10 @@
 package team2.mvc.model.dto;
 
 public class Tag {
+	/**
+	 * 영화의 태그 관련 클래스
+	 */
+	
 	private int movieNo;
 	private int tagNo;
 	

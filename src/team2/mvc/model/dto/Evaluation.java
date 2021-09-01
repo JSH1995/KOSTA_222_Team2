@@ -1,5 +1,7 @@
 package team2.mvc.model.dto;
-
+/**
+ * 사용자 평가 결과 관련 클래스
+ */
 public class Evaluation {
 	private int userNo;
 	private int movieNo;

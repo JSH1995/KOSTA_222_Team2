@@ -11,6 +11,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
 import team2.mvc.model.dto.Evaluation;
 import team2.mvc.model.dto.Tag;
 import team2.mvc.model.dto.User;
@@ -18,7 +19,10 @@ import team2.mvc.util.DbUtil;
 
 public class CustomerDAOImpl implements CustomerDAO {
 	
-
+	/**
+	 * @author 조성휘
+	 * 회원가입하는 메소드
+	 */
 	public int registerUser(int userNo, String id, String password, int age, String userRegDate,int favTag, int favGenre) throws SQLException {
 		
 		Connection con = null;
@@ -44,6 +48,10 @@ public class CustomerDAOImpl implements CustomerDAO {
 		
 		return result;
 	}
+	/**
+	 * @author 조성휘
+	 * 사용자가 로그인하는 메소드
+	 */
 	public List<User> login(String id, String password) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
@@ -77,7 +85,10 @@ public class CustomerDAOImpl implements CustomerDAO {
 		return null;
 	}
 
-	
+	/**
+	 * @author 조성휘
+	 * 사용자가 사용자 평가를 추가하는 메소드
+	 */
 	public int Evaluation(int userNo, int movieNo, int rate, String comment,
 			String rateDate) throws Exception {
 		
@@ -119,24 +130,70 @@ public class CustomerDAOImpl implements CustomerDAO {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	/**
+	 * @author 조성휘
+	 * 사용자가 비밀번호 변경하는 메소드
+	 */
 	@Override
 	public List<User> passwordUpdate(int user_nums, String pw1) throws SQLException {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	/**
+	 * @author 홍전형
+	 * 영화에 사용자가 태그를 추가하는 메서드
+	 */
 	@Override
-	public void putTag(int userNo, int movienum) throws Exception {
+	public void putTag(int movienum, String tag) throws Exception {
 		Connection con = null;
 		PreparedStatement ps = null;
-		
-		
+		int result = 0;
+		String sql = "UPDATE 영화_상세 set 사용자_태그 = ? WHERE 영화_고유번호 = ?";
 		try {
-	
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
 			
+			
+			String previousTag = getUserTag(con, movienum);
+			
+			if(previousTag == null) previousTag = "";
+			
+			ps.setString(1, tag + " | " + previousTag);
+			ps.setInt(2, movienum);
+
+			result = ps.executeUpdate();
+			if(result == 0) {
+				throw new SQLException("등록이 불가합니다.");
+			}
 			
 		}finally {
 			DbUtil.dbClose(con, ps);
 		}
+	}
+	/**
+	 * @author 홍전형
+	 * 영화에 들어가있는 사용자 태그를 가져오는 메서드
+	 */
+	public String getUserTag(Connection con, int movienum) throws SQLException{
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String tags = null;
+		String sql = "select 사용자_태그 from 영화_상세 where 영화_고유번호 = ?";
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, movienum);
+			rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				tags = rs.getString(1);
+			}
+		} finally {
+			DbUtil.dbClose(null, ps, rs);
+		}
+		
+		return tags;
+		
 		
 	}
 
